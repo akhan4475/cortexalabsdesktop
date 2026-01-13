@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
-import { Phone, PhoneOff, Save, ArrowLeft, ChevronRight, MessageSquare, ClipboardList, CheckCircle2, AlertCircle, FileText, Delete, Mail, Mic, MicOff, Volume2, VolumeX } from 'lucide-react';
+import { Phone, PhoneOff, Save, ArrowLeft, ChevronRight, MessageSquare, ClipboardList, CheckCircle2, AlertCircle, FileText, Delete, Mail, Mic, MicOff, Volume2, VolumeX, Circle } from 'lucide-react';
 import { Lead, Campaign } from './types';
 import { supabase } from '../../lib/supabase';
 
@@ -39,6 +39,7 @@ const Dialer: React.FC<DialerProps> = ({ campaigns, allLeads, onUpdateLeadStatus
     const [callStatus, setCallStatus] = useState<string>('');
     const [callError, setCallError] = useState<string>('');
     const [isMuted, setIsMuted] = useState(false);
+    const [isRecording, setIsRecording] = useState(false); // 🔴 NEW: Recording state
     const [isDeviceReady, setIsDeviceReady] = useState(false);
     
     const deviceRef = useRef<any>(null);
@@ -232,6 +233,7 @@ REASON FOR CALL:
             setIsCallActive(false);
             setCurrentCall(null);
             setCallStatus('disconnected');
+            setIsRecording(false); // 🔴 Reset recording state
             
         } else {
             // Start new call
@@ -239,9 +241,18 @@ REASON FOR CALL:
             setCallStatus('calling');
             
             try {
+                // Get current user
+                const { data: { user } } = await supabase.auth.getUser();
+
+                // 🔴 NEW: Include recording parameter
                 const call = await deviceRef.current.connect({
                     params: {
-                        To: phoneNumber
+                        To: phoneNumber,
+                        Record: isRecording ? 'true' : 'false',
+                        UserId: user?.id || '',
+                        LeadId: selectedLead?.id || '',
+                        CampaignId: selectedCampaign?.id || '',
+                        LeadName: selectedLead?.name || 'Unknown'
                     }
                 });
 
@@ -259,6 +270,7 @@ REASON FOR CALL:
                     setCallStatus('disconnected');
                     setCurrentCall(null);
                     setCallTime(0);
+                    setIsRecording(false); // 🔴 Reset recording state
                 });
 
                 call.on('reject', () => {
@@ -267,6 +279,7 @@ REASON FOR CALL:
                     setCallStatus('rejected');
                     setCurrentCall(null);
                     setCallError('Call was rejected');
+                    setIsRecording(false); // 🔴 Reset recording state
                 });
 
                 call.on('cancel', () => {
@@ -274,6 +287,7 @@ REASON FOR CALL:
                     setIsCallActive(false);
                     setCallStatus('cancelled');
                     setCurrentCall(null);
+                    setIsRecording(false); // 🔴 Reset recording state
                 });
 
                 call.on('error', (error: any) => {
@@ -282,6 +296,7 @@ REASON FOR CALL:
                     setIsCallActive(false);
                     setCallStatus('error');
                     setCurrentCall(null);
+                    setIsRecording(false); // 🔴 Reset recording state
                 });
 
                 setCurrentCall(call);
@@ -299,6 +314,13 @@ REASON FOR CALL:
             const newMuteState = !isMuted;
             currentCall.mute(newMuteState);
             setIsMuted(newMuteState);
+        }
+    };
+
+    // 🔴 NEW: Toggle recording (only when call is NOT active)
+    const toggleRecording = () => {
+        if (!isCallActive) {
+            setIsRecording(!isRecording);
         }
     };
 
@@ -406,6 +428,22 @@ REASON FOR CALL:
                         </div>
 
                         <div className="flex justify-center gap-4 mb-4 items-center">
+                            {/* 🔴 NEW: Recording Button (only shown when call is NOT active) */}
+                            {!isCallActive && (
+                                <button 
+                                    onClick={toggleRecording}
+                                    disabled={!isDeviceReady}
+                                    className={`w-14 h-14 rounded-full flex items-center justify-center transition-all active:scale-95 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed ${
+                                        isRecording 
+                                            ? 'bg-red-600 hover:bg-red-500 border-2 border-red-400' 
+                                            : 'bg-[#262624] hover:bg-[#333] border-2 border-[#333]'
+                                    }`}
+                                    title={isRecording ? 'Recording Enabled' : 'Click to Enable Recording'}
+                                >
+                                    <Circle size={20} fill={isRecording ? 'currentColor' : 'none'} className={isRecording ? 'text-white' : 'text-gray-400'} />
+                                </button>
+                            )}
+
                             {/* Mute Button */}
                             {isCallActive && (
                                 <button 
@@ -436,6 +474,13 @@ REASON FOR CALL:
 
                         {isCallActive && (
                             <div className="text-center">
+                                {/* 🔴 NEW: Recording indicator during call */}
+                                {isRecording && (
+                                    <div className="mb-3 flex items-center justify-center gap-2 text-red-400 animate-pulse">
+                                        <Circle size={12} fill="currentColor" />
+                                        <span className="text-xs font-bold uppercase">Recording</span>
+                                    </div>
+                                )}
                                 <div className="text-horizon-accent font-mono text-2xl font-bold animate-pulse">
                                     {formatTime(callTime)}
                                 </div>

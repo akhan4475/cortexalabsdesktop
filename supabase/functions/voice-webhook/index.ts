@@ -16,30 +16,69 @@ serve(async (req: Request) => {
   }
 
   try {
+    // Get all parameters from form data
     const formData = await req.formData()
     const to = formData.get('To') as string
-    const from = formData.get('From') as string
+    const userId = formData.get('UserId') as string || ''
+    const record = formData.get('Record') as string || 'false'
+    const leadId = formData.get('LeadId') as string || ''
+    const campaignId = formData.get('CampaignId') as string || ''
+    const leadName = formData.get('LeadName') as string || 'Unknown'
 
-    console.log('📞 Voice webhook - To:', to, 'From:', from)
+    console.log('📞 Voice webhook received')
+    console.log('To:', to)
+    console.log('Record:', record)
+    console.log('UserId:', userId)
+    console.log('LeadId:', leadId)
 
-    // For now, use the first user's credentials
-    // In the future, you could determine which user based on the TwiML App or other logic
-    const supabase = createClient(supabaseUrl, supabaseServiceKey)
-    
-    const { data: credentials } = await supabase
-      .from('twilio_credentials')
-      .select('phone_number')
-      .limit(1)
-      .single()
+    if (!to) {
+      throw new Error('Missing To parameter')
+    }
 
-    const twilioNumber = credentials?.phone_number || '+18881234567'
+    // Get user's phone number from database
+    let twilioNumber = '+18881234567'
 
-    const twiml = `<?xml version="1.0" encoding="UTF-8"?>
-<Response>
-  <Dial callerId="${twilioNumber}">${to}</Dial>
+    if (userId) {
+      const supabase = createClient(supabaseUrl, supabaseServiceKey)
+      const { data: credentials } = await supabase
+        .from('twilio_credentials')
+        .select('phone_number')
+        .eq('user_id', userId)
+        .single()
+
+      if (credentials?.phone_number) {
+        twilioNumber = credentials.phone_number
+      }
+    }
+
+    // Build TwiML with optional recording
+    let twiml = `<?xml version="1.0" encoding="UTF-8"?>
+<Response>`
+
+    if (record === 'true') {
+      // Build callback URL with XML-escaped ampersands
+      const callbackUrl = supabaseUrl + '/functions/v1/recording-status' +
+        '?userId=' + userId +
+        '&amp;leadId=' + leadId +
+        '&amp;campaignId=' + campaignId +
+        '&amp;leadName=' + leadName.replace(/[^a-zA-Z0-9]/g, '_') +
+        '&amp;phone=' + to.replace(/[^0-9+]/g, '')
+      
+      console.log('🎙️ Recording callback URL:', callbackUrl)
+      
+      twiml += `
+  <Dial callerId="${twilioNumber}" record="record-from-answer" recordingStatusCallback="${callbackUrl}" recordingStatusCallbackMethod="POST">
+    ${to}
+  </Dial>`
+    } else {
+      twiml += `
+  <Dial callerId="${twilioNumber}">${to}</Dial>`
+    }
+
+    twiml += `
 </Response>`
 
-    console.log('✅ TwiML generated')
+    console.log('✅ TwiML generated successfully')
 
     return new Response(twiml, {
       status: 200,
@@ -48,12 +87,12 @@ serve(async (req: Request) => {
       }
     })
 
-  } catch (error) {
+  } catch (error: any) {
     console.error('❌ Error:', error)
     
     const errorTwiml = `<?xml version="1.0" encoding="UTF-8"?>
 <Response>
-  <Say>An error occurred.</Say>
+  <Say>An error occurred. ${error.message}</Say>
 </Response>`
 
     return new Response(errorTwiml, {

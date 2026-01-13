@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { LayoutDashboard, Users, Phone, MessageSquare, Briefcase, Settings, BarChart3, LogOut, Search, Bell, Loader2, X, Clock } from 'lucide-react';
+import { LayoutDashboard, Users, Phone, MessageSquare, Briefcase, Settings, BarChart3, LogOut, Search, Bell, Loader2, X, Clock, Radio } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { supabase } from '../../lib/supabase';
 
@@ -11,13 +11,14 @@ import Conversations from './Conversations';
 import Clients from './Clients';
 import Analytics from './Analytics';
 import Automations from './Automations';
+import Recordings from './Recordings';
 import { Lead, Campaign, Client, DemoEvent } from './types';
 
 interface CRMProps {
     onLogout: () => void;
 }
 
-export type CRMView = 'dashboard' | 'leads' | 'dialer' | 'conversations' | 'clients' | 'automations' | 'analytics';
+export type CRMView = 'dashboard' | 'leads' | 'dialer' | 'conversations' | 'clients' | 'automations' | 'analytics' | 'recordings';
 
 /**
  * Helper to format date as YYYY-MM-DD using LOCAL time
@@ -424,6 +425,7 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
         { id: 'dashboard', icon: LayoutDashboard, label: 'Dashboard' },
         { id: 'leads', icon: Users, label: 'Leads' },
         { id: 'dialer', icon: Phone, label: 'Dialer' },
+        { id: 'recordings', icon: Radio, label: 'Recordings' },
         { id: 'conversations', icon: MessageSquare, label: 'Conversations' },
         { id: 'analytics', icon: BarChart3, label: 'Analytics' },
         { id: 'clients', icon: Briefcase, label: 'Clients' },
@@ -617,6 +619,7 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
                                     initialCampaignId={navContext.campaignId}
                                 />
                             )}
+                            {currentView === 'recordings' && <Recordings campaigns={campaigns} />}
                             {currentView === 'conversations' && (
                                 <Conversations 
                                     campaigns={campaigns}
