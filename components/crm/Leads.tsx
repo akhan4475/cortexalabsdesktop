@@ -116,7 +116,8 @@ const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDel
 
     const toggleSelectAll = () => {
         const currentPageIds = paginatedLeads.map(l => l.id);
-        const allSelected = currentPageIds.every(id => selectedLeads.includes(id));
+        // FIX: lead is already an ID string from currentPageIds, accessing .id was causing an error.
+        const allSelected = currentPageIds.every(lead => selectedLeads.includes(lead));
         if (allSelected) {
             setSelectedLeads(prev => prev.filter(id => !currentPageIds.includes(id)));
         } else {
@@ -137,9 +138,9 @@ const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDel
             const lead: Lead = {
                 id: `l-${Date.now()}`,
                 campaignId: activeCampaign.id,
-                name: leadForm.name || '',
-                company: leadForm.company || '',
-                phone: leadForm.phone || '',
+                name: leadForm.name || 'Unknown Contact',
+                company: leadForm.company || 'Unknown Company',
+                phone: leadForm.phone || 'N/A',
                 email: leadForm.email || '',
                 address: leadForm.address || '',
                 website: leadForm.website || '',
@@ -182,7 +183,6 @@ const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDel
             reader.onload = (e) => {
                 const text = e.target?.result as string;
                 const rows = text.split('\n').map(row => {
-                    // Handle quoted CSV values that may contain commas
                     const result = [];
                     let current = '';
                     let inQuotes = false;
@@ -203,8 +203,6 @@ const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDel
                 });
                 
                 const headers = rows[0].map(h => h.trim().toLowerCase().replace(/['"]/g, ''));
-                
-                // Create a mapping function that tries multiple variations
                 const findHeaderIndex = (patterns: string[]) => {
                     for (const pattern of patterns) {
                         const index = headers.findIndex(h => 
@@ -217,7 +215,6 @@ const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDel
                     return -1;
                 };
                 
-                // Define all possible header variations for each field
                 const headerMap = {
                     name: findHeaderIndex(['name', 'contact', 'decision maker', 'decisionmaker', 'contactname', 'contact name', 'fullname', 'full name', 'person']),
                     company: findHeaderIndex(['company', 'business', 'businessname', 'business name', 'organization', 'org', 'companyname', 'company name']),
@@ -233,7 +230,6 @@ const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDel
                     .filter(row => row.length > 1 && row.some(cell => cell.trim()))
                     .map(row => {
                         const lead: any = {};
-                        
                         if (headerMap.name !== -1) lead.name = row[headerMap.name]?.trim().replace(/['"]/g, '');
                         if (headerMap.company !== -1) lead.company = row[headerMap.company]?.trim().replace(/['"]/g, '');
                         if (headerMap.phone !== -1) lead.phone = row[headerMap.phone]?.trim().replace(/['"]/g, '');
@@ -242,10 +238,8 @@ const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDel
                         if (headerMap.website !== -1) lead.website = row[headerMap.website]?.trim().replace(/['"]/g, '');
                         if (headerMap.rating !== -1) lead.rating = row[headerMap.rating]?.trim().replace(/['"]/g, '');
                         if (headerMap.reviews !== -1) lead.reviews = row[headerMap.reviews]?.trim().replace(/['"]/g, '');
-                        
                         return lead;
                     });
-                    
                 resolve(leads);
             };
             reader.readAsText(file);
@@ -300,7 +294,6 @@ const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDel
         }
     };
 
-    // Campaign Handlers
     const handleRename = () => {
         if (editingCampaign && editingCampaign.name.trim()) {
             onRenameCampaign(editingCampaign.id, editingCampaign.name);
@@ -322,13 +315,11 @@ const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDel
         }
     };
 
-    // Pagination Helpers
     const goToFirst = () => setCurrentPage(1);
     const goToLast = () => setCurrentPage(totalPages);
     const goToPrev = () => setCurrentPage(prev => Math.max(1, prev - 1));
     const goToNext = () => setCurrentPage(prev => Math.min(totalPages, prev + 1));
 
-    // --- RENDER: ADD/EDIT LEAD FORM ---
     if (view === 'add-lead' || view === 'edit-lead') {
         const isEdit = view === 'edit-lead';
         return (
@@ -411,7 +402,6 @@ const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDel
         );
     }
 
-    // --- RENDER: CREATE CAMPAIGN VIEW ---
     if (view === 'create') {
         return (
             <div className="h-full flex flex-col max-w-2xl mx-auto py-8">
@@ -472,7 +462,6 @@ const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDel
         );
     }
 
-    // --- RENDER: FOLDERS VIEW ---
     if (view === 'folders') {
         return (
             <div className="space-y-6 h-full flex flex-col relative">
@@ -518,7 +507,6 @@ const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDel
                     ))}
                 </div>
 
-                {/* Rename Modal */}
                 {editingCampaign && (
                     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
                         <div className="bg-[#121214] border border-[#262624] rounded-2xl p-8 w-full max-w-md shadow-2xl">
@@ -537,7 +525,6 @@ const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDel
                     </div>
                 )}
 
-                {/* Delete Confirmation Modal */}
                 {confirmDeleteCampaignId && (
                     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
                         <div className="bg-[#121214] border border-red-500/30 rounded-2xl p-8 w-full max-w-md shadow-2xl">
@@ -580,10 +567,11 @@ const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDel
             <div className="flex-1 bg-[#18181b] border border-[#262624] rounded-xl overflow-hidden flex flex-col">
                 <div className="grid grid-cols-[40px_1.5fr_1fr_120px_1.5fr_100px_1fr_120px_110px] gap-4 p-4 border-b border-[#262624] bg-[#262624]/50 text-[10px] font-bold text-gray-400 uppercase tracking-wider items-center">
                     <div className="flex items-center justify-center">
-                        <button onClick={toggleSelectAll}>{paginatedLeads.every(l => selectedLeads.includes(l.id)) ? <CheckSquare size={14} className="text-horizon-accent" /> : <Square size={14} />}</button>
+                        <button onClick={toggleSelectAll}>{paginatedLeads.every(lead => selectedLeads.includes(lead.id)) ? <CheckSquare size={14} className="text-horizon-accent" /> : <Square size={14} />}</button>
                     </div>
-                    <div>Company Name</div>
+                    {/* Header: Decision Maker (Person), Company Name (Business) */}
                     <div>Decision Maker</div>
+                    <div>Company Name</div>
                     <div>Phone</div>
                     <div>Address</div>
                     <div>Rating (Reviews)</div>
@@ -598,8 +586,9 @@ const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDel
                             <div className="flex items-center justify-center">
                                 <button onClick={() => toggleSelectLead(lead.id)}>{selectedLeads.includes(lead.id) ? <CheckSquare size={14} className="text-horizon-accent" /> : <Square size={14} />}</button>
                             </div>
-                            <div className="truncate font-bold text-white text-sm">{lead.company || 'N/A'}</div>
-                            <div className="text-sm text-gray-300 truncate">{lead.name || 'N/A'}</div>
+                            {/* Decision Maker (Name) | Company Name (Business) */}
+                            <div className="truncate font-bold text-white text-sm">{lead.name || 'Unknown Contact'}</div>
+                            <div className="text-sm text-gray-300 truncate">{lead.company || 'Unknown Company'}</div>
                             <div className="text-xs text-gray-400 font-mono">{lead.phone || 'N/A'}</div>
                             <div className="truncate text-[10px] text-gray-500 flex items-center gap-1"><MapPin size={10} /> {lead.address || 'N/A'}</div>
                             <div className="flex items-center gap-1">
@@ -639,44 +628,17 @@ const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDel
                     )}
                 </div>
 
-                {/* Pagination Controls */}
                 {totalPages > 1 && (
                     <div className="p-4 border-t border-[#262624] bg-[#18181b] flex items-center justify-between shrink-0">
                         <div className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">
                             Showing {(currentPage - 1) * PAGE_SIZE + 1} - {Math.min(currentPage * PAGE_SIZE, currentCampaignLeads.length)} of {currentCampaignLeads.length}
                         </div>
                         <div className="flex items-center gap-2">
-                            <button 
-                                onClick={goToFirst} 
-                                disabled={currentPage === 1}
-                                className="p-2 bg-[#09090b] border border-[#262624] rounded-lg text-gray-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-                            >
-                                <ChevronsLeft size={16} />
-                            </button>
-                            <button 
-                                onClick={goToPrev} 
-                                disabled={currentPage === 1}
-                                className="p-2 bg-[#09090b] border border-[#262624] rounded-lg text-gray-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-                            >
-                                <ChevronLeft size={16} />
-                            </button>
-                            <div className="px-4 py-2 bg-[#09090b] border border-[#262624] rounded-lg text-xs font-bold text-horizon-accent">
-                                {currentPage} / {totalPages}
-                            </div>
-                            <button 
-                                onClick={goToNext} 
-                                disabled={currentPage === totalPages}
-                                className="p-2 bg-[#09090b] border border-[#262624] rounded-lg text-gray-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-                            >
-                                <ChevronRight size={16} />
-                            </button>
-                            <button 
-                                onClick={goToLast} 
-                                disabled={currentPage === totalPages}
-                                className="p-2 bg-[#09090b] border border-[#262624] rounded-lg text-gray-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-                            >
-                                <ChevronsRight size={16} />
-                            </button>
+                            <button onClick={goToFirst} disabled={currentPage === 1} className="p-2 bg-[#09090b] border border-[#262624] rounded-lg text-gray-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors"><ChevronsLeft size={16} /></button>
+                            <button onClick={goToPrev} disabled={currentPage === 1} className="p-2 bg-[#09090b] border border-[#262624] rounded-lg text-gray-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors"><ChevronLeft size={16} /></button>
+                            <div className="px-4 py-2 bg-[#09090b] border border-[#262624] rounded-lg text-xs font-bold text-horizon-accent">{currentPage} / {totalPages}</div>
+                            <button onClick={goToNext} disabled={currentPage === totalPages} className="p-2 bg-[#09090b] border border-[#262624] rounded-lg text-gray-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors"><ChevronRight size={16} /></button>
+                            <button onClick={goToLast} disabled={currentPage === totalPages} className="p-2 bg-[#09090b] border border-[#262624] rounded-lg text-gray-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors"><ChevronsRight size={16} /></button>
                         </div>
                     </div>
                 )}

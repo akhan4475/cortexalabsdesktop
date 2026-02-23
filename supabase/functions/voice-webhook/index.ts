@@ -24,9 +24,11 @@ serve(async (req: Request) => {
     const leadId = formData.get('LeadId') as string || ''
     const campaignId = formData.get('CampaignId') as string || ''
     const leadName = formData.get('LeadName') as string || 'Unknown'
+    const callerId = formData.get('callerId') as string
 
     console.log('📞 Voice webhook received')
     console.log('To:', to)
+    console.log('CallerId from frontend:', callerId)
     console.log('Record:', record)
     console.log('UserId:', userId)
     console.log('LeadId:', leadId)
@@ -35,21 +37,41 @@ serve(async (req: Request) => {
       throw new Error('Missing To parameter')
     }
 
-    // Get user's phone number from database
-    let twilioNumber = '+18881234567'
+    // Get caller ID - priority order:
+    // 1. callerId from frontend (selected phone number)
+    // 2. Default phone number from twilio_phone_numbers table
+    // 3. Legacy phone_number from twilio_credentials
+    // 4. Hardcoded fallback
+    let twilioNumber = callerId || '+18884479457'
 
-    if (userId) {
+    if (!callerId && userId) {
       const supabase = createClient(supabaseUrl, supabaseServiceKey)
-      const { data: credentials } = await supabase
-        .from('twilio_credentials')
+      
+      // Try to get default phone number from twilio_phone_numbers table
+      const { data: phoneNumber } = await supabase
+        .from('twilio_phone_numbers')
         .select('phone_number')
         .eq('user_id', userId)
+        .eq('is_default', true)
         .single()
 
-      if (credentials?.phone_number) {
-        twilioNumber = credentials.phone_number
+      if (phoneNumber?.phone_number) {
+        twilioNumber = phoneNumber.phone_number
+      } else {
+        // Fallback to legacy phone_number in twilio_credentials
+        const { data: credentials } = await supabase
+          .from('twilio_credentials')
+          .select('phone_number')
+          .eq('user_id', userId)
+          .single()
+
+        if (credentials?.phone_number) {
+          twilioNumber = credentials.phone_number
+        }
       }
     }
+
+    console.log('📞 Using caller ID:', twilioNumber)
 
     // Build TwiML with optional recording
     let twiml = `<?xml version="1.0" encoding="UTF-8"?>

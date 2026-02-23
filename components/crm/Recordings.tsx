@@ -97,22 +97,32 @@ const Recordings: React.FC<RecordingsProps> = ({ campaigns }) => {
     };
 
     // Format date (YYYY-MM-DD to readable format)
-    const formatDate = (dateString: string): string => {
-        const date = new Date(dateString);
-        const now = new Date();
-        const diffMs = now.getTime() - date.getTime();
-        const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    // Format date (Relative, Day of Week, or Date)
+    const formatDate = (dateString: string): string => {
+        const date = new Date(dateString);
+        const now = new Date();
+        
+        // Reset hours to compare calendar days accurately
+        const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        const targetDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+        
+        const diffMs = today.getTime() - targetDate.getTime();
+        const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
 
-        if (diffDays === 0) return 'Today';
-        if (diffDays === 1) return 'Yesterday';
-        if (diffDays < 7) return `${diffDays} days ago`;
-        
-        return date.toLocaleDateString('en-US', { 
-            month: 'short', 
-            day: 'numeric', 
-            year: date.getFullYear() !== now.getFullYear() ? 'numeric' : undefined 
-        });
-    };
+        if (diffDays === 0) return 'Today';
+        if (diffDays === 1) return 'Yesterday';
+        
+        // If within the last 7 days, show the day of the week (e.g., "Monday")
+        if (diffDays < 7) {
+            return date.toLocaleDateString('en-US', { weekday: 'long' });
+        }
+        
+        return date.toLocaleDateString('en-US', { 
+            month: 'short', 
+            day: 'numeric', 
+            year: date.getFullYear() !== now.getFullYear() ? 'numeric' : undefined 
+        });
+    };
 
     // Format time (HH:MM AM/PM)
     const formatTime = (dateString: string): string => {

@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { DollarSign, Phone, Calendar as CalendarIcon, ArrowUpRight, ChevronLeft, ChevronRight, LayoutGrid, CalendarDays, Clock, CheckCircle2, MessageSquare, UserPlus, Zap, X } from 'lucide-react';
 import { AreaChart, Area, ResponsiveContainer, Tooltip, XAxis, CartesianGrid } from 'recharts';
-import { Client, DemoEvent, Lead } from './types';
+import { Client, DemoEvent, Lead, Dial } from './types'; // Ensure Dial is imported
 import { motion, AnimatePresence } from 'framer-motion';
 
 // --- Types ---
@@ -61,9 +61,12 @@ interface DashboardHomeProps {
     clients: Client[];
     demoEvents: DemoEvent[];
     allLeads: Lead[];
+    dials: Dial[]; // <--- ADDED AS REQUESTED
 }
 
-const DashboardHome: React.FC<DashboardHomeProps> = ({ clients, demoEvents, allLeads }) => {
+const DashboardHome: React.FC<DashboardHomeProps> = ({ clients, demoEvents, allLeads, dials }) => {
+    console.log('🎯 DashboardHome received dials prop:', dials);
+    console.log('🎯 Number of dials:', dials.length);
     const [timeframe, setTimeframe] = useState<Timeframe>('Month');
     const [calendarViewDate, setCalendarViewDate] = useState(new Date());
     const [calendarMode, setCalendarMode] = useState<CalendarMode>('Month');
@@ -121,8 +124,29 @@ const DashboardHome: React.FC<DashboardHomeProps> = ({ clients, demoEvents, allL
             }
         });
 
+        // --- MERGE DIALS DATA ---
+        console.log('📞 Processing dials for chart:', dials);
+
+        // Count dials per date to avoid double-counting
+        const dialCountsByDate = new Map<string, number>();
+        dials.forEach(dial => {
+            const currentCount = dialCountsByDate.get(dial.date) || 0;
+            dialCountsByDate.set(dial.date, currentCount + 1);
+        });
+
+        console.log('📊 Dial counts by date:', dialCountsByDate);
+
+        // Apply the counts to the data map
+        dialCountsByDate.forEach((count, date) => {
+            const entry = dataMap.get(date);
+            if (entry) {
+                entry.dials = count;
+                console.log('✅ Set dials for', date, 'to', count);
+            }
+        });
+
         return Array.from(dataMap.values());
-    }, [clients, demoEvents, todayDate]);
+    }, [clients, demoEvents, dials, todayDate]); // Added dials to dependency array
 
     // --- LATEST ACTIVITY FEED ---
     const allActivityEvents = useMemo(() => {
@@ -258,6 +282,8 @@ const DashboardHome: React.FC<DashboardHomeProps> = ({ clients, demoEvents, allL
         }
         return dataPoints;
     }, [timeframe, fullYearData]);
+
+    // ... rest of your component (handlePrevCalendar, handleNextCalendar, getDaysInMonth, formatCurrency, getActivityIcon, and return JSX) remains identical ...
 
     const handlePrevCalendar = () => {
         const newDate = new Date(calendarViewDate);

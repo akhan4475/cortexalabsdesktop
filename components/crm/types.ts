@@ -63,3 +63,12 @@ export interface CallLog {
   timestamp: string;
   recordingUrl?: string;
 }
+
+
+export interface Dial {
+    id: string;
+    userId: string;
+    date: string;
+    timestamp: string;
+    leadId?: string; // Make this optional since it's nullable in your DB
+}

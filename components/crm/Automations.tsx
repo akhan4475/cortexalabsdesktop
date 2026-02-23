@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Settings, Globe, Zap, AlertCircle, Save, CheckCircle, Loader2 } from 'lucide-react';
+import { Settings, Globe, Zap, AlertCircle, Save, CheckCircle, Loader2, Plus, Trash2, Star } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
+
+interface TwilioPhoneNumber {
+    id: string;
+    phone_number: string;
+    friendly_name: string | null;
+    is_default: boolean;
+}
 
 const Automations: React.FC = () => {
     const [twilioAccountSid, setTwilioAccountSid] = useState('');
@@ -11,15 +18,22 @@ const Automations: React.FC = () => {
     const [twilioTwimlAppSid, setTwilioTwimlAppSid] = useState('');
     const [forwardToNumber, setForwardToNumber] = useState('');
     
+    // Phone Numbers Management
+    const [phoneNumbers, setPhoneNumbers] = useState<TwilioPhoneNumber[]>([]);
+    const [newPhoneNumber, setNewPhoneNumber] = useState('');
+    const [newPhoneFriendlyName, setNewPhoneFriendlyName] = useState('');
+    const [isAddingPhone, setIsAddingPhone] = useState(false);
+    
     const [isSaving, setIsSaving] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [saveSuccess, setSaveSuccess] = useState(false);
     const [error, setError] = useState('');
     const [hasExistingCredentials, setHasExistingCredentials] = useState(false);
 
-    // Load existing credentials on mount
+    // Load existing credentials and phone numbers on mount
     useEffect(() => {
         loadCredentials();
+        loadPhoneNumbers();
     }, []);
 
     const loadCredentials = async () => {
@@ -55,9 +69,130 @@ const Automations: React.FC = () => {
         }
     };
 
+    const loadPhoneNumbers = async () => {
+        try {
+            const { data: { user } } = await supabase.auth.getUser();
+            if (!user) return;
+
+            const { data, error } = await supabase
+                .from('twilio_phone_numbers')
+                .select('*')
+                .eq('user_id', user.id)
+                .order('is_default', { ascending: false })
+                .order('created_at', { ascending: true });
+
+            if (error) {
+                console.error('Error loading phone numbers:', error);
+                return;
+            }
+
+            setPhoneNumbers(data || []);
+        } catch (err) {
+            console.error('Error loading phone numbers:', err);
+        }
+    };
+
+    const handleAddPhoneNumber = async () => {
+        if (!newPhoneNumber.trim()) {
+            setError('Phone number is required');
+            return;
+        }
+
+        setIsAddingPhone(true);
+        setError('');
+
+        try {
+            const { data: { user } } = await supabase.auth.getUser();
+            if (!user) {
+                setError('User not authenticated');
+                return;
+            }
+
+            const isFirstNumber = phoneNumbers.length === 0;
+
+            const { data, error } = await supabase
+                .from('twilio_phone_numbers')
+                .insert({
+                    user_id: user.id,
+                    phone_number: newPhoneNumber,
+                    friendly_name: newPhoneFriendlyName.trim() || null,
+                    is_default: isFirstNumber
+                })
+                .select()
+                .single();
+
+            if (error) throw error;
+
+            setPhoneNumbers([...phoneNumbers, data]);
+            setNewPhoneNumber('');
+            setNewPhoneFriendlyName('');
+            setSaveSuccess(true);
+            setTimeout(() => setSaveSuccess(false), 3000);
+
+        } catch (err: any) {
+            console.error('Add phone error:', err);
+            setError(err.message || 'Failed to add phone number');
+        } finally {
+            setIsAddingPhone(false);
+        }
+    };
+
+    const handleDeletePhoneNumber = async (id: string) => {
+        if (!confirm('Are you sure you want to delete this phone number?')) {
+            return;
+        }
+
+        try {
+            const { error } = await supabase
+                .from('twilio_phone_numbers')
+                .delete()
+                .eq('id', id);
+
+            if (error) throw error;
+
+            setPhoneNumbers(phoneNumbers.filter(p => p.id !== id));
+            
+            // If we deleted the default and there are still numbers, make the first one default
+            const deletedNumber = phoneNumbers.find(p => p.id === id);
+            if (deletedNumber?.is_default && phoneNumbers.length > 1) {
+                const firstRemaining = phoneNumbers.find(p => p.id !== id);
+                if (firstRemaining) {
+                    await handleSetDefaultPhone(firstRemaining.id);
+                }
+            }
+
+        } catch (err: any) {
+            console.error('Delete phone error:', err);
+            setError(err.message || 'Failed to delete phone number');
+        }
+    };
+
+    const handleSetDefaultPhone = async (id: string) => {
+        try {
+            const { data: { user } } = await supabase.auth.getUser();
+            if (!user) return;
+
+            const { error } = await supabase
+                .from('twilio_phone_numbers')
+                .update({ is_default: true })
+                .eq('id', id);
+
+            if (error) throw error;
+
+            setPhoneNumbers(phoneNumbers.map(p => ({
+                ...p,
+                is_default: p.id === id
+            })));
+
+        } catch (err: any) {
+            console.error('Set default phone error:', err);
+            setError(err.message || 'Failed to set default phone number');
+        }
+    };
+
     const handleSave = async () => {
-        if (!twilioAccountSid.trim() || !twilioAuthToken.trim() || !twilioPhoneNumber.trim()) {
-            setError('Account SID, Auth Token, and Phone Number are required');
+        if (!twilioAccountSid.trim() || !twilioAuthToken.trim()) {
+            setError('Account SID and Auth Token are required');
             return;
         }
 
@@ -76,7 +211,7 @@ const Automations: React.FC = () => {
                 user_id: user.id,
                 account_sid: twilioAccountSid,
                 auth_token: twilioAuthToken,
-                phone_number: twilioPhoneNumber,
+                phone_number: twilioPhoneNumber || null,
                 api_key: twilioApiKey || null,
                 api_secret: twilioApiSecret || null,
                 twiml_app_sid: twilioTwimlAppSid || null,
@@ -151,18 +286,14 @@ const Automations: React.FC = () => {
                     )}
 
                     {saveSuccess && (
-                        <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-lg flex items-start gap-3 animate-in fade-in duration-300">
+                        <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-lg flex items-start gap-3">
                             <CheckCircle className="text-green-500 shrink-0 mt-0.5" size={18} />
-                            <div className="text-sm text-green-200">
-                                <strong>Success!</strong> Twilio credentials saved. Your dialer is ready to use.
-                            </div>
+                            <div className="text-sm text-green-200">Configuration saved successfully!</div>
                         </div>
                     )}
 
-                    {/* Basic Credentials */}
-                    <div className="space-y-4 p-4 bg-[#09090b] border border-[#262624] rounded-lg">
-                        <h4 className="text-sm font-bold text-white uppercase tracking-widest">Basic Credentials</h4>
-                        
+                    {/* Main Credentials */}
+                    <div className="space-y-4">
                         <div className="space-y-2">
                             <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Account SID*</label>
                             <input 
@@ -186,7 +317,7 @@ const Automations: React.FC = () => {
                         </div>
 
                         <div className="space-y-2">
-                            <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Phone Number*</label>
+                            <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Legacy Phone Number (Optional)</label>
                             <input 
                                 type="text"
                                 placeholder="+1 555 123 4567"
@@ -194,7 +325,7 @@ const Automations: React.FC = () => {
                                 onChange={(e) => setTwilioPhoneNumber(e.target.value)}
                                 className="w-full bg-[#18181b] border border-[#262624] rounded-xl px-4 py-3 text-sm text-white focus:border-horizon-accent focus:outline-none font-mono"
                             />
-                            <p className="text-xs text-gray-600 mt-1">The Twilio number to call FROM</p>
+                            <p className="text-xs text-gray-600 mt-1">Keep for backward compatibility - use Phone Numbers section below for managing multiple numbers</p>
                         </div>
                     </div>
 
@@ -270,7 +401,7 @@ const Automations: React.FC = () => {
 
                     <button 
                         onClick={handleSave}
-                        disabled={isSaving || !twilioAccountSid || !twilioAuthToken || !twilioPhoneNumber}
+                        disabled={isSaving || !twilioAccountSid || !twilioAuthToken}
                         className="flex items-center gap-2 bg-horizon-accent text-black px-6 py-3 rounded-lg font-bold hover:bg-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         {isSaving ? (
@@ -285,10 +416,125 @@ const Automations: React.FC = () => {
                             </>
                         )}
                     </button>
+                </div>
+            </div>
 
-                    <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg mt-4">
+            {/* Phone Numbers Management */}
+            <div className="bg-[#18181b] border border-[#262624] rounded-xl p-8">
+                <div className="flex items-center gap-3 mb-6">
+                    <div className="w-12 h-12 rounded-xl bg-horizon-accent/10 border border-horizon-accent/20 flex items-center justify-center text-horizon-accent">
+                        <Globe size={24} />
+                    </div>
+                    <div>
+                        <h3 className="font-bold text-white text-lg">Phone Numbers</h3>
+                        <p className="text-xs text-gray-500">Manage your Twilio phone numbers for outbound calling</p>
+                    </div>
+                </div>
+
+                <div className="space-y-6">
+                    {/* Add New Phone Number */}
+                    <div className="space-y-4 p-4 bg-[#09090b] border border-[#262624] rounded-lg">
+                        <h4 className="text-sm font-bold text-white uppercase tracking-widest">Add New Number</h4>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="space-y-2">
+                                <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Phone Number*</label>
+                                <input 
+                                    type="text"
+                                    placeholder="+1 555 123 4567"
+                                    value={newPhoneNumber}
+                                    onChange={(e) => setNewPhoneNumber(e.target.value)}
+                                    className="w-full bg-[#18181b] border border-[#262624] rounded-xl px-4 py-3 text-sm text-white focus:border-horizon-accent focus:outline-none font-mono"
+                                />
+                            </div>
+
+                            <div className="space-y-2">
+                                <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Friendly Name (Optional)</label>
+                                <input 
+                                    type="text"
+                                    placeholder="Sales Line, Support Line, etc."
+                                    value={newPhoneFriendlyName}
+                                    onChange={(e) => setNewPhoneFriendlyName(e.target.value)}
+                                    className="w-full bg-[#18181b] border border-[#262624] rounded-xl px-4 py-3 text-sm text-white focus:border-horizon-accent focus:outline-none"
+                                />
+                            </div>
+                        </div>
+
+                        <button 
+                            onClick={handleAddPhoneNumber}
+                            disabled={isAddingPhone || !newPhoneNumber.trim()}
+                            className="flex items-center gap-2 bg-horizon-accent text-black px-4 py-2.5 rounded-lg font-bold hover:bg-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+                        >
+                            {isAddingPhone ? (
+                                <>
+                                    <Loader2 size={16} className="animate-spin" />
+                                    Adding...
+                                </>
+                            ) : (
+                                <>
+                                    <Plus size={16} />
+                                    Add Phone Number
+                                </>
+                            )}
+                        </button>
+                    </div>
+
+                    {/* Phone Numbers List */}
+                    <div className="space-y-3">
+                        <h4 className="text-sm font-bold text-white uppercase tracking-widest">Your Phone Numbers</h4>
+                        
+                        {phoneNumbers.length === 0 ? (
+                            <div className="text-center py-8 text-gray-500">
+                                <p className="text-sm">No phone numbers added yet.</p>
+                                <p className="text-xs mt-2">Add your first Twilio number above to get started.</p>
+                            </div>
+                        ) : (
+                            <div className="space-y-2">
+                                {phoneNumbers.map((phone) => (
+                                    <div 
+                                        key={phone.id}
+                                        className="flex items-center justify-between p-4 bg-[#09090b] border border-[#262624] rounded-lg hover:border-[#333] transition-colors"
+                                    >
+                                        <div className="flex items-center gap-4">
+                                            <button
+                                                onClick={() => handleSetDefaultPhone(phone.id)}
+                                                className={`transition-colors ${phone.is_default ? 'text-yellow-500' : 'text-gray-600 hover:text-yellow-500'}`}
+                                                title={phone.is_default ? 'Default number' : 'Set as default'}
+                                            >
+                                                <Star size={18} fill={phone.is_default ? 'currentColor' : 'none'} />
+                                            </button>
+                                            
+                                            <div>
+                                                <div className="flex items-center gap-3">
+                                                    <span className="text-white font-mono font-bold">{phone.phone_number}</span>
+                                                    {phone.is_default && (
+                                                        <span className="text-[9px] px-2 py-0.5 bg-yellow-500/10 text-yellow-500 border border-yellow-500/20 rounded uppercase font-bold tracking-wider">
+                                                            Default
+                                                        </span>
+                                                    )}
+                                                </div>
+                                                {phone.friendly_name && (
+                                                    <p className="text-xs text-gray-500 mt-0.5">{phone.friendly_name}</p>
+                                                )}
+                                            </div>
+                                        </div>
+
+                                        <button
+                                            onClick={() => handleDeletePhoneNumber(phone.id)}
+                                            className="text-gray-600 hover:text-red-500 transition-colors p-2"
+                                            title="Delete number"
+                                        >
+                                            <Trash2 size={16} />
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+
+                    <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg">
                         <p className="text-xs text-blue-200">
-                            <strong>Note:</strong> All credentials are stored securely in your database and used by the dialer in real-time. No need to restart the app after updating.
+                            <strong>💡 Tip:</strong> Add multiple Twilio phone numbers and switch between them in the Dialer. The starred number is your default outbound line.
                         </p>
                     </div>
                 </div>

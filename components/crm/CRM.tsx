@@ -12,7 +12,7 @@ import Clients from './Clients';
 import Analytics from './Analytics';
 import Automations from './Automations';
 import Recordings from './Recordings';
-import { Lead, Campaign, Client, DemoEvent } from './types';
+import { Lead, Campaign, Client, DemoEvent, Dial } from './types';
 
 interface CRMProps {
     onLogout: () => void;
@@ -41,11 +41,12 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
     // Global selection state for cross-view navigation
     const [navContext, setNavContext] = useState<{ leadId?: string; campaignId?: string }>({});
 
-    // Global CRM State - Starting with empty arrays (no demo data)
+    // Global CRM State
     const [campaigns, setCampaigns] = useState<Campaign[]>([]);
     const [allLeads, setAllLeads] = useState<Lead[]>([]);
     const [clients, setClients] = useState<Client[]>([]);
     const [demoEvents, setDemoEvents] = useState<DemoEvent[]>([]);
+    const [dials, setDials] = useState<Dial[]>([]);
 
     // Fetch user data on mount
     useEffect(() => {
@@ -75,13 +76,17 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
 
             setUserId(user.id);
 
-            // Fetch all data
-            const [campaignsData, leadsData, clientsData, demoEventsData] = await Promise.all([
+            // Fetch all data including Dials
+            const [campaignsData, leadsData, clientsData, demoEventsData, dialsData] = await Promise.all([
                 supabase.from('campaigns').select('*').eq('user_id', user.id).order('created_timestamp', { ascending: false }),
                 supabase.from('leads').select('*').eq('user_id', user.id).order('created_timestamp', { ascending: false }),
                 supabase.from('clients').select('*').eq('user_id', user.id).order('created_timestamp', { ascending: false }),
-                supabase.from('demo_events').select('*').eq('user_id', user.id).order('created_timestamp', { ascending: false })
+                supabase.from('demo_events').select('*').eq('user_id', user.id).order('created_timestamp', { ascending: false }),
+                supabase.from('dials').select('*').eq('user_id', user.id)
+                
             ]);
+            console.log('💾 Raw dials from database:', dialsData.data);
+            console.log('💾 Dials data error (if any):', dialsData.error);
 
             if (campaignsData.data) {
                 setCampaigns(campaignsData.data.map(c => ({
@@ -130,6 +135,15 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
                 })));
             }
 
+            if (dialsData.data) {
+                setDials(dialsData.data.map(d => ({
+                    id: d.id,
+                    userId: d.user_id,
+                    date: d.date,
+                    timestamp: d.created_at
+                })));
+            }
+
         } catch (error) {
             console.error('Error fetching user data:', error);
         } finally {
@@ -137,11 +151,12 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
         }
     };
 
+    
+
     const handleAddCampaign = async (campaign: Campaign, leads: Lead[]) => {
         if (!userId) return;
 
         try {
-            // Insert campaign
             await supabase.from('campaigns').insert({
                 id: campaign.id,
                 user_id: userId,
@@ -150,7 +165,6 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
                 lead_count: campaign.leadCount
             });
 
-            // Insert leads
             if (leads.length > 0) {
                 await supabase.from('leads').insert(
                     leads.map(l => ({
@@ -199,7 +213,6 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
                 status: lead.status
             });
 
-            // Update campaign lead count
             const campaign = campaigns.find(c => c.id === lead.campaignId);
             if (campaign) {
                 await supabase.from('campaigns').update({
@@ -216,15 +229,10 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
             alert('Failed to add lead. Please try again.');
         }
     };
-
+    
     const handleRecordDemo = async (leadId: string) => {
         if (!userId) return;
-
-        // Use TODAY's date (local timezone) when a demo is BOOKED
         const today = formatLocalDate(new Date());
-        
-        console.log('Recording demo for today:', today); // Debug log
-
         const demoEvent: DemoEvent = {
             id: `demo-${Date.now()}`,
             leadId,
@@ -238,21 +246,25 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
                 lead_id: leadId,
                 date: today
             });
-
-            // Update local state immediately
             setDemoEvents(prev => [...prev, demoEvent]);
-            
-            console.log('Demo recorded successfully:', demoEvent); // Debug log
         } catch (error) {
             console.error('Error recording demo:', error);
         }
     };
 
+    const handleRemoveDemoEvents = async (leadId: string) => {
+        if (!userId) return;
+        try {
+            await supabase.from('demo_events').delete().eq('lead_id', leadId);
+            setDemoEvents(prev => prev.filter(e => e.leadId !== leadId));
+        } catch (error) {
+            console.error('Error removing demo events:', error);
+        }
+    };
+
     const handleUpdateLead = async (updatedLead: Lead) => {
         try {
-            // Get the old lead status before updating
             const oldLead = allLeads.find(l => l.id === updatedLead.id);
-            
             await supabase.from('leads').update({
                 name: updatedLead.name,
                 company: updatedLead.company,
@@ -266,12 +278,13 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
                 status: updatedLead.status
             }).eq('id', updatedLead.id);
 
-            // Update local state first
             setAllLeads(prev => prev.map(l => l.id === updatedLead.id ? updatedLead : l));
 
-            // If status changed TO 'Demo Booked' from something else, record the demo event for TODAY
             if (oldLead && oldLead.status !== 'Demo Booked' && updatedLead.status === 'Demo Booked') {
                 await handleRecordDemo(updatedLead.id);
+            }
+            if (oldLead && oldLead.status === 'Demo Booked' && updatedLead.status !== 'Demo Booked') {
+                await handleRemoveDemoEvents(updatedLead.id);
             }
         } catch (error) {
             console.error('Error updating lead:', error);
@@ -282,18 +295,14 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
     const handleDeleteLead = async (leadId: string) => {
         const leadToDelete = allLeads.find(l => l.id === leadId);
         if (!leadToDelete) return;
-
         try {
             await supabase.from('leads').delete().eq('id', leadId);
-
-            // Update campaign lead count
             const campaign = campaigns.find(c => c.id === leadToDelete.campaignId);
             if (campaign) {
                 await supabase.from('campaigns').update({
                     lead_count: Math.max(0, campaign.leadCount - 1)
                 }).eq('id', leadToDelete.campaignId);
             }
-
             setAllLeads(prev => prev.filter(l => l.id !== leadId));
             setCampaigns(prev => prev.map(c => 
                 c.id === leadToDelete.campaignId ? { ...c, leadCount: Math.max(0, c.leadCount - 1) } : c
@@ -306,7 +315,6 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
 
     const handleAddClient = async (client: Client) => {
         if (!userId) return;
-
         try {
             await supabase.from('clients').insert({
                 id: client.id,
@@ -319,7 +327,6 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
                 monthly_retainer_date: client.monthlyRetainerDate || null,
                 status: client.status
             });
-
             setClients(prev => [client, ...prev]);
         } catch (error) {
             console.error('Error adding client:', error);
@@ -338,7 +345,6 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
                 monthly_retainer_date: updatedClient.monthlyRetainerDate || null,
                 status: updatedClient.status
             }).eq('id', updatedClient.id);
-
             setClients(prev => prev.map(c => c.id === updatedClient.id ? updatedClient : c));
         } catch (error) {
             console.error('Error updating client:', error);
@@ -349,7 +355,6 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
     const handleDeleteClient = async (clientId: string) => {
         try {
             await supabase.from('clients').delete().eq('id', clientId);
-
             setClients(prev => prev.filter(c => c.id !== clientId));
         } catch (error) {
             console.error('Error deleting client:', error);
@@ -359,9 +364,7 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
 
     const handleDeleteCampaign = async (campaignId: string) => {
         try {
-            // Leads will be cascade deleted automatically
             await supabase.from('campaigns').delete().eq('id', campaignId);
-
             setCampaigns(prev => prev.filter(c => c.id !== campaignId));
             setAllLeads(prev => prev.filter(l => l.campaignId !== campaignId));
         } catch (error) {
@@ -373,7 +376,6 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
     const handleRenameCampaign = async (campaignId: string, newName: string) => {
         try {
             await supabase.from('campaigns').update({ name: newName }).eq('id', campaignId);
-
             setCampaigns(prev => prev.map(c => c.id === campaignId ? { ...c, name: newName } : c));
         } catch (error) {
             console.error('Error renaming campaign:', error);
@@ -381,21 +383,70 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
         }
     };
 
+    const handleRecordDial = async (leadId: string | null) => {
+    console.log('📞 handleRecordDial called with leadId:', leadId);
+    console.log('👤 Current userId:', userId);
+    
+    if (!userId) {
+        console.log('❌ No userId - aborting dial record');
+        return;
+    }
+
+    const today = formatLocalDate(new Date());
+    console.log('📅 Today date:', today);
+    console.log('📅 Formatted today date:', today);
+    console.log('📅 typeof today:', typeof today);
+    
+    try {
+        const { data, error } = await supabase
+            .from('dials')
+            .insert({
+                user_id: userId,
+                lead_id: leadId,
+                date: today
+            })
+            .select()
+            .single();
+
+        console.log('💾 Supabase response:', { data, error });
+
+        if (error) throw error;
+
+        const newDial: Dial = {
+            id: data.id,
+            userId: data.user_id,
+            date: data.date,
+            timestamp: data.created_at,
+            leadId: data.lead_id
+        };
+        
+        console.log('✅ New dial created:', newDial);
+        console.log('📊 Current dials state BEFORE update:', dials);
+        
+        setDials(prev => {
+            const updated = [...prev, newDial];
+            console.log('📊 Dials state AFTER update:', updated);
+            return updated;
+        });
+        
+    } catch (error) {
+        console.error('❌ Error recording dial:', error);
+    }
+};
+
     const handleUpdateLeadStatus = async (leadId: string, newStatus: string) => {
         try {
-            // Get the old lead status before updating
             const oldLead = allLeads.find(l => l.id === leadId);
-            
             await supabase.from('leads').update({ status: newStatus }).eq('id', leadId);
-
-            // Update local state first
             setAllLeads(prev => prev.map(lead => 
                 lead.id === leadId ? { ...lead, status: newStatus } : lead
             ));
             
-            // If status changed TO 'Demo Booked' from something else, record demo for TODAY
             if (oldLead && oldLead.status !== 'Demo Booked' && newStatus === 'Demo Booked') {
                 await handleRecordDemo(leadId);
+            }
+            if (oldLead && oldLead.status === 'Demo Booked' && newStatus !== 'Demo Booked') {
+                await handleRemoveDemoEvents(leadId);
             }
         } catch (error) {
             console.error('Error updating lead status:', error);
@@ -413,7 +464,6 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
         onLogout();
     };
 
-    // Mock recent conversation messages for the notification popup
     const latestMessages = [
         { id: '1', leadName: 'Sarah Connor', text: 'Yes, I spoke to the team. We are ready.', time: '2m ago' },
         { id: '2', leadName: 'John Wick', text: 'Can we move the demo to 3 PM?', time: '15m ago' },
@@ -596,7 +646,15 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
                             transition={{ duration: 0.2 }}
                             className="h-full"
                         >
-                            {currentView === 'dashboard' && <DashboardHome clients={clients} demoEvents={demoEvents} allLeads={allLeads} />}
+                            
+                            {currentView === 'dashboard' && (
+                                <DashboardHome 
+                                    clients={clients} 
+                                    demoEvents={demoEvents} 
+                                    allLeads={allLeads} 
+                                    dials={dials} // <--- ADD THIS LINE
+                                />
+                            )}
                             {currentView === 'leads' && (
                                 <Leads 
                                     campaigns={campaigns} 
@@ -615,6 +673,7 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
                                     campaigns={campaigns} 
                                     allLeads={allLeads} 
                                     onUpdateLeadStatus={handleUpdateLeadStatus}
+                                    onRecordDial={handleRecordDial}  // ✅ CORRECT
                                     initialLeadId={navContext.leadId}
                                     initialCampaignId={navContext.campaignId}
                                 />

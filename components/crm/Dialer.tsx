@@ -1,13 +1,23 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
-import { Phone, PhoneOff, Save, ArrowLeft, ChevronRight, MessageSquare, ClipboardList, CheckCircle2, AlertCircle, FileText, Delete, Mail, Mic, MicOff, Volume2, VolumeX, Circle } from 'lucide-react';
+import { Phone, PhoneOff, Save, ArrowLeft, ChevronRight, MapPin, MessageSquare, ClipboardList, CheckCircle2, AlertCircle, FileText, Delete, Mail, Mic, MicOff, Volume2, VolumeX, Circle, Calendar, Edit2, Check, Briefcase, X } from 'lucide-react';
 import { Lead, Campaign } from './types';
 import { supabase } from '../../lib/supabase';
+
+
 
 // Twilio Device types
 declare global {
     interface Window {
         Twilio: any;
+        Cal: any;
     }
+}
+
+interface TwilioPhoneNumber {
+    id: string;
+    phone_number: string;
+    friendly_name: string | null;
+    is_default: boolean;
 }
 
 const getStatusStyles = (status: string) => {
@@ -23,26 +33,32 @@ interface DialerProps {
     campaigns: Campaign[];
     allLeads: Lead[];
     onUpdateLeadStatus: (leadId: string, newStatus: string) => void;
+    onRecordDial: (leadId: string) => void; // <--- ADD THIS LINE
     initialLeadId?: string;
     initialCampaignId?: string;
 }
 
 const SUPABASE_URL = 'https://zfjbpohfdoeougmhocfa.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpmamJwb2hmZG9lb3VnbWhvY2ZhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc2NjA5NDgsImV4cCI6MjA4MzIzNjk0OH0.P7XkB7FNmxR9XHqTukkC0P6QNh6H_bsP2CsegKLt4gE'; // REPLACE THIS
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpmamJwb2hmZG9lb3VnbWhvY2ZhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc2NjA5NDgsImV4cCI6MjA4MzIzNjk0OH0.P7XkB7FNmxR9XHqTukkC0P6QNh6H_bsP2CsegKLt4gE';
 
-const Dialer: React.FC<DialerProps> = ({ campaigns, allLeads, onUpdateLeadStatus, initialLeadId, initialCampaignId }) => {
+const Dialer: React.FC<DialerProps> = ({ campaigns, allLeads, onUpdateLeadStatus, initialLeadId, onRecordDial, initialCampaignId }) => {
     // --- Dialer State ---
     const [phoneNumber, setPhoneNumber] = useState('');
     const [isCallActive, setIsCallActive] = useState(false);
     const [callTime, setCallTime] = useState(0);
+    const [availablePhoneNumbers, setAvailablePhoneNumbers] = useState<TwilioPhoneNumber[]>([]);
+    const [selectedPhoneNumberId, setSelectedPhoneNumberId] = useState<string>('');
+    const [selectedPhoneNumber, setSelectedPhoneNumber] = useState<string>('');
     const [currentCall, setCurrentCall] = useState<any>(null);
     const [callStatus, setCallStatus] = useState<string>('');
     const [callError, setCallError] = useState<string>('');
     const [isMuted, setIsMuted] = useState(false);
-    const [isRecording, setIsRecording] = useState(false); // 🔴 NEW: Recording state
+    const [isRecording, setIsRecording] = useState(false);
     const [isDeviceReady, setIsDeviceReady] = useState(false);
     
     const deviceRef = useRef<any>(null);
+    const calScriptLoadedRef = useRef(false);
+    const dialRecordedRef = useRef(false); // ADD THIS LINE
     
     const [script, setScript] = useState(`INTRO / PATTERN INTERRUPT:
 "Hey is this [Name]?"
@@ -59,11 +75,114 @@ REASON FOR CALL:
     const [selectedOutcome, setSelectedOutcome] = useState('');
     const [showOutcomeError, setShowOutcomeError] = useState(false);
 
+    // NEW: Editable lead fields
+    const [editableLeadName, setEditableLeadName] = useState('');
+    const [editableLeadEmail, setEditableLeadEmail] = useState('');
+    const [isEditingName, setIsEditingName] = useState(false);
+    const [isEditingEmail, setIsEditingEmail] = useState(false);
+
+    // --- SCRIPT PERSISTENCE LOGIC ---
+    useEffect(() => {
+        const fetchScript = async () => {
+            const { data: { user } } = await supabase.auth.getUser();
+            if (!user) return;
+
+            const { data, error } = await supabase
+                .from('user_scripts')
+                .select('script_content')
+                .eq('user_id', user.id)
+                .single();
+
+            if (data && !error) {
+                setScript(data.script_content);
+            }
+        };
+        fetchScript();
+    }, []);
+    
+    const handleUpdateScript = async () => {
+        try {
+            const { data: { user } } = await supabase.auth.getUser();
+            if (!user) return;
+
+            const { error } = await supabase
+                .from('user_scripts')
+                .upsert({ 
+                    user_id: user.id, 
+                    script_content: script,
+                    updated_at: new Date().toISOString() 
+                }, { onConflict: 'user_id' });
+
+            if (error) throw error;
+            alert('Script saved successfully!');
+        } catch (error) {
+            console.error('Error saving script:', error);
+            alert('Failed to save script.');
+        }
+    };
+
+    // Load Cal.com embed script
+    useEffect(() => {
+        if (!calScriptLoadedRef.current) {
+            const script = document.createElement('script');
+            script.type = "text/javascript";
+            script.innerHTML = `
+                (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+                Cal("init", "30min", {origin:"https://app.cal.com"});
+                Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+            `;
+            document.body.appendChild(script);
+            calScriptLoadedRef.current = true;
+        }
+    }, []);
+
+    // Load available phone numbers
+    useEffect(() => {
+        const loadPhoneNumbers = async () => {
+            try {
+                const { data: { user } } = await supabase.auth.getUser();
+                if (!user) return;
+
+                const { data, error } = await supabase
+                    .from('twilio_phone_numbers')
+                    .select('*')
+                    .eq('user_id', user.id)
+                    .order('is_default', { ascending: false })
+                    .order('created_at', { ascending: true });
+
+                if (error) {
+                    console.error('Error loading phone numbers:', error);
+                    return;
+                }
+
+                if (data && data.length > 0) {
+                    setAvailablePhoneNumbers(data);
+                    // Set default phone number as selected
+                    const defaultPhone = data.find(p => p.is_default) || data[0];
+                    setSelectedPhoneNumberId(defaultPhone.id);
+                    setSelectedPhoneNumber(defaultPhone.phone_number);
+                }
+            } catch (err) {
+                console.error('Error loading phone numbers:', err);
+            }
+        };
+
+        loadPhoneNumbers();
+    }, []);
+
+
+    const handlePhoneNumberChange = (phoneId: string) => {
+    const phone = availablePhoneNumbers.find(p => p.id === phoneId);
+    if (phone) {
+        setSelectedPhoneNumberId(phoneId);
+        setSelectedPhoneNumber(phone.phone_number);
+    }
+};
+
     // Initialize Twilio Device
     useEffect(() => {
         const initializeDevice = async () => {
             try {
-                // Load Twilio Voice SDK v2
                 const script = document.createElement('script');
                 script.src = 'https://unpkg.com/@twilio/voice-sdk@2.11.2/dist/twilio.min.js';
                 script.async = true;
@@ -72,7 +191,6 @@ REASON FOR CALL:
                 script.onload = async () => {
                     console.log('📞 Twilio Voice SDK v2 loaded');
 
-                    // Get current user
                     const { data: { user } } = await supabase.auth.getUser();
 
                     if (!user) {
@@ -80,7 +198,6 @@ REASON FOR CALL:
                         return;
                     }
 
-                    // Get access token
                     const response = await fetch(`${SUPABASE_URL}/functions/v1/generate-token`, {
                         method: 'POST',
                         headers: {
@@ -95,8 +212,7 @@ REASON FOR CALL:
 
                     const data = await response.json();
 
-                    // DEBUG: Log the response
-                    console.log('🔍 Token Response:', data);
+                    console.log('🔐 Token Response:', data);
 
                     if (data.error) {
                         setCallError(`Token Error: ${data.error}`);
@@ -105,14 +221,12 @@ REASON FOR CALL:
                     }
                     
                     if (data.token) {
-                        // Initialize Twilio Device with v2 SDK
                         const { Device } = window.Twilio;
                         const device = new Device(data.token, {
                             codecPreferences: ['opus', 'pcmu'],
                             edge: 'ashburn'
                         });
 
-                        // Register event listeners
                         device.on('registered', () => {
                             console.log('✅ Twilio Device registered');
                             setIsDeviceReady(true);
@@ -127,10 +241,8 @@ REASON FOR CALL:
 
                         device.on('incoming', (call: any) => {
                             console.log('📞 Incoming call');
-                            // We don't handle incoming calls in this dialer
                         });
 
-                        // Register the device
                         await device.register();
 
                         deviceRef.current = device;
@@ -210,7 +322,6 @@ REASON FOR CALL:
     const handleDigitClick = (digit: string) => {
         setPhoneNumber(prev => prev + digit);
         
-        // Send DTMF if call is active
         if (currentCall) {
             currentCall.sendDigits(digit);
         }
@@ -228,26 +339,23 @@ REASON FOR CALL:
         }
 
         if (isCallActive && currentCall) {
-            // Disconnect current call
             currentCall.disconnect();
             setIsCallActive(false);
             setCurrentCall(null);
             setCallStatus('disconnected');
-            setIsRecording(false); // 🔴 Reset recording state
+            setIsRecording(false);
             
         } else {
-            // Start new call
             setCallError('');
             setCallStatus('calling');
             
             try {
-                // Get current user
                 const { data: { user } } = await supabase.auth.getUser();
 
-                // 🔴 NEW: Include recording parameter
                 const call = await deviceRef.current.connect({
                     params: {
                         To: phoneNumber,
+                        callerId: selectedPhoneNumber,  // ← ADD THIS LINE
                         Record: isRecording ? 'true' : 'false',
                         UserId: user?.id || '',
                         LeadId: selectedLead?.id || '',
@@ -256,21 +364,37 @@ REASON FOR CALL:
                     }
                 });
 
-                // Set up call event listeners
+               
+                // This ensures the dial is counted even if they don't pick up or hang up
+                // --- Record the dial when call connects (counts ALL dials) ---
+                // --- Record the dial when call connects (counts ALL dials) ---
+                console.log('🔍 Dial recording check - dialRecordedRef.current:', dialRecordedRef.current);
+                if (!dialRecordedRef.current) {
+                    const leadIdToRecord = selectedLead?.id || null;
+                    console.log('🔥 RECORDING DIAL FOR:', leadIdToRecord || 'manual dial');
+                    onRecordDial(leadIdToRecord);
+                    dialRecordedRef.current = true;
+                    console.log('✅ Dial recorded, flag set to true');
+                } else {
+                    console.log('⏭️ SKIPPING - Dial already recorded for this call');
+                }
+
                 call.on('accept', () => {
                     console.log('📞 Call accepted');
                     setIsCallActive(true);
                     setCallStatus('connected');
                     setCallTime(0);
+                    // Don't reset the flag here - dial already recorded
                 });
 
                 call.on('disconnect', () => {
-                    console.log('📴 Call disconnected');
+                    console.log('🔴 Call disconnected');
                     setIsCallActive(false);
                     setCallStatus('disconnected');
                     setCurrentCall(null);
                     setCallTime(0);
-                    setIsRecording(false); // 🔴 Reset recording state
+                    setIsRecording(false);
+                    dialRecordedRef.current = false; // ADD THIS LINE
                 });
 
                 call.on('reject', () => {
@@ -279,7 +403,8 @@ REASON FOR CALL:
                     setCallStatus('rejected');
                     setCurrentCall(null);
                     setCallError('Call was rejected');
-                    setIsRecording(false); // 🔴 Reset recording state
+                    setIsRecording(false);
+                    dialRecordedRef.current = false; // ADD THIS LINE
                 });
 
                 call.on('cancel', () => {
@@ -287,7 +412,8 @@ REASON FOR CALL:
                     setIsCallActive(false);
                     setCallStatus('cancelled');
                     setCurrentCall(null);
-                    setIsRecording(false); // 🔴 Reset recording state
+                    setIsRecording(false);
+                    dialRecordedRef.current = false; 
                 });
 
                 call.on('error', (error: any) => {
@@ -296,7 +422,8 @@ REASON FOR CALL:
                     setIsCallActive(false);
                     setCallStatus('error');
                     setCurrentCall(null);
-                    setIsRecording(false); // 🔴 Reset recording state
+                    setIsRecording(false);
+                    dialRecordedRef.current = false;
                 });
 
                 setCurrentCall(call);
@@ -308,7 +435,6 @@ REASON FOR CALL:
             }
         }
     };
-
     const toggleMute = () => {
         if (currentCall) {
             const newMuteState = !isMuted;
@@ -317,7 +443,6 @@ REASON FOR CALL:
         }
     };
 
-    // 🔴 NEW: Toggle recording (only when call is NOT active)
     const toggleRecording = () => {
         if (!isCallActive) {
             setIsRecording(!isRecording);
@@ -329,21 +454,95 @@ REASON FOR CALL:
         setPhoneNumber(lead.phone);
         setView('lead-detail');
         setSelectedOutcome('');
-        setCallNote('');
+        setCallNote(lead.summary || ''); // Load existing summary into notes
         setShowOutcomeError(false);
         setCallError('');
+        // NEW: Set editable fields
+        setEditableLeadName(lead.name);
+        setEditableLeadEmail(lead.email || '');
+        setIsEditingName(false);
+        setIsEditingEmail(false);
     };
 
     const handleBackspace = () => setPhoneNumber(prev => prev.slice(0, -1));
 
-    const handleNextLead = () => {
+    // NEW: Save lead name
+    const handleSaveLeadName = async () => {
+        if (!selectedLead || !editableLeadName.trim()) return;
+        
+        try {
+            const { error } = await supabase
+                .from('leads')
+                .update({ name: editableLeadName.trim() })
+                .eq('id', selectedLead.id);
+
+            if (error) throw error;
+
+            // Update local state
+            setSelectedLead({ ...selectedLead, name: editableLeadName.trim() });
+            setIsEditingName(false);
+        } catch (error) {
+            console.error('Error updating lead name:', error);
+            alert('Failed to update name. Please try again.');
+        }
+    };
+
+    // NEW: Save lead email
+    const handleSaveLeadEmail = async () => {
+        if (!selectedLead) return;
+        
+        try {
+            const { error } = await supabase
+                .from('leads')
+                .update({ email: editableLeadEmail.trim() })
+                .eq('id', selectedLead.id);
+
+            if (error) throw error;
+
+            // Update local state
+            setSelectedLead({ ...selectedLead, email: editableLeadEmail.trim() });
+            setIsEditingEmail(false);
+        } catch (error) {
+            console.error('Error updating lead email:', error);
+            alert('Failed to update email. Please try again.');
+        }
+    };
+
+    // Updated handleOpenCalendar to ensure disposition logic still runs
+    const handleOpenCalendar = () => {
+        setSelectedOutcome('Demo Booked');
+        setShowOutcomeError(false);
+    };
+
+    const handleNextLead = async () => {
         if (!selectedOutcome || selectedOutcome === 'Select Disposition...') {
             setShowOutcomeError(true);
             return;
         }
         setShowOutcomeError(false);
-        if (selectedLead) onUpdateLeadStatus(selectedLead.id, selectedOutcome);
         
+        if (selectedLead) {
+            try {
+                // Perform the update directly in Supabase for both summary and status
+                const { error } = await supabase
+                    .from('leads')
+                    .update({ 
+                        summary: callNote.trim(),
+                        status: selectedOutcome 
+                    })
+                    .eq('id', selectedLead.id);
+
+                if (error) throw error;
+                
+                // Notify parent state to update so lists reflect the change
+                onUpdateLeadStatus(selectedLead.id, selectedOutcome);
+            } catch (error) {
+                console.error('Error updating lead data:', error);
+            }
+        }
+        
+        
+
         const currentIndex = filteredLeads.findIndex(l => l.id === selectedLead?.id);
         if (currentIndex !== -1 && currentIndex < filteredLeads.length - 1) {
             selectLead(filteredLeads[currentIndex + 1]);
@@ -397,6 +596,43 @@ REASON FOR CALL:
                             </div>
                         )}
 
+                        {/* Phone Number Selector */}
+                        {availablePhoneNumbers.length > 0 && (
+                            <div className="mb-4">
+                                <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 block">
+                                    Outbound Line
+                                </label>
+                                <select
+                                    value={selectedPhoneNumberId}
+                                    onChange={(e) => handlePhoneNumberChange(e.target.value)}
+                                    disabled={isCallActive}
+                                    className="w-full bg-[#18181b] border border-[#262624] rounded-xl px-4 py-3 text-sm text-white focus:border-horizon-accent focus:outline-none appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                                >
+                                    {availablePhoneNumbers.map((phone) => (
+                                        <option key={phone.id} value={phone.id}>
+                                            {phone.phone_number}
+                                            {phone.friendly_name ? ` - ${phone.friendly_name}` : ''}
+                                            {phone.is_default ? ' ★' : ''}
+                                        </option>
+                                    ))}
+                                </select>
+                                {selectedPhoneNumber && (
+                                    <p className="text-xs text-gray-500 mt-2">
+                                        📞 Calling from: <span className="text-horizon-accent font-mono">{selectedPhoneNumber}</span>
+                                    </p>
+                                )}
+                            </div>
+                        )}
+
+                        {/* No Phone Numbers Warning */}
+                        {availablePhoneNumbers.length === 0 && (
+                            <div className="mb-4 p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+                                <p className="text-xs text-yellow-200">
+                                    ⚠️ No phone numbers configured. Go to <strong>Automations</strong> to add Twilio numbers.
+                                </p>
+                            </div>
+                        )}
+
                         <div className="relative mb-6">
                             <input 
                                 type="text" 
@@ -428,7 +664,6 @@ REASON FOR CALL:
                         </div>
 
                         <div className="flex justify-center gap-4 mb-4 items-center">
-                            {/* 🔴 NEW: Recording Button (only shown when call is NOT active) */}
                             {!isCallActive && (
                                 <button 
                                     onClick={toggleRecording}
@@ -444,7 +679,6 @@ REASON FOR CALL:
                                 </button>
                             )}
 
-                            {/* Mute Button */}
                             {isCallActive && (
                                 <button 
                                     onClick={toggleMute}
@@ -458,7 +692,6 @@ REASON FOR CALL:
                                 </button>
                             )}
 
-                            {/* Call Button */}
                             <button 
                                 onClick={handleCallToggle} 
                                 disabled={!phoneNumber || !isDeviceReady}
@@ -474,7 +707,6 @@ REASON FOR CALL:
 
                         {isCallActive && (
                             <div className="text-center">
-                                {/* 🔴 NEW: Recording indicator during call */}
                                 {isRecording && (
                                     <div className="mb-3 flex items-center justify-center gap-2 text-red-400 animate-pulse">
                                         <Circle size={12} fill="currentColor" />
@@ -504,7 +736,10 @@ REASON FOR CALL:
                         <h3 className="font-bold text-white flex items-center gap-2 text-sm">
                             <FileText size={16} className="text-horizon-accent" /> Pitch Blueprint
                         </h3>
-                        <button className="text-[10px] bg-horizon-accent/10 text-horizon-accent px-2.5 py-1 rounded-lg font-bold border border-horizon-accent/20 hover:bg-horizon-accent hover:text-black transition-all flex items-center gap-1">
+                        <button 
+                            onClick={handleUpdateScript}
+                            className="text-[10px] bg-horizon-accent/10 text-horizon-accent px-2.5 py-1 rounded-lg font-bold border border-horizon-accent/20 hover:bg-horizon-accent hover:text-black transition-all flex items-center gap-1"
+                        >
                             <Save size={12} /> Update
                         </button>
                     </div>
@@ -515,6 +750,7 @@ REASON FOR CALL:
                     />
                 </div>
             </div>
+            
 
             {/* Right Column: Lead Selection */}
             <div className="col-span-4 h-full flex flex-col min-h-0">
@@ -560,11 +796,6 @@ REASON FOR CALL:
                                         <ChevronRight size={14} className="text-gray-500 group-hover:text-horizon-accent transition-colors" />
                                     </button>
                                 ))}
-                                {campaigns.length === 0 && (
-                                    <div className="text-center py-10 text-gray-500 text-sm">
-                                        No campaigns available
-                                    </div>
-                                )}
                             </div>
                         )}
 
@@ -573,79 +804,157 @@ REASON FOR CALL:
                                 {filteredLeads.map(l => (
                                     <button 
                                         key={l.id} 
-                                        onClick={() => selectLead(l)} 
-                                        className="w-full text-left p-3 hover:bg-[#262624]/30 transition-colors flex items-center justify-between"
+                                        onClick={() => selectLead(l)}
+                                        className="w-full text-left p-4 hover:bg-white/[0.02] transition-colors flex items-center justify-between group"
                                     >
-                                        <div className="min-w-0 flex-1">
-                                            <div className="font-bold text-white truncate text-sm">{l.name}</div>
+                                        <div className="min-w-0">
+                                            <div className="font-bold text-white text-sm truncate">{l.name}</div>
                                             <div className="text-xs text-gray-500 truncate">{l.company}</div>
                                         </div>
-                                        <span className={`text-[9px] px-2 py-0.5 rounded border uppercase font-bold ml-2 shrink-0 ${getStatusStyles(l.status)}`}>
+                                        <div className={`text-[9px] px-2 py-0.5 rounded-full border shrink-0 ${getStatusStyles(l.status)}`}>
                                             {l.status}
-                                        </span>
+                                        </div>
                                     </button>
                                 ))}
-                                {filteredLeads.length === 0 && (
-                                    <div className="text-center py-10 text-gray-500 text-sm">
-                                        No leads in this campaign
-                                    </div>
-                                )}
                             </div>
                         )}
 
                         {view === 'lead-detail' && selectedLead && (
-                            <div className="p-5">
-                                <div className="text-center mb-6">
-                                    <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-horizon-accent to-emerald-500 flex items-center justify-center text-white font-bold text-xl mx-auto mb-3">
-                                        {selectedLead.name[0]}
-                                    </div>
-                                    <h2 className="text-xl font-bold text-white">{selectedLead.name}</h2>
-                                    <p className="text-horizon-accent text-xs font-bold uppercase tracking-widest">{selectedLead.company}</p>
-                                </div>
-
-                                <div className="space-y-3 mb-6">
-                                    <div className="flex items-center gap-3 p-3 bg-[#09090b] rounded-xl border border-[#262624]">
-                                        <div className="p-1.5 bg-blue-500/10 rounded-lg text-blue-400">
-                                            <Phone size={14} />
-                                        </div>
-                                        <div>
-                                            <div className="text-[9px] text-gray-500 uppercase font-bold">Direct Line</div>
-                                            <div className="text-sm font-mono text-gray-200">{selectedLead.phone}</div>
-                                        </div>
-                                    </div>
-                                    <div className="flex items-center gap-3 p-3 bg-[#09090b] rounded-xl border border-[#262624]">
-                                        <div className="p-1.5 bg-purple-500/10 rounded-lg text-purple-400">
-                                            <Mail size={14} />
-                                        </div>
-                                        <div className="min-w-0 flex-1">
-                                            <div className="text-[9px] text-gray-500 uppercase font-bold">Email Address</div>
-                                            <div className="text-sm text-gray-200 truncate">{selectedLead.email || 'N/A'}</div>
-                                        </div>
-                                    </div>
-                                </div>
-
+                            <div className="p-6 space-y-6">
+                                {/* Lead Info Section */}
                                 <div className="space-y-4">
                                     <div>
-                                        <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest">Call Outcome</label>
+                                        <div className="flex items-center justify-between mb-1">
+                                            <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest">Decision Maker</label>
+                                            <button 
+                                                onClick={() => isEditingName ? handleSaveLeadName() : setIsEditingName(true)}
+                                                className="text-horizon-accent hover:text-white transition-colors"
+                                            >
+                                                {isEditingName ? <Check size={14} /> : <Edit2 size={12} />}
+                                            </button>
+                                        </div>
+                                        {isEditingName ? (
+                                            <div className="flex gap-2">
+                                                <input 
+                                                    type="text"
+                                                    value={editableLeadName}
+                                                    onChange={(e) => setEditableLeadName(e.target.value)}
+                                                    className="flex-1 bg-[#09090b] border border-horizon-accent/50 rounded-lg px-2 py-1 text-sm text-white focus:outline-none"
+                                                    autoFocus
+                                                />
+                                                <button onClick={() => { setIsEditingName(false); setEditableLeadName(selectedLead.name); }} className="text-gray-500"><X size={14} /></button>
+                                            </div>
+                                        ) : (
+                                            <div className="text-lg font-bold text-white">{selectedLead.name}</div>
+                                        )}
+                                    </div>
+
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest block mb-1">Company</label>
+                                            <div className="text-sm text-gray-300 flex items-center gap-2">
+                                                <Briefcase size={14} className="text-gray-600" /> {selectedLead.company}
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest block mb-1">Status</label>
+                                            <div className={`inline-block text-[10px] px-2 py-0.5 rounded border ${getStatusStyles(selectedLead.status)}`}>
+                                                {selectedLead.status}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div className="flex items-center justify-between mb-1">
+                                            <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest">Email Address</label>
+                                            <button 
+                                                onClick={() => isEditingEmail ? handleSaveLeadEmail() : setIsEditingEmail(true)}
+                                                className="text-horizon-accent hover:text-white transition-colors"
+                                            >
+                                                {isEditingEmail ? <Check size={14} /> : <Edit2 size={12} />}
+                                            </button>
+                                        </div>
+                                        {isEditingEmail ? (
+                                            <div className="flex gap-2">
+                                                <input 
+                                                    type="email"
+                                                    value={editableLeadEmail}
+                                                    onChange={(e) => setEditableLeadEmail(e.target.value)}
+                                                    className="flex-1 bg-[#09090b] border border-horizon-accent/50 rounded-lg px-2 py-1 text-sm text-white focus:outline-none"
+                                                    autoFocus
+                                                />
+                                                <button onClick={() => { setIsEditingEmail(false); setEditableLeadEmail(selectedLead.email || ''); }} className="text-gray-500"><X size={14} /></button>
+                                            </div>
+                                        ) : (
+                                            <div className="text-sm text-gray-300 flex items-center gap-2">
+                                                <Mail size={14} className="text-gray-600" /> {selectedLead.email || 'No email provided'}
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+
+                                <div className="h-px bg-[#262624]" />
+
+                                {/* Action Section */}
+                                <div className="space-y-4">
+                                    <button 
+                                        onClick={handleOpenCalendar}
+                                        data-cal-link="horizon-ai/30min"
+                                        data-cal-namespace="30min"
+                                        data-cal-config='{"layout":"month_view"}'
+                                        className="w-full bg-[#262624] hover:bg-[#333] border border-[#333] text-white py-3 rounded-xl flex items-center justify-center gap-2 text-sm font-bold transition-all"
+                                    >
+                                        <Calendar size={16} className="text-horizon-accent" /> Book Demo on Cal.com
+                                    </button>
+
+                                    <div>
+                                        <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest block mb-2">Call Disposition</label>
                                         <select 
-                                            value={selectedOutcome} 
-                                            onChange={(e) => { setSelectedOutcome(e.target.value); setShowOutcomeError(false); }} 
-                                            className={`w-full bg-[#09090b] border rounded-xl px-3 py-2.5 text-sm text-white focus:border-horizon-accent focus:outline-none ${showOutcomeError ? 'border-red-500/50' : 'border-[#262624]'}`}
+                                            value={selectedOutcome}
+                                            onChange={(e) => {
+                                                setSelectedOutcome(e.target.value);
+                                                setShowOutcomeError(false);
+                                            }}
+                                            className={`w-full bg-[#09090b] border ${showOutcomeError ? 'border-red-500/50' : 'border-[#262624]'} rounded-xl px-3 py-2.5 text-sm text-white focus:border-horizon-accent focus:outline-none appearance-none cursor-pointer`}
                                         >
                                             <option>Select Disposition...</option>
+                                            <option>New Lead</option>
                                             <option>Demo Booked</option>
+                                            <option>Follow-up Required</option>
+                                            <option>Voicemail</option>
                                             <option>Not Interested</option>
                                             <option>Wrong Number</option>
-                                            <option>Voicemail</option>
-                                            <option>Follow-up Required</option>
                                         </select>
                                     </div>
+
+                                    {/* NEW: Call Note Field */}
+                                    <div>
+                                        <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest">Add a Note</label>
+                                        <textarea 
+                                            value={callNote}
+                                            onChange={(e) => setCallNote(e.target.value)}
+                                            placeholder="Enter call notes, pain points, or follow-up details..."
+                                            className="w-full bg-[#09090b] border border-[#262624] rounded-xl px-3 py-2.5 text-sm text-white focus:border-horizon-accent focus:outline-none h-24 resize-none"
+                                        />
+                                    </div>
+
                                     <button 
                                         onClick={handleNextLead} 
                                         className="w-full bg-horizon-accent text-black font-bold py-3 rounded-xl shadow-lg hover:bg-white transition-colors text-sm"
                                     >
                                         Submit & Next Lead
                                     </button>
+
+                                    {/* Address Display */}
+                                    {selectedLead.address && (
+                                        <div className="pt-3 border-t border-[#262624]">
+                                            <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest block mb-1">Address</label>
+                                            <div className="text-sm text-gray-300 flex items-start gap-2">
+                                                <MapPin size={14} className="text-gray-600 mt-0.5 flex-shrink-0" /> 
+                                                <span>{selectedLead.address}</span>
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         )}
