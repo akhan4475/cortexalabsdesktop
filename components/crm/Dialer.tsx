@@ -31,6 +31,7 @@ const getStatusStyles = (status: string) => {
 
 interface DialerProps {
     campaigns: Campaign[];
+    onUpdateLead: (lead: Lead) => void;
     allLeads: Lead[];
     onUpdateLeadStatus: (leadId: string, newStatus: string) => void;
     onRecordDial: (leadId: string) => void; // <--- ADD THIS LINE
@@ -41,8 +42,8 @@ interface DialerProps {
 const SUPABASE_URL = 'https://zfjbpohfdoeougmhocfa.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpmamJwb2hmZG9lb3VnbWhvY2ZhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc2NjA5NDgsImV4cCI6MjA4MzIzNjk0OH0.P7XkB7FNmxR9XHqTukkC0P6QNh6H_bsP2CsegKLt4gE';
 
-const Dialer: React.FC<DialerProps> = ({ campaigns, allLeads, onUpdateLeadStatus, initialLeadId, onRecordDial, initialCampaignId }) => {
-    // --- Dialer State ---
+const Dialer: React.FC<DialerProps> = ({ campaigns, allLeads, onUpdateLeadStatus, onUpdateLead, initialLeadId, onRecordDial, initialCampaignId }) => {
+        // --- Dialer State ---
     const [phoneNumber, setPhoneNumber] = useState('');
     const [isCallActive, setIsCallActive] = useState(false);
     const [callTime, setCallTime] = useState(0);
@@ -520,28 +521,28 @@ REASON FOR CALL:
             return;
         }
         setShowOutcomeError(false);
-        
+
         if (selectedLead) {
             try {
-                // Perform the update directly in Supabase for both summary and status
-                const { error } = await supabase
+                await supabase
                     .from('leads')
-                    .update({ 
+                    .update({
                         summary: callNote.trim(),
-                        status: selectedOutcome 
+                        status: selectedOutcome
                     })
                     .eq('id', selectedLead.id);
 
-                if (error) throw error;
-                
-                // Notify parent state to update so lists reflect the change
+                // Update both status AND summary in parent state immediately
                 onUpdateLeadStatus(selectedLead.id, selectedOutcome);
+                onUpdateLead({ ...selectedLead, status: selectedOutcome, summary: callNote.trim() });
+
+                // Update the local selectedLead so if we stay on same lead it reflects change
+                setSelectedLead(prev => prev ? { ...prev, status: selectedOutcome, summary: callNote.trim() } : prev);
+
             } catch (error) {
                 console.error('Error updating lead data:', error);
             }
         }
-        
-        
 
         const currentIndex = filteredLeads.findIndex(l => l.id === selectedLead?.id);
         if (currentIndex !== -1 && currentIndex < filteredLeads.length - 1) {

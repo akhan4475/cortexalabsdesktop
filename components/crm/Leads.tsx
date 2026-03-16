@@ -1,7 +1,8 @@
-import React, { useState, useRef, useMemo } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { Folder, Search, Plus, MoreHorizontal, Phone, ArrowLeft, Trash2, Edit2, CheckSquare, Square, Upload, FileText, X, Globe, Star, MessageSquare, MapPin, AlertTriangle, User, Users, Mail, Save, ChevronsLeft, ChevronLeft, ChevronRight, ChevronsRight } from 'lucide-react';
 import { Lead, Campaign } from './types';
 import { CRMView } from './CRM';
+
 
 const PAGE_SIZE = 50;
 
@@ -33,14 +34,24 @@ interface LeadsProps {
     onUpdateLead: (lead: Lead) => void;
     onDeleteLead: (id: string) => void;
     onNavigate: (view: CRMView, leadId?: string, campaignId?: string) => void;
+    onMoveLeads: (leadIds: string[], targetCampaignId: string) => void;
 }
 
-const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDeleteCampaign, onRenameCampaign, onAddLead, onUpdateLead, onDeleteLead, onNavigate }) => {
+
+
+const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDeleteCampaign, onRenameCampaign, onAddLead, onUpdateLead, onDeleteLead, onNavigate, onMoveLeads }) => {
     const [view, setView] = useState<'folders' | 'list' | 'create' | 'add-lead' | 'edit-lead'>('folders');
     const [activeCampaign, setActiveCampaign] = useState<Campaign | null>(null);
     const [selectedLeads, setSelectedLeads] = useState<string[]>([]);
     const [searchQuery, setSearchQuery] = useState('');
+    const [statusFilter, setStatusFilter] = useState<string>('All');
+    const [showFilterDropdown, setShowFilterDropdown] = useState(false);
+
     
+    const [showMoveModal, setShowMoveModal] = useState(false);
+    const [moveTargetCampaignId, setMoveTargetCampaignId] = useState<string>('');
+    const [isCreatingNewForMove, setIsCreatingNewForMove] = useState(false);
+    const [newMoveCampaignName, setNewMoveCampaignName] = useState('');
     // Create Campaign State
     const [newCampaignName, setNewCampaignName] = useState('');
     const [pendingFile, setPendingFile] = useState<File | null>(null);
@@ -59,6 +70,27 @@ const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDel
         summary: '',
         status: 'New Lead'
     });
+
+
+    useEffect(() => {
+        setCurrentPage(1);
+        setSelectedLeads([]);
+    }, [statusFilter, activeCampaign]);
+
+    useEffect(() => {
+        const handleClickOutside = (e: MouseEvent) => {
+            const target = e.target as HTMLElement;
+            if (!target.closest('.filter-dropdown-container')) {
+                setShowFilterDropdown(false);
+            }
+        };
+        if (showFilterDropdown) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, [showFilterDropdown]);
+
+
 
     // Menu / Modal States
     const [menuOpenId, setMenuOpenId] = useState<string | null>(null);
@@ -82,20 +114,21 @@ const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDel
     const currentCampaignLeads = useMemo(() => {
         if (!activeCampaign) return [];
         let filtered = allLeads.filter(l => l.campaignId === activeCampaign.id);
-        
-        // Sort by upload order (numeric ID suffix)
         filtered.sort((a, b) => getLeadSortOrder(a.id) - getLeadSortOrder(b.id));
+
+        if (statusFilter !== 'All') {
+            filtered = filtered.filter(l => l.status === statusFilter);
+        }
 
         if (searchQuery.trim()) {
             const query = searchQuery.toLowerCase();
-            filtered = filtered.filter(l => 
-                l.company.toLowerCase().includes(query) || 
+            filtered = filtered.filter(l =>
+                l.company.toLowerCase().includes(query) ||
                 l.name.toLowerCase().includes(query)
             );
         }
-        
         return filtered;
-    }, [allLeads, activeCampaign, searchQuery]);
+    }, [allLeads, activeCampaign, searchQuery, statusFilter]);
 
     const totalPages = Math.ceil(currentCampaignLeads.length / PAGE_SIZE) || 1;
     const paginatedLeads = useMemo(() => {
@@ -170,12 +203,56 @@ const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDel
         }
     };
 
+    const handleBulkDelete = async () => {
+        if (selectedLeads.length === 0) return;
+        if (!confirm(`Delete ${selectedLeads.length} lead(s)? This cannot be undone.`)) return;
+        
+        for (const leadId of selectedLeads) {
+            await onDeleteLead(leadId);
+        }
+        setSelectedLeads([]);
+    };
+
+    const handleConfirmMove = async () => {
+        if (!activeCampaign) return;
+
+        let targetId = moveTargetCampaignId;
+
+        if (isCreatingNewForMove) {
+            if (!newMoveCampaignName.trim()) {
+                alert('Please enter a campaign name.');
+                return;
+            }
+            const newCampaign: Campaign = {
+                id: `camp-${Date.now()}`,
+                name: newMoveCampaignName.trim(),
+                createdAt: new Date().toISOString().split('T')[0],
+                leadCount: 0
+            };
+            await onAddCampaign(newCampaign, []);
+            targetId = newCampaign.id;
+        }
+
+        if (!targetId) {
+            alert('Please select or create a target campaign.');
+            return;
+        }
+
+        await onMoveLeads(selectedLeads, targetId);
+        setSelectedLeads([]);
+        setShowMoveModal(false);
+        setMoveTargetCampaignId('');
+        setIsCreatingNewForMove(false);
+        setNewMoveCampaignName('');
+    };
+
     // CSV Parsing Logic
     const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files[0]) {
             setPendingFile(e.target.files[0]);
         }
     };
+
 
     const parseCSV = async (file: File): Promise<Partial<Lead>[]> => {
         return new Promise((resolve) => {
@@ -260,8 +337,39 @@ const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDel
         try {
             const parsedLeads = await parseCSV(pendingFile);
             const campaignId = `camp-${Date.now()}`;
-            
-            const finalLeads: Lead[] = parsedLeads.map((pl, idx) => ({
+
+            // Normalize helper - strips spaces, dashes, brackets for phone comparison
+            const normalizePhone = (phone: string) =>
+                phone.replace(/[\s\-().+]/g, '').toLowerCase();
+            const normalizeCompany = (company: string) =>
+                company.trim().toLowerCase();
+
+            // Build a set of existing lead keys from ALL current campaigns
+            const existingKeys = new Set(
+                allLeads.map(l =>
+                    `${normalizeCompany(l.company || '')}||${normalizePhone(l.phone || '')}`
+                )
+            );
+
+            // Deduplicate within the CSV itself first (keep first occurrence)
+            const seenInFile = new Set<string>();
+            const deduplicatedParsed = parsedLeads.filter(pl => {
+                const key = `${normalizeCompany(pl.company || '')}||${normalizePhone(pl.phone || '')}`;
+                if (seenInFile.has(key)) return false;
+                seenInFile.add(key);
+                return true;
+            });
+
+            // Filter out leads that already exist in any current campaign
+            const filteredLeads = deduplicatedParsed.filter(pl => {
+                const key = `${normalizeCompany(pl.company || '')}||${normalizePhone(pl.phone || '')}`;
+                return !existingKeys.has(key);
+            });
+
+            const duplicatesRemoved =
+                parsedLeads.length - filteredLeads.length;
+
+            const finalLeads: Lead[] = filteredLeads.map((pl, idx) => ({
                 id: `l-${campaignId}-${idx}`,
                 campaignId: campaignId,
                 name: pl.name || 'Unknown Contact',
@@ -284,6 +392,10 @@ const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDel
             };
 
             onAddCampaign(campaign, finalLeads);
+
+            if (duplicatesRemoved > 0) {
+                alert(`✅ Import complete. ${duplicatesRemoved} duplicate lead(s) were removed (matched by Company Name + Phone Number).`);
+            }
             setNewCampaignName('');
             setPendingFile(null);
             setView('folders');
@@ -554,6 +666,65 @@ const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDel
                     <h2 className="font-bold text-white text-lg">{activeCampaign?.name}</h2>
                 </div>
                 <div className="flex items-center gap-3">
+                    {/* Filter Dropdown */}
+                    <div className="relative filter-dropdown-container">
+                        <button
+                            onClick={() => setShowFilterDropdown(!showFilterDropdown)}
+                            className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-bold border transition-colors ${statusFilter !== 'All' ? 'bg-horizon-accent/10 border-horizon-accent/30 text-horizon-accent' : 'bg-[#09090b] border-[#262624] text-gray-400 hover:text-white'}`}
+                        >
+                            <Search size={14} />
+                            {statusFilter === 'All' ? 'Filter Status' : statusFilter}
+                            {statusFilter !== 'All' && (
+                                <span className="ml-1 bg-horizon-accent text-black text-[9px] font-bold px-1.5 py-0.5 rounded-full">
+                                    {currentCampaignLeads.length}
+                                </span>
+                            )}
+                        </button>
+                        {showFilterDropdown && (
+                            <div className="absolute left-0 top-full mt-2 w-48 bg-[#121214] border border-[#262624] rounded-xl shadow-2xl z-30 overflow-hidden">
+                                {['All', 'New Lead', 'Demo Booked', 'Follow-up Required', 'Voicemail', 'Not Interested', 'Wrong Number'].map(status => (
+                                    <button
+                                        key={status}
+                                        onClick={() => { setStatusFilter(status); setShowFilterDropdown(false); }}
+                                        className={`w-full text-left px-4 py-2.5 text-xs font-bold transition-colors flex items-center justify-between ${statusFilter === status ? 'bg-horizon-accent/10 text-horizon-accent' : 'text-gray-300 hover:bg-white/5'}`}
+                                    >
+                                        {status}
+                                        {status !== 'All' && (
+                                            <span className="text-[9px] text-gray-500">
+                                                {allLeads.filter(l => l.campaignId === activeCampaign?.id && l.status === status).length}
+                                            </span>
+                                        )}
+                                    </button>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Bulk Delete Button — shown when leads are selected */}
+                    {selectedLeads.length > 0 && (
+                        <div className="flex items-center gap-2">
+                            <button
+                                onClick={() => {
+                                    setMoveTargetCampaignId('');
+                                    setIsCreatingNewForMove(false);
+                                    setNewMoveCampaignName('');
+                                    setShowMoveModal(true);
+                                }}
+                                className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-bold bg-blue-500/10 border border-blue-500/20 text-blue-400 hover:bg-blue-500 hover:text-white transition-colors"
+                            >
+                                <Folder size={14} />
+                                Move ({selectedLeads.length})
+                            </button>
+                            <button
+                                onClick={handleBulkDelete}
+                                className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-bold bg-red-500/10 border border-red-500/20 text-red-400 hover:bg-red-500 hover:text-white transition-colors"
+                            >
+                                <Trash2 size={14} />
+                                Delete ({selectedLeads.length})
+                            </button>
+                        </div>
+                    )}
+
                     <div className="relative">
                         <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4" />
                         <input type="text" placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="bg-[#09090b] border border-[#262624] rounded-lg pl-10 pr-4 py-2 text-sm text-white focus:outline-none focus:border-horizon-accent w-64" />
@@ -656,6 +827,78 @@ const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDel
                     </div>
                 </div>
             )}
+
+
+            {showMoveModal && (
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+                    <div className="bg-[#121214] border border-[#262624] rounded-2xl p-8 w-full max-w-md shadow-2xl">
+                        <h3 className="text-xl font-bold text-white mb-2">Move {selectedLeads.length} Lead(s)</h3>
+                        <p className="text-gray-500 text-sm mb-6">Select a destination campaign or create a new one.</p>
+
+                        <div className="flex bg-[#09090b] p-1 rounded-xl border border-[#262624] mb-6">
+                            <button
+                                onClick={() => setIsCreatingNewForMove(false)}
+                                className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all ${!isCreatingNewForMove ? 'bg-horizon-accent text-black' : 'text-gray-500 hover:text-white'}`}
+                            >
+                                Existing Campaign
+                            </button>
+                            <button
+                                onClick={() => setIsCreatingNewForMove(true)}
+                                className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all ${isCreatingNewForMove ? 'bg-horizon-accent text-black' : 'text-gray-500 hover:text-white'}`}
+                            >
+                                New Campaign
+                            </button>
+                        </div>
+
+                        {!isCreatingNewForMove ? (
+                            <div className="space-y-2 max-h-48 overflow-y-auto crm-scroll mb-6">
+                                {campaigns
+                                    .filter(c => c.id !== activeCampaign?.id)
+                                    .map(c => (
+                                        <button
+                                            key={c.id}
+                                            onClick={() => setMoveTargetCampaignId(c.id)}
+                                            className={`w-full text-left p-3 rounded-xl border transition-all flex items-center justify-between ${moveTargetCampaignId === c.id ? 'bg-horizon-accent/10 border-horizon-accent/40 text-white' : 'bg-[#09090b] border-[#262624] text-gray-300 hover:border-[#333]'}`}
+                                        >
+                                            <span className="font-bold text-sm">{c.name}</span>
+                                            <span className="text-xs text-gray-500">{c.leadCount} leads</span>
+                                        </button>
+                                    ))}
+                                {campaigns.filter(c => c.id !== activeCampaign?.id).length === 0 && (
+                                    <p className="text-center text-gray-500 text-sm py-4 italic">No other campaigns available.</p>
+                                )}
+                            </div>
+                        ) : (
+                            <div className="mb-6">
+                                <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-2">New Campaign Name</label>
+                                <input
+                                    type="text"
+                                    placeholder="e.g. Q3 Follow-ups"
+                                    value={newMoveCampaignName}
+                                    onChange={(e) => setNewMoveCampaignName(e.target.value)}
+                                    className="w-full bg-[#09090b] border border-[#262624] rounded-xl px-4 py-3 text-sm text-white focus:border-horizon-accent focus:outline-none"
+                                />
+                            </div>
+                        )}
+
+                        <div className="flex gap-4">
+                            <button
+                                onClick={() => { setShowMoveModal(false); setMoveTargetCampaignId(''); setIsCreatingNewForMove(false); setNewMoveCampaignName(''); }}
+                                className="flex-1 px-4 py-3 border border-[#262624] text-gray-400 font-bold rounded-xl hover:bg-white/5 transition-colors"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                onClick={handleConfirmMove}
+                                className="flex-1 px-4 py-3 bg-horizon-accent text-black rounded-xl font-bold hover:bg-white transition-colors"
+                            >
+                                Move Leads
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
         </div>
     );
 };

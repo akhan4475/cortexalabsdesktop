@@ -12,13 +12,14 @@ import Clients from './Clients';
 import Analytics from './Analytics';
 import Automations from './Automations';
 import Recordings from './Recordings';
+import Motivation from './Motivation';
 import { Lead, Campaign, Client, DemoEvent, Dial } from './types';
 
 interface CRMProps {
     onLogout: () => void;
 }
 
-export type CRMView = 'dashboard' | 'leads' | 'dialer' | 'conversations' | 'clients' | 'automations' | 'analytics' | 'recordings';
+export type CRMView = 'dashboard' | 'leads' | 'dialer' | 'conversations' | 'clients' | 'automations' | 'analytics' | 'recordings' | 'motivation';
 
 /**
  * Helper to format date as YYYY-MM-DD using LOCAL time
@@ -278,7 +279,8 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
                 status: updatedLead.status
             }).eq('id', updatedLead.id);
 
-            setAllLeads(prev => prev.map(l => l.id === updatedLead.id ? updatedLead : l));
+            // Update local state immediately
+            setAllLeads(prev => prev.map(l => l.id === updatedLead.id ? { ...updatedLead } : l));
 
             if (oldLead && oldLead.status !== 'Demo Booked' && updatedLead.status === 'Demo Booked') {
                 await handleRecordDemo(updatedLead.id);
@@ -310,6 +312,41 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
         } catch (error) {
             console.error('Error deleting lead:', error);
             alert('Failed to delete lead. Please try again.');
+        }
+    };
+
+
+    const handleMoveLeads = async (leadIds: string[], targetCampaignId: string) => {
+        if (!userId) return;
+        try {
+            await supabase.from('leads').update({ campaign_id: targetCampaignId }).in('id', leadIds);
+
+            const sourceCampaignId = allLeads.find(l => leadIds.includes(l.id))?.campaignId;
+
+            // Update local leads state first
+            const updatedLeads = allLeads.map(l =>
+                leadIds.includes(l.id) ? { ...l, campaignId: targetCampaignId } : l
+            );
+            setAllLeads(updatedLeads);
+
+            // Recount from actual lead data instead of using stale leadCount
+            setCampaigns(prev => prev.map(c => {
+                const actualCount = updatedLeads.filter(l => l.campaignId === c.id).length;
+                return { ...c, leadCount: actualCount };
+            }));
+
+            // Also fix the target campaign count in Supabase
+            const newTargetCount = updatedLeads.filter(l => l.campaignId === targetCampaignId).length;
+            await supabase.from('campaigns').update({ lead_count: newTargetCount }).eq('id', targetCampaignId);
+
+            if (sourceCampaignId) {
+                const newSourceCount = updatedLeads.filter(l => l.campaignId === sourceCampaignId).length;
+                await supabase.from('campaigns').update({ lead_count: newSourceCount }).eq('id', sourceCampaignId);
+            }
+
+        } catch (error) {
+            console.error('Error moving leads:', error);
+            alert('Failed to move leads. Please try again.');
         }
     };
 
@@ -438,10 +475,12 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
         try {
             const oldLead = allLeads.find(l => l.id === leadId);
             await supabase.from('leads').update({ status: newStatus }).eq('id', leadId);
-            setAllLeads(prev => prev.map(lead => 
+            
+            // Update local state immediately
+            setAllLeads(prev => prev.map(lead =>
                 lead.id === leadId ? { ...lead, status: newStatus } : lead
             ));
-            
+
             if (oldLead && oldLead.status !== 'Demo Booked' && newStatus === 'Demo Booked') {
                 await handleRecordDemo(leadId);
             }
@@ -480,6 +519,7 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
         { id: 'analytics', icon: BarChart3, label: 'Analytics' },
         { id: 'clients', icon: Briefcase, label: 'Clients' },
         { id: 'automations', icon: Settings, label: 'Automations' },
+        { id: 'motivation', icon: Radio, label: 'Motivation' },
     ];
 
     if (isLoading) {
@@ -666,6 +706,8 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
                                     onUpdateLead={handleUpdateLead}
                                     onDeleteLead={handleDeleteLead}
                                     onNavigate={handleViewNavigation}
+                                    onMoveLeads={handleMoveLeads}
+
                                 />
                             )}
                             {currentView === 'dialer' && (
@@ -673,7 +715,8 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
                                     campaigns={campaigns} 
                                     allLeads={allLeads} 
                                     onUpdateLeadStatus={handleUpdateLeadStatus}
-                                    onRecordDial={handleRecordDial}  // ✅ CORRECT
+                                    onUpdateLead={handleUpdateLead}
+                                    onRecordDial={handleRecordDial}
                                     initialLeadId={navContext.leadId}
                                     initialCampaignId={navContext.campaignId}
                                 />
@@ -697,6 +740,7 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
                             )}
                             {currentView === 'analytics' && <Analytics />}
                             {currentView === 'automations' && <Automations />}
+                            {currentView === 'motivation' && <Motivation />}
                         </motion.div>
                     </AnimatePresence>
                 </main>
