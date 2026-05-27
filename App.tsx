@@ -5,8 +5,10 @@ import Services from './components/Services';
 import Analytics from './components/Analytics';
 import ComparisonSection from './components/ComparisonSection';
 import Process from './components/Process';
+import Pricing from './components/Pricing';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import IndustriesSection from './components/IndustriesSection';
 import BookingPage from './components/BookingPage';
 import LoginPage from './components/LoginPage';
 import CRM from './components/crm/CRM';
@@ -100,14 +102,16 @@ const App: React.FC = () => {
       <main>
         {view === 'home' ? (
             <>
-                <Hero 
-                    onBookConsultation={handleBookClick} 
+                <Hero
+                    onBookConsultation={handleBookClick}
                     onViewDashboard={() => handleNavigation('analytics')}
                 />
+                <IndustriesSection />
                 <Process />
                 <Services />
                 <Analytics />
                 <ComparisonSection />
+                <Pricing />
                 <Contact />
             </>
         ) : (

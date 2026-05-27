@@ -1,153 +1,172 @@
-import React, { useState, useEffect } from 'react';
-import { motion, Variants } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-import ParticleSphere from './ParticleSphere';
-import SpaceBackground from './SpaceBackground';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { BarChart2, Wrench, Cpu, Star } from 'lucide-react';
 
 interface HeroProps {
-    onBookConsultation: () => void;
-    onViewDashboard: () => void;
+  onBookConsultation: () => void;
+  onViewDashboard: () => void;
 }
 
-const Hero: React.FC<HeroProps> = ({ onBookConsultation, onViewDashboard }) => {
-  const [displayedText, setDisplayedText] = useState("");
-  const [showCursor, setShowCursor] = useState(false);
-  const subtext = "We engineer custom AI infrastructure to automate your operations, all controlled through a centralized dashboard.";
+const bullets = [
+  { icon: BarChart2, bold: 'Transparent', text: ': We show you all the work we complete each month.' },
+  { icon: Wrench,    bold: 'Custom',      text: ': We build your website and AI tools from scratch to fit your business.' },
+  { icon: Cpu,       bold: 'Results-Driven', text: ': Every system is engineered to generate more leads and booked jobs.' },
+];
 
-  useEffect(() => {
-    // Delay the start of typing to allow the main hero animations to complete/settle
-    const startDelay = 1500; 
-    
-    const timer = setTimeout(() => {
-        setShowCursor(true);
-        let currentIndex = 0;
-        
-        // Typing interval
-        const intervalId = setInterval(() => {
-            if (currentIndex <= subtext.length) {
-                setDisplayedText(subtext.slice(0, currentIndex));
-                currentIndex++;
-            } else {
-                clearInterval(intervalId);
-                // Cursor remains visible (showCursor stays true)
-            }
-        }, 30); // 30ms per character
+// overlapping avatar photos for trust badge
+const avatars = [
+  'https://s3-media0.fl.yelpcdn.com/bphoto/Iq9edzPjXCUczDmzHMBSew/180s.jpg',
+  'https://intactroofing.com/wp-content/uploads/2026/01/cropped-intact-roofing-vaughan-richmond-hill-king-city-416-616-6761.webp',
+  'https://cdn.homeadvisor.com/files/eid/131450000/131451618/12991826_logo.png',
+  'https://s3-media0.fl.yelpcdn.com/bphoto/VFdALM0cTn0OCm5QeKruAA/348s.jpg',
+];
 
-        return () => clearInterval(intervalId);
-    }, startDelay);
+const leftContainer = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.2 } },
+};
+const leftItem = {
+  hidden: { opacity: 0, y: 22 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as [number,number,number,number] } },
+};
 
-    return () => clearTimeout(timer);
-  }, []);
+const Stars = ({ size = 'w-4 h-4' }: { size?: string }) => (
+  <div className="flex gap-0.5">
+    {Array.from({ length: 5 }).map((_, i) => (
+      <Star key={i} className={`${size} fill-yellow-400 text-yellow-400`} />
+    ))}
+  </div>
+);
 
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants: Variants = {
-    hidden: { 
-      opacity: 0, 
-      y: 30, 
-      filter: 'blur(8px)',
-    },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      filter: 'blur(0px)',
-      transition: { 
-        duration: 1.2,
-        ease: [0.2, 0.65, 0.3, 0.9] as [number, number, number, number],
-      }
-    },
-  };
-
+const Hero: React.FC<HeroProps> = ({ onBookConsultation }) => {
   return (
-    <section className="relative pt-32 pb-10 md:pt-48 md:pb-20 overflow-hidden flex flex-col items-center justify-center min-h-screen">
-      
-      {/* 3D Space Background */}
-      <SpaceBackground />
-      
-      {/* Overlay gradient for better text readability at top/bottom edges if needed */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-horizon-bg/80 via-transparent to-horizon-bg/80 pointer-events-none"></div>
+    <section className="relative min-h-screen flex flex-col overflow-hidden">
 
-      <motion.div 
-        className="max-w-6xl mx-auto px-6 relative z-10 flex flex-col items-center text-center w-full"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
+      {/* ── Background ── */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: 'url(https://wallpapers.com/images/hd/construction-pictures-kts203mm0wflinpv.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
       >
-        
-        {/* Top Badge */}
-        <motion.div
-            variants={itemVariants}
-            className="mb-8"
-        >
-            <div 
-                onClick={onViewDashboard}
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1F1F1F]/80 backdrop-blur-sm border border-white/10 text-gray-300 text-sm font-medium hover:border-white/20 transition-colors cursor-pointer group"
-            >
-                <span>Intelligent Agents × Dashboard</span>
-                <ArrowRight className="w-4 h-4 text-gray-500 group-hover:text-white transition-colors" />
-            </div>
-        </motion.div>
+        {/* Blur as a separate transparent backdrop layer */}
+        <div className="absolute inset-0" style={{ backdropFilter: 'blur(7px)' }} />
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/50" />
+        {/* Bottom fade into next section */}
+        <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#131317] to-transparent" />
+      </div>
 
-        {/* Headline */}
-        <motion.h1
-            variants={itemVariants}
-            className="text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-[1.1] mb-8 tracking-tight text-white max-w-5xl"
-        >
-            AI Infrastructure Engineered <br className="hidden md:block" />
-            for Peak Performance
-        </motion.h1>
+      {/* ── Content row ── */}
+      <div className="relative z-10 flex-1 flex items-center justify-between px-8 md:px-14 lg:px-20 pt-28 pb-16 gap-8">
 
-        {/* Subtext with Typewriter Effect */}
+        {/* LEFT */}
         <motion.div
-            variants={itemVariants}
-            className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl leading-relaxed min-h-[60px] md:min-h-[3.5rem]"
+          variants={leftContainer}
+          initial="hidden"
+          animate="visible"
+          className="max-w-xl"
         >
-            <span>{displayedText}</span>
-            {showCursor && (
-                <motion.span
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
-                    className="inline-block w-0.5 h-5 ml-1 bg-horizon-accent align-middle shadow-[0_0_8px_rgba(62,206,141,0.8)]"
-                />
-            )}
-        </motion.div>
+          <motion.p variants={leftItem} className="text-gray-400 text-[12px] font-bold tracking-[0.28em] uppercase mb-5">
+            AI-Powered Web Agency
+          </motion.p>
 
-        {/* Buttons */}
-        <motion.div
-            variants={itemVariants}
-            className="flex justify-center mb-16"
-        >
+          <motion.h1 variants={leftItem} className="text-[3.6rem] md:text-[5.4rem] font-display font-extrabold text-white leading-[1.04] mb-8 tracking-tight">
+            Cortexa<br />Labs
+          </motion.h1>
+
+          <motion.div variants={leftItem} className="space-y-4 mb-10">
+            {bullets.map((b, i) => (
+              <div key={i} className="flex items-start gap-3">
+                <b.icon className="w-[20px] h-[20px] text-[#CD3D35] mt-[3px] shrink-0" strokeWidth={2.2} />
+                <p className="text-gray-300 text-[17px] md:text-[18px] leading-snug">
+                  <strong className="text-white font-semibold">{b.bold}</strong>{b.text}
+                </p>
+              </div>
+            ))}
+          </motion.div>
+
+          <motion.div variants={leftItem}>
             <button
-                onClick={onBookConsultation}
-                className="px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-all transform hover:scale-105"
+              onClick={onBookConsultation}
+              className="px-8 py-3.5 bg-[#CD3D35] text-white font-bold rounded-lg hover:bg-[#B83530] active:scale-95 transition-all text-[19px]"
             >
-                Book a Consultation
+              Book a Call
             </button>
+          </motion.div>
         </motion.div>
 
-        {/* Sphere Section */}
-        <motion.div 
-            variants={itemVariants}
-            className="w-full h-[400px] md:h-[500px] relative flex items-center justify-center -mt-10"
-        >
-            {/* Gradient masks to fade the sphere into the background/section above */}
-            <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-horizon-bg to-transparent z-10 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-horizon-bg to-transparent z-10 pointer-events-none" />
-            
-            <ParticleSphere />
-        </motion.div>
+        {/* RIGHT — stacked cards pushed to far right */}
+        <div className="hidden lg:flex flex-col gap-4 w-[420px] xl:w-[455px] shrink-0">
 
-      </motion.div>
+          {/* ── 1. Review card (top) ── */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.55, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="bg-black/50 backdrop-blur-md border border-white/10 rounded-2xl p-6 shadow-2xl">
+              {/* Stars + name + photo */}
+              <div className="flex items-start gap-4 mb-4">
+                <div className="flex-1 min-w-0">
+                  <Stars size="w-[18px] h-[18px]" />
+                  <p className="text-white font-bold text-base mt-2 leading-tight">Yarleyd</p>
+                  <p className="text-gray-400 text-xs mt-0.5">From Pintos Painting</p>
+                </div>
+                <img
+                  src="https://i.postimg.cc/3Nbd7pcN/515020637-1054941080147153-6023406906585044367-n.jpg"
+                  alt="Yarleyd"
+                  className="w-[76px] h-[76px] rounded-full object-cover object-center border-2 border-white/25 shrink-0"
+                />
+              </div>
+
+              {/* Quote box */}
+              <div className="border border-white/15 rounded-xl bg-white/5 px-4 py-3">
+                <p className="text-white/90 text-sm font-semibold italic leading-relaxed text-center">
+                  "If you're looking for an awesome quality website reach out to Cortexa Labs. They will get you right!"
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* ── 2. Trust badge pill (bottom) ── */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.75, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="bg-[#1a1a1a]/90 backdrop-blur-md border border-white/10 rounded-full flex items-center gap-5 px-7 py-[18px] shadow-2xl">
+              {/* Overlapping avatars */}
+              <div className="flex -space-x-3 shrink-0">
+                {avatars.map((src, i) => (
+                  <img
+                    key={i}
+                    src={src}
+                    alt=""
+                    className="w-[53px] h-[53px] rounded-full border-[2.5px] border-[#1a1a1a] object-cover"
+                    style={{ zIndex: i }}
+                  />
+                ))}
+              </div>
+
+              {/* Rating text */}
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-white font-extrabold text-[26px] leading-none">5/5</span>
+                  <Stars size="w-[19px] h-[19px]" />
+                </div>
+                <p className="text-gray-300 text-[12px] font-bold uppercase tracking-[0.15em] italic">
+                  Happy Contractors
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+        </div>
+      </div>
     </section>
   );
 };

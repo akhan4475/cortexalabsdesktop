@@ -22,7 +22,7 @@ serve(async (req: Request) => {
     const supabase = createClient(supabaseUrl, supabaseServiceKey)
     
     const { data: credentials } = await supabase
-      .from('twilio_credentials')
+      .from('user_credentials')
       .select('phone_number, forward_to_number')
       .limit(1)
       .single()

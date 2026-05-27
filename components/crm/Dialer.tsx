@@ -555,14 +555,17 @@ REASON FOR CALL:
     };
 
     return (
-        <div className="h-full min-h-0 max-h-[calc(100vh-110px)] grid grid-cols-12 gap-6 overflow-hidden">
-            {/* Left Column: Dialer Controls */}
+        <div className="h-full min-h-0 max-h-[calc(100vh-112px)] grid grid-cols-12 gap-4 overflow-hidden">
+
+            {/* ── Left Column: Dialer Controls ── */}
             <div className="col-span-4 flex flex-col h-full min-h-0">
-                <div className="bg-[#18181b] border border-[#262624] rounded-2xl flex-1 flex flex-col overflow-hidden shadow-xl min-h-0">
-                    <div className="p-4 border-b border-[#262624] bg-[#262624]/20 flex items-center justify-between shrink-0">
-                        <div className="flex items-center gap-3">
-                            <div className="w-7 h-7 rounded-lg bg-horizon-accent/20 flex items-center justify-center">
-                                <Phone className="text-horizon-accent" size={14} />
+                <div className="bg-[#0c0c0e] border border-white/8 rounded-2xl flex-1 flex flex-col overflow-hidden shadow-xl min-h-0">
+
+                    {/* Header */}
+                    <div className="px-4 py-3 border-b border-white/8 flex items-center justify-between shrink-0">
+                        <div className="flex items-center gap-2.5">
+                            <div className="w-7 h-7 rounded-lg bg-[#CD3D35]/15 flex items-center justify-center">
+                                <Phone className="text-[#CD3D35]" size={13} />
                             </div>
                             <div>
                                 <span className="text-[9px] text-gray-500 uppercase font-bold tracking-widest block">Browser Dialer</span>
@@ -570,11 +573,11 @@ REASON FOR CALL:
                             </div>
                         </div>
                         {callStatus && (
-                            <span className={`text-[10px] px-2 py-0.5 rounded border font-mono ${
-                                callStatus === 'ready' ? 'bg-green-500/10 border-green-500/20 text-green-400' :
-                                callStatus === 'calling' ? 'bg-blue-500/10 border-blue-500/20 text-blue-400' :
+                            <span className={`text-[9px] px-2 py-0.5 rounded border font-mono ${
+                                callStatus === 'ready'     ? 'bg-green-500/10 border-green-500/20 text-green-400' :
+                                callStatus === 'calling'   ? 'bg-blue-500/10  border-blue-500/20  text-blue-400'  :
                                 callStatus === 'connected' ? 'bg-green-500/10 border-green-500/20 text-green-400' :
-                                callStatus === 'error' ? 'bg-red-500/10 border-red-500/20 text-red-400' :
+                                callStatus === 'error'     ? 'bg-red-500/10   border-red-500/20   text-red-400'   :
                                 'bg-white/5 border-white/10 text-gray-400'
                             }`}>
                                 {callStatus}
@@ -582,196 +585,178 @@ REASON FOR CALL:
                         )}
                     </div>
 
-                    <div className="flex-1 flex flex-col justify-center p-6 overflow-y-auto crm-scroll">
-                        {callError && (
-                            <div className="mb-3 p-2.5 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 text-xs flex items-start gap-2">
-                                <AlertCircle size={12} className="shrink-0 mt-0.5" />
-                                <span>{callError}</span>
-                            </div>
-                        )}
+                    {/* Content — no overflow, everything must fit */}
+                    <div className="flex-1 flex flex-col justify-between py-3 px-4 overflow-hidden">
+                        <div>
+                            {callError && (
+                                <div className="mb-2 p-2 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 text-[10px] flex items-start gap-1.5">
+                                    <AlertCircle size={11} className="shrink-0 mt-0.5" />
+                                    <span>{callError}</span>
+                                </div>
+                            )}
+                            {!isDeviceReady && !callError && (
+                                <div className="mb-2 p-2 bg-blue-500/10 border border-blue-500/20 rounded-lg text-blue-400 text-[10px] flex items-start gap-1.5">
+                                    <div className="w-2.5 h-2.5 border-2 border-blue-400 border-t-transparent rounded-full animate-spin shrink-0 mt-0.5" />
+                                    <span>Initializing voice connection…</span>
+                                </div>
+                            )}
 
-                        {!isDeviceReady && !callError && (
-                            <div className="mb-3 p-2.5 bg-blue-500/10 border border-blue-500/20 rounded-lg text-blue-400 text-xs flex items-start gap-2">
-                                <div className="w-3 h-3 border-2 border-blue-400 border-t-transparent rounded-full animate-spin shrink-0 mt-0.5"></div>
-                                <span>Initializing voice connection...</span>
-                            </div>
-                        )}
+                            {/* Outbound Line */}
+                            {availablePhoneNumbers.length > 0 && (
+                                <div className="mb-3">
+                                    <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest mb-1.5 block">Outbound Line</label>
+                                    <select
+                                        value={selectedPhoneNumberId}
+                                        onChange={(e) => handlePhoneNumberChange(e.target.value)}
+                                        disabled={isCallActive}
+                                        className="w-full bg-white/[0.04] border border-white/8 rounded-xl px-3 py-2 text-xs text-white focus:border-[#CD3D35]/50 focus:outline-none appearance-none cursor-pointer disabled:opacity-50"
+                                    >
+                                        {availablePhoneNumbers.map((phone) => (
+                                            <option key={phone.id} value={phone.id} className="bg-[#0c0c0e]">
+                                                {phone.phone_number}{phone.friendly_name ? ` · ${phone.friendly_name}` : ''}{phone.is_default ? ' ★' : ''}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                            )}
+                            {availablePhoneNumbers.length === 0 && (
+                                <div className="mb-3 p-2.5 bg-yellow-500/8 border border-yellow-500/20 rounded-xl">
+                                    <p className="text-[10px] text-yellow-300">⚠️ No numbers configured. Go to <strong>Credentials</strong>.</p>
+                                </div>
+                            )}
 
-                        {/* Phone Number Selector */}
-                        {availablePhoneNumbers.length > 0 && (
-                            <div className="mb-4">
-                                <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 block">
-                                    Outbound Line
-                                </label>
-                                <select
-                                    value={selectedPhoneNumberId}
-                                    onChange={(e) => handlePhoneNumberChange(e.target.value)}
-                                    disabled={isCallActive}
-                                    className="w-full bg-[#18181b] border border-[#262624] rounded-xl px-4 py-3 text-sm text-white focus:border-horizon-accent focus:outline-none appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
-                                >
-                                    {availablePhoneNumbers.map((phone) => (
-                                        <option key={phone.id} value={phone.id}>
-                                            {phone.phone_number}
-                                            {phone.friendly_name ? ` - ${phone.friendly_name}` : ''}
-                                            {phone.is_default ? ' ★' : ''}
-                                        </option>
-                                    ))}
-                                </select>
-                                {selectedPhoneNumber && (
-                                    <p className="text-xs text-gray-500 mt-2">
-                                        📞 Calling from: <span className="text-horizon-accent font-mono">{selectedPhoneNumber}</span>
-                                    </p>
+                            {/* Number Input */}
+                            <div className="relative mb-3">
+                                <input
+                                    type="text"
+                                    value={phoneNumber}
+                                    onChange={(e) => setPhoneNumber(e.target.value)}
+                                    className="w-full bg-transparent text-center text-2xl font-mono text-white focus:outline-none border-b border-white/10 focus:border-[#CD3D35]/40 pb-2 transition-colors"
+                                    placeholder="Enter Number"
+                                />
+                                {phoneNumber && (
+                                    <button onClick={handleBackspace} className="absolute right-0 top-1/2 -translate-y-1/2 p-1 text-gray-600 hover:text-white transition-colors">
+                                        <Delete size={15} />
+                                    </button>
                                 )}
                             </div>
-                        )}
 
-                        {/* No Phone Numbers Warning */}
-                        {availablePhoneNumbers.length === 0 && (
-                            <div className="mb-4 p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
-                                <p className="text-xs text-yellow-200">
-                                    ⚠️ No phone numbers configured. Go to <strong>Automations</strong> to add Twilio numbers.
-                                </p>
+                            {/* Keypad */}
+                            <div className="grid grid-cols-3 gap-4 mt-2 mb-2 w-full">
+                                {['1','2','3','4','5','6','7','8','9','*','0','#'].map((digit) => (
+                                    <button
+                                        key={digit}
+                                        onClick={() => handleDigitClick(digit)}
+                                        className="h-14 rounded-xl bg-white/5 hover:bg-white/10 text-white text-sm font-bold transition-all active:scale-95 flex items-center justify-center border border-white/8 hover:border-[#CD3D35]/30"
+                                    >
+                                        {digit}
+                                    </button>
+                                ))}
                             </div>
-                        )}
-
-                        <div className="relative mb-6">
-                            <input 
-                                type="text" 
-                                value={phoneNumber} 
-                                onChange={(e) => setPhoneNumber(e.target.value)} 
-                                className="w-full bg-transparent text-center text-3xl font-mono text-white focus:outline-none border-b border-transparent focus:border-horizon-accent/30 pb-3" 
-                                placeholder="Enter Number" 
-                            />
-                            {phoneNumber && (
-                                <button 
-                                    onClick={handleBackspace} 
-                                    className="absolute right-0 top-1/2 -translate-y-1/2 p-1.5 text-gray-500 hover:text-white transition-colors"
-                                >
-                                    <Delete size={18} />
-                                </button>
-                            )}
                         </div>
 
-                        <div className="grid grid-cols-3 gap-3 mb-6 max-w-[300px] mx-auto w-full">
-                            {['1','2','3','4','5','6','7','8','9','*','0','#'].map((digit) => (
-                                <button 
-                                    key={digit} 
-                                    onClick={() => handleDigitClick(digit)} 
-                                    className="aspect-square rounded-full bg-[#262624] hover:bg-[#333] text-white text-2xl font-bold transition-all active:scale-95 flex items-center justify-center border border-[#333] hover:border-horizon-accent/30 shadow-lg"
-                                >
-                                    {digit}
-                                </button>
-                            ))}
-                        </div>
-
-                        <div className="flex justify-center gap-4 mb-4 items-center">
-                            {!isCallActive && (
-                                <button 
-                                    onClick={toggleRecording}
-                                    disabled={!isDeviceReady}
-                                    className={`w-14 h-14 rounded-full flex items-center justify-center transition-all active:scale-95 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed ${
-                                        isRecording 
-                                            ? 'bg-red-600 hover:bg-red-500 border-2 border-red-400' 
-                                            : 'bg-[#262624] hover:bg-[#333] border-2 border-[#333]'
+                        {/* Call Controls + Timer */}
+                        <div>
+                            <div className="flex justify-center gap-4 items-center mb-2">
+                                {!isCallActive && (
+                                    <button
+                                        onClick={toggleRecording}
+                                        disabled={!isDeviceReady}
+                                        title={isRecording ? 'Recording Enabled' : 'Enable Recording'}
+                                        className={`w-10 h-10 rounded-full flex items-center justify-center transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed ${
+                                            isRecording
+                                                ? 'bg-red-600 hover:bg-red-500 border-2 border-red-400'
+                                                : 'bg-white/5 hover:bg-white/10 border-2 border-white/10'
+                                        }`}
+                                    >
+                                        <Circle size={15} fill={isRecording ? 'currentColor' : 'none'} className={isRecording ? 'text-white' : 'text-gray-400'} />
+                                    </button>
+                                )}
+                                {isCallActive && (
+                                    <button
+                                        onClick={toggleMute}
+                                        className={`w-10 h-10 rounded-full flex items-center justify-center transition-all active:scale-95 ${
+                                            isMuted
+                                                ? 'bg-red-500/20 hover:bg-red-500/30 border-2 border-red-500'
+                                                : 'bg-white/5 hover:bg-white/10 border-2 border-white/10'
+                                        }`}
+                                    >
+                                        {isMuted ? <MicOff size={16} className="text-red-400" /> : <Mic size={16} className="text-white" />}
+                                    </button>
+                                )}
+                                <button
+                                    onClick={handleCallToggle}
+                                    disabled={!phoneNumber || !isDeviceReady}
+                                    className={`w-14 h-14 rounded-full flex items-center justify-center transition-all active:scale-95 shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed ${
+                                        isCallActive
+                                            ? 'bg-red-500 hover:bg-red-600 shadow-red-500/25'
+                                            : 'bg-green-500 hover:bg-green-600 shadow-green-500/25'
                                     }`}
-                                    title={isRecording ? 'Recording Enabled' : 'Click to Enable Recording'}
                                 >
-                                    <Circle size={20} fill={isRecording ? 'currentColor' : 'none'} className={isRecording ? 'text-white' : 'text-gray-400'} />
+                                    {isCallActive ? <PhoneOff size={22} className="text-white" /> : <Phone size={22} className="text-white" />}
                                 </button>
-                            )}
+                            </div>
 
                             {isCallActive && (
-                                <button 
-                                    onClick={toggleMute}
-                                    className={`w-14 h-14 rounded-full flex items-center justify-center transition-all active:scale-95 shadow-lg ${
-                                        isMuted 
-                                            ? 'bg-red-500/20 hover:bg-red-500/30 border-2 border-red-500' 
-                                            : 'bg-[#262624] hover:bg-[#333] border-2 border-[#333]'
-                                    }`}
-                                >
-                                    {isMuted ? <MicOff size={20} className="text-red-400" /> : <Mic size={20} className="text-white" />}
-                                </button>
-                            )}
-
-                            <button 
-                                onClick={handleCallToggle} 
-                                disabled={!phoneNumber || !isDeviceReady}
-                                className={`w-20 h-20 rounded-full flex items-center justify-center transition-all active:scale-95 shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed ${
-                                    isCallActive 
-                                        ? 'bg-red-500 hover:bg-red-600 shadow-red-500/20' 
-                                        : 'bg-green-500 hover:bg-green-600 shadow-green-500/20'
-                                }`}
-                            >
-                                {isCallActive ? <PhoneOff size={30} className="text-white" /> : <Phone size={30} className="text-white" />}
-                            </button>
-                        </div>
-
-                        {isCallActive && (
-                            <div className="text-center">
-                                {isRecording && (
-                                    <div className="mb-3 flex items-center justify-center gap-2 text-red-400 animate-pulse">
-                                        <Circle size={12} fill="currentColor" />
-                                        <span className="text-xs font-bold uppercase">Recording</span>
+                                <div className="text-center">
+                                    {isRecording && (
+                                        <div className="mb-1 flex items-center justify-center gap-1.5 text-red-400 animate-pulse">
+                                            <Circle size={9} fill="currentColor" />
+                                            <span className="text-[9px] font-bold uppercase tracking-widest">Recording</span>
+                                        </div>
+                                    )}
+                                    <div className="text-[#CD3D35] font-mono text-xl font-bold">{formatTime(callTime)}</div>
+                                    <div className="text-gray-500 text-[9px] mt-0.5 uppercase tracking-widest font-bold">
+                                        Connected · {selectedLead?.name || phoneNumber}
                                     </div>
-                                )}
-                                <div className="text-horizon-accent font-mono text-2xl font-bold animate-pulse">
-                                    {formatTime(callTime)}
                                 </div>
-                                <div className="text-gray-500 text-xs mt-1 uppercase tracking-widest font-bold">
-                                    Connected to {selectedLead?.name || phoneNumber}
-                                </div>
-                                <div className="flex items-center justify-center gap-2 mt-3 text-xs text-gray-400">
-                                    <Volume2 size={14} className="text-green-400" />
-                                    <span>Audio active</span>
-                                </div>
-                            </div>
-                        )}
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
 
-            {/* Center Column: Script */}
+            {/* ── Center Column: Script ── */}
             <div className="col-span-4 h-full flex flex-col min-h-0">
-                <div className="bg-[#18181b] border border-[#262624] rounded-2xl flex-1 flex flex-col overflow-hidden shadow-lg min-h-0">
-                    <div className="p-4 border-b border-[#262624] flex justify-between items-center bg-[#262624]/20 shrink-0">
+                <div className="bg-[#0c0c0e] border border-white/8 rounded-2xl flex-1 flex flex-col overflow-hidden shadow-lg min-h-0">
+                    <div className="px-4 py-3 border-b border-white/8 flex justify-between items-center shrink-0">
                         <h3 className="font-bold text-white flex items-center gap-2 text-sm">
-                            <FileText size={16} className="text-horizon-accent" /> Pitch Blueprint
+                            <FileText size={14} className="text-[#CD3D35]" /> Pitch Blueprint
                         </h3>
-                        <button 
+                        <button
                             onClick={handleUpdateScript}
-                            className="text-[10px] bg-horizon-accent/10 text-horizon-accent px-2.5 py-1 rounded-lg font-bold border border-horizon-accent/20 hover:bg-horizon-accent hover:text-black transition-all flex items-center gap-1"
+                            className="text-[10px] bg-[#CD3D35]/10 text-[#CD3D35] px-2.5 py-1 rounded-lg font-bold border border-[#CD3D35]/20 hover:bg-[#CD3D35] hover:text-white transition-all flex items-center gap-1"
                         >
-                            <Save size={12} /> Update
+                            <Save size={11} /> Save
                         </button>
                     </div>
-                    <textarea 
-                        value={script} 
-                        onChange={(e) => setScript(e.target.value)} 
-                        className="flex-1 w-full bg-transparent p-5 text-gray-300 text-sm leading-relaxed focus:outline-none resize-none crm-scroll font-mono" 
+                    <textarea
+                        value={script}
+                        onChange={(e) => setScript(e.target.value)}
+                        className="flex-1 w-full bg-transparent p-4 text-gray-300 text-sm leading-relaxed focus:outline-none resize-none crm-scroll font-mono"
                     />
                 </div>
             </div>
-            
 
-            {/* Right Column: Lead Selection */}
+            {/* ── Right Column: Lead Selection ── */}
             <div className="col-span-4 h-full flex flex-col min-h-0">
-                <div className="bg-[#18181b] border border-[#262624] rounded-2xl flex-1 flex flex-col overflow-hidden shadow-lg min-h-0">
-                    <div className="p-4 border-b border-[#262624] flex items-center justify-between bg-[#262624]/20 shrink-0">
+                <div className="bg-[#0c0c0e] border border-white/8 rounded-2xl flex-1 flex flex-col overflow-hidden shadow-lg min-h-0">
+                    <div className="px-4 py-3 border-b border-white/8 flex items-center justify-between shrink-0">
                         {view === 'campaigns' ? (
                             <h3 className="font-bold text-white flex items-center gap-2 text-sm">
-                                <ClipboardList size={16} className="text-horizon-accent" /> Campaigns
+                                <ClipboardList size={14} className="text-[#CD3D35]" /> Campaigns
                             </h3>
                         ) : view === 'leads' ? (
-                            <div className="flex items-center gap-3 w-full">
-                                <button onClick={() => setView('campaigns')} className="p-1 hover:bg-[#333] rounded text-gray-400">
-                                    <ArrowLeft size={16} />
+                            <div className="flex items-center gap-2 w-full">
+                                <button onClick={() => setView('campaigns')} className="p-1 hover:bg-white/5 rounded-lg text-gray-400 hover:text-white transition-colors">
+                                    <ArrowLeft size={15} />
                                 </button>
                                 <h3 className="font-bold text-white truncate text-sm">{selectedCampaign?.name}</h3>
                             </div>
                         ) : (
-                            <div className="flex items-center gap-3 w-full">
-                                <button onClick={() => setView('leads')} className="p-1 hover:bg-[#333] rounded text-gray-400">
-                                    <ArrowLeft size={16} />
+                            <div className="flex items-center gap-2 w-full">
+                                <button onClick={() => setView('leads')} className="p-1 hover:bg-white/5 rounded-lg text-gray-400 hover:text-white transition-colors">
+                                    <ArrowLeft size={15} />
                                 </button>
                                 <h3 className="font-bold text-white uppercase text-[10px] tracking-widest">Lead Intelligence</h3>
                             </div>
@@ -779,40 +764,43 @@ REASON FOR CALL:
                     </div>
 
                     <div className="flex-1 overflow-y-auto crm-scroll min-h-0">
+
+                        {/* Campaigns view */}
                         {view === 'campaigns' && (
-                            <div className="p-4 space-y-3">
+                            <div className="p-3 space-y-2">
+                                {campaigns.length === 0 && (
+                                    <p className="text-center text-gray-600 text-sm py-10">No campaigns yet</p>
+                                )}
                                 {campaigns.map(c => (
-                                    <button 
-                                        key={c.id} 
-                                        onClick={() => { 
-                                            setSelectedCampaign(c); 
-                                            setView('leads'); 
-                                        }} 
-                                        className="w-full text-left p-3 bg-[#09090b] border border-[#262624] rounded-xl hover:border-horizon-accent/50 transition-all flex items-center justify-between group"
+                                    <button
+                                        key={c.id}
+                                        onClick={() => { setSelectedCampaign(c); setView('leads'); }}
+                                        className="w-full text-left p-3 bg-white/[0.02] border border-white/8 rounded-xl hover:border-[#CD3D35]/40 hover:bg-white/[0.04] transition-all flex items-center justify-between group"
                                     >
                                         <div>
                                             <div className="font-bold text-white text-sm">{c.name}</div>
-                                            <div className="text-xs text-gray-500">{c.leadCount} Leads</div>
+                                            <div className="text-xs text-gray-500 mt-0.5">{c.leadCount} Leads</div>
                                         </div>
-                                        <ChevronRight size={14} className="text-gray-500 group-hover:text-horizon-accent transition-colors" />
+                                        <ChevronRight size={14} className="text-gray-600 group-hover:text-[#CD3D35] transition-colors" />
                                     </button>
                                 ))}
                             </div>
                         )}
 
+                        {/* Leads view */}
                         {view === 'leads' && (
-                            <div className="divide-y divide-[#262624]">
+                            <div className="divide-y divide-white/[0.04]">
                                 {filteredLeads.map(l => (
-                                    <button 
-                                        key={l.id} 
+                                    <button
+                                        key={l.id}
                                         onClick={() => selectLead(l)}
-                                        className="w-full text-left p-4 hover:bg-white/[0.02] transition-colors flex items-center justify-between group"
+                                        className="w-full text-left px-4 py-3 hover:bg-white/[0.025] transition-colors flex items-center justify-between"
                                     >
                                         <div className="min-w-0">
-                                            <div className="font-bold text-white text-sm truncate">{l.name}</div>
-                                            <div className="text-xs text-gray-500 truncate">{l.company}</div>
+                                            <div className="font-semibold text-white text-sm truncate">{l.name}</div>
+                                            <div className="text-xs text-gray-500 truncate mt-0.5">{l.company}</div>
                                         </div>
-                                        <div className={`text-[9px] px-2 py-0.5 rounded-full border shrink-0 ${getStatusStyles(l.status)}`}>
+                                        <div className={`text-[9px] px-2 py-0.5 rounded-full border shrink-0 ml-2 ${getStatusStyles(l.status)}`}>
                                             {l.status}
                                         </div>
                                     </button>
@@ -820,46 +808,40 @@ REASON FOR CALL:
                             </div>
                         )}
 
+                        {/* Lead detail view */}
                         {view === 'lead-detail' && selectedLead && (
-                            <div className="p-6 space-y-6">
-                                {/* Lead Info Section */}
-                                <div className="space-y-4">
+                            <div className="p-4 space-y-4">
+                                {/* Lead Info */}
+                                <div className="space-y-3">
                                     <div>
                                         <div className="flex items-center justify-between mb-1">
                                             <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest">Decision Maker</label>
-                                            <button 
-                                                onClick={() => isEditingName ? handleSaveLeadName() : setIsEditingName(true)}
-                                                className="text-horizon-accent hover:text-white transition-colors"
-                                            >
-                                                {isEditingName ? <Check size={14} /> : <Edit2 size={12} />}
+                                            <button onClick={() => isEditingName ? handleSaveLeadName() : setIsEditingName(true)} className="text-[#CD3D35] hover:text-white transition-colors">
+                                                {isEditingName ? <Check size={13} /> : <Edit2 size={11} />}
                                             </button>
                                         </div>
                                         {isEditingName ? (
                                             <div className="flex gap-2">
-                                                <input 
-                                                    type="text"
-                                                    value={editableLeadName}
-                                                    onChange={(e) => setEditableLeadName(e.target.value)}
-                                                    className="flex-1 bg-[#09090b] border border-horizon-accent/50 rounded-lg px-2 py-1 text-sm text-white focus:outline-none"
-                                                    autoFocus
-                                                />
-                                                <button onClick={() => { setIsEditingName(false); setEditableLeadName(selectedLead.name); }} className="text-gray-500"><X size={14} /></button>
+                                                <input type="text" value={editableLeadName} onChange={(e) => setEditableLeadName(e.target.value)}
+                                                    className="flex-1 bg-white/[0.03] border border-[#CD3D35]/40 rounded-lg px-2 py-1 text-sm text-white focus:outline-none" autoFocus />
+                                                <button onClick={() => { setIsEditingName(false); setEditableLeadName(selectedLead.name); }} className="text-gray-500 hover:text-white"><X size={13} /></button>
                                             </div>
                                         ) : (
-                                            <div className="text-lg font-bold text-white">{selectedLead.name}</div>
+                                            <div className="text-base font-bold text-white">{selectedLead.name}</div>
                                         )}
                                     </div>
 
-                                    <div className="grid grid-cols-2 gap-4">
+                                    <div className="grid grid-cols-2 gap-3">
                                         <div>
                                             <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest block mb-1">Company</label>
-                                            <div className="text-sm text-gray-300 flex items-center gap-2">
-                                                <Briefcase size={14} className="text-gray-600" /> {selectedLead.company}
+                                            <div className="text-xs text-gray-300 flex items-center gap-1.5">
+                                                <Briefcase size={11} className="text-gray-600 shrink-0" />
+                                                <span className="truncate">{selectedLead.company}</span>
                                             </div>
                                         </div>
                                         <div>
                                             <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest block mb-1">Status</label>
-                                            <div className={`inline-block text-[10px] px-2 py-0.5 rounded border ${getStatusStyles(selectedLead.status)}`}>
+                                            <div className={`inline-block text-[9px] px-2 py-0.5 rounded border ${getStatusStyles(selectedLead.status)}`}>
                                                 {selectedLead.status}
                                             </div>
                                         </div>
@@ -867,91 +849,79 @@ REASON FOR CALL:
 
                                     <div>
                                         <div className="flex items-center justify-between mb-1">
-                                            <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest">Email Address</label>
-                                            <button 
-                                                onClick={() => isEditingEmail ? handleSaveLeadEmail() : setIsEditingEmail(true)}
-                                                className="text-horizon-accent hover:text-white transition-colors"
-                                            >
-                                                {isEditingEmail ? <Check size={14} /> : <Edit2 size={12} />}
+                                            <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest">Email</label>
+                                            <button onClick={() => isEditingEmail ? handleSaveLeadEmail() : setIsEditingEmail(true)} className="text-[#CD3D35] hover:text-white transition-colors">
+                                                {isEditingEmail ? <Check size={13} /> : <Edit2 size={11} />}
                                             </button>
                                         </div>
                                         {isEditingEmail ? (
                                             <div className="flex gap-2">
-                                                <input 
-                                                    type="email"
-                                                    value={editableLeadEmail}
-                                                    onChange={(e) => setEditableLeadEmail(e.target.value)}
-                                                    className="flex-1 bg-[#09090b] border border-horizon-accent/50 rounded-lg px-2 py-1 text-sm text-white focus:outline-none"
-                                                    autoFocus
-                                                />
-                                                <button onClick={() => { setIsEditingEmail(false); setEditableLeadEmail(selectedLead.email || ''); }} className="text-gray-500"><X size={14} /></button>
+                                                <input type="email" value={editableLeadEmail} onChange={(e) => setEditableLeadEmail(e.target.value)}
+                                                    className="flex-1 bg-white/[0.03] border border-[#CD3D35]/40 rounded-lg px-2 py-1 text-sm text-white focus:outline-none" autoFocus />
+                                                <button onClick={() => { setIsEditingEmail(false); setEditableLeadEmail(selectedLead.email || ''); }} className="text-gray-500 hover:text-white"><X size={13} /></button>
                                             </div>
                                         ) : (
-                                            <div className="text-sm text-gray-300 flex items-center gap-2">
-                                                <Mail size={14} className="text-gray-600" /> {selectedLead.email || 'No email provided'}
+                                            <div className="text-xs text-gray-300 flex items-center gap-1.5">
+                                                <Mail size={11} className="text-gray-600 shrink-0" />
+                                                <span className="truncate">{selectedLead.email || 'No email provided'}</span>
                                             </div>
                                         )}
                                     </div>
                                 </div>
 
-                                <div className="h-px bg-[#262624]" />
+                                <div className="h-px bg-white/6" />
 
-                                {/* Action Section */}
-                                <div className="space-y-4">
-                                    <button 
+                                {/* Actions */}
+                                <div className="space-y-3">
+                                    <button
                                         onClick={handleOpenCalendar}
                                         data-cal-link="horizon-ai/30min"
                                         data-cal-namespace="30min"
                                         data-cal-config='{"layout":"month_view"}'
-                                        className="w-full bg-[#262624] hover:bg-[#333] border border-[#333] text-white py-3 rounded-xl flex items-center justify-center gap-2 text-sm font-bold transition-all"
+                                        className="w-full bg-white/[0.04] hover:bg-white/[0.07] border border-white/10 hover:border-[#CD3D35]/30 text-white py-2.5 rounded-xl flex items-center justify-center gap-2 text-xs font-bold transition-all"
                                     >
-                                        <Calendar size={16} className="text-horizon-accent" /> Book Demo on Cal.com
+                                        <Calendar size={13} className="text-[#CD3D35]" /> Book Demo on Cal.com
                                     </button>
 
                                     <div>
-                                        <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest block mb-2">Call Disposition</label>
-                                        <select 
+                                        <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest block mb-1.5">Call Disposition</label>
+                                        <select
                                             value={selectedOutcome}
-                                            onChange={(e) => {
-                                                setSelectedOutcome(e.target.value);
-                                                setShowOutcomeError(false);
-                                            }}
-                                            className={`w-full bg-[#09090b] border ${showOutcomeError ? 'border-red-500/50' : 'border-[#262624]'} rounded-xl px-3 py-2.5 text-sm text-white focus:border-horizon-accent focus:outline-none appearance-none cursor-pointer`}
+                                            onChange={(e) => { setSelectedOutcome(e.target.value); setShowOutcomeError(false); }}
+                                            className={`w-full bg-white/[0.03] border ${showOutcomeError ? 'border-red-500/50' : 'border-white/8'} rounded-xl px-3 py-2 text-xs text-white focus:border-[#CD3D35]/50 focus:outline-none appearance-none cursor-pointer`}
                                         >
-                                            <option>Select Disposition...</option>
-                                            <option>New Lead</option>
-                                            <option>Demo Booked</option>
-                                            <option>Follow-up Required</option>
-                                            <option>Voicemail</option>
-                                            <option>Not Interested</option>
-                                            <option>Wrong Number</option>
+                                            <option className="bg-[#0c0c0e]">Select Disposition...</option>
+                                            <option className="bg-[#0c0c0e]">New Lead</option>
+                                            <option className="bg-[#0c0c0e]">Demo Booked</option>
+                                            <option className="bg-[#0c0c0e]">Follow-up Required</option>
+                                            <option className="bg-[#0c0c0e]">Voicemail</option>
+                                            <option className="bg-[#0c0c0e]">Not Interested</option>
+                                            <option className="bg-[#0c0c0e]">Wrong Number</option>
                                         </select>
                                     </div>
 
-                                    {/* NEW: Call Note Field */}
                                     <div>
-                                        <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest">Add a Note</label>
-                                        <textarea 
+                                        <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest block mb-1.5">Call Notes</label>
+                                        <textarea
                                             value={callNote}
                                             onChange={(e) => setCallNote(e.target.value)}
                                             placeholder="Enter call notes, pain points, or follow-up details..."
-                                            className="w-full bg-[#09090b] border border-[#262624] rounded-xl px-3 py-2.5 text-sm text-white focus:border-horizon-accent focus:outline-none h-24 resize-none"
+                                            className="w-full bg-white/[0.03] border border-white/8 rounded-xl px-3 py-2 text-xs text-white focus:border-[#CD3D35]/50 focus:outline-none h-20 resize-none placeholder-gray-600"
                                         />
                                     </div>
 
-                                    <button 
-                                        onClick={handleNextLead} 
-                                        className="w-full bg-horizon-accent text-black font-bold py-3 rounded-xl shadow-lg hover:bg-white transition-colors text-sm"
+                                    <button
+                                        onClick={handleNextLead}
+                                        className="w-full bg-[#CD3D35] hover:bg-[#B83530] text-white font-bold py-2.5 rounded-xl shadow-lg shadow-[#CD3D35]/15 transition-all active:scale-[0.98] text-sm"
                                     >
                                         Submit & Next Lead
                                     </button>
 
-                                    {/* Address Display */}
                                     {selectedLead.address && (
-                                        <div className="pt-3 border-t border-[#262624]">
+                                        <div className="pt-2 border-t border-white/6">
                                             <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest block mb-1">Address</label>
-                                            <div className="text-sm text-gray-300 flex items-start gap-2">
-                                                <MapPin size={14} className="text-gray-600 mt-0.5 flex-shrink-0" /> 
+                                            <div className="text-xs text-gray-400 flex items-start gap-1.5">
+                                                <MapPin size={11} className="text-gray-600 mt-0.5 shrink-0" />
                                                 <span>{selectedLead.address}</span>
                                             </div>
                                         </div>

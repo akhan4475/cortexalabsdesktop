@@ -35,8 +35,8 @@ const SpaceBackground: React.FC = () => {
     const centerX = width / 2;
     const centerY = height / 2;
     
-    // Brand colors + white/grey
-    const colors = ['#ffffff', '#a1a1a1', '#3ECE8D', '#1a4d33'];
+    // White/grey stars with occasional red accent
+    const colors = ['#ffffff', '#cccccc', '#aaaaaa', '#CD3D35'];
 
     for (let i = 0; i < numStars; i++) {
       stars.push({

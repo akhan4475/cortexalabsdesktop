@@ -434,80 +434,86 @@ const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDel
 
     if (view === 'add-lead' || view === 'edit-lead') {
         const isEdit = view === 'edit-lead';
+        const inputCls = "w-full bg-white/[0.04] border border-white/8 rounded-xl px-4 py-2.5 text-sm text-white focus:border-[#CD3D35]/50 focus:outline-none transition-all";
         return (
-            <div className="h-full flex flex-col max-w-2xl mx-auto py-8">
-                <button onClick={() => setView('list')} className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-8 group w-fit">
-                    <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
+            <div className="h-full flex flex-col max-w-2xl mx-auto py-6">
+                <button onClick={() => setView('list')} className="flex items-center gap-2 text-gray-500 hover:text-white transition-colors mb-6 group w-fit text-sm">
+                    <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
                     Back to Lead List
                 </button>
 
-                <div className="bg-[#18181b] border border-[#262624] rounded-2xl p-8 space-y-8 shadow-2xl overflow-y-auto crm-scroll">
-                    <div className="text-center">
-                        <div className="w-12 h-12 rounded-xl bg-horizon-accent/10 border border-horizon-accent/20 flex items-center justify-center text-horizon-accent mx-auto mb-4">
-                            {isEdit ? <Edit2 size={24} /> : <User size={24} />}
+                <div className="bg-[#0c0c0e] border border-white/8 rounded-2xl shadow-2xl overflow-hidden flex flex-col flex-1 min-h-0">
+                    <div className="h-[3px] bg-[#CD3D35] shrink-0" />
+                    <div className="p-6 space-y-5 overflow-y-auto crm-scroll flex-1">
+                        <div className="flex items-center gap-3 mb-2">
+                            <div className="w-10 h-10 rounded-xl bg-[#CD3D35]/10 border border-[#CD3D35]/20 flex items-center justify-center text-[#CD3D35] shrink-0">
+                                {isEdit ? <Edit2 size={18} /> : <User size={18} />}
+                            </div>
+                            <div>
+                                <h2 className="text-base font-bold text-white">{isEdit ? 'Edit Lead' : 'Add Individual Lead'}</h2>
+                                <p className="text-gray-500 text-xs">In campaign: <span className="text-white font-medium">{activeCampaign?.name}</span></p>
+                            </div>
                         </div>
-                        <h2 className="text-2xl font-bold text-white mb-2">{isEdit ? 'Edit Lead' : 'Add Individual Lead'}</h2>
-                        <p className="text-gray-500 text-sm">Managing contact in <span className="text-white font-bold">{activeCampaign?.name}</span>.</p>
-                    </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="space-y-2">
-                            <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Decision Maker Name*</label>
-                            <input type="text" placeholder="e.g. Sarah Connor" value={leadForm.name} onChange={(e) => setLeadForm({ ...leadForm, name: e.target.value })} className="w-full bg-[#09090b] border border-[#262624] rounded-xl px-4 py-3 text-sm text-white focus:border-horizon-accent focus:outline-none" />
-                        </div>
-                        <div className="space-y-2">
-                            <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Company Name*</label>
-                            <input type="text" placeholder="e.g. Cyberdyne Systems" value={leadForm.company} onChange={(e) => setLeadForm({ ...leadForm, company: e.target.value })} className="w-full bg-[#09090b] border border-[#262624] rounded-xl px-4 py-3 text-sm text-white focus:border-horizon-accent focus:outline-none" />
-                        </div>
-                        <div className="space-y-2">
-                            <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Phone Number*</label>
-                            <div className="relative">
-                                <Phone size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600" />
-                                <input type="text" placeholder="+1 555-0101" value={leadForm.phone} onChange={(e) => setLeadForm({ ...leadForm, phone: e.target.value })} className="w-full bg-[#09090b] border border-[#262624] rounded-xl pl-10 pr-4 py-3 text-sm text-white focus:border-horizon-accent focus:outline-none font-mono" />
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="space-y-1.5">
+                                <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest">Decision Maker Name *</label>
+                                <input type="text" placeholder="e.g. Sarah Connor" value={leadForm.name} onChange={(e) => setLeadForm({ ...leadForm, name: e.target.value })} className={inputCls} />
+                            </div>
+                            <div className="space-y-1.5">
+                                <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest">Company Name *</label>
+                                <input type="text" placeholder="e.g. Cyberdyne Systems" value={leadForm.company} onChange={(e) => setLeadForm({ ...leadForm, company: e.target.value })} className={inputCls} />
+                            </div>
+                            <div className="space-y-1.5">
+                                <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest">Phone Number *</label>
+                                <div className="relative">
+                                    <Phone size={13} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-600" />
+                                    <input type="text" placeholder="+1 555-0101" value={leadForm.phone} onChange={(e) => setLeadForm({ ...leadForm, phone: e.target.value })} className={`${inputCls} pl-9 font-mono`} />
+                                </div>
+                            </div>
+                            <div className="space-y-1.5">
+                                <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest">Email Address</label>
+                                <div className="relative">
+                                    <Mail size={13} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-600" />
+                                    <input type="email" placeholder="sarah@cyberdyne.com" value={leadForm.email} onChange={(e) => setLeadForm({ ...leadForm, email: e.target.value })} className={`${inputCls} pl-9`} />
+                                </div>
+                            </div>
+                            <div className="space-y-1.5 md:col-span-2">
+                                <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest">Website</label>
+                                <div className="relative">
+                                    <Globe size={13} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-600" />
+                                    <input type="text" placeholder="www.cyberdyne.com" value={leadForm.website} onChange={(e) => setLeadForm({ ...leadForm, website: e.target.value })} className={`${inputCls} pl-9`} />
+                                </div>
+                            </div>
+                            <div className="space-y-1.5 md:col-span-2">
+                                <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest">Address</label>
+                                <div className="relative">
+                                    <MapPin size={13} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-600" />
+                                    <input type="text" placeholder="123 AI Lane, San Francisco, CA" value={leadForm.address} onChange={(e) => setLeadForm({ ...leadForm, address: e.target.value })} className={`${inputCls} pl-9`} />
+                                </div>
+                            </div>
+                            <div className="space-y-1.5">
+                                <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest">Rating (1–5)</label>
+                                <input type="text" placeholder="4.5" value={leadForm.rating} onChange={(e) => setLeadForm({ ...leadForm, rating: e.target.value })} className={inputCls} />
+                            </div>
+                            <div className="space-y-1.5">
+                                <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest">Status</label>
+                                <select value={leadForm.status} onChange={(e) => setLeadForm({ ...leadForm, status: e.target.value })} className={`${inputCls} appearance-none cursor-pointer`}>
+                                    {STATUS_OPTIONS.map(opt => <option key={opt} value={opt} className="bg-[#0c0c0e]">{opt}</option>)}
+                                </select>
+                            </div>
+                            <div className="space-y-1.5 md:col-span-2">
+                                <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest">Notes / Summary</label>
+                                <textarea placeholder="Enter specific pain points or context..." value={leadForm.summary} onChange={(e) => setLeadForm({ ...leadForm, summary: e.target.value })} className={`${inputCls} h-24 resize-none crm-scroll`} />
                             </div>
                         </div>
-                        <div className="space-y-2">
-                            <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Email Address</label>
-                            <div className="relative">
-                                <Mail size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600" />
-                                <input type="email" placeholder="sarah@cyberdyne.com" value={leadForm.email} onChange={(e) => setLeadForm({ ...leadForm, email: e.target.value })} className="w-full bg-[#09090b] border border-[#262624] rounded-xl pl-10 pr-4 py-3 text-sm text-white focus:border-horizon-accent focus:outline-none" />
-                            </div>
-                        </div>
-                        <div className="space-y-2 md:col-span-2">
-                            <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Website</label>
-                            <div className="relative">
-                                <Globe size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600" />
-                                <input type="text" placeholder="www.cyberdyne.com" value={leadForm.website} onChange={(e) => setLeadForm({ ...leadForm, website: e.target.value })} className="w-full bg-[#09090b] border border-[#262624] rounded-xl pl-10 pr-4 py-3 text-sm text-white focus:border-horizon-accent focus:outline-none" />
-                            </div>
-                        </div>
-                        <div className="space-y-2 md:col-span-2">
-                            <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Address</label>
-                            <div className="relative">
-                                <MapPin size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600" />
-                                <input type="text" placeholder="123 AI Lane, San Francisco, CA" value={leadForm.address} onChange={(e) => setLeadForm({ ...leadForm, address: e.target.value })} className="w-full bg-[#09090b] border border-[#262624] rounded-xl pl-10 pr-4 py-3 text-sm text-white focus:border-horizon-accent focus:outline-none" />
-                            </div>
-                        </div>
-                        <div className="space-y-2">
-                            <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Rating (1-5)</label>
-                            <input type="text" placeholder="4.5" value={leadForm.rating} onChange={(e) => setLeadForm({ ...leadForm, rating: e.target.value })} className="w-full bg-[#09090b] border border-[#262624] rounded-xl px-4 py-3 text-sm text-white focus:border-horizon-accent focus:outline-none" />
-                        </div>
-                        <div className="space-y-2">
-                            <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Status / Disposition</label>
-                            <select value={leadForm.status} onChange={(e) => setLeadForm({ ...leadForm, status: e.target.value })} className="w-full bg-[#09090b] border border-[#262624] rounded-xl px-4 py-3 text-sm text-white focus:border-horizon-accent focus:outline-none appearance-none cursor-pointer">
-                                {STATUS_OPTIONS.map(opt => <option key={opt} value={opt}>{opt}</option>)}
-                            </select>
-                        </div>
-                        <div className="space-y-2 md:col-span-2">
-                            <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Opportunity Summary / Notes</label>
-                            <textarea placeholder="Enter specific pain points or context..." value={leadForm.summary} onChange={(e) => setLeadForm({ ...leadForm, summary: e.target.value })} className="w-full bg-[#09090b] border border-[#262624] rounded-xl px-4 py-3 text-sm text-white focus:border-horizon-accent focus:outline-none h-32 resize-none crm-scroll" />
-                        </div>
-                    </div>
 
-                    <div className="flex gap-4 pt-4">
-                        <button onClick={() => setView('list')} className="flex-1 bg-transparent border border-[#262624] text-white py-3 rounded-xl font-bold hover:bg-white/5 transition-colors">Cancel</button>
-                        <button onClick={handleSaveLead} className="flex-1 bg-horizon-accent text-black py-3 rounded-xl font-bold hover:bg-white transition-colors flex items-center justify-center gap-2">
-                            <Save size={18} /> {isEdit ? 'Save Changes' : 'Add Lead'}
-                        </button>
+                        <div className="flex gap-3 pt-2">
+                            <button onClick={() => setView('list')} className="flex-1 bg-transparent border border-white/10 text-gray-400 hover:text-white py-2.5 rounded-xl font-bold hover:border-white/20 transition-all text-sm">Cancel</button>
+                            <button onClick={handleSaveLead} className="flex-1 bg-[#CD3D35] hover:bg-[#B83530] text-white py-2.5 rounded-xl font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#CD3D35]/15 text-sm active:scale-[0.98]">
+                                <Save size={14} /> {isEdit ? 'Save Changes' : 'Add Lead'}
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -516,56 +522,47 @@ const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDel
 
     if (view === 'create') {
         return (
-            <div className="h-full flex flex-col max-w-2xl mx-auto py-8">
-                <button onClick={() => setView('folders')} className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-8 group w-fit">
-                    <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
+            <div className="h-full flex flex-col max-w-xl mx-auto py-6">
+                <button onClick={() => setView('folders')} className="flex items-center gap-2 text-gray-500 hover:text-white transition-colors mb-6 group w-fit text-sm">
+                    <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
                     Back to Campaigns
                 </button>
 
-                <div className="bg-[#18181b] border border-[#262624] rounded-2xl p-8 space-y-8 shadow-2xl">
-                    <div className="text-center">
-                        <div className="w-12 h-12 rounded-xl bg-horizon-accent/10 border border-horizon-accent/20 flex items-center justify-center text-horizon-accent mx-auto mb-4">
-                            <Plus size={24} />
-                        </div>
-                        <h2 className="text-2xl font-bold text-white mb-2">Create New Campaign</h2>
-                        <p className="text-gray-500 text-sm">Upload a CSV to start a new outreach sequence.</p>
-                    </div>
-
-                    <div className="space-y-6">
-                        <div className="space-y-2">
-                            <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Campaign Name</label>
-                            <input 
-                                type="text" 
-                                placeholder="e.g. Real Estate Q2 Cold Calls" 
-                                value={newCampaignName} 
-                                onChange={(e) => setNewCampaignName(e.target.value)} 
-                                className="w-full bg-[#09090b] border border-[#262624] rounded-xl px-4 py-3 text-sm text-white focus:border-horizon-accent focus:outline-none" 
-                            />
-                        </div>
-
-                        <div className="space-y-2">
-                            <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Leads Data (CSV)</label>
-                            <div 
-                                onClick={() => fileInputRef.current?.click()}
-                                className={`border-2 border-dashed rounded-2xl p-10 flex flex-col items-center justify-center cursor-pointer transition-all ${pendingFile ? 'border-horizon-accent/50 bg-horizon-accent/5' : 'border-[#262624] hover:border-horizon-accent/30 bg-[#09090b]'}`}
-                            >
-                                <input type="file" ref={fileInputRef} onChange={handleFileUpload} accept=".csv" className="hidden" />
-                                <Upload className={`mb-4 ${pendingFile ? 'text-horizon-accent' : 'text-gray-600'}`} size={32} />
-                                <p className="text-sm font-medium text-white mb-1">
-                                    {pendingFile ? pendingFile.name : 'Click to upload or drag and drop'}
-                                </p>
-                                <p className="text-xs text-gray-500">CSV files only. Headers should include Name, Company, Phone.</p>
+                <div className="bg-[#0c0c0e] border border-white/8 rounded-2xl shadow-2xl overflow-hidden">
+                    <div className="h-[3px] bg-[#CD3D35]" />
+                    <div className="p-6 space-y-5">
+                        <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-xl bg-[#CD3D35]/10 border border-[#CD3D35]/20 flex items-center justify-center text-[#CD3D35] shrink-0">
+                                <Plus size={18} />
+                            </div>
+                            <div>
+                                <h2 className="text-base font-bold text-white">Create New Campaign</h2>
+                                <p className="text-gray-500 text-xs mt-0.5">Upload a CSV to start a new outreach sequence.</p>
                             </div>
                         </div>
 
-                        <div className="flex gap-4 pt-4">
-                            <button onClick={() => setView('folders')} className="flex-1 bg-transparent border border-[#262624] text-white py-3 rounded-xl font-bold hover:bg-white/5 transition-colors">Cancel</button>
-                            <button 
-                                onClick={handleCreateCampaign} 
-                                disabled={isCreatingCampaign}
-                                className="flex-1 bg-horizon-accent text-black py-3 rounded-xl font-bold hover:bg-white transition-colors flex items-center justify-center gap-2 disabled:opacity-50"
-                            >
-                                {isCreatingCampaign ? 'Parsing...' : 'Create Campaign'}
+                        <div className="space-y-1.5">
+                            <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest">Campaign Name</label>
+                            <input type="text" placeholder="e.g. Real Estate Q2 Cold Calls" value={newCampaignName} onChange={(e) => setNewCampaignName(e.target.value)}
+                                className="w-full bg-white/[0.04] border border-white/8 rounded-xl px-4 py-2.5 text-sm text-white focus:border-[#CD3D35]/50 focus:outline-none transition-all" />
+                        </div>
+
+                        <div className="space-y-1.5">
+                            <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest">Leads Data (CSV)</label>
+                            <div onClick={() => fileInputRef.current?.click()}
+                                className={`border-2 border-dashed rounded-2xl p-8 flex flex-col items-center justify-center cursor-pointer transition-all ${pendingFile ? 'border-[#CD3D35]/50 bg-[#CD3D35]/5' : 'border-white/8 hover:border-[#CD3D35]/30 bg-white/[0.02]'}`}>
+                                <input type="file" ref={fileInputRef} onChange={handleFileUpload} accept=".csv" className="hidden" />
+                                <Upload className={`mb-3 ${pendingFile ? 'text-[#CD3D35]' : 'text-gray-600'}`} size={26} />
+                                <p className="text-sm font-medium text-white mb-1">{pendingFile ? pendingFile.name : 'Click to upload CSV'}</p>
+                                <p className="text-xs text-gray-600">Headers: Name, Company, Phone (minimum)</p>
+                            </div>
+                        </div>
+
+                        <div className="flex gap-3 pt-2">
+                            <button onClick={() => setView('folders')} className="flex-1 bg-transparent border border-white/10 text-gray-400 hover:text-white py-2.5 rounded-xl font-bold hover:border-white/20 transition-all text-sm">Cancel</button>
+                            <button onClick={handleCreateCampaign} disabled={isCreatingCampaign}
+                                className="flex-1 bg-[#CD3D35] hover:bg-[#B83530] text-white py-2.5 rounded-xl font-bold transition-all flex items-center justify-center gap-2 text-sm disabled:opacity-50 active:scale-[0.98]">
+                                {isCreatingCampaign ? 'Parsing…' : 'Create Campaign'}
                             </button>
                         </div>
                     </div>
@@ -582,72 +579,75 @@ const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDel
                         <h2 className="text-2xl font-bold text-white">Campaigns</h2>
                         <p className="text-gray-500 text-sm">Organize and manage your outreach lead lists.</p>
                     </div>
-                    <button onClick={() => setView('create')} className="flex items-center gap-2 bg-horizon-accent text-black px-4 py-2 rounded-lg font-bold hover:bg-white transition-colors">
+                    <button onClick={() => setView('create')} className="flex items-center gap-2 bg-[#CD3D35] hover:bg-[#B83530] text-white px-4 py-2 rounded-xl font-bold transition-all shadow-lg shadow-[#CD3D35]/15 active:scale-[0.98] text-sm">
                         <Plus size={18} /> New Campaign
                     </button>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                     {campaigns.map((camp) => (
-                        <div key={camp.id} onClick={() => handleOpenCampaign(camp)} className="bg-[#18181b] border border-[#262624] hover:border-horizon-accent/50 p-6 rounded-xl cursor-pointer transition-all group relative">
+                        <div key={camp.id} onClick={() => handleOpenCampaign(camp)} className="bg-white/[0.02] border border-white/8 hover:border-[#CD3D35]/40 hover:bg-white/[0.04] p-5 rounded-2xl cursor-pointer transition-all group relative">
                             <div className="flex justify-between items-start mb-4">
-                                <div className="p-3 bg-[#262624] rounded-lg group-hover:bg-horizon-accent/10 transition-colors">
-                                    <Folder className="text-gray-400 group-hover:text-horizon-accent" size={24} />
+                                <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/8 flex items-center justify-center group-hover:bg-[#CD3D35]/10 group-hover:border-[#CD3D35]/20 transition-all">
+                                    <Folder className="text-gray-500 group-hover:text-[#CD3D35] transition-colors" size={18} />
                                 </div>
                                 <div className="relative campaign-menu-container">
-                                    <button onClick={(e) => { e.stopPropagation(); setMenuOpenId(menuOpenId === camp.id ? null : camp.id); }} className="text-gray-500 hover:text-white p-1 hover:bg-[#333] rounded transition-colors">
-                                        <MoreHorizontal size={20} />
+                                    <button onClick={(e) => { e.stopPropagation(); setMenuOpenId(menuOpenId === camp.id ? null : camp.id); }} className="text-gray-600 hover:text-white p-1.5 hover:bg-white/8 rounded-lg transition-colors">
+                                        <MoreHorizontal size={16} />
                                     </button>
                                     {menuOpenId === camp.id && (
-                                        <div className="absolute right-0 top-full mt-2 w-40 bg-[#121214] border border-[#262624] rounded-xl shadow-2xl z-30 overflow-hidden animate-in fade-in zoom-in-95 duration-100">
-                                            <button onClick={(e) => { e.stopPropagation(); setEditingCampaign({ id: camp.id, name: camp.name }); setMenuOpenId(null); }} className="w-full text-left px-4 py-3 text-sm text-gray-300 hover:bg-white/5 flex items-center gap-3 transition-colors">
-                                                <Edit2 size={16} className="text-blue-400" /> Rename
+                                        <div className="absolute right-0 top-full mt-1.5 w-36 bg-[#0c0c0e] border border-white/10 rounded-xl shadow-2xl shadow-black/60 z-30 overflow-hidden">
+                                            <button onClick={(e) => { e.stopPropagation(); setEditingCampaign({ id: camp.id, name: camp.name }); setMenuOpenId(null); }} className="w-full text-left px-4 py-2.5 text-xs font-bold text-gray-300 hover:bg-white/5 flex items-center gap-3 transition-colors">
+                                                <Edit2 size={13} className="text-blue-400" /> Rename
                                             </button>
-                                            <button onClick={(e) => { e.stopPropagation(); setConfirmDeleteCampaignId(camp.id); setMenuOpenId(null); }} className="w-full text-left px-4 py-3 text-sm text-red-400 hover:bg-red-500/10 flex items-center gap-3 transition-colors border-t border-[#262624]">
-                                                <Trash2 size={16} /> Delete
+                                            <button onClick={(e) => { e.stopPropagation(); setConfirmDeleteCampaignId(camp.id); setMenuOpenId(null); }} className="w-full text-left px-4 py-2.5 text-xs font-bold text-red-400 hover:bg-red-500/10 flex items-center gap-3 transition-colors border-t border-white/8">
+                                                <Trash2 size={13} /> Delete
                                             </button>
                                         </div>
                                     )}
                                 </div>
                             </div>
-                            <h3 className="text-lg font-bold text-white mb-1 group-hover:text-horizon-accent transition-colors truncate">{camp.name}</h3>
-                            <div className="flex justify-between items-center text-sm text-gray-500">
+                            <h3 className="font-bold text-white mb-1 group-hover:text-[#CD3D35] transition-colors truncate text-sm">{camp.name}</h3>
+                            <div className="flex justify-between items-center text-xs text-gray-500">
                                 <span>{camp.leadCount} Leads</span>
-                                <span>{camp.createdAt}</span>
+                                <span className="font-mono">{camp.createdAt}</span>
                             </div>
                         </div>
                     ))}
                 </div>
 
                 {editingCampaign && (
-                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-                        <div className="bg-[#121214] border border-[#262624] rounded-2xl p-8 w-full max-w-md shadow-2xl">
-                            <h3 className="text-xl font-bold text-white mb-6">Rename Campaign</h3>
-                            <input 
-                                type="text" 
-                                value={editingCampaign.name} 
-                                onChange={(e) => setEditingCampaign({ ...editingCampaign, name: e.target.value })} 
-                                className="w-full bg-[#09090b] border border-[#262624] rounded-xl px-4 py-3 text-sm text-white focus:border-horizon-accent focus:outline-none mb-8" 
+                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+                        <div className="bg-[#0c0c0e] border border-white/10 rounded-2xl p-6 w-full max-w-md shadow-2xl shadow-black/60">
+                            <h3 className="text-base font-bold text-white mb-5">Rename Campaign</h3>
+                            <input
+                                type="text"
+                                value={editingCampaign.name}
+                                onChange={(e) => setEditingCampaign({ ...editingCampaign, name: e.target.value })}
+                                className="w-full bg-white/[0.04] border border-white/8 rounded-xl px-4 py-2.5 text-sm text-white focus:border-[#CD3D35]/50 focus:outline-none mb-5"
                             />
-                            <div className="flex gap-4">
-                                <button onClick={() => setEditingCampaign(null)} className="flex-1 px-4 py-3 border border-[#262624] text-gray-400 font-bold rounded-xl hover:bg-white/5">Cancel</button>
-                                <button onClick={handleRename} className="flex-1 px-4 py-3 bg-horizon-accent text-black rounded-xl font-bold">Save</button>
+                            <div className="flex gap-3">
+                                <button onClick={() => setEditingCampaign(null)} className="flex-1 px-4 py-2.5 border border-white/10 text-gray-400 font-bold rounded-xl hover:bg-white/5 hover:text-white transition-all text-sm">Cancel</button>
+                                <button onClick={handleRename} className="flex-1 px-4 py-2.5 bg-[#CD3D35] hover:bg-[#B83530] text-white rounded-xl font-bold transition-all text-sm active:scale-[0.98]">Save</button>
                             </div>
                         </div>
                     </div>
                 )}
 
                 {confirmDeleteCampaignId && (
-                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-                        <div className="bg-[#121214] border border-red-500/30 rounded-2xl p-8 w-full max-w-md shadow-2xl">
-                            <div className="flex items-center gap-4 text-red-500 mb-6">
-                                <AlertTriangle size={24} />
-                                <h3 className="text-xl font-bold">Delete Campaign?</h3>
+                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+                        <div className="bg-[#0c0c0e] border border-red-500/25 rounded-2xl p-6 w-full max-w-md shadow-2xl shadow-black/60 overflow-hidden relative">
+                            <div className="absolute top-0 left-0 right-0 h-[3px] bg-red-500" />
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="w-9 h-9 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center">
+                                    <AlertTriangle size={16} className="text-red-400" />
+                                </div>
+                                <h3 className="text-base font-bold text-white">Delete Campaign?</h3>
                             </div>
-                            <p className="text-gray-400 mb-8">This will permanently remove the campaign and all its leads.</p>
-                            <div className="flex gap-4">
-                                <button onClick={() => setConfirmDeleteCampaignId(null)} className="flex-1 px-4 py-3 border border-[#262624] text-gray-400 font-bold rounded-xl hover:bg-white/5">Cancel</button>
-                                <button onClick={handleConfirmDeleteCampaign} className="flex-1 px-4 py-3 bg-red-600 text-white rounded-xl font-bold">Delete</button>
+                            <p className="text-gray-400 mb-6 text-sm">This will permanently remove the campaign and all its leads.</p>
+                            <div className="flex gap-3">
+                                <button onClick={() => setConfirmDeleteCampaignId(null)} className="flex-1 px-4 py-2.5 border border-white/10 text-gray-400 font-bold rounded-xl hover:bg-white/5 hover:text-white transition-all text-sm">Cancel</button>
+                                <button onClick={handleConfirmDeleteCampaign} className="flex-1 px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-xl font-bold transition-all text-sm active:scale-[0.98]">Delete</button>
                             </div>
                         </div>
                     </div>
@@ -658,35 +658,35 @@ const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDel
 
     return (
         <div className="space-y-4 h-full flex flex-col relative">
-            <div className="flex items-center justify-between bg-[#18181b] p-4 rounded-xl border border-[#262624]">
-                <div className="flex items-center gap-4">
-                    <button onClick={() => setView('folders')} className="p-2 hover:bg-[#262624] rounded-lg text-gray-400 hover:text-white transition-colors">
-                        <ArrowLeft size={20} />
-                    </button>
-                    <h2 className="font-bold text-white text-lg">{activeCampaign?.name}</h2>
-                </div>
+            <div className="flex items-center justify-between bg-[#0c0c0e] px-4 py-3 rounded-2xl border border-white/8">
                 <div className="flex items-center gap-3">
+                    <button onClick={() => setView('folders')} className="p-1.5 hover:bg-white/5 rounded-lg text-gray-400 hover:text-white transition-colors">
+                        <ArrowLeft size={18} />
+                    </button>
+                    <h2 className="font-bold text-white text-base">{activeCampaign?.name}</h2>
+                </div>
+                <div className="flex items-center gap-2.5">
                     {/* Filter Dropdown */}
                     <div className="relative filter-dropdown-container">
                         <button
                             onClick={() => setShowFilterDropdown(!showFilterDropdown)}
-                            className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-bold border transition-colors ${statusFilter !== 'All' ? 'bg-horizon-accent/10 border-horizon-accent/30 text-horizon-accent' : 'bg-[#09090b] border-[#262624] text-gray-400 hover:text-white'}`}
+                            className={`flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-bold border transition-colors ${statusFilter !== 'All' ? 'bg-[#CD3D35]/10 border-[#CD3D35]/30 text-[#CD3D35]' : 'bg-white/[0.03] border-white/8 text-gray-400 hover:text-white'}`}
                         >
-                            <Search size={14} />
-                            {statusFilter === 'All' ? 'Filter Status' : statusFilter}
+                            <Search size={12} />
+                            {statusFilter === 'All' ? 'Filter' : statusFilter}
                             {statusFilter !== 'All' && (
-                                <span className="ml-1 bg-horizon-accent text-black text-[9px] font-bold px-1.5 py-0.5 rounded-full">
+                                <span className="ml-1 bg-[#CD3D35] text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full">
                                     {currentCampaignLeads.length}
                                 </span>
                             )}
                         </button>
                         {showFilterDropdown && (
-                            <div className="absolute left-0 top-full mt-2 w-48 bg-[#121214] border border-[#262624] rounded-xl shadow-2xl z-30 overflow-hidden">
+                            <div className="absolute left-0 top-full mt-1.5 w-44 bg-[#0c0c0e] border border-white/10 rounded-xl shadow-2xl shadow-black/60 z-30 overflow-hidden">
                                 {['All', 'New Lead', 'Demo Booked', 'Follow-up Required', 'Voicemail', 'Not Interested', 'Wrong Number'].map(status => (
                                     <button
                                         key={status}
                                         onClick={() => { setStatusFilter(status); setShowFilterDropdown(false); }}
-                                        className={`w-full text-left px-4 py-2.5 text-xs font-bold transition-colors flex items-center justify-between ${statusFilter === status ? 'bg-horizon-accent/10 text-horizon-accent' : 'text-gray-300 hover:bg-white/5'}`}
+                                        className={`w-full text-left px-4 py-2.5 text-xs font-bold transition-colors flex items-center justify-between ${statusFilter === status ? 'bg-[#CD3D35]/10 text-[#CD3D35]' : 'text-gray-300 hover:bg-white/5'}`}
                                     >
                                         {status}
                                         {status !== 'All' && (
@@ -700,45 +700,36 @@ const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDel
                         )}
                     </div>
 
-                    {/* Bulk Delete Button — shown when leads are selected */}
                     {selectedLeads.length > 0 && (
                         <div className="flex items-center gap-2">
                             <button
-                                onClick={() => {
-                                    setMoveTargetCampaignId('');
-                                    setIsCreatingNewForMove(false);
-                                    setNewMoveCampaignName('');
-                                    setShowMoveModal(true);
-                                }}
-                                className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-bold bg-blue-500/10 border border-blue-500/20 text-blue-400 hover:bg-blue-500 hover:text-white transition-colors"
+                                onClick={() => { setMoveTargetCampaignId(''); setIsCreatingNewForMove(false); setNewMoveCampaignName(''); setShowMoveModal(true); }}
+                                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-blue-500/10 border border-blue-500/20 text-blue-400 hover:bg-blue-500 hover:text-white transition-colors"
                             >
-                                <Folder size={14} />
-                                Move ({selectedLeads.length})
+                                <Folder size={12} /> Move ({selectedLeads.length})
                             </button>
-                            <button
-                                onClick={handleBulkDelete}
-                                className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-bold bg-red-500/10 border border-red-500/20 text-red-400 hover:bg-red-500 hover:text-white transition-colors"
-                            >
-                                <Trash2 size={14} />
-                                Delete ({selectedLeads.length})
+                            <button onClick={handleBulkDelete}
+                                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-red-500/10 border border-red-500/20 text-red-400 hover:bg-red-500 hover:text-white transition-colors">
+                                <Trash2 size={12} /> Delete ({selectedLeads.length})
                             </button>
                         </div>
                     )}
 
                     <div className="relative">
-                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4" />
-                        <input type="text" placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="bg-[#09090b] border border-[#262624] rounded-lg pl-10 pr-4 py-2 text-sm text-white focus:outline-none focus:border-horizon-accent w-64" />
+                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 w-3.5 h-3.5" />
+                        <input type="text" placeholder="Search…" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="bg-white/[0.03] border border-white/8 rounded-xl pl-9 pr-4 py-1.5 text-xs text-white focus:outline-none focus:border-[#CD3D35]/50 w-52 placeholder-gray-600" />
                     </div>
-                    <button onClick={() => { setLeadForm({ name: '', company: '', phone: '', email: '', address: '', website: '', rating: '', reviews: '0', summary: '', status: 'New Lead' }); setView('add-lead'); }} className="flex items-center gap-2 bg-horizon-accent text-black px-4 py-2 rounded-lg font-bold text-sm hover:bg-white transition-colors">
-                        <Plus size={16} /> Add Lead
+                    <button onClick={() => { setLeadForm({ name: '', company: '', phone: '', email: '', address: '', website: '', rating: '', reviews: '0', summary: '', status: 'New Lead' }); setView('add-lead'); }}
+                        className="flex items-center gap-1.5 bg-[#CD3D35] hover:bg-[#B83530] text-white px-3.5 py-1.5 rounded-xl font-bold text-xs transition-all shadow-md shadow-[#CD3D35]/15 active:scale-[0.98]">
+                        <Plus size={14} /> Add Lead
                     </button>
                 </div>
             </div>
 
-            <div className="flex-1 bg-[#18181b] border border-[#262624] rounded-xl overflow-hidden flex flex-col">
-                <div className="grid grid-cols-[40px_1.5fr_1fr_120px_1.5fr_100px_1fr_120px_110px] gap-4 p-4 border-b border-[#262624] bg-[#262624]/50 text-[10px] font-bold text-gray-400 uppercase tracking-wider items-center">
+            <div className="flex-1 bg-[#0c0c0e] border border-white/8 rounded-2xl overflow-hidden flex flex-col">
+                <div className="grid grid-cols-[40px_1.5fr_1fr_120px_1.5fr_100px_1fr_120px_110px] gap-4 px-4 py-3 border-b border-white/8 bg-white/[0.02] text-[9px] font-bold text-gray-500 uppercase tracking-widest items-center">
                     <div className="flex items-center justify-center">
-                        <button onClick={toggleSelectAll}>{paginatedLeads.every(lead => selectedLeads.includes(lead.id)) ? <CheckSquare size={14} className="text-horizon-accent" /> : <Square size={14} />}</button>
+                        <button onClick={toggleSelectAll}>{paginatedLeads.every(lead => selectedLeads.includes(lead.id)) ? <CheckSquare size={13} className="text-[#CD3D35]" /> : <Square size={13} />}</button>
                     </div>
                     {/* Header: Decision Maker (Person), Company Name (Business) */}
                     <div>Decision Maker</div>
@@ -753,9 +744,9 @@ const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDel
 
                 <div className="overflow-y-auto flex-1 crm-scroll">
                     {paginatedLeads.map((lead) => (
-                        <div key={lead.id} className="grid grid-cols-[40px_1.5fr_1fr_120px_1.5fr_100px_1fr_120px_110px] gap-4 p-4 border-b border-[#262624] hover:bg-[#262624]/30 transition-colors items-center group">
+                        <div key={lead.id} className="grid grid-cols-[40px_1.5fr_1fr_120px_1.5fr_100px_1fr_120px_110px] gap-4 p-4 border-b border-white/[0.05] hover:bg-white/[0.02] transition-colors items-center group">
                             <div className="flex items-center justify-center">
-                                <button onClick={() => toggleSelectLead(lead.id)}>{selectedLeads.includes(lead.id) ? <CheckSquare size={14} className="text-horizon-accent" /> : <Square size={14} />}</button>
+                                <button onClick={() => toggleSelectLead(lead.id)}>{selectedLeads.includes(lead.id) ? <CheckSquare size={13} className="text-[#CD3D35]" /> : <Square size={13} className="text-gray-600" />}</button>
                             </div>
                             {/* Decision Maker (Name) | Company Name (Business) */}
                             <div className="truncate font-bold text-white text-sm">{lead.name || 'Unknown Contact'}</div>
@@ -771,7 +762,7 @@ const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDel
                             </div>
                             <div className="truncate">
                                 {lead.website ? (
-                                    <a href={lead.website.startsWith('http') ? lead.website : `https://${lead.website}`} target="_blank" rel="noreferrer" className="text-[10px] text-horizon-accent hover:underline">
+                                    <a href={lead.website.startsWith('http') ? lead.website : `https://${lead.website}`} target="_blank" rel="noreferrer" className="text-[10px] text-[#CD3D35] hover:underline truncate block">
                                         {lead.website.replace(/https?:\/\//, '').substring(0, 20)}...
                                     </a>
                                 ) : 'N/A'}
@@ -800,98 +791,81 @@ const Leads: React.FC<LeadsProps> = ({ campaigns, allLeads, onAddCampaign, onDel
                 </div>
 
                 {totalPages > 1 && (
-                    <div className="p-4 border-t border-[#262624] bg-[#18181b] flex items-center justify-between shrink-0">
-                        <div className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">
-                            Showing {(currentPage - 1) * PAGE_SIZE + 1} - {Math.min(currentPage * PAGE_SIZE, currentCampaignLeads.length)} of {currentCampaignLeads.length}
+                    <div className="px-4 py-3 border-t border-white/8 flex items-center justify-between shrink-0">
+                        <div className="text-[9px] text-gray-500 font-bold uppercase tracking-widest">
+                            Showing {(currentPage - 1) * PAGE_SIZE + 1}–{Math.min(currentPage * PAGE_SIZE, currentCampaignLeads.length)} of {currentCampaignLeads.length}
                         </div>
-                        <div className="flex items-center gap-2">
-                            <button onClick={goToFirst} disabled={currentPage === 1} className="p-2 bg-[#09090b] border border-[#262624] rounded-lg text-gray-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors"><ChevronsLeft size={16} /></button>
-                            <button onClick={goToPrev} disabled={currentPage === 1} className="p-2 bg-[#09090b] border border-[#262624] rounded-lg text-gray-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors"><ChevronLeft size={16} /></button>
-                            <div className="px-4 py-2 bg-[#09090b] border border-[#262624] rounded-lg text-xs font-bold text-horizon-accent">{currentPage} / {totalPages}</div>
-                            <button onClick={goToNext} disabled={currentPage === totalPages} className="p-2 bg-[#09090b] border border-[#262624] rounded-lg text-gray-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors"><ChevronRight size={16} /></button>
-                            <button onClick={goToLast} disabled={currentPage === totalPages} className="p-2 bg-[#09090b] border border-[#262624] rounded-lg text-gray-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors"><ChevronsRight size={16} /></button>
+                        <div className="flex items-center gap-1.5">
+                            <button onClick={goToFirst} disabled={currentPage === 1} className="p-1.5 bg-white/[0.03] border border-white/8 rounded-lg text-gray-500 hover:text-white disabled:opacity-30 transition-colors"><ChevronsLeft size={14} /></button>
+                            <button onClick={goToPrev} disabled={currentPage === 1} className="p-1.5 bg-white/[0.03] border border-white/8 rounded-lg text-gray-500 hover:text-white disabled:opacity-30 transition-colors"><ChevronLeft size={14} /></button>
+                            <div className="px-3 py-1.5 bg-white/[0.03] border border-white/8 rounded-lg text-xs font-bold text-[#CD3D35]">{currentPage} / {totalPages}</div>
+                            <button onClick={goToNext} disabled={currentPage === totalPages} className="p-1.5 bg-white/[0.03] border border-white/8 rounded-lg text-gray-500 hover:text-white disabled:opacity-30 transition-colors"><ChevronRight size={14} /></button>
+                            <button onClick={goToLast} disabled={currentPage === totalPages} className="p-1.5 bg-white/[0.03] border border-white/8 rounded-lg text-gray-500 hover:text-white disabled:opacity-30 transition-colors"><ChevronsRight size={14} /></button>
                         </div>
                     </div>
                 )}
             </div>
 
             {confirmDeleteLeadId && (
-                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-                    <div className="bg-[#121214] border border-red-500/30 rounded-2xl p-8 w-full max-w-md shadow-2xl">
-                        <h3 className="text-xl font-bold text-white mb-4">Delete Lead?</h3>
-                        <p className="text-gray-400 mb-8">This action cannot be undone.</p>
-                        <div className="flex gap-4">
-                            <button onClick={() => setConfirmDeleteLeadId(null)} className="flex-1 px-4 py-3 border border-[#262624] text-gray-400 font-bold rounded-xl hover:bg-white/5 transition-colors">Cancel</button>
-                            <button onClick={handleDeleteLeadConfirm} className="flex-1 px-4 py-3 bg-red-600 text-white rounded-xl font-bold hover:bg-red-700 transition-colors">Delete Permanently</button>
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+                    <div className="bg-[#0c0c0e] border border-red-500/25 rounded-2xl p-6 w-full max-w-sm shadow-2xl shadow-black/60 overflow-hidden relative">
+                        <div className="absolute top-0 left-0 right-0 h-[3px] bg-red-500" />
+                        <h3 className="text-base font-bold text-white mb-2">Delete Lead?</h3>
+                        <p className="text-gray-400 mb-6 text-sm">This action cannot be undone.</p>
+                        <div className="flex gap-3">
+                            <button onClick={() => setConfirmDeleteLeadId(null)} className="flex-1 px-4 py-2.5 border border-white/10 text-gray-400 font-bold rounded-xl hover:bg-white/5 hover:text-white transition-all text-sm">Cancel</button>
+                            <button onClick={handleDeleteLeadConfirm} className="flex-1 px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-xl font-bold transition-all text-sm">Delete</button>
                         </div>
                     </div>
                 </div>
             )}
 
-
             {showMoveModal && (
-                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-                    <div className="bg-[#121214] border border-[#262624] rounded-2xl p-8 w-full max-w-md shadow-2xl">
-                        <h3 className="text-xl font-bold text-white mb-2">Move {selectedLeads.length} Lead(s)</h3>
-                        <p className="text-gray-500 text-sm mb-6">Select a destination campaign or create a new one.</p>
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+                    <div className="bg-[#0c0c0e] border border-white/10 rounded-2xl p-6 w-full max-w-md shadow-2xl shadow-black/60">
+                        <h3 className="text-base font-bold text-white mb-1">Move {selectedLeads.length} Lead(s)</h3>
+                        <p className="text-gray-500 text-xs mb-5">Select a destination campaign or create a new one.</p>
 
-                        <div className="flex bg-[#09090b] p-1 rounded-xl border border-[#262624] mb-6">
-                            <button
-                                onClick={() => setIsCreatingNewForMove(false)}
-                                className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all ${!isCreatingNewForMove ? 'bg-horizon-accent text-black' : 'text-gray-500 hover:text-white'}`}
-                            >
-                                Existing Campaign
+                        <div className="flex bg-white/[0.03] p-1 rounded-xl border border-white/8 mb-5 gap-1">
+                            <button onClick={() => setIsCreatingNewForMove(false)}
+                                className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all ${!isCreatingNewForMove ? 'bg-[#CD3D35] text-white' : 'text-gray-500 hover:text-white'}`}>
+                                Existing
                             </button>
-                            <button
-                                onClick={() => setIsCreatingNewForMove(true)}
-                                className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all ${isCreatingNewForMove ? 'bg-horizon-accent text-black' : 'text-gray-500 hover:text-white'}`}
-                            >
+                            <button onClick={() => setIsCreatingNewForMove(true)}
+                                className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all ${isCreatingNewForMove ? 'bg-[#CD3D35] text-white' : 'text-gray-500 hover:text-white'}`}>
                                 New Campaign
                             </button>
                         </div>
 
                         {!isCreatingNewForMove ? (
-                            <div className="space-y-2 max-h-48 overflow-y-auto crm-scroll mb-6">
-                                {campaigns
-                                    .filter(c => c.id !== activeCampaign?.id)
-                                    .map(c => (
-                                        <button
-                                            key={c.id}
-                                            onClick={() => setMoveTargetCampaignId(c.id)}
-                                            className={`w-full text-left p-3 rounded-xl border transition-all flex items-center justify-between ${moveTargetCampaignId === c.id ? 'bg-horizon-accent/10 border-horizon-accent/40 text-white' : 'bg-[#09090b] border-[#262624] text-gray-300 hover:border-[#333]'}`}
-                                        >
-                                            <span className="font-bold text-sm">{c.name}</span>
-                                            <span className="text-xs text-gray-500">{c.leadCount} leads</span>
-                                        </button>
-                                    ))}
+                            <div className="space-y-1.5 max-h-48 overflow-y-auto crm-scroll mb-5">
+                                {campaigns.filter(c => c.id !== activeCampaign?.id).map(c => (
+                                    <button key={c.id} onClick={() => setMoveTargetCampaignId(c.id)}
+                                        className={`w-full text-left p-3 rounded-xl border transition-all flex items-center justify-between text-sm ${moveTargetCampaignId === c.id ? 'bg-[#CD3D35]/10 border-[#CD3D35]/40 text-white' : 'bg-white/[0.02] border-white/8 text-gray-300 hover:border-white/15'}`}>
+                                        <span className="font-semibold">{c.name}</span>
+                                        <span className="text-xs text-gray-500">{c.leadCount} leads</span>
+                                    </button>
+                                ))}
                                 {campaigns.filter(c => c.id !== activeCampaign?.id).length === 0 && (
-                                    <p className="text-center text-gray-500 text-sm py-4 italic">No other campaigns available.</p>
+                                    <p className="text-center text-gray-600 text-sm py-4 italic">No other campaigns available.</p>
                                 )}
                             </div>
                         ) : (
-                            <div className="mb-6">
-                                <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-2">New Campaign Name</label>
-                                <input
-                                    type="text"
-                                    placeholder="e.g. Q3 Follow-ups"
-                                    value={newMoveCampaignName}
+                            <div className="mb-5">
+                                <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest block mb-2">Campaign Name</label>
+                                <input type="text" placeholder="e.g. Q3 Follow-ups" value={newMoveCampaignName}
                                     onChange={(e) => setNewMoveCampaignName(e.target.value)}
-                                    className="w-full bg-[#09090b] border border-[#262624] rounded-xl px-4 py-3 text-sm text-white focus:border-horizon-accent focus:outline-none"
-                                />
+                                    className="w-full bg-white/[0.04] border border-white/8 rounded-xl px-4 py-2.5 text-sm text-white focus:border-[#CD3D35]/50 focus:outline-none" />
                             </div>
                         )}
 
-                        <div className="flex gap-4">
-                            <button
-                                onClick={() => { setShowMoveModal(false); setMoveTargetCampaignId(''); setIsCreatingNewForMove(false); setNewMoveCampaignName(''); }}
-                                className="flex-1 px-4 py-3 border border-[#262624] text-gray-400 font-bold rounded-xl hover:bg-white/5 transition-colors"
-                            >
+                        <div className="flex gap-3">
+                            <button onClick={() => { setShowMoveModal(false); setMoveTargetCampaignId(''); setIsCreatingNewForMove(false); setNewMoveCampaignName(''); }}
+                                className="flex-1 px-4 py-2.5 border border-white/10 text-gray-400 font-bold rounded-xl hover:bg-white/5 hover:text-white transition-all text-sm">
                                 Cancel
                             </button>
-                            <button
-                                onClick={handleConfirmMove}
-                                className="flex-1 px-4 py-3 bg-horizon-accent text-black rounded-xl font-bold hover:bg-white transition-colors"
-                            >
+                            <button onClick={handleConfirmMove}
+                                className="flex-1 px-4 py-2.5 bg-[#CD3D35] hover:bg-[#B83530] text-white rounded-xl font-bold transition-all text-sm active:scale-[0.98]">
                                 Move Leads
                             </button>
                         </div>

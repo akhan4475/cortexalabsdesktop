@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.contractorsync.net)",
+      "Bash(mkdir -p \"C:\\\\Users\\\\Ayaan\\\\Desktop\\\\cortexalabs\\\\.claude\" 2>/dev/null; echo done)",
+      "mcp__Claude_Preview__preview_start"
+    ]
+  }
+}

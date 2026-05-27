@@ -43,14 +43,14 @@ serve(async (req) => {
     const supabase = createClient(supabaseUrl, supabaseServiceKey)
     
     const { data: credentials, error: dbError } = await supabase
-      .from('twilio_credentials')
+      .from('user_credentials')
       .select('*')
       .eq('user_id', userId)
       .single()
 
     if (dbError || !credentials) {
       return new Response(
-        JSON.stringify({ error: 'Twilio credentials not found. Please configure them in Automations.' }),
+        JSON.stringify({ error: 'Twilio credentials not found. Please configure them in Credentials.' }),
         { 
           status: 400,
           headers: { 
@@ -68,7 +68,7 @@ serve(async (req) => {
 
     if (!TWILIO_API_KEY || !TWILIO_API_SECRET || !TWILIO_TWIML_APP_SID) {
       return new Response(
-        JSON.stringify({ error: 'Missing API credentials. Please add API Key and TwiML App SID in Automations.' }),
+        JSON.stringify({ error: 'Missing API credentials. Please add API Key and TwiML App SID in Credentials.' }),
         { 
           status: 400,
           headers: { 

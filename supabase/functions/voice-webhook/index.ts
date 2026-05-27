@@ -40,7 +40,7 @@ serve(async (req: Request) => {
     // Get caller ID - priority order:
     // 1. callerId from frontend (selected phone number)
     // 2. Default phone number from twilio_phone_numbers table
-    // 3. Legacy phone_number from twilio_credentials
+    // 3. Legacy phone_number from user_credentials
     // 4. Hardcoded fallback
     let twilioNumber = callerId || '+18884479457'
 
@@ -58,9 +58,9 @@ serve(async (req: Request) => {
       if (phoneNumber?.phone_number) {
         twilioNumber = phoneNumber.phone_number
       } else {
-        // Fallback to legacy phone_number in twilio_credentials
+        // Fallback to legacy phone_number in user_credentials
         const { data: credentials } = await supabase
-          .from('twilio_credentials')
+          .from('user_credentials')
           .select('phone_number')
           .eq('user_id', userId)
           .single()

@@ -146,7 +146,7 @@ const ParticleSphere: React.FC = () => {
       const cx = width / 2;
       const cy = height / 2;
 
-      ctx.fillStyle = '#3ECE8D'; // Horizon Accent Green
+      ctx.fillStyle = '#000000'; // Cortexa Labs Accent Green
 
       particles.forEach((p) => {
         // Rotate around Y axis

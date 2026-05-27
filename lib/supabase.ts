@@ -141,7 +141,7 @@ export interface Database {
           date?: string;
         };
       };
-      twilio_credentials: {
+      user_credentials: {
         Row: {
           id: string;
           user_id: string;

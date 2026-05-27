@@ -284,8 +284,8 @@ const Recordings: React.FC<RecordingsProps> = ({ campaigns }) => {
         return (
             <div className="h-full flex items-center justify-center">
                 <div className="text-center">
-                    <div className="w-16 h-16 rounded-full border-4 border-[#262624] border-t-horizon-accent animate-spin mx-auto mb-4" />
-                    <p className="text-gray-500 text-sm">Loading recordings...</p>
+                    <div className="w-12 h-12 rounded-full border-[3px] border-white/8 border-t-[#CD3D35] animate-spin mx-auto mb-4" />
+                    <p className="text-gray-500 text-sm">Loading recordings…</p>
                 </div>
             </div>
         );
@@ -293,32 +293,33 @@ const Recordings: React.FC<RecordingsProps> = ({ campaigns }) => {
 
     return (
         <div className="h-full flex flex-col">
-            <div className="bg-[#18181b] border border-[#262624] rounded-2xl flex-1 flex flex-col overflow-hidden shadow-lg">
+            <div className="bg-[#0c0c0e] border border-white/8 rounded-2xl flex-1 flex flex-col overflow-hidden shadow-lg">
+
                 {/* Header */}
-                <div className="p-4 border-b border-[#262624] flex items-center justify-between bg-[#262624]/20 shrink-0">
+                <div className="px-5 py-3.5 border-b border-white/8 flex items-center justify-between shrink-0">
                     {view === 'campaigns' ? (
                         <>
                             <h3 className="font-bold text-white flex items-center gap-2 text-sm">
-                                <Radio size={16} className="text-horizon-accent" /> Call Recordings
+                                <Radio size={14} className="text-[#CD3D35]" /> Call Recordings
                             </h3>
-                            <div className="text-xs text-gray-500">
-                                {recordings.length} Total Recording{recordings.length !== 1 ? 's' : ''}
-                            </div>
+                            <span className="text-[10px] font-mono text-gray-500 bg-white/5 border border-white/8 px-2 py-0.5 rounded-full">
+                                {recordings.length} total
+                            </span>
                         </>
                     ) : (
                         <div className="flex items-center gap-3 w-full">
-                            <button 
-                                onClick={goBack} 
-                                className="p-1 hover:bg-[#333] rounded text-gray-400 transition-colors"
-                            >
-                                <ArrowLeft size={16} />
+                            <button onClick={goBack} className="p-1.5 hover:bg-white/5 rounded-lg text-gray-400 hover:text-white transition-colors">
+                                <ArrowLeft size={15} />
                             </button>
-                            <h3 className="font-bold text-white truncate text-sm">
-                                {getCampaignName(selectedCampaignId || '')}
-                            </h3>
-                            <div className="ml-auto text-xs text-gray-500">
-                                {selectedRecordings.length} Recording{selectedRecordings.length !== 1 ? 's' : ''}
+                            <div className="flex items-center gap-2 flex-1 min-w-0">
+                                <div className="w-5 h-5 rounded-md bg-[#CD3D35]/15 flex items-center justify-center shrink-0">
+                                    <Folder size={11} className="text-[#CD3D35]" />
+                                </div>
+                                <h3 className="font-bold text-white truncate text-sm">{getCampaignName(selectedCampaignId || '')}</h3>
                             </div>
+                            <span className="text-[10px] font-mono text-gray-500 bg-white/5 border border-white/8 px-2 py-0.5 rounded-full shrink-0">
+                                {selectedRecordings.length} recording{selectedRecordings.length !== 1 ? 's' : ''}
+                            </span>
                         </div>
                     )}
                 </div>
@@ -326,97 +327,80 @@ const Recordings: React.FC<RecordingsProps> = ({ campaigns }) => {
                 {/* Content */}
                 <div className="flex-1 overflow-y-auto crm-scroll min-h-0">
                     {view === 'campaigns' ? (
-                        /* Campaign List View */
-                        <div className="p-4 space-y-3">
+                        <div className="p-4 space-y-2">
                             {recordings.length === 0 ? (
-                                <div className="text-center py-20">
-                                    <div className="w-20 h-20 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-4">
-                                        <Radio size={32} className="text-gray-700" />
+                                <div className="text-center py-24">
+                                    <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/8 flex items-center justify-center mx-auto mb-4">
+                                        <Radio size={28} className="text-gray-700" />
                                     </div>
-                                    <h3 className="text-xl font-bold text-white mb-2">No Recordings Yet</h3>
-                                    <p className="text-gray-500 text-sm max-w-sm mx-auto">
+                                    <h3 className="text-base font-bold text-white mb-2">No Recordings Yet</h3>
+                                    <p className="text-gray-500 text-sm max-w-xs mx-auto">
                                         Enable recording in the dialer to start capturing your calls.
                                     </p>
                                 </div>
                             ) : (
-                                <>
-                                    {/* Campaign Folders */}
-                                    {Object.entries(recordingsByCampaign)
-                                        .sort(([keyA], [keyB]) => {
-                                            // "Testing" folder always goes last
-                                            if (keyA === 'testing') return 1;
-                                            if (keyB === 'testing') return -1;
-                                            // Sort other campaigns by name
-                                            return getCampaignName(keyA).localeCompare(getCampaignName(keyB));
-                                        })
-                                        .map(([campaignId, campaignRecordings]) => (
-                                            <button
-                                                key={campaignId}
-                                                onClick={() => selectCampaign(campaignId)}
-                                                className="w-full text-left p-4 bg-[#09090b] border border-[#262624] rounded-xl hover:border-horizon-accent/50 transition-all flex items-center justify-between group"
-                                            >
-                                                <div className="flex items-center gap-4">
-                                                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                                                        campaignId === 'testing' 
-                                                            ? 'bg-orange-500/10 text-orange-400' 
-                                                            : 'bg-horizon-accent/10 text-horizon-accent'
-                                                    }`}>
-                                                        <Folder size={20} />
-                                                    </div>
-                                                    <div>
-                                                        <div className="font-bold text-white text-sm mb-1">
-                                                            {getCampaignName(campaignId)}
-                                                        </div>
-                                                        <div className="text-xs text-gray-500">
-                                                            {campaignRecordings.length} Recording{campaignRecordings.length !== 1 ? 's' : ''}
-                                                        </div>
+                                Object.entries(recordingsByCampaign)
+                                    .sort(([keyA], [keyB]) => {
+                                        if (keyA === 'testing') return 1;
+                                        if (keyB === 'testing') return -1;
+                                        return getCampaignName(keyA).localeCompare(getCampaignName(keyB));
+                                    })
+                                    .map(([campaignId, campaignRecordings]) => (
+                                        <button
+                                            key={campaignId}
+                                            onClick={() => selectCampaign(campaignId)}
+                                            className="w-full text-left p-4 bg-white/[0.02] border border-white/8 rounded-xl hover:border-[#CD3D35]/40 hover:bg-white/[0.04] transition-all flex items-center justify-between group"
+                                        >
+                                            <div className="flex items-center gap-3.5">
+                                                <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
+                                                    campaignId === 'testing'
+                                                        ? 'bg-orange-500/10 text-orange-400'
+                                                        : 'bg-[#CD3D35]/10 text-[#CD3D35]'
+                                                }`}>
+                                                    <Folder size={18} />
+                                                </div>
+                                                <div>
+                                                    <div className="font-bold text-white text-sm">{getCampaignName(campaignId)}</div>
+                                                    <div className="text-xs text-gray-500 mt-0.5">
+                                                        {campaignRecordings.length} Recording{campaignRecordings.length !== 1 ? 's' : ''}
                                                     </div>
                                                 </div>
-                                                <ChevronRight 
-                                                    size={18} 
-                                                    className="text-gray-500 group-hover:text-horizon-accent transition-colors" 
-                                                />
-                                            </button>
-                                        ))}
-                                </>
+                                            </div>
+                                            <ChevronRight size={15} className="text-gray-600 group-hover:text-[#CD3D35] transition-colors" />
+                                        </button>
+                                    ))
                             )}
                         </div>
                     ) : (
-                        /* Recordings List View */
-                        <div className="divide-y divide-[#262624]">
+                        <div className="divide-y divide-white/[0.04]">
                             {selectedRecordings.length === 0 ? (
-                                <div className="text-center py-20 text-gray-500 text-sm">
+                                <div className="text-center py-20 text-gray-600 text-sm">
                                     No recordings in this campaign
                                 </div>
                             ) : (
                                 selectedRecordings.map((recording) => (
-                                    <div
-                                        key={recording.id}
-                                        className="p-4 hover:bg-[#262624]/30 transition-colors"
-                                    >
+                                    <div key={recording.id} className="px-5 py-4 hover:bg-white/[0.02] transition-colors">
                                         <div className="flex items-center gap-4">
                                             {/* Play Button */}
                                             <button
                                                 onClick={() => togglePlayRecording(recording.recording_sid, recording.id)}
                                                 disabled={editingRecordingId === recording.id}
-                                                className={`w-12 h-12 rounded-full flex items-center justify-center shrink-0 transition-all disabled:opacity-50 ${
+                                                className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 transition-all disabled:opacity-50 border ${
                                                     playingRecordingId === recording.id
-                                                        ? 'bg-horizon-accent text-black hover:bg-white'
-                                                        : 'bg-[#262624] text-gray-400 hover:bg-[#333] hover:text-white'
+                                                        ? 'bg-[#CD3D35] border-[#CD3D35] text-white'
+                                                        : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10 hover:text-white'
                                                 }`}
                                             >
-                                                {playingRecordingId === recording.id ? (
-                                                    <Pause size={20} fill="currentColor" />
-                                                ) : (
-                                                    <Play size={20} fill="currentColor" className="ml-0.5" />
-                                                )}
+                                                {playingRecordingId === recording.id
+                                                    ? <Pause size={16} fill="currentColor" />
+                                                    : <Play size={16} fill="currentColor" className="ml-0.5" />
+                                                }
                                             </button>
 
-                                            {/* Recording Info */}
+                                            {/* Info */}
                                             <div className="flex-1 min-w-0">
                                                 <div className="flex items-center gap-2 mb-1">
                                                     {editingRecordingId === recording.id ? (
-                                                        /* Editing Mode */
                                                         <div className="flex items-center gap-2 flex-1">
                                                             <input
                                                                 type="text"
@@ -426,80 +410,49 @@ const Recordings: React.FC<RecordingsProps> = ({ campaigns }) => {
                                                                     if (e.key === 'Enter') saveRecordingName(recording.id);
                                                                     if (e.key === 'Escape') cancelEditing();
                                                                 }}
-                                                                className="flex-1 bg-[#09090b] border border-horizon-accent/50 rounded px-2 py-1 text-sm text-white focus:outline-none"
+                                                                className="flex-1 bg-white/[0.03] border border-[#CD3D35]/40 rounded-lg px-2 py-1 text-sm text-white focus:outline-none"
                                                                 autoFocus
                                                             />
-                                                            <button
-                                                                onClick={() => saveRecordingName(recording.id)}
-                                                                className="p-1.5 bg-green-500/10 hover:bg-green-500/20 border border-green-500/20 rounded text-green-400 transition-colors"
-                                                                title="Save"
-                                                            >
-                                                                <Check size={14} />
+                                                            <button onClick={() => saveRecordingName(recording.id)}
+                                                                className="p-1.5 bg-green-500/10 hover:bg-green-500/20 border border-green-500/20 rounded-lg text-green-400 transition-colors" title="Save">
+                                                                <Check size={13} />
                                                             </button>
-                                                            <button
-                                                                onClick={cancelEditing}
-                                                                className="p-1.5 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 rounded text-red-400 transition-colors"
-                                                                title="Cancel"
-                                                            >
-                                                                <X size={14} />
+                                                            <button onClick={cancelEditing}
+                                                                className="p-1.5 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 rounded-lg text-red-400 transition-colors" title="Cancel">
+                                                                <X size={13} />
                                                             </button>
                                                         </div>
                                                     ) : (
-                                                        /* Display Mode */
                                                         <>
-                                                            <h4 className="font-bold text-white text-sm truncate">
-                                                                {recording.lead_name}
-                                                            </h4>
+                                                            <h4 className="font-semibold text-white text-sm truncate">{recording.lead_name}</h4>
                                                             {playingRecordingId === recording.id && (
-                                                                <span className="flex items-center gap-1 text-[10px] text-horizon-accent font-bold uppercase animate-pulse">
-                                                                    <div className="w-1.5 h-1.5 rounded-full bg-horizon-accent" />
-                                                                    Playing
+                                                                <span className="flex items-center gap-1 text-[9px] text-[#CD3D35] font-bold uppercase animate-pulse shrink-0">
+                                                                    <div className="w-1.5 h-1.5 rounded-full bg-[#CD3D35]" /> Playing
                                                                 </span>
                                                             )}
                                                         </>
                                                     )}
                                                 </div>
-                                                
-                                                <div className="flex items-center gap-3 text-xs text-gray-500">
-                                                    <span className="flex items-center gap-1.5">
-                                                        <Phone size={12} />
-                                                        {recording.phone_number}
-                                                    </span>
-                                                    <span className="flex items-center gap-1.5">
-                                                        <Clock size={12} />
-                                                        {formatDuration(recording.duration)}
-                                                    </span>
-                                                    <span className="flex items-center gap-1.5">
-                                                        <Calendar size={12} />
-                                                        {formatDate(recording.call_date)} at {formatTime(recording.call_date)}
-                                                    </span>
+                                                <div className="flex items-center gap-3 text-[10px] text-gray-500">
+                                                    <span className="flex items-center gap-1"><Phone size={10} /> {recording.phone_number}</span>
+                                                    <span className="flex items-center gap-1"><Clock size={10} /> {formatDuration(recording.duration)}</span>
+                                                    <span className="flex items-center gap-1"><Calendar size={10} /> {formatDate(recording.call_date)} · {formatTime(recording.call_date)}</span>
                                                 </div>
                                             </div>
 
-                                            {/* Action Buttons */}
+                                            {/* Actions */}
                                             {editingRecordingId !== recording.id && (
-                                                <div className="flex items-center gap-2 shrink-0">
-                                                    {/* Duration Badge */}
-                                                    <div className="px-3 py-1.5 bg-[#09090b] border border-[#262624] rounded-lg text-xs font-mono text-gray-400">
+                                                <div className="flex items-center gap-1.5 shrink-0">
+                                                    <span className="px-2 py-1 bg-white/[0.03] border border-white/8 rounded-lg text-[10px] font-mono text-gray-500">
                                                         {formatDuration(recording.duration)}
-                                                    </div>
-
-                                                    {/* Edit Button */}
-                                                    <button
-                                                        onClick={() => startEditing(recording)}
-                                                        className="p-2 bg-[#262624] hover:bg-[#333] border border-[#262624] hover:border-blue-500/30 rounded-lg text-gray-400 hover:text-blue-400 transition-all"
-                                                        title="Edit name"
-                                                    >
-                                                        <Edit2 size={14} />
+                                                    </span>
+                                                    <button onClick={() => startEditing(recording)}
+                                                        className="p-1.5 bg-white/5 hover:bg-blue-500/10 border border-white/8 hover:border-blue-500/30 rounded-lg text-gray-500 hover:text-blue-400 transition-all" title="Edit name">
+                                                        <Edit2 size={13} />
                                                     </button>
-
-                                                    {/* Delete Button */}
-                                                    <button
-                                                        onClick={() => deleteRecording(recording.id, recording.lead_name)}
-                                                        className="p-2 bg-[#262624] hover:bg-red-500/10 border border-[#262624] hover:border-red-500/30 rounded-lg text-gray-400 hover:text-red-400 transition-all"
-                                                        title="Delete recording"
-                                                    >
-                                                        <Trash2 size={14} />
+                                                    <button onClick={() => deleteRecording(recording.id, recording.lead_name)}
+                                                        className="p-1.5 bg-white/5 hover:bg-red-500/10 border border-white/8 hover:border-red-500/30 rounded-lg text-gray-500 hover:text-red-400 transition-all" title="Delete">
+                                                        <Trash2 size={13} />
                                                     </button>
                                                 </div>
                                             )}
