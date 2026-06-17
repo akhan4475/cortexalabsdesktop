@@ -3,34 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cortexa Labs</title>
+    <title>CortexaOS</title>
     <link rel="icon" type="image/png" href="/favicon.png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              horizon: {
-                bg: '#131317',
-                card: '#040405',
-                accent: '#CD3D35',
-                accentHover: '#B83530',
-              },
-              crm: {
-                bg: '#000000',
-                card: '#262624',
-                border: '#333333',
-                text: '#FFFFFF',
-                subtext: '#A1A1AA'
-              }
+              base:    '#0A0A0A',
+              surface: '#141414',
+              elevated:'#1E1E1E',
+              overlay: '#252525',
+              brand:   '#CD3D35',
+              'brand-hover': '#E85550',
+              'brand-deep':  '#A32D26',
+              'border-subtle':  '#1A1A1A',
+              'border-default': '#2A2A2A',
+              'border-strong':  '#383838',
+              'text-primary':   '#F2F2F2',
+              'text-secondary': '#909090',
+              'text-muted':     '#555555',
+              'text-code':      '#E5C07B',
             },
             fontFamily: {
-              sans: ['Outfit', 'sans-serif'],
-              display: ['Sora', 'sans-serif'],
+              sans:  ['Geist', 'Inter', 'system-ui', 'sans-serif'],
+              mono:  ['"Geist Mono"', '"JetBrains Mono"', 'monospace'],
+              display: ['Geist', 'Inter', 'system-ui', 'sans-serif'],
             },
             backgroundImage: {
               'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -40,28 +42,28 @@
       }
     </script>
     <style>
+      * { box-sizing: border-box; }
+      html { font-size: 110%; }
       body {
-        background-color: #131317;
-        color: white;
+        background-color: #0A0A0A;
+        color: #F2F2F2;
+        font-family: 'Geist', 'Inter', system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
       }
-      /* Custom scrollbar */
-      ::-webkit-scrollbar {
-        width: 8px;
-        height: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #131317;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #CD3D35;
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #B83530;
-      }
-      .crm-scroll::-webkit-scrollbar-track {
-        background: #262624;
-      }
+      /* Scrollbar */
+      ::-webkit-scrollbar { width: 5px; height: 5px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: #2A2A2A; border-radius: 3px; }
+      ::-webkit-scrollbar-thumb:hover { background: #383838; }
+      /* Pipeline horizontal scroll */
+      .pipeline-scroll::-webkit-scrollbar { height: 4px; }
+      .pipeline-scroll::-webkit-scrollbar-track { background: #0A0A0A; }
+      .pipeline-scroll::-webkit-scrollbar-thumb { background: #2A2A2A; border-radius: 2px; }
+      /* Code / mono text */
+      .font-mono { font-family: 'Geist Mono', 'JetBrains Mono', monospace; }
+      /* Thin border utility */
+      .border-subtle { border-color: #1A1A1A; }
+      .border-default { border-color: #2A2A2A; }
     </style>
   <script type="importmap">
 {

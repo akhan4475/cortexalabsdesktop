@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, Database, Globe, AlertCircle, Save, CheckCircle, Loader2, Plus, Trash2, Star, Eye, EyeOff } from 'lucide-react';
+import { Phone, Database, Globe, AlertCircle, Save, CheckCircle, Loader2, Plus, Trash2, Star, Eye, EyeOff, Sparkles, Headphones } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
+import { clearKeyCache } from '../../lib/ai';
 
 interface TwilioPhoneNumber {
     id: string;
@@ -160,6 +161,16 @@ const Credentials: React.FC = () => {
     const [twilioSuccess,       setTwilioSuccess]       = useState(false);
     const [hasExistingCredentials, setHasExistingCredentials] = useState(false);
 
+    // ── Anthropic state ────────────────────────────────────────────────────────
+    const [anthropicApiKey,  setAnthropicApiKey]  = useState('');
+    const [anthropicSaving,  setAnthropicSaving]  = useState(false);
+    const [anthropicSuccess, setAnthropicSuccess] = useState(false);
+
+    // ── AssemblyAI state ───────────────────────────────────────────────────────
+    const [assemblyaiApiKey,  setAssemblyaiApiKey]  = useState('');
+    const [assemblyaiSaving,  setAssemblyaiSaving]  = useState(false);
+    const [assemblyaiSuccess, setAssemblyaiSuccess] = useState(false);
+
     // ── Apify state ────────────────────────────────────────────────────────────
     const [apifyApiToken,  setApifyApiToken]  = useState('');
     const [apifySaving,    setApifySaving]    = useState(false);
@@ -206,6 +217,8 @@ const Credentials: React.FC = () => {
                 setTwilioTwimlAppSid(data.twiml_app_sid || '');
                 setForwardToNumber(data.forward_to_number || '');
                 setApifyApiToken(data.apify_api_token || '');
+                setAnthropicApiKey(data.anthropic_api_key || '');
+                setAssemblyaiApiKey(data.assemblyai_api_key || '');
                 setHasExistingCredentials(true);
             }
         } catch (err) {
@@ -275,6 +288,61 @@ const Credentials: React.FC = () => {
             setError(err.message || 'Failed to save credentials.');
         } finally {
             setTwilioSaving(false);
+        }
+    };
+
+    // ── Save Anthropic ─────────────────────────────────────────────────────────
+    const handleSaveAnthropic = async () => {
+        setAnthropicSaving(true);
+        setError('');
+        try {
+            const { data: { user } } = await supabase.auth.getUser();
+            if (!user) { setError('User not authenticated'); return; }
+            if (hasExistingCredentials) {
+                const { error: e } = await supabase.from('user_credentials')
+                    .update({ anthropic_api_key: anthropicApiKey || null, updated_at: new Date().toISOString() })
+                    .eq('user_id', user.id);
+                if (e) throw e;
+            } else {
+                const { error: e } = await supabase.from('user_credentials')
+                    .insert({ user_id: user.id, anthropic_api_key: anthropicApiKey || null });
+                if (e) throw e;
+                setHasExistingCredentials(true);
+            }
+            clearKeyCache();
+            setAnthropicSuccess(true);
+            setTimeout(() => setAnthropicSuccess(false), 4000);
+        } catch (err: any) {
+            setError(err.message || 'Failed to save Anthropic key.');
+        } finally {
+            setAnthropicSaving(false);
+        }
+    };
+
+    // ── Save AssemblyAI ────────────────────────────────────────────────────────
+    const handleSaveAssemblyAI = async () => {
+        setAssemblyaiSaving(true);
+        setError('');
+        try {
+            const { data: { user } } = await supabase.auth.getUser();
+            if (!user) { setError('User not authenticated'); return; }
+            if (hasExistingCredentials) {
+                const { error: e } = await supabase.from('user_credentials')
+                    .update({ assemblyai_api_key: assemblyaiApiKey || null, updated_at: new Date().toISOString() })
+                    .eq('user_id', user.id);
+                if (e) throw e;
+            } else {
+                const { error: e } = await supabase.from('user_credentials')
+                    .insert({ user_id: user.id, assemblyai_api_key: assemblyaiApiKey || null });
+                if (e) throw e;
+                setHasExistingCredentials(true);
+            }
+            setAssemblyaiSuccess(true);
+            setTimeout(() => setAssemblyaiSuccess(false), 4000);
+        } catch (err: any) {
+            setError(err.message || 'Failed to save AssemblyAI key.');
+        } finally {
+            setAssemblyaiSaving(false);
         }
     };
 
@@ -377,12 +445,14 @@ const Credentials: React.FC = () => {
         );
     }
 
-    const twilioConfigured = !!twilioAccountSid && !!twilioAuthToken;
-    const apifyConfigured  = !!apifyApiToken;
+    const twilioConfigured    = !!twilioAccountSid && !!twilioAuthToken;
+    const apifyConfigured     = !!apifyApiToken;
+    const anthropicConfigured = !!anthropicApiKey;
+    const assemblyaiConfigured = !!assemblyaiApiKey;
 
     // ── Render ─────────────────────────────────────────────────────────────────
     return (
-        <div className="space-y-5 max-w-3xl">
+        <div className="p-6 space-y-5 max-w-3xl">
 
             {/* Page header */}
             <div>
@@ -506,6 +576,60 @@ const Credentials: React.FC = () => {
                     {phoneNumbers.length === 0 && (
                         <p className="text-center text-gray-600 text-sm py-4">No numbers added yet.</p>
                     )}
+                </div>
+            </IntegrationCard>
+
+            {/* ── Anthropic ── */}
+            <IntegrationCard
+                accentColor="#CD3D35"
+                icon={Sparkles}
+                title="Anthropic Claude"
+                description="AI content generation, script writing, and memory synthesis"
+                isConfigured={anthropicConfigured}
+            >
+                <div className="space-y-4">
+                    <Field
+                        label="API Key"
+                        value={anthropicApiKey}
+                        onChange={setAnthropicApiKey}
+                        placeholder="sk-ant-••••••••••••••••••••"
+                        type="password"
+                        hintLink="https://console.anthropic.com/account/keys"
+                        hintLinkLabel="Get your key at console.anthropic.com →"
+                    />
+                    <div className="flex items-start gap-3 p-3 bg-[#CD3D35]/8 border border-[#CD3D35]/15 rounded-xl">
+                        <p className="text-xs text-gray-400 leading-relaxed">
+                            Powers the Content Engine (script generation, content radar), Factory Quick Preview, daily brief, and the Memory system. Uses claude-sonnet-4-6 for generation and claude-haiku-4-5 for fast tasks.
+                        </p>
+                    </div>
+                    <SaveBtn onClick={handleSaveAnthropic} loading={anthropicSaving} success={anthropicSuccess} label={anthropicConfigured ? 'Update Anthropic Key' : 'Save Anthropic Key'} />
+                </div>
+            </IntegrationCard>
+
+            {/* ── AssemblyAI ── */}
+            <IntegrationCard
+                accentColor="#7C3AED"
+                icon={Headphones}
+                title="AssemblyAI"
+                description="Call transcription and reel audio analysis"
+                isConfigured={assemblyaiConfigured}
+            >
+                <div className="space-y-4">
+                    <Field
+                        label="API Key"
+                        value={assemblyaiApiKey}
+                        onChange={setAssemblyaiApiKey}
+                        placeholder="••••••••••••••••••••"
+                        type="password"
+                        hintLink="https://www.assemblyai.com/app/account"
+                        hintLinkLabel="Get your key at assemblyai.com →"
+                    />
+                    <div className="flex items-start gap-3 p-3 bg-[#7C3AED]/8 border border-[#7C3AED]/15 rounded-xl">
+                        <p className="text-xs text-gray-400 leading-relaxed">
+                            Optional. Used to transcribe post-call recordings and spiking content reels. The app works without it - call notes will be text-only without transcription.
+                        </p>
+                    </div>
+                    <SaveBtn onClick={handleSaveAssemblyAI} loading={assemblyaiSaving} success={assemblyaiSuccess} label={assemblyaiConfigured ? 'Update AssemblyAI Key' : 'Save AssemblyAI Key'} />
                 </div>
             </IntegrationCard>
 

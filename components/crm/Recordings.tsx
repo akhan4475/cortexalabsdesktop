@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Radio, Play, Pause, ChevronRight, ArrowLeft, Phone, Clock, Calendar, Folder, Edit2, Trash2, Check, X } from 'lucide-react';
+import { Radio, Play, Pause, ChevronRight, ArrowLeft, Phone, Clock, Calendar, Folder, Edit2, Trash2, Check, X, Mic, Loader2, FileText, Sparkles, ChevronDown } from 'lucide-react';
 import { Campaign } from './types';
 import { supabase } from '../../lib/supabase';
+import { callClaude } from '../../lib/ai';
 
 interface Recording {
     id: string;
@@ -32,6 +33,99 @@ const Recordings: React.FC<RecordingsProps> = ({ campaigns }) => {
     const [audioElement, setAudioElement] = useState<HTMLAudioElement | null>(null);
     const [editingRecordingId, setEditingRecordingId] = useState<string | null>(null);
     const [editingName, setEditingName] = useState('');
+
+    // ── Transcription state ─────────────────────────────────────────────────────
+    const [transcribing, setTranscribing] = useState<Record<string, boolean>>({});
+    const [transcripts, setTranscripts] = useState<Record<string, string>>({});
+    const [transcriptErrors, setTranscriptErrors] = useState<Record<string, string>>({});
+    const [summaries, setSummaries] = useState<Record<string, string>>({});
+    const [summarizing, setSummarizing] = useState<Record<string, boolean>>({});
+    const [expandedTranscript, setExpandedTranscript] = useState<string | null>(null);
+    const [assemblyKey, setAssemblyKey] = useState<string | null>(null);
+
+    // Load AssemblyAI key
+    useEffect(() => {
+        (async () => {
+            const { data: { user } } = await supabase.auth.getUser();
+            if (!user) return;
+            const { data } = await supabase
+                .from('user_credentials')
+                .select('assembly_ai_key')
+                .eq('user_id', user.id)
+                .maybeSingle();
+            if (data?.assembly_ai_key) setAssemblyKey(data.assembly_ai_key);
+        })();
+    }, []);
+
+    // ── Transcribe a recording via AssemblyAI ───────────────────────────────────
+    const handleTranscribe = async (recording: Recording) => {
+        if (!assemblyKey) {
+            setTranscriptErrors(prev => ({ ...prev, [recording.id]: 'AssemblyAI key not configured. Add it in Credentials.' }));
+            return;
+        }
+        setTranscribing(prev => ({ ...prev, [recording.id]: true }));
+        setTranscriptErrors(prev => ({ ...prev, [recording.id]: '' }));
+
+        try {
+            const audioUrl = getRecordingUrl(recording.recording_sid);
+
+            // Submit for transcription
+            const submitRes = await fetch('https://api.assemblyai.com/v2/transcript', {
+                method: 'POST',
+                headers: { 'Authorization': assemblyKey, 'Content-Type': 'application/json' },
+                body: JSON.stringify({ audio_url: audioUrl }),
+            });
+            const submitData = await submitRes.json();
+            if (!submitRes.ok || submitData.error) {
+                throw new Error(submitData.error || `AssemblyAI error ${submitRes.status}`);
+            }
+
+            const transcriptId = submitData.id;
+            let attempts = 0;
+            const MAX_ATTEMPTS = 60; // 5 minutes
+
+            while (attempts < MAX_ATTEMPTS) {
+                await new Promise(r => setTimeout(r, 5000));
+                const pollRes = await fetch(`https://api.assemblyai.com/v2/transcript/${transcriptId}`, {
+                    headers: { 'Authorization': assemblyKey }
+                });
+                const pollData = await pollRes.json();
+
+                if (pollData.status === 'completed') {
+                    setTranscripts(prev => ({ ...prev, [recording.id]: pollData.text }));
+                    setExpandedTranscript(recording.id);
+                    break;
+                } else if (pollData.status === 'error') {
+                    throw new Error(pollData.error || 'Transcription failed');
+                }
+                attempts++;
+            }
+            if (attempts >= MAX_ATTEMPTS) throw new Error('Transcription timed out after 5 minutes');
+
+        } catch (err: any) {
+            setTranscriptErrors(prev => ({ ...prev, [recording.id]: err.message || 'Transcription failed' }));
+        } finally {
+            setTranscribing(prev => ({ ...prev, [recording.id]: false }));
+        }
+    };
+
+    // ── Summarize transcript via Claude ─────────────────────────────────────────
+    const handleSummarize = async (recordingId: string) => {
+        const transcript = transcripts[recordingId];
+        if (!transcript) return;
+        setSummarizing(prev => ({ ...prev, [recordingId]: true }));
+        try {
+            const summary = await callClaude(
+                'You summarize sales call transcripts. Extract: decision maker\'s name if mentioned, key objections raised, interest level (hot/warm/cold), main pain points, next steps or follow-up actions. Be concise — 3-5 bullet points.',
+                transcript.slice(0, 8000) // cap at 8k chars
+            );
+            setSummaries(prev => ({ ...prev, [recordingId]: summary }));
+        } catch (err: any) {
+            setSummaries(prev => ({ ...prev, [recordingId]: 'Summary failed: ' + (err.message || 'Check your Anthropic key') }));
+        } finally {
+            setSummarizing(prev => ({ ...prev, [recordingId]: false }));
+        }
+    };
 
     // Fetch recordings from Supabase
     useEffect(() => {
@@ -372,14 +466,15 @@ const Recordings: React.FC<RecordingsProps> = ({ campaigns }) => {
                             )}
                         </div>
                     ) : (
-                        <div className="divide-y divide-white/[0.04]">
+                        <div>
                             {selectedRecordings.length === 0 ? (
                                 <div className="text-center py-20 text-gray-600 text-sm">
                                     No recordings in this campaign
                                 </div>
                             ) : (
                                 selectedRecordings.map((recording) => (
-                                    <div key={recording.id} className="px-5 py-4 hover:bg-white/[0.02] transition-colors">
+                                    <div key={recording.id} className="border-b border-white/[0.04] last:border-b-0">
+                                    <div className="px-5 py-4 hover:bg-white/[0.02] transition-colors">
                                         <div className="flex items-center gap-4">
                                             {/* Play Button */}
                                             <button
@@ -446,6 +541,29 @@ const Recordings: React.FC<RecordingsProps> = ({ campaigns }) => {
                                                     <span className="px-2 py-1 bg-white/[0.03] border border-white/8 rounded-lg text-[10px] font-mono text-gray-500">
                                                         {formatDuration(recording.duration)}
                                                     </span>
+                                                    {/* Transcribe button */}
+                                                    {!transcripts[recording.id] && (
+                                                        <button
+                                                            onClick={() => handleTranscribe(recording)}
+                                                            disabled={transcribing[recording.id]}
+                                                            className="p-1.5 bg-white/5 hover:bg-[#8B5CF6]/10 border border-white/8 hover:border-[#8B5CF6]/30 rounded-lg text-gray-500 hover:text-[#8B5CF6] transition-all disabled:opacity-50"
+                                                            title={assemblyKey ? 'Transcribe with AssemblyAI' : 'AssemblyAI key required'}
+                                                        >
+                                                            {transcribing[recording.id]
+                                                                ? <Loader2 size={13} className="animate-spin" />
+                                                                : <Mic size={13} />
+                                                            }
+                                                        </button>
+                                                    )}
+                                                    {transcripts[recording.id] && (
+                                                        <button
+                                                            onClick={() => setExpandedTranscript(expandedTranscript === recording.id ? null : recording.id)}
+                                                            className="p-1.5 bg-[#8B5CF6]/10 border border-[#8B5CF6]/20 rounded-lg text-[#8B5CF6] transition-all"
+                                                            title="View transcript"
+                                                        >
+                                                            <FileText size={13} />
+                                                        </button>
+                                                    )}
                                                     <button onClick={() => startEditing(recording)}
                                                         className="p-1.5 bg-white/5 hover:bg-blue-500/10 border border-white/8 hover:border-blue-500/30 rounded-lg text-gray-500 hover:text-blue-400 transition-all" title="Edit name">
                                                         <Edit2 size={13} />
@@ -457,6 +575,49 @@ const Recordings: React.FC<RecordingsProps> = ({ campaigns }) => {
                                                 </div>
                                             )}
                                         </div>
+                                    </div>
+
+                                    {/* Transcript error */}
+                                    {transcriptErrors[recording.id] && (
+                                        <div className="mx-5 mb-3 px-3 py-2 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 text-[10px]">
+                                            {transcriptErrors[recording.id]}
+                                        </div>
+                                    )}
+
+                                    {/* Expanded transcript + summary */}
+                                    {expandedTranscript === recording.id && transcripts[recording.id] && (
+                                        <div className="mx-5 mb-4 space-y-3">
+                                            <div className="bg-white/[0.02] border border-white/8 rounded-xl p-4">
+                                                <div className="flex items-center justify-between mb-2">
+                                                    <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Transcript</p>
+                                                    <button
+                                                        onClick={() => handleSummarize(recording.id)}
+                                                        disabled={summarizing[recording.id]}
+                                                        className="flex items-center gap-1 px-2.5 py-1 bg-[#CD3D35]/10 border border-[#CD3D35]/20 rounded-lg text-[10px] text-[#CD3D35] hover:bg-[#CD3D35]/20 transition-all disabled:opacity-50"
+                                                    >
+                                                        {summarizing[recording.id]
+                                                            ? <><Loader2 size={10} className="animate-spin" /> Summarizing…</>
+                                                            : <><Sparkles size={10} /> Summarize</>
+                                                        }
+                                                    </button>
+                                                </div>
+                                                <p className="text-xs text-gray-400 leading-relaxed max-h-40 overflow-y-auto crm-scroll">
+                                                    {transcripts[recording.id]}
+                                                </p>
+                                            </div>
+
+                                            {summaries[recording.id] && (
+                                                <div className="bg-[#CD3D35]/5 border border-[#CD3D35]/15 rounded-xl p-4">
+                                                    <p className="text-[10px] font-bold text-[#CD3D35] uppercase tracking-widest mb-2">AI Summary</p>
+                                                    <div className="space-y-1">
+                                                        {summaries[recording.id].split('\n').filter(l => l.trim()).map((line, i) => (
+                                                            <p key={i} className="text-xs text-gray-300 leading-relaxed">{line}</p>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </div>
+                                    )}
                                     </div>
                                 ))
                             )}

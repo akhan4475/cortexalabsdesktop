@@ -1,9 +1,79 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+
+const PASSWORD = '1028';
+
+const PasswordGate: React.FC<{ onUnlock: () => void }> = ({ onUnlock }) => {
+    const [value, setValue] = useState('');
+    const [shake, setShake]   = useState(false);
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => { inputRef.current?.focus(); }, []);
+
+    const attempt = () => {
+        if (value === PASSWORD) {
+            onUnlock();
+        } else {
+            setShake(true);
+            setValue('');
+            setTimeout(() => setShake(false), 500);
+        }
+    };
+
+    return (
+        <div className="h-full flex items-center justify-center bg-[#0A0A0A]">
+            <style>{`
+                @keyframes gate-shake {
+                    0%,100%{transform:translateX(0)}
+                    20%{transform:translateX(-8px)}
+                    40%{transform:translateX(8px)}
+                    60%{transform:translateX(-6px)}
+                    80%{transform:translateX(6px)}
+                }
+                .gate-shake { animation: gate-shake 0.45s ease; }
+            `}</style>
+            <div className={`flex flex-col items-center gap-6 ${shake ? 'gate-shake' : ''}`}>
+                <div className="w-12 h-12 rounded-full border border-[#2A2A2A] flex items-center justify-center mb-2">
+                    <svg width="18" height="22" viewBox="0 0 18 22" fill="none">
+                        <rect x="1" y="9" width="16" height="12" rx="2" stroke="#555" strokeWidth="1.5"/>
+                        <path d="M5 9V6a4 4 0 0 1 8 0v3" stroke="#555" strokeWidth="1.5" strokeLinecap="round"/>
+                        <circle cx="9" cy="15" r="1.5" fill="#555"/>
+                    </svg>
+                </div>
+                <p className="text-[11px] text-[#555] uppercase tracking-widest font-semibold">Enter password</p>
+                <input
+                    ref={inputRef}
+                    type="password"
+                    value={value}
+                    onChange={e => setValue(e.target.value)}
+                    onKeyDown={e => e.key === 'Enter' && attempt()}
+                    maxLength={20}
+                    className="w-48 text-center bg-[#0F0F0F] border border-[#2A2A2A] rounded-lg px-4 py-2.5 text-sm text-[#F2F2F2] tracking-[0.3em] focus:outline-none focus:border-[#3B82F6]/50 placeholder-[#333]"
+                    placeholder="••••"
+                />
+                <button
+                    onClick={attempt}
+                    className="px-6 py-2 rounded-lg bg-[#1E1E1E] border border-[#2A2A2A] text-xs text-[#909090] hover:text-[#F2F2F2] hover:border-[#383838] transition-colors"
+                >
+                    Unlock
+                </button>
+            </div>
+        </div>
+    );
+};
 
 const Motivation: React.FC = () => {
+    const [unlocked, setUnlocked] = useState(
+        () => sessionStorage.getItem('motiv_unlocked') === '1'
+    );
     const sectionsRef = useRef<HTMLDivElement[]>([]);
 
+    const handleUnlock = () => {
+        sessionStorage.setItem('motiv_unlocked', '1');
+        setUnlocked(true);
+    };
+
     useEffect(() => {
+        if (!unlocked) return;
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
@@ -20,7 +90,9 @@ const Motivation: React.FC = () => {
         });
 
         return () => observer.disconnect();
-    }, []);
+    }, [unlocked]);
+
+    if (!unlocked) return <PasswordGate onUnlock={handleUnlock} />;
 
     const addSectionRef = (el: HTMLDivElement | null, index: number) => {
         if (el) sectionsRef.current[index] = el;

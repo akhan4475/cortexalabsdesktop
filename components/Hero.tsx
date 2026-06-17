@@ -71,7 +71,7 @@ const Hero: React.FC<HeroProps> = ({ onBookConsultation }) => {
           className="max-w-xl"
         >
           <motion.p variants={leftItem} className="text-gray-400 text-[12px] font-bold tracking-[0.28em] uppercase mb-5">
-            AI-Powered Web Agency
+            AI Marketing Agency
           </motion.p>
 
           <motion.h1 variants={leftItem} className="text-[3.6rem] md:text-[5.4rem] font-display font-extrabold text-white leading-[1.04] mb-8 tracking-tight">

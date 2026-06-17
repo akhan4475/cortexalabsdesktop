@@ -3,7 +3,11 @@
     "allow": [
       "WebFetch(domain:www.contractorsync.net)",
       "Bash(mkdir -p \"C:\\\\Users\\\\Ayaan\\\\Desktop\\\\cortexalabs\\\\.claude\" 2>/dev/null; echo done)",
-      "mcp__Claude_Preview__preview_start"
+      "mcp__Claude_Preview__preview_start",
+      "Read(//c/Users/Ayaan/Desktop/cortexalabs-desktop/**)",
+      "Bash(npm rebuild *)",
+      "Bash(npm install *)",
+      "Bash(cmd //c \"for /f \\\\\"tokens=5\\\\\" %a in \\('netstat -ano ^| findstr :54321'\\) do taskkill /PID %a /F\")"
     ]
   }
 }

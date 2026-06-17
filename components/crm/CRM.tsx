@@ -1,11 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { LayoutDashboard, Users, Phone, MapPin, Briefcase, KeyRound, BarChart3, LogOut, Search, Bell, Loader2, X, Clock, Radio, Zap } from 'lucide-react';
+import {
+  LayoutDashboard, Phone, MapPin, Briefcase, KeyRound, BarChart3, LogOut,
+  Search, Bell, Loader2, X, Clock, Radio, Zap, Terminal,
+  Brain, DollarSign, GitBranch, Sparkles, LayoutTemplate, Activity,
+  Archive, Package, Monitor, Lightbulb, Mic, PanelLeft, ChevronRight, BookOpen,
+  Users, MessageSquare, Megaphone
+} from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { supabase } from '../../lib/supabase';
 
-// Sub Components
+// Core
 import DashboardHome from './DashboardHome';
-import Leads from './Leads';
 import Dialer from './Dialer';
 import Scraper from './Scraper';
 import Clients from './Clients';
@@ -13,13 +18,70 @@ import Analytics from './Analytics';
 import Credentials from './Credentials';
 import Recordings from './Recordings';
 import Motivation from './Motivation';
+import Memory from './Memory';
+import Docs from './Docs';
+// New views
+import Pipeline from './Pipeline';
+import DMSender from './DMSender';
+import Studio from './Studio';
+import ScriptBoard from './ScriptBoard';
+import Library from './Library';
+import Radar from './Radar';
+import Builds from './Builds';
+import Mockups from './Mockups';
+import Insights from './Insights';
+import Revenue from './Revenue';
+import Marketing from './Marketing';
+import AIWTerminal from './AIWTerminal';
+import Leads from './Leads';
+
 import { Lead, Campaign, Client, DemoEvent, Dial } from './types';
+
+// ── Error boundary so a crashed tab never blanks the whole dashboard ──────────
+class TabErrorBoundary extends React.Component<
+  { children: React.ReactNode; label: string },
+  { error: string | null }
+> {
+  constructor(props: any) { super(props); this.state = { error: null }; }
+  static getDerivedStateFromError(e: any) { return { error: e?.message ?? String(e) }; }
+  render() {
+    if (this.state.error) {
+      return (
+        <div className="flex flex-col items-center justify-center h-full gap-3 p-8 text-center">
+          <p className="text-sm text-[#555] font-medium">{this.props.label} failed to load</p>
+          <p className="text-[11px] text-red-400/60 font-mono max-w-md break-all">{this.state.error}</p>
+          <button
+            onClick={() => this.setState({ error: null })}
+            className="px-4 py-2 text-[11px] bg-[#141414] border border-[#2A2A2A] rounded-lg text-[#909090] hover:text-white transition-colors"
+          >
+            Retry
+          </button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
+const isDesktop = typeof window !== 'undefined' && (
+  (window as any).electronAPI?.isDesktop === true ||
+  (window as any).__ELECTRON__ === true
+);
 
 interface CRMProps {
     onLogout: () => void;
 }
 
-export type CRMView = 'dashboard' | 'leads' | 'dialer' | 'conversations' | 'clients' | 'automations' | 'analytics' | 'recordings' | 'motivation';
+export type CRMView =
+  | 'dashboard'
+  | 'pipeline' | 'dialer' | 'dmsender' | 'scraper'
+  | 'studio' | 'scriptboard' | 'radar' | 'library'
+  | 'terminal' | 'builds' | 'mockups'
+  | 'memory' | 'insights'
+  | 'revenue' | 'analytics' | 'clients' | 'marketing'
+  | 'recordings' | 'credentials' | 'motivation' | 'docs'
+  // legacy compat
+  | 'leads' | 'conversations' | 'automations' | 'content' | 'factory' | 'claude';
 
 /**
  * Helper to format date as YYYY-MM-DD using LOCAL time
@@ -94,12 +156,28 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
                     id: c.id,
                     name: c.name,
                     createdAt: c.created_at,
-                    leadCount: c.lead_count
+                    leadCount: c.lead_count,
+                    niche: c.niche ?? undefined,
+                    campaignType: c.campaign_type ?? undefined,
                 })));
             }
 
             if (leadsData.data) {
-                setAllLeads(leadsData.data.map(l => ({
+                // Normalize legacy disposition strings to pipeline stage IDs
+                const NORMALIZE_MAP: Record<string, string> = {
+                    'New Lead':           'prospect',
+                    'Demo Booked':        'demo_booked',
+                    'Interested':         'demo_booked',
+                    'Follow-up Required': 'follow_up',
+                    'Voicemail':          'voicemail',
+                    'Not Interested':     'lost',
+                    'Wrong Number':       'lost',
+                    'Client':             'paid',
+                    'Closed':             'paid',
+                    'Not Called':         'prospect',
+                };
+
+                const processedLeads = leadsData.data.map(l => ({
                     id: l.id,
                     campaignId: l.campaign_id,
                     name: l.name,
@@ -111,8 +189,20 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
                     rating: l.rating || '4.0',
                     reviews: l.reviews || '0',
                     summary: l.summary || '',
-                    status: l.status
-                })));
+                    icpScore: l.icp_score ?? undefined,
+                    niche: l.niche ?? undefined,
+                    status: NORMALIZE_MAP[l.status] ?? l.status,
+                }));
+
+                setAllLeads(processedLeads);
+
+                // Persist any normalizations back to Supabase in the background
+                processedLeads.forEach((lead, i) => {
+                    const raw = leadsData.data![i].status;
+                    if (NORMALIZE_MAP[raw]) {
+                        supabase.from('leads').update({ status: lead.status }).eq('id', lead.id).then();
+                    }
+                });
             }
 
             if (clientsData.data) {
@@ -181,6 +271,7 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
                         rating: l.rating || null,
                         reviews: l.reviews || null,
                         summary: l.summary || null,
+                        icp_score: l.icpScore ?? null,
                         status: l.status
                     }))
                 );
@@ -211,6 +302,7 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
                 rating: lead.rating || null,
                 reviews: lead.reviews || null,
                 summary: lead.summary || null,
+                icp_score: lead.icpScore ?? null,
                 status: lead.status
             });
 
@@ -248,6 +340,7 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
                     rating: l.rating || null,
                     reviews: l.reviews || null,
                     summary: l.summary || null,
+                    icp_score: l.icpScore ?? null,
                     status: l.status,
                 }))
             );
@@ -401,11 +494,43 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
                 status: client.status
             });
             setClients(prev => [client, ...prev]);
+
+            // Pipeline: auto-move linked lead to 'paid' based on closeDate
+            if (client.leadId) {
+                const today = formatLocalDate(new Date());
+                if (client.closeDate <= today) {
+                    // Payment date is today or past — move immediately
+                    await handleUpdateLeadStatus(client.leadId, 'paid');
+                } else {
+                    // Payment in the future — schedule it
+                    const pending = JSON.parse(localStorage.getItem('aiw_scheduled_paid') || '[]') as { leadId: string; paymentDate: string }[];
+                    pending.push({ leadId: client.leadId, paymentDate: client.closeDate });
+                    localStorage.setItem('aiw_scheduled_paid', JSON.stringify(pending));
+                }
+            }
         } catch (error) {
             console.error('Error adding client:', error);
             alert('Failed to add client. Please try again.');
         }
     };
+
+    // Check scheduled payments on load
+    useEffect(() => {
+        if (!allLeads.length) return;
+        const today = formatLocalDate(new Date());
+        const pending = JSON.parse(localStorage.getItem('aiw_scheduled_paid') || '[]') as { leadId: string; paymentDate: string }[];
+        if (!pending.length) return;
+        const remaining: typeof pending = [];
+        pending.forEach(({ leadId, paymentDate }) => {
+            if (paymentDate <= today) {
+                handleUpdateLeadStatus(leadId, 'paid');
+            } else {
+                remaining.push({ leadId, paymentDate });
+            }
+        });
+        localStorage.setItem('aiw_scheduled_paid', JSON.stringify(remaining));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [allLeads.length]);
 
     const handleUpdateClient = async (updatedClient: Client) => {
         try {
@@ -529,6 +654,21 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
         }
     };
 
+    const handleLeadPaid = async (leadId: string, upfront: number, monthly: number) => {
+        const lead = allLeads.find(l => l.id === leadId);
+        if (!lead || !userId) return;
+        const client: Client = {
+            id: crypto.randomUUID(),
+            name: lead.name,
+            company: lead.company,
+            closeDate: formatLocalDate(new Date()),
+            upfrontValue: upfront,
+            monthlyValue: monthly,
+            status: 'active'
+        };
+        await handleAddClient(client);
+    };
+
     const handleViewNavigation = (view: CRMView, leadId?: string, campaignId?: string) => {
         setNavContext({ leadId, campaignId });
         setCurrentView(view);
@@ -548,82 +688,132 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
 
     const navGroups = [
         {
-            label: 'Core',
+            label: '',
             items: [
-                { id: 'dashboard',     icon: LayoutDashboard, label: 'Dashboard'    },
-                { id: 'leads',         icon: Users,           label: 'Leads'        },
-                { id: 'dialer',        icon: Phone,           label: 'Dialer'       },
+                { id: 'dashboard', icon: LayoutDashboard, label: 'Dashboard' },
             ],
         },
         {
-            label: 'Tools',
+            label: 'Sales',
             items: [
-                { id: 'conversations', icon: MapPin,          label: 'Lead Scraper' },
-                { id: 'analytics',     icon: BarChart3,       label: 'Analytics'    },
-                { id: 'recordings',    icon: Radio,           label: 'Recordings'   },
+                { id: 'pipeline',  icon: GitBranch,     label: 'Pipeline'     },
+                { id: 'leads',     icon: Users,         label: 'Leads'        },
+                { id: 'dialer',    icon: Phone,         label: 'Dialer'       },
+                { id: 'dmsender',  icon: MessageSquare, label: 'DM Sender'    },
+                { id: 'scraper',   icon: MapPin,        label: 'Scraper'      },
             ],
         },
         {
-            label: 'Manage',
+            label: 'Content',
             items: [
-                { id: 'clients',       icon: Briefcase,       label: 'Clients'      },
-                { id: 'automations',   icon: KeyRound,        label: 'Credentials'  },
-                { id: 'motivation',    icon: Zap,             label: 'Motivation'   },
+                { id: 'studio',     icon: Sparkles,       label: 'Studio'      },
+                { id: 'scriptboard',icon: LayoutTemplate, label: 'Script Board'},
+                { id: 'radar',      icon: Activity,       label: 'Radar'       },
+                { id: 'library',    icon: Archive,        label: 'Library'     },
+            ],
+        },
+        {
+            label: 'Factory',
+            items: [
+                { id: 'terminal',   icon: Terminal,  label: 'AIW Terminal' },
+                { id: 'builds',     icon: Package,   label: 'Builds'       },
+                { id: 'mockups',    icon: Monitor,   label: 'Mockups'      },
+            ],
+        },
+        {
+            label: 'Intelligence',
+            items: [
+                { id: 'memory',    icon: Brain,      label: 'Memory'   },
+                { id: 'insights',  icon: Lightbulb,  label: 'Insights' },
+            ],
+        },
+        {
+            label: 'Business',
+            items: [
+                { id: 'revenue',   icon: DollarSign, label: 'Revenue'   },
+                { id: 'analytics', icon: BarChart3,  label: 'Analytics' },
+                { id: 'clients',   icon: Briefcase,  label: 'Clients'   },
+                { id: 'marketing', icon: Megaphone,  label: 'Marketing' },
+            ],
+        },
+        {
+            label: 'System',
+            items: [
+                { id: 'recordings',  icon: Mic,      label: 'Recordings'  },
+                { id: 'credentials', icon: KeyRound, label: 'Credentials' },
+                { id: 'motivation',  icon: Zap,      label: 'Motivation'  },
+                { id: 'docs',        icon: BookOpen, label: 'Docs'        },
             ],
         },
     ];
 
+    const viewTitles: Record<string, string> = {
+        dashboard: 'Dashboard', pipeline: 'Pipeline', dialer: 'Dialer',
+        dmsender: 'DM Sender', scraper: 'Lead Scraper', studio: 'Studio', scriptboard: 'Script Board',
+        radar: 'Radar', library: 'Library', terminal: 'AIW Terminal',
+        leads: 'Leads',
+        builds: 'Builds', mockups: 'Mockups', memory: 'Memory',
+        insights: 'Insights', revenue: 'Revenue', analytics: 'Analytics',
+        clients: 'Clients', marketing: 'Marketing', recordings: 'Recordings', credentials: 'Credentials',
+        motivation: 'Motivation', docs: 'Docs',
+    };
+
     if (isLoading) {
         return (
-            <div className="flex h-screen bg-[#131317] items-center justify-center">
+            <div className="flex h-screen bg-[#0A0A0A] items-center justify-center">
                 <div className="text-center">
-                    <Loader2 className="w-10 h-10 text-[#CD3D35] animate-spin mx-auto mb-4" />
-                    <p className="text-gray-500 text-sm">Loading CortexaOS...</p>
+                    <Loader2 className="w-8 h-8 text-[#CD3D35] animate-spin mx-auto mb-3" />
+                    <p className="text-[#555] text-xs font-mono">Loading CortexaOS...</p>
                 </div>
             </div>
         );
     }
 
     return (
-        <div className="flex h-screen bg-[#131317] text-white overflow-hidden font-sans">
+        <div className="flex h-screen bg-[#0A0A0A] text-[#F2F2F2] overflow-hidden font-sans">
+            {/* ── Sidebar ─────────────────────────────── */}
             <motion.div
-                className="relative bg-[#040405] border-r border-white/8 flex flex-col z-20 overflow-hidden"
-                initial={{ width: 260 }}
-                animate={{ width: isSidebarOpen ? 260 : 72 }}
-                transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+                className="relative bg-[#0A0A0A] border-r border-[#1A1A1A] flex flex-col z-20 overflow-hidden shrink-0"
+                initial={{ width: 220 }}
+                animate={{ width: isSidebarOpen ? 220 : 56 }}
+                transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
             >
-                {/* Subtle red glow behind logo */}
-                <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#CD3D35]/8 to-transparent pointer-events-none" />
-
-                {/* Header */}
-                <div className="relative flex items-center gap-3 px-4 py-5 border-b border-white/6">
-                    <div className="w-8 h-8 rounded-lg bg-[#1a1a1a] border border-white/10 overflow-hidden shrink-0 flex items-center justify-center p-1">
-                        <img src="/favicon.png" alt="CortexaOS" className="w-full h-full object-contain" />
+                {/* Logo row */}
+                <div className="relative flex items-center gap-2.5 px-3.5 h-12 border-b border-[#1A1A1A] shrink-0">
+                    <div
+                        className={`w-6 h-6 rounded bg-[#1E1E1E] border border-[#2A2A2A] overflow-hidden shrink-0 flex items-center justify-center transition-colors ${!isSidebarOpen ? 'cursor-pointer hover:border-[#CD3D35]/60' : ''}`}
+                        onClick={() => { if (!isSidebarOpen) setIsSidebarOpen(true); }}
+                        title={!isSidebarOpen ? 'Expand sidebar' : undefined}
+                    >
+                        <img src="/favicon.png" alt="" className="w-full h-full object-contain" />
                     </div>
                     {isSidebarOpen && (
-                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.05 }}>
-                            <p className="font-display font-bold text-sm text-white leading-tight tracking-wide">CortexaOS</p>
-                            <p className="text-[10px] text-gray-600 leading-tight mt-0.5">Client Management</p>
+                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.04 }}>
+                            <p className="font-semibold text-xs text-[#F2F2F2] leading-tight tracking-wide">CortexaOS</p>
                         </motion.div>
                     )}
+                    <button
+                        onClick={() => setIsSidebarOpen(o => !o)}
+                        className={`ml-auto p-1 rounded text-[#555] hover:text-[#909090] hover:bg-[#1E1E1E] transition-colors ${!isSidebarOpen ? 'mx-auto' : ''}`}
+                    >
+                        <PanelLeft size={13} />
+                    </button>
                 </div>
 
-                {/* Nav groups */}
-                <div className="flex-1 py-3 px-2.5 overflow-y-auto crm-scroll space-y-0.5">
+                {/* Nav */}
+                <div className="flex-1 py-2 overflow-y-auto" style={{ scrollbarWidth: 'none' }}>
                     {navGroups.map((group, gi) => (
                         <div key={gi} className={gi > 0 ? 'mt-1' : ''}>
-                            {/* Section label */}
-                            {isSidebarOpen && (
+                            {isSidebarOpen && group.label && (
                                 <motion.p
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    className="text-[9px] font-bold text-gray-700 uppercase tracking-[0.18em] px-3 pt-3 pb-1.5 select-none"
+                                    initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+                                    className="text-[9px] font-semibold text-[#383838] uppercase tracking-[0.2em] px-3.5 pt-3 pb-1 select-none"
                                 >
                                     {group.label}
                                 </motion.p>
                             )}
-                            {!isSidebarOpen && gi > 0 && (
-                                <div className="my-2 mx-3 h-px bg-white/6" />
+                            {!isSidebarOpen && gi > 0 && group.label && (
+                                <div className="my-1.5 mx-3 h-px bg-[#1A1A1A]" />
                             )}
                             {group.items.map((item) => {
                                 const active = currentView === item.id;
@@ -632,27 +822,25 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
                                         key={item.id}
                                         onClick={() => { setNavContext({}); setCurrentView(item.id as CRMView); }}
                                         title={!isSidebarOpen ? item.label : undefined}
-                                        className={`relative w-full flex items-center gap-3 rounded-xl transition-all duration-200 group
-                                            ${isSidebarOpen ? 'px-3 py-2.5' : 'px-0 py-2.5 justify-center'}
+                                        className={`relative w-full flex items-center gap-2.5 transition-colors duration-150 group
+                                            ${isSidebarOpen ? 'px-3 py-1.5 mx-1.5' : 'px-0 py-2 justify-center'}
+                                            ${isSidebarOpen ? 'rounded-md w-[calc(100%-12px)]' : 'w-full'}
                                             ${active
-                                                ? 'bg-[#CD3D35]/10 text-white'
-                                                : 'text-gray-500 hover:text-gray-200 hover:bg-white/5'
+                                                ? 'bg-[#CD3D35]/10 text-[#F2F2F2]'
+                                                : 'text-[#555] hover:text-[#909090] hover:bg-[#141414]'
                                             }`}
                                     >
-                                        {/* Left accent bar */}
-                                        {active && (
-                                            <span className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-5 bg-[#CD3D35] rounded-full" />
+                                        {active && isSidebarOpen && (
+                                            <span className="absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-4 bg-[#CD3D35] rounded-full" />
                                         )}
                                         <item.icon
-                                            size={17}
-                                            className={active ? 'text-[#CD3D35] shrink-0' : 'shrink-0 transition-colors group-hover:text-gray-200'}
+                                            size={14}
+                                            className={`shrink-0 ${active ? 'text-[#CD3D35]' : 'text-current'}`}
                                         />
                                         {isSidebarOpen && (
                                             <motion.span
-                                                initial={{ opacity: 0 }}
-                                                animate={{ opacity: 1 }}
-                                                transition={{ delay: 0.04 }}
-                                                className={`whitespace-nowrap text-[13px] ${active ? 'font-semibold' : 'font-normal'}`}
+                                                initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.03 }}
+                                                className={`text-[12px] whitespace-nowrap ${active ? 'font-medium text-[#F2F2F2]' : ''}`}
                                             >
                                                 {item.label}
                                             </motion.span>
@@ -665,15 +853,15 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
                 </div>
 
                 {/* Sign out */}
-                <div className="px-2.5 py-3 border-t border-white/6">
+                <div className="px-1.5 py-2 border-t border-[#1A1A1A]">
                     <button
                         onClick={handleLogout}
                         title={!isSidebarOpen ? 'Sign Out' : undefined}
-                        className={`w-full flex items-center gap-3 rounded-xl px-3 py-2.5 text-gray-600 hover:text-red-400 hover:bg-red-500/8 transition-all group ${!isSidebarOpen ? 'justify-center' : ''}`}
+                        className={`w-full flex items-center gap-2.5 rounded-md px-3 py-1.5 text-[#555] hover:text-red-400 hover:bg-red-500/8 transition-all group ${!isSidebarOpen ? 'justify-center' : ''}`}
                     >
-                        <LogOut size={16} className="shrink-0 group-hover:text-red-400 transition-colors" />
+                        <LogOut size={13} className="shrink-0" />
                         {isSidebarOpen && (
-                            <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-[13px]">
+                            <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-[12px]">
                                 Sign Out
                             </motion.span>
                         )}
@@ -681,108 +869,116 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
                 </div>
             </motion.div>
 
-            <div className="flex-1 flex flex-col min-w-0 bg-[#131317]">
-                <header className="h-16 bg-[#131317]/90 backdrop-blur-md border-b border-white/8 flex items-center justify-between px-8 sticky top-0 z-10">
-                    <h2 className="text-base font-bold text-white capitalize tracking-wide">{currentView}</h2>
-                    <div className="flex items-center gap-5">
+            {/* ── Main ────────────────────────────────── */}
+            <div className="flex-1 flex flex-col min-w-0">
+                <header className="h-12 bg-[#0A0A0A] border-b border-[#1A1A1A] flex items-center justify-between px-5 shrink-0 z-10">
+                    <h2 className="text-sm font-semibold text-[#F2F2F2]">
+                        {viewTitles[currentView] ?? currentView}
+                    </h2>
+                    <div className="flex items-center gap-3">
                         <div className="relative hidden md:block">
-                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-600 w-4 h-4" />
+                            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[#555] w-3 h-3" />
                             <input
                                 type="text"
                                 placeholder="Search..."
-                                className="bg-white/5 border border-white/8 rounded-full pl-9 pr-4 py-1.5 text-sm text-white focus:outline-none focus:border-[#CD3D35]/50 w-56 transition-colors placeholder-gray-600"
+                                className="bg-[#141414] border border-[#2A2A2A] rounded pl-7 pr-3 py-1 text-xs text-[#F2F2F2] focus:outline-none focus:border-[#CD3D35]/40 w-44 placeholder-[#555] transition-colors"
                             />
                         </div>
-
                         <div className="relative" ref={notificationRef}>
                             <button
                                 onClick={() => setShowNotifications(!showNotifications)}
-                                className={`relative p-2 rounded-full transition-colors ${showNotifications ? 'bg-[#CD3D35]/10 text-[#CD3D35]' : 'text-gray-500 hover:text-white'}`}
+                                className={`relative p-1.5 rounded transition-colors ${showNotifications ? 'bg-[#CD3D35]/10 text-[#CD3D35]' : 'text-[#555] hover:text-[#909090]'}`}
                             >
-                                <Bell size={18} />
-                                <span className="absolute top-2 right-2 w-1.5 h-1.5 bg-[#CD3D35] rounded-full" />
+                                <Bell size={14} />
+                                <span className="absolute top-1.5 right-1.5 w-1 h-1 bg-[#CD3D35] rounded-full" />
                             </button>
-
                             <AnimatePresence>
                                 {showNotifications && (
                                     <motion.div
-                                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                                        initial={{ opacity: 0, y: 8, scale: 0.96 }}
                                         animate={{ opacity: 1, y: 0, scale: 1 }}
-                                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                                        className="absolute right-0 mt-2 w-80 bg-[#040405] border border-white/10 rounded-2xl shadow-2xl z-50 overflow-hidden"
+                                        exit={{ opacity: 0, y: 8, scale: 0.96 }}
+                                        transition={{ duration: 0.12 }}
+                                        className="absolute right-0 mt-1.5 w-72 bg-[#141414] border border-[#2A2A2A] rounded-lg shadow-2xl z-50 overflow-hidden"
                                     >
-                                        <div className="p-4 border-b border-white/8 flex items-center justify-between">
-                                            <h3 className="font-bold text-sm text-white">Recent Messages</h3>
-                                            <button onClick={() => setShowNotifications(false)} className="text-gray-500 hover:text-white transition-colors">
-                                                <X size={14} />
-                                            </button>
+                                        <div className="p-3 border-b border-[#2A2A2A] flex items-center justify-between">
+                                            <span className="text-xs font-semibold text-[#F2F2F2]">Notifications</span>
+                                            <button onClick={() => setShowNotifications(false)} className="text-[#555] hover:text-[#909090]"><X size={12} /></button>
                                         </div>
-                                        <div className="max-h-96 overflow-y-auto crm-scroll">
+                                        <div className="max-h-64 overflow-y-auto">
                                             {latestMessages.map((msg) => (
-                                                <div
-                                                    key={msg.id}
-                                                    onClick={() => {
-                                                        const lead = allLeads.find(l => l.name === msg.leadName);
-                                                        handleViewNavigation('conversations', lead?.id, lead?.campaignId);
-                                                        setShowNotifications(false);
-                                                    }}
-                                                    className="p-4 border-b border-white/5 hover:bg-white/5 cursor-pointer transition-colors"
-                                                >
-                                                    <div className="flex justify-between items-start mb-1">
-                                                        <span className="font-bold text-xs text-white">{msg.leadName}</span>
-                                                        <span className="text-[10px] text-gray-600 flex items-center gap-1">
-                                                            <Clock size={10} /> {msg.time}
-                                                        </span>
+                                                <div key={msg.id} className="p-3 border-b border-[#1A1A1A] hover:bg-[#1E1E1E] cursor-pointer transition-colors">
+                                                    <div className="flex justify-between items-start mb-0.5">
+                                                        <span className="text-xs font-medium text-[#F2F2F2]">{msg.leadName}</span>
+                                                        <span className="text-[10px] text-[#555] flex items-center gap-1"><Clock size={9} />{msg.time}</span>
                                                     </div>
-                                                    <p className="text-[11px] text-gray-500 line-clamp-2 italic">"{msg.text}"</p>
+                                                    <p className="text-[11px] text-[#909090] line-clamp-1">{msg.text}</p>
                                                 </div>
                                             ))}
-                                            {latestMessages.length === 0 && (
-                                                <div className="p-8 text-center text-gray-600 text-xs italic">
-                                                    No recent messages.
-                                                </div>
-                                            )}
                                         </div>
-                                        <button
-                                            onClick={() => { setCurrentView('conversations'); setShowNotifications(false); }}
-                                            className="w-full p-3 text-[10px] font-bold text-[#CD3D35] hover:bg-[#CD3D35]/5 transition-colors border-t border-white/8 tracking-widest"
-                                        >
-                                            VIEW ALL CONVERSATIONS
-                                        </button>
                                     </motion.div>
                                 )}
                             </AnimatePresence>
                         </div>
-
-                        <div className="w-8 h-8 rounded-full bg-[#CD3D35]/20 border border-[#CD3D35]/30 flex items-center justify-center text-xs font-bold text-[#CD3D35]">
+                        <div className="w-7 h-7 rounded-full bg-[#CD3D35]/15 border border-[#CD3D35]/25 flex items-center justify-center text-[10px] font-bold text-[#CD3D35]">
                             AK
                         </div>
                     </div>
                 </header>
 
-                <main className="flex-1 overflow-y-auto p-6 crm-scroll relative">
+                <main className="flex-1 overflow-y-auto bg-[#0A0A0A] relative">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={currentView}
-                            initial={{ opacity: 0, y: 10 }}
+                            initial={{ opacity: 0, y: 6 }}
                             animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -10 }}
-                            transition={{ duration: 0.2 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.15 }}
                             className="h-full"
                         >
-                            
                             {currentView === 'dashboard' && (
-                                <DashboardHome 
-                                    clients={clients} 
-                                    demoEvents={demoEvents} 
-                                    allLeads={allLeads} 
-                                    dials={dials} // <--- ADD THIS LINE
+                                <DashboardHome clients={clients} demoEvents={demoEvents} allLeads={allLeads} dials={dials} />
+                            )}
+                            {/* Sales */}
+                            {currentView === 'pipeline' && (
+                                <Pipeline
+                                    campaigns={campaigns}
+                                    allLeads={allLeads}
+                                    onAddLead={handleAddLead}
+                                    onUpdateLead={handleUpdateLead}
+                                    onDeleteLead={handleDeleteLead}
+                                    onUpdateLeadStatus={handleUpdateLeadStatus}
+                                    onNavigate={handleViewNavigation}
+                                    onLeadPaid={handleLeadPaid}
                                 />
                             )}
+                            {currentView === 'dialer' && (
+                                <Dialer
+                                    campaigns={campaigns}
+                                    allLeads={allLeads}
+                                    onUpdateLeadStatus={handleUpdateLeadStatus}
+                                    onUpdateLead={handleUpdateLead}
+                                    onRecordDial={handleRecordDial}
+                                    initialLeadId={navContext.leadId}
+                                    initialCampaignId={navContext.campaignId}
+                                />
+                            )}
+                            {currentView === 'dmsender' && (
+                                <DMSender
+                                    campaigns={campaigns}
+                                    allLeads={allLeads}
+                                    onUpdateLeadStatus={handleUpdateLeadStatus}
+                                    onAddLead={handleAddLead}
+                                    onAddCampaign={handleAddCampaign}
+                                />
+                            )}
+                            {(currentView === 'scraper' || currentView === 'conversations') && (
+                                <Scraper campaigns={campaigns} onAddCampaign={handleAddCampaign} onBulkAddLeads={handleBulkAddLeads} />
+                            )}
                             {currentView === 'leads' && (
-                                <Leads 
-                                    campaigns={campaigns} 
-                                    allLeads={allLeads} 
+                                <Leads
+                                    campaigns={campaigns}
+                                    allLeads={allLeads}
                                     onAddCampaign={handleAddCampaign}
                                     onDeleteCampaign={handleDeleteCampaign}
                                     onRenameCampaign={handleRenameCampaign}
@@ -791,39 +987,45 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
                                     onDeleteLead={handleDeleteLead}
                                     onNavigate={handleViewNavigation}
                                     onMoveLeads={handleMoveLeads}
-
                                 />
                             )}
-                            {currentView === 'dialer' && (
-                                <Dialer 
-                                    campaigns={campaigns} 
-                                    allLeads={allLeads} 
+                            {/* Content */}
+                            {currentView === 'studio' && <Studio />}
+                            {currentView === 'scriptboard' && <ScriptBoard />}
+                            {currentView === 'radar' && <Radar />}
+                            {currentView === 'library' && <Library />}
+                            {/* Factory */}
+                            {currentView === 'terminal' && <TabErrorBoundary label="AIW Terminal"><AIWTerminal /></TabErrorBoundary>}
+                            {currentView === 'builds' && (
+                                <Builds
+                                    campaigns={campaigns}
+                                    allLeads={allLeads}
                                     onUpdateLeadStatus={handleUpdateLeadStatus}
                                     onUpdateLead={handleUpdateLead}
-                                    onRecordDial={handleRecordDial}
-                                    initialLeadId={navContext.leadId}
-                                    initialCampaignId={navContext.campaignId}
                                 />
                             )}
-                            {currentView === 'recordings' && <Recordings campaigns={campaigns} />}
-                            {currentView === 'conversations' && (
-                                <Scraper
-                                    campaigns={campaigns}
-                                    onAddCampaign={handleAddCampaign}
-                                    onBulkAddLeads={handleBulkAddLeads}
-                                />
-                            )}
+                            {currentView === 'mockups' && <Mockups allLeads={allLeads} onUpdateLeadStatus={handleUpdateLeadStatus} />}
+                            {/* Intelligence */}
+                            {currentView === 'memory' && <Memory />}
+                            {currentView === 'insights' && <Insights allLeads={allLeads} clients={clients} />}
+                            {/* Business */}
+                            {currentView === 'revenue' && <Revenue clients={clients} />}
+                            {currentView === 'analytics' && <Analytics allLeads={allLeads} clients={clients} dials={dials} />}
                             {currentView === 'clients' && (
-                                <Clients 
-                                    clients={clients} 
+                                <Clients
+                                    clients={clients}
+                                    allLeads={allLeads}
                                     onAddClient={handleAddClient}
                                     onUpdateClient={handleUpdateClient}
                                     onDeleteClient={handleDeleteClient}
                                 />
                             )}
-                            {currentView === 'analytics' && <Analytics />}
-                            {currentView === 'automations' && <Credentials />}
+                            {currentView === 'marketing' && <Marketing />}
+                            {/* System */}
+                            {currentView === 'recordings' && <Recordings campaigns={campaigns} />}
+                            {(currentView === 'credentials' || currentView === 'automations') && <Credentials />}
                             {currentView === 'motivation' && <Motivation />}
+                            {currentView === 'docs' && <Docs />}
                         </motion.div>
                     </AnimatePresence>
                 </main>

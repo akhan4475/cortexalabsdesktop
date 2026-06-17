@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Lock, User, Loader2, AlertCircle } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+
+const SAVED_CREDS_KEY = 'cortexaos_saved_creds';
 
 interface LoginPageProps {
     onBack: () => void;
@@ -11,8 +13,22 @@ interface LoginPageProps {
 const LoginPage: React.FC<LoginPageProps> = ({ onBack, onLoginSuccess }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [rememberMe, setRememberMe] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
+
+    // Autofill saved credentials on mount
+    useEffect(() => {
+        try {
+            const saved = localStorage.getItem(SAVED_CREDS_KEY);
+            if (saved) {
+                const { email: savedEmail, password: savedPassword } = JSON.parse(saved);
+                setEmail(savedEmail || '');
+                setPassword(savedPassword || '');
+                setRememberMe(true);
+            }
+        } catch {}
+    }, []);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -28,6 +44,11 @@ const LoginPage: React.FC<LoginPageProps> = ({ onBack, onLoginSuccess }) => {
             if (signInError) throw signInError;
 
             if (data.session) {
+                if (rememberMe) {
+                    localStorage.setItem(SAVED_CREDS_KEY, JSON.stringify({ email, password }));
+                } else {
+                    localStorage.removeItem(SAVED_CREDS_KEY);
+                }
                 onLoginSuccess();
             }
         } catch (err: any) {
@@ -108,6 +129,16 @@ const LoginPage: React.FC<LoginPageProps> = ({ onBack, onLoginSuccess }) => {
                                 />
                             </div>
                         </div>
+
+                        <label className="flex items-center gap-2.5 cursor-pointer select-none w-fit">
+                            <input
+                                type="checkbox"
+                                checked={rememberMe}
+                                onChange={(e) => setRememberMe(e.target.checked)}
+                                className="w-4 h-4 rounded border border-white/20 bg-white/5 accent-[#CD3D35] cursor-pointer"
+                            />
+                            <span className="text-xs text-gray-500">Remember me on this device</span>
+                        </label>
 
                         {error && (
                             <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-xl text-red-400 text-xs flex items-center gap-2">

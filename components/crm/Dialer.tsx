@@ -1,7 +1,15 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
-import { Phone, PhoneOff, Save, ArrowLeft, ChevronRight, MapPin, MessageSquare, ClipboardList, CheckCircle2, AlertCircle, FileText, Delete, Mail, Mic, MicOff, Volume2, VolumeX, Circle, Calendar, Edit2, Check, Briefcase, X } from 'lucide-react';
+import { Phone, PhoneOff, Save, ArrowLeft, ChevronRight, ChevronDown, MapPin, MessageSquare, ClipboardList, CheckCircle2, AlertCircle, FileText, Delete, Mail, Mic, MicOff, Volume2, VolumeX, Circle, Calendar, Edit2, Check, Briefcase, X, Globe, Star, Zap, Loader2 } from 'lucide-react';
 import { Lead, Campaign } from './types';
 import { supabase } from '../../lib/supabase';
+import { callClaude } from '../../lib/ai';
+import { NICHES } from '../../lib/niches';
+
+const FOLDER_MAP_KEY = 'aiw_lead_folders';
+type FolderMap = Record<string, { nicheId: string; subFolder: 'new-leads' | 'pipeline' }>;
+function loadFolderMap(): FolderMap {
+    try { return JSON.parse(localStorage.getItem(FOLDER_MAP_KEY) || '{}'); } catch { return {}; }
+}
 
 
 
@@ -42,6 +50,17 @@ interface DialerProps {
 const SUPABASE_URL = 'https://zfjbpohfdoeougmhocfa.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpmamJwb2hmZG9lb3VnbWhvY2ZhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc2NjA5NDgsImV4cCI6MjA4MzIzNjk0OH0.P7XkB7FNmxR9XHqTukkC0P6QNh6H_bsP2CsegKLt4gE';
 
+// Map Dialer disposition labels → pipeline stage IDs
+const DISPOSITION_TO_STAGE: Record<string, string> = {
+  'New Lead':           'prospect',
+  'Interested':         'demo_booked',
+  'Demo Booked':        'demo_booked',  // backward compat for existing records
+  'Follow-up Required': 'follow_up',
+  'Voicemail':          'voicemail',
+  'Not Interested':     'lost',
+  'Wrong Number':       'lost',
+};
+
 const Dialer: React.FC<DialerProps> = ({ campaigns, allLeads, onUpdateLeadStatus, onUpdateLead, initialLeadId, onRecordDial, initialCampaignId }) => {
         // --- Dialer State ---
     const [phoneNumber, setPhoneNumber] = useState('');
@@ -71,6 +90,13 @@ REASON FOR CALL:
     // --- Right Panel State ---
     const [view, setView] = useState<'campaigns' | 'leads' | 'lead-detail'>('campaigns');
     const [selectedCampaign, setSelectedCampaign] = useState<Campaign | null>(null);
+    const [expandedNiches, setExpandedNiches] = useState<Set<string>>(new Set());
+    const [folderMap, setFolderMap] = useState<FolderMap>(() => loadFolderMap());
+
+    // Re-sync folder map whenever we land back on the campaigns view
+    useEffect(() => {
+        if (view === 'campaigns') setFolderMap(loadFolderMap());
+    }, [view]);
     const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
     const [callNote, setCallNote] = useState('');
     const [selectedOutcome, setSelectedOutcome] = useState('');
@@ -82,44 +108,22 @@ REASON FOR CALL:
     const [isEditingName, setIsEditingName] = useState(false);
     const [isEditingEmail, setIsEditingEmail] = useState(false);
 
+    // Pre-call intel
+    const [callPrep, setCallPrep] = useState<string[]>([]);
+    const [loadingPrep, setLoadingPrep] = useState(false);
+
     // --- SCRIPT PERSISTENCE LOGIC ---
+    const [scriptSaved, setScriptSaved] = useState(false);
+
     useEffect(() => {
-        const fetchScript = async () => {
-            const { data: { user } } = await supabase.auth.getUser();
-            if (!user) return;
-
-            const { data, error } = await supabase
-                .from('user_scripts')
-                .select('script_content')
-                .eq('user_id', user.id)
-                .single();
-
-            if (data && !error) {
-                setScript(data.script_content);
-            }
-        };
-        fetchScript();
+        const saved = localStorage.getItem('cortexaos_dialer_script');
+        if (saved) setScript(saved);
     }, []);
-    
-    const handleUpdateScript = async () => {
-        try {
-            const { data: { user } } = await supabase.auth.getUser();
-            if (!user) return;
 
-            const { error } = await supabase
-                .from('user_scripts')
-                .upsert({ 
-                    user_id: user.id, 
-                    script_content: script,
-                    updated_at: new Date().toISOString() 
-                }, { onConflict: 'user_id' });
-
-            if (error) throw error;
-            alert('Script saved successfully!');
-        } catch (error) {
-            console.error('Error saving script:', error);
-            alert('Failed to save script.');
-        }
+    const handleUpdateScript = () => {
+        localStorage.setItem('cortexaos_dialer_script', script);
+        setScriptSaved(true);
+        setTimeout(() => setScriptSaved(false), 2000);
     };
 
     // Load Cal.com embed script
@@ -380,12 +384,20 @@ REASON FOR CALL:
                     console.log('⏭️ SKIPPING - Dial already recorded for this call');
                 }
 
+                // Auto-move lead to "Called" as soon as the call is initiated
+                if (selectedLead) {
+                    onUpdateLeadStatus(selectedLead.id, 'called');
+                }
+
                 call.on('accept', () => {
                     console.log('📞 Call accepted');
                     setIsCallActive(true);
                     setCallStatus('connected');
                     setCallTime(0);
-                    // Don't reset the flag here - dial already recorded
+                    // Auto-move to "Picked Up" when the other side answers
+                    if (selectedLead) {
+                        onUpdateLeadStatus(selectedLead.id, 'picked_up');
+                    }
                 });
 
                 call.on('disconnect', () => {
@@ -450,6 +462,35 @@ REASON FOR CALL:
         }
     };
 
+    // Generate pre-call AI intel
+    const handleGetCallPrep = async () => {
+        if (!selectedLead) return;
+        setLoadingPrep(true);
+        setCallPrep([]);
+        try {
+            const context = [
+                `Business: ${selectedLead.company || selectedLead.name}`,
+                selectedLead.rating ? `Rating: ${selectedLead.rating} stars` : '',
+                selectedLead.reviews ? `Reviews: ${selectedLead.reviews}` : '',
+                selectedLead.address ? `Location: ${selectedLead.address}` : '',
+                selectedLead.website ? `Website: ${selectedLead.website}` : 'No website',
+                selectedLead.summary ? `Notes: ${selectedLead.summary}` : '',
+            ].filter(Boolean).join('\n');
+
+            const response = await callClaude(
+                'You are a pre-call coach for a web design agency. Given a prospect\'s business info, generate exactly 3 short tactical tips for the call: what to mention, what pain point to probe, and what hook to use. Format as 3 bullet points starting with "•". Be specific, direct, and under 15 words per bullet.',
+                context,
+                { maxTokens: 300 }
+            );
+            const bullets = response.split('\n').filter(l => l.trim().startsWith('•')).map(l => l.replace('•', '').trim());
+            setCallPrep(bullets.length > 0 ? bullets : [response.trim()]);
+        } catch (err: any) {
+            setCallPrep(['Could not generate prep. Check your Anthropic key in Credentials.']);
+        } finally {
+            setLoadingPrep(false);
+        }
+    };
+
     const selectLead = (lead: Lead) => {
         setSelectedLead(lead);
         setPhoneNumber(lead.phone);
@@ -458,6 +499,9 @@ REASON FOR CALL:
         setCallNote(lead.summary || ''); // Load existing summary into notes
         setShowOutcomeError(false);
         setCallError('');
+        // Reset prep on new lead selection
+        setCallPrep([]);
+        setLoadingPrep(false);
         // NEW: Set editable fields
         setEditableLeadName(lead.name);
         setEditableLeadEmail(lead.email || '');
@@ -511,7 +555,7 @@ REASON FOR CALL:
 
     // Updated handleOpenCalendar to ensure disposition logic still runs
     const handleOpenCalendar = () => {
-        setSelectedOutcome('Demo Booked');
+        setSelectedOutcome('Interested');
         setShowOutcomeError(false);
     };
 
@@ -523,21 +567,23 @@ REASON FOR CALL:
         setShowOutcomeError(false);
 
         if (selectedLead) {
+            // Map the human-readable disposition to a pipeline stage ID
+            const stageId = DISPOSITION_TO_STAGE[selectedOutcome] ?? selectedOutcome;
             try {
                 await supabase
                     .from('leads')
                     .update({
                         summary: callNote.trim(),
-                        status: selectedOutcome
+                        status: stageId
                     })
                     .eq('id', selectedLead.id);
 
                 // Update both status AND summary in parent state immediately
-                onUpdateLeadStatus(selectedLead.id, selectedOutcome);
-                onUpdateLead({ ...selectedLead, status: selectedOutcome, summary: callNote.trim() });
+                onUpdateLeadStatus(selectedLead.id, stageId);
+                onUpdateLead({ ...selectedLead, status: stageId, summary: callNote.trim() });
 
                 // Update the local selectedLead so if we stay on same lead it reflects change
-                setSelectedLead(prev => prev ? { ...prev, status: selectedOutcome, summary: callNote.trim() } : prev);
+                setSelectedLead(prev => prev ? { ...prev, status: stageId, summary: callNote.trim() } : prev);
 
             } catch (error) {
                 console.error('Error updating lead data:', error);
@@ -725,9 +771,13 @@ REASON FOR CALL:
                         </h3>
                         <button
                             onClick={handleUpdateScript}
-                            className="text-[10px] bg-[#CD3D35]/10 text-[#CD3D35] px-2.5 py-1 rounded-lg font-bold border border-[#CD3D35]/20 hover:bg-[#CD3D35] hover:text-white transition-all flex items-center gap-1"
+                            className={`text-[10px] px-2.5 py-1 rounded-lg font-bold border transition-all flex items-center gap-1 ${
+                                scriptSaved
+                                    ? 'bg-green-500/20 text-green-400 border-green-500/30'
+                                    : 'bg-[#CD3D35]/10 text-[#CD3D35] border-[#CD3D35]/20 hover:bg-[#CD3D35] hover:text-white'
+                            }`}
                         >
-                            <Save size={11} /> Save
+                            {scriptSaved ? <><CheckCircle2 size={11} /> Saved</> : <><Save size={11} /> Save</>}
                         </button>
                     </div>
                     <textarea
@@ -765,27 +815,106 @@ REASON FOR CALL:
 
                     <div className="flex-1 overflow-y-auto crm-scroll min-h-0">
 
-                        {/* Campaigns view */}
-                        {view === 'campaigns' && (
-                            <div className="p-3 space-y-2">
-                                {campaigns.length === 0 && (
-                                    <p className="text-center text-gray-600 text-sm py-10">No campaigns yet</p>
-                                )}
-                                {campaigns.map(c => (
-                                    <button
-                                        key={c.id}
-                                        onClick={() => { setSelectedCampaign(c); setView('leads'); }}
-                                        className="w-full text-left p-3 bg-white/[0.02] border border-white/8 rounded-xl hover:border-[#CD3D35]/40 hover:bg-white/[0.04] transition-all flex items-center justify-between group"
-                                    >
-                                        <div>
-                                            <div className="font-bold text-white text-sm">{c.name}</div>
-                                            <div className="text-xs text-gray-500 mt-0.5">{c.leadCount} Leads</div>
+                        {/* Campaigns view — grouped by niche */}
+                        {view === 'campaigns' && (() => {
+                            const toggleNiche = (id: string) =>
+                                setExpandedNiches(prev => {
+                                    const next = new Set(prev);
+                                    next.has(id) ? next.delete(id) : next.add(id);
+                                    return next;
+                                });
+
+                            const campaignRow = (c: Campaign) => (
+                                <button
+                                    key={c.id}
+                                    onClick={() => { setSelectedCampaign(c); setView('leads'); }}
+                                    className="w-full text-left pl-8 pr-3 py-2.5 hover:bg-white/[0.025] transition-colors flex items-center justify-between group border-b border-white/[0.03] last:border-0"
+                                >
+                                    <div className="min-w-0">
+                                        <div className="font-semibold text-white text-xs truncate">{c.name}</div>
+                                        <div className="text-[10px] text-gray-500 mt-0.5">
+                                            {allLeads.filter(l => l.campaignId === c.id).length} leads
                                         </div>
-                                        <ChevronRight size={14} className="text-gray-600 group-hover:text-[#CD3D35] transition-colors" />
-                                    </button>
-                                ))}
-                            </div>
-                        )}
+                                    </div>
+                                    <ChevronRight size={12} className="text-gray-600 group-hover:text-[#CD3D35] transition-colors shrink-0 ml-2" />
+                                </button>
+                            );
+
+                            if (campaigns.length === 0) {
+                                return (
+                                    <p className="text-center text-gray-600 text-sm py-10">No campaigns yet</p>
+                                );
+                            }
+
+                            return (
+                                <div>
+                                    {NICHES.map(niche => {
+                                        const nicheCampaigns = campaigns.filter(c => folderMap[c.id]?.nicheId === niche.id);
+                                        if (nicheCampaigns.length === 0) return null;
+                                        const isOpen = expandedNiches.has(niche.id);
+                                        const totalLeads = nicheCampaigns.reduce((sum, c) => sum + allLeads.filter(l => l.campaignId === c.id).length, 0);
+                                        return (
+                                            <div key={niche.id}>
+                                                <button
+                                                    onClick={() => toggleNiche(niche.id)}
+                                                    className="w-full flex items-center justify-between px-3 py-2.5 hover:bg-white/[0.03] transition-colors border-b border-white/[0.05]"
+                                                >
+                                                    <div className="flex items-center gap-2 min-w-0">
+                                                        <span
+                                                            className="w-2.5 h-2.5 rounded-full shrink-0"
+                                                            style={{ backgroundColor: niche.color }}
+                                                        />
+                                                        <span className="text-xs font-bold text-white truncate">{niche.label}</span>
+                                                        <span className="text-[10px] text-gray-500 shrink-0">
+                                                            {nicheCampaigns.length} camp · {totalLeads} leads
+                                                        </span>
+                                                    </div>
+                                                    <ChevronDown
+                                                        size={13}
+                                                        className={`text-gray-500 shrink-0 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+                                                    />
+                                                </button>
+                                                {isOpen && (
+                                                    <div className="bg-white/[0.01]">
+                                                        {nicheCampaigns.map(campaignRow)}
+                                                    </div>
+                                                )}
+                                            </div>
+                                        );
+                                    })}
+
+                                    {/* Uncategorized */}
+                                    {(() => {
+                                        const uncat = campaigns.filter(c => !folderMap[c.id]);
+                                        if (uncat.length === 0) return null;
+                                        const isOpen = expandedNiches.has('__uncat__');
+                                        return (
+                                            <div>
+                                                <button
+                                                    onClick={() => toggleNiche('__uncat__')}
+                                                    className="w-full flex items-center justify-between px-3 py-2.5 hover:bg-white/[0.03] transition-colors border-b border-white/[0.05]"
+                                                >
+                                                    <div className="flex items-center gap-2 min-w-0">
+                                                        <span className="w-2.5 h-2.5 rounded-full shrink-0 bg-gray-600" />
+                                                        <span className="text-xs font-bold text-gray-400 truncate">Uncategorized</span>
+                                                        <span className="text-[10px] text-gray-500 shrink-0">{uncat.length} camp</span>
+                                                    </div>
+                                                    <ChevronDown
+                                                        size={13}
+                                                        className={`text-gray-500 shrink-0 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+                                                    />
+                                                </button>
+                                                {isOpen && (
+                                                    <div className="bg-white/[0.01]">
+                                                        {uncat.map(campaignRow)}
+                                                    </div>
+                                                )}
+                                            </div>
+                                        );
+                                    })()}
+                                </div>
+                            );
+                        })()}
 
                         {/* Leads view */}
                         {view === 'leads' && (
@@ -869,6 +998,69 @@ REASON FOR CALL:
                                     </div>
                                 </div>
 
+                                {/* Pre-call intel card */}
+                                <div className="bg-white/[0.02] border border-white/8 rounded-xl p-3">
+                                    <div className="flex items-center justify-between mb-2">
+                                        <p className="text-[9px] font-bold text-gray-500 uppercase tracking-widest">Pre-Call Intel</p>
+                                        <button
+                                            onClick={handleGetCallPrep}
+                                            disabled={loadingPrep}
+                                            className="flex items-center gap-1 px-2 py-0.5 bg-[#CD3D35]/10 border border-[#CD3D35]/20 rounded text-[9px] text-[#CD3D35] hover:bg-[#CD3D35]/20 transition-all disabled:opacity-50"
+                                        >
+                                            {loadingPrep
+                                                ? <><Loader2 size={9} className="animate-spin" /> Generating…</>
+                                                : <><Zap size={9} /> Get AI Prep</>
+                                            }
+                                        </button>
+                                    </div>
+
+                                    {/* Quick facts row */}
+                                    <div className="flex flex-wrap gap-1.5 mb-2">
+                                        {selectedLead.rating && (
+                                            <span className="flex items-center gap-0.5 text-[9px] bg-yellow-500/10 border border-yellow-500/20 text-yellow-400 px-1.5 py-0.5 rounded">
+                                                <Star size={8} fill="currentColor" /> {selectedLead.rating}
+                                                {selectedLead.reviews && <span className="text-yellow-600 ml-0.5">({selectedLead.reviews})</span>}
+                                            </span>
+                                        )}
+                                        {selectedLead.website ? (
+                                            <a
+                                                href={selectedLead.website.startsWith('http') ? selectedLead.website : 'https://' + selectedLead.website}
+                                                target="_blank" rel="noopener noreferrer"
+                                                onClick={e => e.stopPropagation()}
+                                                className="flex items-center gap-0.5 text-[9px] bg-blue-500/10 border border-blue-500/20 text-blue-400 px-1.5 py-0.5 rounded hover:bg-blue-500/20 transition-colors"
+                                            >
+                                                <Globe size={8} /> Has website
+                                            </a>
+                                        ) : (
+                                            <span className="text-[9px] bg-red-500/10 border border-red-500/20 text-red-400 px-1.5 py-0.5 rounded">No website</span>
+                                        )}
+                                        {selectedLead.icpScore !== undefined && (
+                                            <span className={`text-[9px] px-1.5 py-0.5 rounded border font-bold ${
+                                                selectedLead.icpScore >= 8 ? 'bg-green-500/10 border-green-500/20 text-green-400'
+                                                : selectedLead.icpScore >= 5 ? 'bg-yellow-500/10 border-yellow-500/20 text-yellow-400'
+                                                : 'bg-red-500/10 border-red-500/20 text-red-400'
+                                            }`}>
+                                                ICP {selectedLead.icpScore}/10
+                                            </span>
+                                        )}
+                                    </div>
+
+                                    {/* AI prep bullets */}
+                                    {callPrep.length > 0 && (
+                                        <div className="space-y-1.5 mt-2 pt-2 border-t border-white/6">
+                                            {callPrep.map((tip, i) => (
+                                                <div key={i} className="flex items-start gap-1.5">
+                                                    <span className="text-[#CD3D35] mt-0.5 shrink-0 text-[9px] font-bold">{i + 1}.</span>
+                                                    <p className="text-[9px] text-gray-300 leading-relaxed">{tip}</p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+                                    {!callPrep.length && !loadingPrep && (
+                                        <p className="text-[9px] text-gray-600">Click "Get AI Prep" for tactical call tips based on this lead.</p>
+                                    )}
+                                </div>
+
                                 <div className="h-px bg-white/6" />
 
                                 {/* Actions */}
@@ -892,7 +1084,7 @@ REASON FOR CALL:
                                         >
                                             <option className="bg-[#0c0c0e]">Select Disposition...</option>
                                             <option className="bg-[#0c0c0e]">New Lead</option>
-                                            <option className="bg-[#0c0c0e]">Demo Booked</option>
+                                            <option className="bg-[#0c0c0e]">Interested</option>
                                             <option className="bg-[#0c0c0e]">Follow-up Required</option>
                                             <option className="bg-[#0c0c0e]">Voicemail</option>
                                             <option className="bg-[#0c0c0e]">Not Interested</option>

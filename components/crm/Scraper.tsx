@@ -2,9 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     MapPin, Plus, X, Loader2, CheckCircle, AlertCircle,
-    Star, Play, Download, RotateCcw, KeyRound, ChevronDown, FolderPlus,
+    Star, Play, Download, RotateCcw, KeyRound, ChevronDown, FolderPlus, Zap,
 } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
+import { callClaude } from '../../lib/ai';
 import { Campaign, Lead } from './types';
 
 interface ScraperProps {
@@ -57,6 +58,11 @@ const Scraper: React.FC<ScraperProps> = ({ campaigns, onAddCampaign, onBulkAddLe
     const [isImporting, setIsImporting]   = useState(false);
     const [importDone, setImportDone]     = useState(false);
     const [importedCount, setImportedCount] = useState(0);
+
+    // ── ICP Scoring state ───────────────────────────────────────────────────────
+    const [icpScores, setIcpScores]   = useState<number[]>([]);
+    const [isScoring, setIsScoring]   = useState(false);
+    const [scoringError, setScoringError] = useState('');
 
     const pollRef  = useRef<ReturnType<typeof setInterval> | null>(null);
     const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -227,7 +233,7 @@ const Scraper: React.FC<ScraperProps> = ({ campaigns, onAddCampaign, onBulkAddLe
         setError('');
 
         try {
-            const leads: Lead[] = results.map(place => ({
+            const leads: Lead[] = results.map((place, i) => ({
                 id: crypto.randomUUID(),
                 campaignId: selectedCampaignId,
                 name:     place.title    || 'Unknown Business',
@@ -239,7 +245,8 @@ const Scraper: React.FC<ScraperProps> = ({ campaigns, onAddCampaign, onBulkAddLe
                 rating:   place.totalScore   != null ? String(place.totalScore)   : '',
                 reviews:  place.reviewsCount != null ? String(place.reviewsCount) : '',
                 summary:  place.categoryName || place.description || '',
-                status:   'New',
+                status:   'prospect',
+                icpScore: icpScores[i] ?? undefined,
             }));
 
             await onBulkAddLeads(leads, selectedCampaignId);
@@ -253,6 +260,56 @@ const Scraper: React.FC<ScraperProps> = ({ campaigns, onAddCampaign, onBulkAddLe
         }
     };
 
+    // ── ICP scoring ─────────────────────────────────────────────────────────────
+    const handleScoreLeads = async () => {
+        if (results.length === 0) return;
+        setIsScoring(true);
+        setScoringError('');
+        const scores: number[] = new Array(results.length).fill(0);
+
+        try {
+            const batchSize = 10;
+            for (let i = 0; i < results.length; i += batchSize) {
+                const batch = results.slice(i, i + batchSize);
+                const list = batch.map((p, j) =>
+                    `[${j}] ${p.title ?? 'Unknown'} | Category: ${p.categoryName ?? 'unknown'} | Rating: ${p.totalScore ?? 'none'} | Reviews: ${p.reviewsCount ?? 0} | Website: ${p.website ? 'yes' : 'no'}`
+                ).join('\n');
+
+                const response = await callClaude(
+                    'You score local service businesses as website redesign clients for a web agency. Score 1-10: 8-10 = established (20+ reviews), existing website worth upgrading, strong rating (4+), clear contractor niche. 5-7 = moderate fit. 1-4 = new, no reviews, wrong category. Respond ONLY with valid JSON: {"scores":[7,5,8,...]} — one number per business in order.',
+                    list,
+                    { maxTokens: 200 }
+                );
+
+                try {
+                    const match = response.match(/\{[\s\S]*\}/);
+                    const parsed = match ? JSON.parse(match[0]) : null;
+                    if (parsed?.scores && Array.isArray(parsed.scores)) {
+                        parsed.scores.forEach((s: number, j: number) => {
+                            scores[i + j] = Math.max(1, Math.min(10, Math.round(Number(s) || 5)));
+                        });
+                    } else {
+                        batch.forEach((_, j) => { scores[i + j] = 5; });
+                    }
+                } catch {
+                    batch.forEach((_, j) => { scores[i + j] = 5; });
+                }
+            }
+            setIcpScores(scores);
+        } catch (err: any) {
+            setScoringError(err.message || 'Scoring failed. Check your Anthropic key in Credentials.');
+            setIcpScores(results.map(() => 5));
+        } finally {
+            setIsScoring(false);
+        }
+    };
+
+    const getIcpColor = (score: number) => {
+        if (score >= 8) return { bg: 'bg-green-500/10 border-green-500/20', text: 'text-green-400' };
+        if (score >= 5) return { bg: 'bg-yellow-500/10 border-yellow-500/20', text: 'text-yellow-400' };
+        return { bg: 'bg-red-500/10 border-red-500/20', text: 'text-red-400' };
+    };
+
     // ── Reset ───────────────────────────────────────────────────────────────────
     const handleReset = () => {
         stopPolling();
@@ -264,6 +321,8 @@ const Scraper: React.FC<ScraperProps> = ({ campaigns, onAddCampaign, onBulkAddLe
         setError('');
         setImportDone(false);
         setImportedCount(0);
+        setIcpScores([]);
+        setScoringError('');
     };
 
     // ── Loading token ───────────────────────────────────────────────────────────
@@ -295,7 +354,7 @@ const Scraper: React.FC<ScraperProps> = ({ campaigns, onAddCampaign, onBulkAddLe
     // ── Main render ─────────────────────────────────────────────────────────────
     return (
         <>
-        <div className="space-y-5 max-w-3xl">
+        <div className="p-6 space-y-5 max-w-3xl">
 
             {/* Header */}
             <div className="flex items-start justify-between">
@@ -328,157 +387,148 @@ const Scraper: React.FC<ScraperProps> = ({ campaigns, onAddCampaign, onBulkAddLe
 
             {/* ── Config form (idle only) ── */}
             {scrapeStatus === 'idle' && (
-                <>
-                    {/* Campaign card — no overflow-hidden so dropdown isn't clipped */}
-                    <div className="bg-[#0c0c0e] border border-white/8 rounded-2xl">
-                        <div className="h-[3px] bg-[#CD3D35] rounded-t-2xl" />
-                        <div className="px-6 py-5">
-                            <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-3">
-                                Target Campaign
-                            </p>
-                            <div className="flex gap-3">
-                                <div className="relative flex-1" ref={dropdownRef}>
-                                    <button
-                                        type="button"
-                                        onClick={() => setDropdownOpen(o => !o)}
-                                        className={`w-full flex items-center justify-between bg-white/[0.04] border rounded-xl px-4 py-2.5 text-sm text-left transition-all focus:outline-none ${dropdownOpen ? 'border-[#CD3D35]/50 ring-1 ring-[#CD3D35]/20' : 'border-white/10 hover:border-white/20'}`}
-                                    >
-                                        <span className={selectedCampaignId ? 'text-white' : 'text-gray-600'}>
-                                            {selectedCampaignId
-                                                ? (() => { const c = campaigns.find(x => x.id === selectedCampaignId); return c ? `${c.name} (${c.leadCount} leads)` : 'Select a campaign…'; })()
-                                                : 'Select a campaign…'
-                                            }
-                                        </span>
-                                        <ChevronDown size={14} className={`text-gray-500 transition-transform duration-200 shrink-0 ml-2 ${dropdownOpen ? 'rotate-180' : ''}`} />
-                                    </button>
+                <div className="bg-[#0c0c0e] border border-white/8 rounded-2xl divide-y divide-white/6">
 
-                                    {dropdownOpen && (
-                                        <div className="absolute top-full mt-1.5 left-0 right-0 z-50 bg-[#0f0f11] border border-white/12 rounded-xl overflow-hidden shadow-2xl shadow-black/60">
-                                            {campaigns.length === 0 ? (
-                                                <p className="px-4 py-3 text-sm text-gray-600 text-center">No campaigns yet — create one</p>
-                                            ) : (
-                                                <div className="max-h-52 overflow-y-auto crm-scroll">
-                                                    {campaigns.map(c => (
-                                                        <button
-                                                            key={c.id}
-                                                            type="button"
-                                                            onClick={() => { setSelectedCampaignId(c.id); setDropdownOpen(false); }}
-                                                            className={`w-full flex items-center justify-between px-4 py-2.5 text-sm text-left transition-colors hover:bg-white/6 ${selectedCampaignId === c.id ? 'text-white bg-white/5' : 'text-gray-400'}`}
-                                                        >
-                                                            <span className="font-medium truncate">{c.name}</span>
-                                                            <span className="text-[11px] text-gray-600 shrink-0 ml-3">{c.leadCount} leads</span>
-                                                        </button>
-                                                    ))}
-                                                </div>
-                                            )}
-                                        </div>
-                                    )}
-                                </div>
-
+                    {/* Campaign section — no overflow-hidden so dropdown isn't clipped */}
+                    <div className="px-6 py-5">
+                        <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-3">Target Campaign</p>
+                        <div className="flex gap-3">
+                            <div className="relative flex-1" ref={dropdownRef}>
                                 <button
-                                    onClick={() => setShowNewCampaignModal(true)}
-                                    className="flex items-center gap-1.5 px-4 py-2.5 bg-white/6 border border-white/10 rounded-xl text-sm text-gray-300 hover:text-white hover:bg-white/10 transition-all font-medium whitespace-nowrap"
+                                    type="button"
+                                    onClick={() => setDropdownOpen(o => !o)}
+                                    className={`w-full flex items-center justify-between bg-white/[0.04] border rounded-xl px-4 py-2.5 text-sm text-left transition-all focus:outline-none ${dropdownOpen ? 'border-[#CD3D35]/50 ring-1 ring-[#CD3D35]/20' : 'border-white/10 hover:border-white/20'}`}
                                 >
-                                    <FolderPlus size={14} /> New Campaign
+                                    <span className={selectedCampaignId ? 'text-white' : 'text-gray-600'}>
+                                        {selectedCampaignId
+                                            ? (() => { const c = campaigns.find(x => x.id === selectedCampaignId); return c ? `${c.name} (${c.leadCount} leads)` : 'Select a campaign…'; })()
+                                            : 'Select a campaign…'
+                                        }
+                                    </span>
+                                    <ChevronDown size={14} className={`text-gray-500 transition-transform duration-200 shrink-0 ml-2 ${dropdownOpen ? 'rotate-180' : ''}`} />
                                 </button>
-                            </div>
-                        </div>
-                    </div>
 
-                    {/* Search config card */}
-                    <div className="bg-[#0c0c0e] border border-white/8 rounded-2xl overflow-hidden">
-                        <div className="h-[3px] bg-[#f97316]" />
-                        <div className="px-6 py-5 space-y-5">
-
-                            {/* Search queries */}
-                            <div>
-                                <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">
-                                    Search Queries
-                                </p>
-                                <p className="text-xs text-gray-600 mb-3">
-                                    Press <kbd className="px-1.5 py-0.5 bg-white/8 border border-white/10 rounded text-[10px]">Enter</kbd> or click + to add multiple searches
-                                </p>
-                                <div className="flex gap-2 mb-3">
-                                    <input
-                                        type="text"
-                                        value={currentQuery}
-                                        onChange={e => setCurrentQuery(e.target.value)}
-                                        onKeyDown={handleKeyDown}
-                                        placeholder="e.g. roofing contractors Toronto"
-                                        className="flex-1 bg-white/[0.04] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#CD3D35]/50 transition-all"
-                                    />
-                                    <button
-                                        onClick={addQuery}
-                                        disabled={!currentQuery.trim()}
-                                        className="px-4 bg-white/6 border border-white/10 rounded-xl text-gray-300 hover:text-white hover:bg-white/10 transition-all disabled:opacity-40"
-                                    >
-                                        <Plus size={15} />
-                                    </button>
-                                </div>
-                                {searchQueries.length > 0 && (
-                                    <div className="flex flex-wrap gap-2">
-                                        {searchQueries.map(q => (
-                                            <span
-                                                key={q}
-                                                className="flex items-center gap-1.5 px-3 py-1 bg-[#CD3D35]/10 border border-[#CD3D35]/20 rounded-full text-xs text-[#CD3D35] font-medium"
-                                            >
-                                                {q}
-                                                <button onClick={() => setSearchQueries(p => p.filter(x => x !== q))} className="hover:text-white transition-colors">
-                                                    <X size={11} />
-                                                </button>
-                                            </span>
-                                        ))}
+                                {dropdownOpen && (
+                                    <div className="absolute top-full mt-1.5 left-0 right-0 z-50 bg-[#0f0f11] border border-white/12 rounded-xl overflow-hidden shadow-2xl shadow-black/60">
+                                        {campaigns.length === 0 ? (
+                                            <p className="px-4 py-3 text-sm text-gray-600 text-center">No campaigns yet — create one</p>
+                                        ) : (
+                                            <div className="max-h-52 overflow-y-auto crm-scroll">
+                                                {campaigns.map(c => (
+                                                    <button
+                                                        key={c.id}
+                                                        type="button"
+                                                        onClick={() => { setSelectedCampaignId(c.id); setDropdownOpen(false); }}
+                                                        className={`w-full flex items-center justify-between px-4 py-2.5 text-sm text-left transition-colors hover:bg-white/6 ${selectedCampaignId === c.id ? 'text-white bg-white/5' : 'text-gray-400'}`}
+                                                    >
+                                                        <span className="font-medium truncate">{c.name}</span>
+                                                        <span className="text-[11px] text-gray-600 shrink-0 ml-3">{c.leadCount} leads</span>
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        )}
                                     </div>
                                 )}
                             </div>
 
-                            {/* Settings row */}
-                            <div className="grid grid-cols-2 gap-5 pt-4 border-t border-white/6">
-                                <div>
-                                    <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">
-                                        Max Results / Query &nbsp;
-                                        <span className="text-white normal-case font-bold">{maxResults}</span>
-                                    </p>
-                                    <input
-                                        type="range"
-                                        min={10}
-                                        max={500}
-                                        step={10}
-                                        value={maxResults}
-                                        onChange={e => setMaxResults(Number(e.target.value))}
-                                        className="w-full accent-[#CD3D35]"
-                                    />
-                                    <div className="flex justify-between text-[10px] text-gray-600 mt-1">
-                                        <span>10</span><span>500</span>
-                                    </div>
-                                </div>
+                            <button
+                                onClick={() => setShowNewCampaignModal(true)}
+                                className="flex items-center gap-1.5 px-4 py-2.5 bg-white/[0.04] border border-white/10 rounded-xl text-sm text-gray-400 hover:text-white hover:bg-white/8 transition-all font-medium whitespace-nowrap"
+                            >
+                                <FolderPlus size={14} /> New Campaign
+                            </button>
+                        </div>
+                    </div>
 
-                                <div>
-                                    <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Country</p>
-                                    <div className="flex items-center gap-2 bg-white/[0.04] border border-white/10 rounded-xl px-4 py-2.5">
-                                        <span className="text-base leading-none">🇺🇸</span>
-                                        <span className="text-sm text-white">United States</span>
-                                        <span className="ml-auto text-[10px] text-gray-600 uppercase tracking-widest">Locked</span>
-                                    </div>
-                                </div>
+                    {/* Search queries section */}
+                    <div className="px-6 py-5 space-y-3">
+                        <div className="flex items-center justify-between">
+                            <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Search Queries</p>
+                            <span className="text-[10px] text-gray-600">
+                                Press <kbd className="px-1 py-0.5 bg-white/6 border border-white/8 rounded text-[10px]">Enter</kbd> to add
+                            </span>
+                        </div>
+                        <div className="flex gap-2">
+                            <input
+                                type="text"
+                                value={currentQuery}
+                                onChange={e => setCurrentQuery(e.target.value)}
+                                onKeyDown={handleKeyDown}
+                                placeholder="e.g. roofing contractors Toronto"
+                                className="flex-1 bg-white/[0.04] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#CD3D35]/50 transition-all"
+                            />
+                            <button
+                                onClick={addQuery}
+                                disabled={!currentQuery.trim()}
+                                className="px-4 bg-white/[0.04] border border-white/10 rounded-xl text-gray-400 hover:text-white hover:bg-white/8 transition-all disabled:opacity-40"
+                            >
+                                <Plus size={15} />
+                            </button>
+                        </div>
+                        {searchQueries.length > 0 && (
+                            <div className="flex flex-wrap gap-2">
+                                {searchQueries.map(q => (
+                                    <span
+                                        key={q}
+                                        className="flex items-center gap-1.5 px-3 py-1 bg-[#CD3D35]/10 border border-[#CD3D35]/20 rounded-full text-xs text-[#CD3D35] font-medium"
+                                    >
+                                        {q}
+                                        <button onClick={() => setSearchQueries(p => p.filter(x => x !== q))} className="hover:text-white transition-colors">
+                                            <X size={11} />
+                                        </button>
+                                    </span>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Settings row */}
+                    <div className="px-6 py-5 grid grid-cols-2 gap-5">
+                        <div>
+                            <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">
+                                Max Results / Query &nbsp;
+                                <span className="text-white normal-case font-bold">{maxResults}</span>
+                            </p>
+                            <input
+                                type="range"
+                                min={10}
+                                max={500}
+                                step={10}
+                                value={maxResults}
+                                onChange={e => setMaxResults(Number(e.target.value))}
+                                className="w-full accent-[#CD3D35]"
+                            />
+                            <div className="flex justify-between text-[10px] text-gray-600 mt-1">
+                                <span>10</span><span>500</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Country</p>
+                            <div className="flex items-center gap-2 bg-white/[0.04] border border-white/10 rounded-xl px-4 py-2.5">
+                                <span className="text-base leading-none">🇺🇸</span>
+                                <span className="text-sm text-white">United States</span>
+                                <span className="ml-auto text-[10px] text-gray-600 uppercase tracking-widest">Locked</span>
                             </div>
                         </div>
                     </div>
 
-                    {/* Start button */}
-                    <button
-                        onClick={handleStartScrape}
-                        disabled={searchQueries.length === 0 || !selectedCampaignId}
-                        className="flex items-center gap-2 px-7 py-3 bg-[#CD3D35] hover:bg-[#B83530] text-white font-bold rounded-xl transition-all active:scale-[0.98] disabled:opacity-40 disabled:cursor-not-allowed text-sm shadow-lg shadow-[#CD3D35]/20"
-                    >
-                        <Play size={15} /> Start Scrape
-                    </button>
-                </>
+                    {/* CTA row */}
+                    <div className="px-6 py-4">
+                        <button
+                            onClick={handleStartScrape}
+                            disabled={searchQueries.length === 0 || !selectedCampaignId}
+                            className="flex items-center gap-2 px-6 py-2.5 bg-[#CD3D35] hover:bg-[#B83530] text-white font-bold rounded-xl transition-all active:scale-[0.98] disabled:opacity-40 disabled:cursor-not-allowed text-sm"
+                        >
+                            <Play size={14} /> Start Scrape
+                        </button>
+                    </div>
+                </div>
             )}
 
             {/* ── Running ── */}
             {(scrapeStatus === 'starting' || scrapeStatus === 'running') && (
-                <div className="bg-[#0c0c0e] border border-white/8 rounded-2xl p-10 flex flex-col items-center gap-5 text-center">
+                <div className="bg-[#0c0c0e] border border-white/8 rounded-2xl p-10 flex flex-col items-center gap-5 text-center overflow-hidden">
                     <div className="w-16 h-16 rounded-full border-2 border-[#CD3D35]/20 flex items-center justify-center">
                         <Loader2 className="w-8 h-8 text-[#CD3D35] animate-spin" />
                     </div>
@@ -534,38 +584,84 @@ const Scraper: React.FC<ScraperProps> = ({ campaigns, onAddCampaign, onBulkAddLe
                             )}
                         </div>
 
+                        {/* ICP scoring section */}
+                        {!importDone && (
+                            <div className="mb-4 p-3 bg-white/[0.02] border border-white/8 rounded-xl">
+                                <div className="flex items-center justify-between">
+                                    <div>
+                                        <p className="text-xs font-semibold text-white">Score leads with AI</p>
+                                        <p className="text-[10px] text-gray-500 mt-0.5">
+                                            {icpScores.length > 0
+                                                ? `Scored ${icpScores.length} leads. High ICP first in import.`
+                                                : 'Claude rates each lead 1-10 for fit as a web design client.'}
+                                        </p>
+                                    </div>
+                                    {icpScores.length === 0 ? (
+                                        <button
+                                            onClick={handleScoreLeads}
+                                            disabled={isScoring}
+                                            className="flex items-center gap-1.5 px-4 py-2 bg-[#8B5CF6]/10 border border-[#8B5CF6]/20 hover:bg-[#8B5CF6]/20 text-[#8B5CF6] text-xs font-bold rounded-xl transition-all disabled:opacity-50"
+                                        >
+                                            {isScoring
+                                                ? <><Loader2 size={12} className="animate-spin" /> Scoring…</>
+                                                : <><Zap size={12} /> Score {results.length} Leads</>
+                                            }
+                                        </button>
+                                    ) : (
+                                        <div className="flex items-center gap-2 text-xs text-gray-400">
+                                            <span className="text-green-400 font-bold">{icpScores.filter(s => s >= 8).length}</span> high
+                                            <span className="text-yellow-400 font-bold">{icpScores.filter(s => s >= 5 && s < 8).length}</span> mid
+                                            <span className="text-red-400 font-bold">{icpScores.filter(s => s < 5).length}</span> low
+                                        </div>
+                                    )}
+                                </div>
+                                {scoringError && (
+                                    <p className="text-red-400 text-[10px] mt-2">{scoringError}</p>
+                                )}
+                            </div>
+                        )}
+
                         {/* Results preview */}
                         <div className="space-y-2 max-h-96 overflow-y-auto crm-scroll">
-                            {results.slice(0, 25).map((place, i) => (
-                                <div
-                                    key={i}
-                                    className="flex items-start gap-3 px-4 py-3 bg-white/[0.02] border border-white/6 rounded-xl"
-                                >
-                                    <div className="w-7 h-7 rounded-lg bg-[#f97316]/10 border border-[#f97316]/20 flex items-center justify-center shrink-0 mt-0.5">
-                                        <MapPin size={12} className="text-[#f97316]" />
-                                    </div>
-                                    <div className="flex-1 min-w-0">
-                                        <p className="text-white text-sm font-semibold truncate">{place.title || '—'}</p>
-                                        <p className="text-gray-500 text-xs truncate">{place.address || '—'}</p>
-                                        {place.categoryName && (
-                                            <p className="text-gray-600 text-[10px] mt-0.5">{place.categoryName}</p>
-                                        )}
-                                    </div>
-                                    <div className="text-right shrink-0">
-                                        <p className="text-gray-400 text-xs font-mono">
-                                            {place.phoneUnformatted || place.phone || '—'}
-                                        </p>
-                                        {place.totalScore != null && (
-                                            <p className="flex items-center gap-0.5 justify-end text-yellow-500 text-[10px] mt-0.5">
-                                                <Star size={9} fill="currentColor" /> {place.totalScore}
-                                                {place.reviewsCount != null && (
-                                                    <span className="text-gray-600 ml-0.5">({place.reviewsCount})</span>
-                                                )}
+                            {results.slice(0, 25).map((place, i) => {
+                                const score = icpScores[i];
+                                const colors = score !== undefined ? getIcpColor(score) : null;
+                                return (
+                                    <div
+                                        key={i}
+                                        className="flex items-start gap-3 px-4 py-3 bg-white/[0.02] border border-white/6 rounded-xl"
+                                    >
+                                        <div className="w-7 h-7 rounded-lg bg-[#f97316]/10 border border-[#f97316]/20 flex items-center justify-center shrink-0 mt-0.5">
+                                            <MapPin size={12} className="text-[#f97316]" />
+                                        </div>
+                                        <div className="flex-1 min-w-0">
+                                            <p className="text-white text-sm font-semibold truncate">{place.title || '—'}</p>
+                                            <p className="text-gray-500 text-xs truncate">{place.address || '—'}</p>
+                                            {place.categoryName && (
+                                                <p className="text-gray-600 text-[10px] mt-0.5">{place.categoryName}</p>
+                                            )}
+                                        </div>
+                                        <div className="text-right shrink-0 flex flex-col items-end gap-1">
+                                            {score !== undefined && colors && (
+                                                <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded border ${colors.bg} ${colors.text}`}>
+                                                    ICP {score}/10
+                                                </span>
+                                            )}
+                                            <p className="text-gray-400 text-xs font-mono">
+                                                {place.phoneUnformatted || place.phone || '—'}
                                             </p>
-                                        )}
+                                            {place.totalScore != null && (
+                                                <p className="flex items-center gap-0.5 justify-end text-yellow-500 text-[10px]">
+                                                    <Star size={9} fill="currentColor" /> {place.totalScore}
+                                                    {place.reviewsCount != null && (
+                                                        <span className="text-gray-600 ml-0.5">({place.reviewsCount})</span>
+                                                    )}
+                                                </p>
+                                            )}
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
+                                );
+                            })}
                             {results.length > 25 && (
                                 <p className="text-center text-xs text-gray-600 py-2">
                                     +{results.length - 25} more will be included in the import

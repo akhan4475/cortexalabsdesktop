@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Plus, MoreHorizontal, CheckCircle2, ArrowLeft, Save, Briefcase, User, Calendar, DollarSign, XCircle, Trash2, Edit2, AlertTriangle, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Client } from './types';
+import { Client, Lead } from './types';
 
 interface ClientsProps {
     clients: Client[];
+    allLeads: Lead[];
     onAddClient: (client: Client) => void;
     onUpdateClient: (client: Client) => void;
     onDeleteClient: (clientId: string) => void;
@@ -20,7 +21,7 @@ const formatLocalDate = (date: Date) => {
     return `${year}-${month}-${day}`;
 };
 
-const Clients: React.FC<ClientsProps> = ({ clients, onAddClient, onUpdateClient, onDeleteClient }) => {
+const Clients: React.FC<ClientsProps> = ({ clients, allLeads, onAddClient, onUpdateClient, onDeleteClient }) => {
     const [view, setView] = useState<'list' | 'add' | 'edit'>('list');
     const [menuOpenId, setMenuOpenId] = useState<string | null>(null);
     const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
@@ -31,7 +32,8 @@ const Clients: React.FC<ClientsProps> = ({ clients, onAddClient, onUpdateClient,
         upfrontValue: 0,
         monthlyValue: 0,
         monthlyRetainerDate: '',
-        status: 'active'
+        status: 'active',
+        leadId: '',
     });
 
     // Automatically suggest retainer date if not set (1 month after close)
@@ -73,7 +75,8 @@ const Clients: React.FC<ClientsProps> = ({ clients, onAddClient, onUpdateClient,
                 upfrontValue: Number(upfrontValue),
                 monthlyValue: Number(monthlyValue),
                 monthlyRetainerDate: retainerDate,
-                status: status as 'active' | 'inactive'
+                status: status as 'active' | 'inactive',
+                leadId: clientForm.leadId || undefined,
             };
             onAddClient(client);
         } else if (view === 'edit') {
@@ -89,14 +92,15 @@ const Clients: React.FC<ClientsProps> = ({ clients, onAddClient, onUpdateClient,
     };
 
     const resetForm = () => {
-        setClientForm({ 
-            name: '', 
-            company: '', 
-            closeDate: formatLocalDate(new Date()), 
-            upfrontValue: 0, 
+        setClientForm({
+            name: '',
+            company: '',
+            closeDate: formatLocalDate(new Date()),
+            upfrontValue: 0,
             monthlyValue: 0,
             monthlyRetainerDate: '',
-            status: 'active'
+            status: 'active',
+            leadId: '',
         });
     };
 
@@ -199,6 +203,23 @@ const Clients: React.FC<ClientsProps> = ({ clients, onAddClient, onUpdateClient,
                                     <p className="text-[9px] text-gray-600 italic">
                                         {clientForm.status === 'inactive' ? 'Voided for inactive clients.' : 'Date for recurring billing cycles.'}
                                     </p>
+                                </div>
+                            </div>
+
+                            <div className="md:col-span-2 space-y-1.5">
+                                <label className="text-[9px] font-bold text-gray-500 uppercase tracking-widest">Linked Lead <span className="normal-case font-normal text-gray-600">(auto-moves to Paid in pipeline)</span></label>
+                                <div className="relative">
+                                    <User size={13} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-600" />
+                                    <select
+                                        value={clientForm.leadId || ''}
+                                        onChange={(e) => setClientForm({ ...clientForm, leadId: e.target.value || undefined })}
+                                        className={inputCls}
+                                    >
+                                        <option value="">-- No lead linked --</option>
+                                        {allLeads.map(l => (
+                                            <option key={l.id} value={l.id}>{l.name}{l.company ? ` · ${l.company}` : ''}</option>
+                                        ))}
+                                    </select>
                                 </div>
                             </div>
 

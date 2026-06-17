@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { NicheProvider } from './lib/NicheContext';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -89,7 +90,11 @@ const App: React.FC = () => {
 
   // Render logic
   if (view === 'crm') {
-      return <CRM onLogout={handleLogout} />;
+      return (
+        <NicheProvider>
+          <CRM onLogout={handleLogout} />
+        </NicheProvider>
+      );
   }
 
   if (view === 'login') {
