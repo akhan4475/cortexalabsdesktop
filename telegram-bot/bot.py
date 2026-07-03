@@ -309,12 +309,27 @@ def _route(chat_id: str, text: str):
         send(chat_id, f"Unknown command `{cmd}`. Type /help for the full list.")
         return
 
-    # ── Free-form chat → Boss agent ───────────────────────────────────────────
+    # ── Free-form chat ────────────────────────────────────────────────────────
+    # Short casual messages get an instant reply — no Claude CLI needed.
+    CASUAL = {
+        "hi", "hey", "hello", "yo", "sup", "what's up", "whats up",
+        "hiya", "heya", "howdy", "morning", "good morning", "gm",
+    }
+    if lower in CASUAL or (len(lower.split()) <= 2 and not any(c in lower for c in "?!@#$%")):
+        send(chat_id,
+             "Hey! CortexaOS is running.\n\n"
+             "Tell me what you need — check leads, run a brief, analyse a YouTube video, "
+             "or just ask anything. Type /help to see all commands.")
+        return
+
+    # Substantive free-form → Boss agent
     send(chat_id, "_Thinking..._")
     prompt = (
-        f"The user sent you a free-form message. Respond naturally and helpfully as the "
-        f"CortexaLabs Agency OS. If the message implies an action (check leads, run follow-ups, "
-        f"generate a brief, etc.) execute it. Here is their message:\n\n\"{text_stripped}\""
+        f"The user sent you a free-form message via Telegram. Respond naturally and helpfully "
+        f"as the CortexaLabs Agency OS boss. If the message implies an action (check leads, "
+        f"run follow-ups, generate a brief, etc.) execute it and report results. "
+        f"Keep your reply concise — this is a Telegram message, not a report.\n\n"
+        f"Message: \"{text_stripped}\""
     )
     result = run_agent("boss", prompt, timeout=90)
     send(chat_id, result)
