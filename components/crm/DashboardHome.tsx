@@ -8,6 +8,7 @@ import { AreaChart, Area, ResponsiveContainer, Tooltip, XAxis, CartesianGrid } f
 import { Client, DemoEvent, Lead, Dial } from './types';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PIPELINE_STAGES } from './Pipeline';
+import AgentActivity from './AgentActivity';
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -605,6 +606,9 @@ const DashboardHome: React.FC<DashboardHomeProps> = ({ clients, demoEvents, allL
           </div>
         )}
       </div>
+
+      {/* ── Agent Activity ── */}
+      <AgentActivity />
 
       {/* ── Full activity modal ── */}
       <AnimatePresence>

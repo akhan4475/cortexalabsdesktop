@@ -4,7 +4,7 @@ import {
   Search, Bell, Loader2, X, Clock, Radio, Zap, Terminal,
   Brain, DollarSign, GitBranch, Sparkles, LayoutTemplate, Activity,
   Archive, Package, Monitor, Lightbulb, Mic, PanelLeft, ChevronRight, BookOpen,
-  Users, MessageSquare, Megaphone
+  Users, MessageSquare, Megaphone, CalendarDays
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { supabase } from '../../lib/supabase';
@@ -34,6 +34,7 @@ import Revenue from './Revenue';
 import Marketing from './Marketing';
 import AIWTerminal from './AIWTerminal';
 import Leads from './Leads';
+import CalendarView from './CalendarView';
 
 import { Lead, Campaign, Client, DemoEvent, Dial } from './types';
 
@@ -74,14 +75,14 @@ interface CRMProps {
 
 export type CRMView =
   | 'dashboard'
-  | 'pipeline' | 'dialer' | 'dmsender' | 'scraper'
+  | 'pipeline' | 'leads' | 'calendar' | 'dialer' | 'dmsender' | 'scraper'
   | 'studio' | 'scriptboard' | 'radar' | 'library'
   | 'terminal' | 'builds' | 'mockups'
   | 'memory' | 'insights'
   | 'revenue' | 'analytics' | 'clients' | 'marketing'
   | 'recordings' | 'credentials' | 'motivation' | 'docs'
   // legacy compat
-  | 'leads' | 'conversations' | 'automations' | 'content' | 'factory' | 'claude';
+  | 'conversations' | 'automations' | 'content' | 'factory' | 'claude';
 
 /**
  * Helper to format date as YYYY-MM-DD using LOCAL time
@@ -114,6 +115,25 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
     // Fetch user data on mount
     useEffect(() => {
         fetchUserData();
+    }, []);
+
+    // Realtime subscription: refresh leads on any change to the leads table
+    useEffect(() => {
+        const channel = supabase
+            .channel('pipeline-leads')
+            .on('postgres_changes', {
+                event: '*',
+                schema: 'public',
+                table: 'leads',
+            }, () => {
+                fetchUserData();
+            })
+            .subscribe();
+
+        return () => {
+            supabase.removeChannel(channel);
+        };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     // Handle clicks outside notification popup
@@ -696,11 +716,10 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
         {
             label: 'Sales',
             items: [
-                { id: 'pipeline',  icon: GitBranch,     label: 'Pipeline'     },
-                { id: 'leads',     icon: Users,         label: 'Leads'        },
-                { id: 'dialer',    icon: Phone,         label: 'Dialer'       },
-                { id: 'dmsender',  icon: MessageSquare, label: 'DM Sender'    },
-                { id: 'scraper',   icon: MapPin,        label: 'Scraper'      },
+                { id: 'pipeline',  icon: GitBranch,     label: 'Pipeline'  },
+                { id: 'leads',     icon: Users,         label: 'Leads'     },
+                { id: 'calendar',  icon: CalendarDays,  label: 'Calendar'  },
+                { id: 'scraper',   icon: MapPin,        label: 'Scraper'   },
             ],
         },
         {
@@ -733,16 +752,12 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
                 { id: 'revenue',   icon: DollarSign, label: 'Revenue'   },
                 { id: 'analytics', icon: BarChart3,  label: 'Analytics' },
                 { id: 'clients',   icon: Briefcase,  label: 'Clients'   },
-                { id: 'marketing', icon: Megaphone,  label: 'Marketing' },
             ],
         },
         {
             label: 'System',
             items: [
-                { id: 'recordings',  icon: Mic,      label: 'Recordings'  },
                 { id: 'credentials', icon: KeyRound, label: 'Credentials' },
-                { id: 'motivation',  icon: Zap,      label: 'Motivation'  },
-                { id: 'docs',        icon: BookOpen, label: 'Docs'        },
             ],
         },
     ];
@@ -751,7 +766,7 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
         dashboard: 'Dashboard', pipeline: 'Pipeline', dialer: 'Dialer',
         dmsender: 'DM Sender', scraper: 'Lead Scraper', studio: 'Studio', scriptboard: 'Script Board',
         radar: 'Radar', library: 'Library', terminal: 'AIW Terminal',
-        leads: 'Leads',
+        leads: 'Leads', calendar: 'Calendar',
         builds: 'Builds', mockups: 'Mockups', memory: 'Memory',
         insights: 'Insights', revenue: 'Revenue', analytics: 'Analytics',
         clients: 'Clients', marketing: 'Marketing', recordings: 'Recordings', credentials: 'Credentials',
@@ -989,6 +1004,7 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
                                     onMoveLeads={handleMoveLeads}
                                 />
                             )}
+                            {currentView === 'calendar' && <CalendarView />}
                             {/* Content */}
                             {currentView === 'studio' && <Studio />}
                             {currentView === 'scriptboard' && <ScriptBoard />}

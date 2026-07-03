@@ -1,0 +1,63 @@
+{
+  "version": "1.0.0",
+  "agency": "CortexaLabs AI",
+  "owner": "Ayaan Khan",
+  "email": "cortexalabsai@gmail.com",
+  "active_niches": ["pool", "roofing", "landscaping", "remodeling", "construction", "painters"],
+  "gates": {
+    "onboarding_complete": false,
+    "first_campaign_created": false,
+    "first_lead_scraped": false,
+    "first_loom_sent": false,
+    "first_booking": false,
+    "first_client": false
+  },
+  "active_campaigns": {},
+  "agent_last_run": {
+    "boss": null,
+    "scout": null,
+    "setter": null,
+    "sales": null,
+    "factory": null,
+    "analyst": null,
+    "content": null
+  },
+  "daily_targets": {
+    "leads_scraped": 50,
+    "dms_sent": 20,
+    "looms_sent": 5,
+    "follow_ups": 10,
+    "videos_analysed": 3
+  },
+  "skills_populated": {
+    "dm-copy": false,
+    "loom-personalization": false,
+    "follow-up-sequences": false,
+    "call-structure": false,
+    "objection-handling": false,
+    "offer-design": false,
+    "proposal-close": false
+  },
+  "pipeline_counts": {
+    "new_lead": 0,
+    "qualified": 0,
+    "loom_sent": 0,
+    "follow_up": 0,
+    "demo_booked": 0,
+    "demo_done": 0,
+    "proposal_sent": 0,
+    "closed_won": 0,
+    "closed_lost": 0,
+    "on_hold": 0,
+    "dm_sent": 0,
+    "dm_replied": 0,
+    "booked_from_dm": 0
+  },
+  "revenue": {
+    "total_invoiced": 0,
+    "total_collected": 0,
+    "deals_this_month": 0,
+    "avg_deal_value": 0
+  },
+  "last_updated": null
+}

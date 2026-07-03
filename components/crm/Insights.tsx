@@ -1,11 +1,28 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Lightbulb, TrendingUp, Brain, MessageSquare, Loader2, Send, RefreshCw, BarChart2 } from 'lucide-react';
+import { Lightbulb, TrendingUp, Brain, MessageSquare, Loader2, Send, RefreshCw, BarChart2, Youtube, ExternalLink, Check, Star, Filter } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNiche } from '../../lib/NicheContext';
 import { NICHES } from '../../lib/niches';
 import { callClaude, getAnthropicKey } from '../../lib/ai';
 import { supabase } from '../../lib/supabase';
 import { Client, Lead } from './types';
+
+interface IntelligenceItem {
+  id: string;
+  source_type: string;
+  source_url: string | null;
+  title: string | null;
+  creator: string | null;
+  category: string | null;
+  applies_to_niche: string;
+  key_tactics: string[];
+  frameworks: Record<string, string>;
+  raw_notes: string | null;
+  quality_score: number | null;
+  applied: boolean;
+  tags: string[];
+  created_at: string;
+}
 
 interface InsightsProps {
   allLeads: Lead[];
@@ -17,7 +34,24 @@ const INSIGHT_TABS = [
   { id: 'working',  label: "What's Working",  icon: TrendingUp },
   { id: 'patterns', label: 'Patterns',        icon: BarChart2 },
   { id: 'ask',      label: 'Ask Anything',    icon: MessageSquare },
+  { id: 'intel',    label: 'Intelligence',    icon: Youtube },
 ];
+
+const INTEL_CATEGORIES = [
+  'all', 'dm_copy', 'loom_structure', 'call_structure', 'offer_design',
+  'objection_handling', 'lead_gen', 'content_strategy', 'pricing_psychology',
+  'follow_up', 'closing_techniques', 'competitor_analysis', 'niche_intel',
+  'seo_tactics', 'web_design_trends',
+];
+
+const SOURCE_COLORS: Record<string, string> = {
+  youtube:    'text-red-400 bg-red-400/10 border-red-400/20',
+  competitor: 'text-orange-400 bg-orange-400/10 border-orange-400/20',
+  reddit:     'text-orange-300 bg-orange-300/10 border-orange-300/20',
+  podcast:    'text-purple-400 bg-purple-400/10 border-purple-400/20',
+  article:    'text-blue-400 bg-blue-400/10 border-blue-400/20',
+  tiktok:     'text-pink-400 bg-pink-400/10 border-pink-400/20',
+};
 
 interface ChatMessage { role: 'user' | 'assistant'; content: string; }
 
@@ -46,9 +80,44 @@ const Insights: React.FC<InsightsProps> = ({ allLeads, clients }) => {
   const [chatLoading, setChatLoading] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
 
+  // Intelligence
+  const [intelItems, setIntelItems] = useState<IntelligenceItem[]>([]);
+  const [intelLoading, setIntelLoading] = useState(false);
+  const [intelCategory, setIntelCategory] = useState('all');
+  const [intelSource, setIntelSource] = useState('all');
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+
   useEffect(() => {
     getAnthropicKey().then(k => setHasKey(!!k));
   }, []);
+
+  useEffect(() => {
+    if (tab === 'intel') fetchIntel();
+  }, [tab, intelCategory, intelSource]);
+
+  const fetchIntel = async () => {
+    setIntelLoading(true);
+    let query = supabase
+      .from('intelligence_items')
+      .select('*')
+      .order('created_at', { ascending: false })
+      .limit(100);
+    if (intelCategory !== 'all') query = query.eq('category', intelCategory);
+    if (intelSource !== 'all') query = query.eq('source_type', intelSource);
+    const { data } = await query;
+    setIntelItems((data as IntelligenceItem[]) ?? []);
+    setIntelLoading(false);
+  };
+
+  const toggleApplied = async (item: IntelligenceItem) => {
+    await supabase
+      .from('intelligence_items')
+      .update({ applied: !item.applied })
+      .eq('id', item.id);
+    setIntelItems(prev =>
+      prev.map(i => i.id === item.id ? { ...i, applied: !i.applied } : i)
+    );
+  };
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -241,6 +310,214 @@ Pipeline breakdown: ${JSON.stringify(stageGroups)}
                 <p className="text-sm text-[#F2F2F2] leading-relaxed whitespace-pre-wrap">{patterns}</p>
               </motion.div>
             )}
+          </div>
+        )}
+
+        {/* Intelligence Library */}
+        {tab === 'intel' && (
+          <div className="space-y-4">
+            {/* Filters */}
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="flex items-center gap-1.5">
+                <Filter size={11} className="text-[#555]" />
+                <span className="text-[10px] text-[#555] uppercase tracking-wider">Source</span>
+              </div>
+              {['all', 'youtube', 'competitor', 'podcast', 'article', 'tiktok', 'reddit'].map(s => (
+                <button
+                  key={s}
+                  onClick={() => setIntelSource(s)}
+                  className={`px-2 py-1 rounded text-[10px] font-medium border transition-colors capitalize ${
+                    intelSource === s
+                      ? 'bg-[#CD3D35]/20 border-[#CD3D35]/40 text-[#CD3D35]'
+                      : 'bg-[#141414] border-[#2A2A2A] text-[#555] hover:text-[#909090]'
+                  }`}
+                >
+                  {s}
+                </button>
+              ))}
+            </div>
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="flex items-center gap-1.5">
+                <Filter size={11} className="text-[#555]" />
+                <span className="text-[10px] text-[#555] uppercase tracking-wider">Category</span>
+              </div>
+              {INTEL_CATEGORIES.map(c => (
+                <button
+                  key={c}
+                  onClick={() => setIntelCategory(c)}
+                  className={`px-2 py-1 rounded text-[10px] font-medium border transition-colors ${
+                    intelCategory === c
+                      ? 'bg-[#CD3D35]/20 border-[#CD3D35]/40 text-[#CD3D35]'
+                      : 'bg-[#141414] border-[#2A2A2A] text-[#555] hover:text-[#909090]'
+                  }`}
+                >
+                  {c.replace(/_/g, ' ')}
+                </button>
+              ))}
+            </div>
+
+            {/* Count */}
+            <p className="text-[10px] text-[#555]">
+              {intelLoading ? 'Loading...' : `${intelItems.length} items`}
+            </p>
+
+            {/* Items */}
+            {intelLoading && (
+              <div className="flex items-center gap-2 py-4">
+                <Loader2 size={14} className="text-[#CD3D35] animate-spin" />
+                <span className="text-xs text-[#555]">Loading intelligence...</span>
+              </div>
+            )}
+
+            {!intelLoading && intelItems.length === 0 && (
+              <div className="bg-[#141414] border border-[#2A2A2A] rounded-lg p-8 text-center">
+                <Youtube size={24} className="text-[#333] mx-auto mb-2" />
+                <p className="text-sm text-[#555]">No intelligence items yet.</p>
+                <p className="text-xs text-[#333] mt-1">
+                  Paste a YouTube link in Telegram or run:<br />
+                  <code className="text-[#CD3D35]">/analyst /analyze-video [url] [category]</code>
+                </p>
+              </div>
+            )}
+
+            {!intelLoading && intelItems.map(item => (
+              <div
+                key={item.id}
+                className={`bg-[#141414] border rounded-lg transition-colors ${
+                  item.applied ? 'border-green-500/20' : 'border-[#2A2A2A]'
+                }`}
+              >
+                <div
+                  className="p-4 cursor-pointer"
+                  onClick={() => setExpandedId(expandedId === item.id ? null : item.id)}
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="flex-1 min-w-0">
+                      {/* Badges row */}
+                      <div className="flex flex-wrap items-center gap-1.5 mb-2">
+                        <span className={`px-1.5 py-0.5 rounded border text-[9px] font-semibold uppercase tracking-wider ${SOURCE_COLORS[item.source_type] ?? 'text-[#555] bg-[#1A1A1A] border-[#2A2A2A]'}`}>
+                          {item.source_type}
+                        </span>
+                        {item.category && (
+                          <span className="px-1.5 py-0.5 rounded border border-[#2A2A2A] bg-[#1A1A1A] text-[9px] text-[#555] uppercase tracking-wider">
+                            {item.category.replace(/_/g, ' ')}
+                          </span>
+                        )}
+                        {item.applies_to_niche && item.applies_to_niche !== 'all' && (
+                          <span className="px-1.5 py-0.5 rounded border border-[#2A2A2A] bg-[#1A1A1A] text-[9px] text-[#555]">
+                            {item.applies_to_niche}
+                          </span>
+                        )}
+                        {item.applied && (
+                          <span className="px-1.5 py-0.5 rounded border border-green-500/30 bg-green-500/10 text-[9px] text-green-400 font-semibold flex items-center gap-1">
+                            <Check size={8} /> Applied
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Title */}
+                      <p className="text-sm font-medium text-[#F2F2F2] truncate">
+                        {item.title ?? 'Untitled'}
+                      </p>
+                      {item.creator && (
+                        <p className="text-[10px] text-[#555] mt-0.5">{item.creator}</p>
+                      )}
+                    </div>
+
+                    {/* Quality score + actions */}
+                    <div className="flex items-center gap-2 shrink-0">
+                      {item.quality_score != null && (
+                        <div className="flex items-center gap-0.5">
+                          <Star size={10} className="text-yellow-500" />
+                          <span className="text-[10px] text-yellow-500 font-mono">{item.quality_score}/10</span>
+                        </div>
+                      )}
+                      {item.source_url && (
+                        <a
+                          href={item.source_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={e => e.stopPropagation()}
+                          className="text-[#555] hover:text-[#F2F2F2] transition-colors"
+                        >
+                          <ExternalLink size={12} />
+                        </a>
+                      )}
+                      <span className="text-[10px] text-[#333]">
+                        {new Date(item.created_at).toLocaleDateString()}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Expanded content */}
+                {expandedId === item.id && (
+                  <div className="px-4 pb-4 border-t border-[#1E1E1E] pt-3 space-y-3">
+                    {/* Key tactics */}
+                    {item.key_tactics?.length > 0 && (
+                      <div>
+                        <p className="text-[10px] text-[#CD3D35] uppercase tracking-wider font-semibold mb-1.5">Key Tactics</p>
+                        <ul className="space-y-1">
+                          {item.key_tactics.map((t, i) => (
+                            <li key={i} className="flex items-start gap-1.5 text-xs text-[#909090]">
+                              <span className="text-[#CD3D35] mt-0.5 shrink-0">›</span>
+                              {t}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {/* Frameworks */}
+                    {item.frameworks && Object.keys(item.frameworks).length > 0 && (
+                      <div>
+                        <p className="text-[10px] text-[#CD3D35] uppercase tracking-wider font-semibold mb-1.5">Frameworks</p>
+                        <div className="space-y-1.5">
+                          {Object.entries(item.frameworks).map(([name, desc]) => (
+                            <div key={name} className="bg-[#1A1A1A] rounded px-2.5 py-2">
+                              <p className="text-[10px] font-semibold text-[#F2F2F2] mb-0.5">{name}</p>
+                              <p className="text-[10px] text-[#555]">{desc}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Raw notes */}
+                    {item.raw_notes && (
+                      <div>
+                        <p className="text-[10px] text-[#555] uppercase tracking-wider font-semibold mb-1">Notes</p>
+                        <p className="text-xs text-[#555] leading-relaxed">{item.raw_notes}</p>
+                      </div>
+                    )}
+
+                    {/* Tags */}
+                    {item.tags?.length > 0 && (
+                      <div className="flex flex-wrap gap-1">
+                        {item.tags.map((tag, i) => (
+                          <span key={i} className="px-1.5 py-0.5 bg-[#1A1A1A] border border-[#2A2A2A] rounded text-[9px] text-[#555]">
+                            #{tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Mark applied button */}
+                    <button
+                      onClick={() => toggleApplied(item)}
+                      className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded text-xs font-medium border transition-colors ${
+                        item.applied
+                          ? 'border-green-500/30 text-green-400 bg-green-500/10 hover:bg-green-500/5'
+                          : 'border-[#2A2A2A] text-[#555] bg-[#1A1A1A] hover:text-[#F2F2F2]'
+                      }`}
+                    >
+                      <Check size={11} />
+                      {item.applied ? 'Mark as not applied' : 'Mark as applied'}
+                    </button>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         )}
 
