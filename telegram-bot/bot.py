@@ -123,7 +123,11 @@ AGENTS = {
 
 
 def run_agent(agent_key: str, prompt: str, timeout: int = 300) -> str:
-    """Run a Claude CLI agent synchronously, return output string."""
+    """
+    Run a Claude CLI agent.
+    Runs from AGENCY_DIR so CLAUDE.md auto-loads. Short --print message
+    avoids the Windows 32k command-line length limit (no -p with huge content).
+    """
     agent_file = AGENTS.get(agent_key)
     if not agent_file:
         return f"Unknown agent: {agent_key}"
@@ -132,12 +136,20 @@ def run_agent(agent_key: str, prompt: str, timeout: int = 300) -> str:
     if not agent_path.exists():
         return f"Agent file not found: {agent_path}"
 
-    cmd = [CLAUDE_CMD, "-p", agent_path.read_text(encoding="utf-8"), "--print", prompt]
+    # Keep command line short — CLAUDE.md in AGENCY_DIR auto-loads as context.
+    # We tell Claude which agent file to follow + what to execute.
+    short_msg = (
+        f"You are the {agent_key} agent. "
+        f"Read and strictly follow all instructions in {agent_file}. "
+        f"Execute this command now: {prompt}"
+    )
 
     try:
         result = subprocess.run(
-            cmd, capture_output=True, text=True,
-            timeout=timeout, cwd=str(WORK_DIR),
+            [CLAUDE_CMD, "--print", short_msg],
+            capture_output=True, text=True,
+            timeout=timeout, cwd=str(AGENCY_DIR),
+            encoding="utf-8", errors="replace",
         )
         out = result.stdout.strip()
         if result.returncode != 0 and result.stderr:
