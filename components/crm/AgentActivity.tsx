@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Bot, Zap } from 'lucide-react';
+import { Zap } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -86,29 +86,27 @@ const AgentActivity: React.FC = () => {
   }, []);
 
   return (
-    <div className="bg-[#141414] border border-[#2A2A2A] rounded-lg overflow-hidden">
+    <div className="bg-[#111111] border border-[#1E1E1E] rounded overflow-hidden">
       {/* Header */}
       <div className="flex items-center justify-between px-4 py-3 border-b border-[#1A1A1A]">
         <div className="flex items-center gap-2">
-          <p className="text-sm font-semibold text-[#F2F2F2]">Agent Activity</p>
-          <span className="text-[9px] font-bold text-[#555] bg-[#1E1E1E] border border-[#2A2A2A] px-1.5 py-0.5 rounded uppercase tracking-wider">
+          <p className="text-[11px] font-semibold text-[#F2F2F2]">Agent Activity</p>
+          <span className="text-[9px] font-mono text-[#444] border border-[#2A2A2A] px-1.5 py-0.5 rounded uppercase tracking-widest">
             today
           </span>
         </div>
-        <div className="p-1.5 rounded" style={{ background: '#8B5CF618' }}>
-          <Zap size={12} style={{ color: '#8B5CF6' }} />
-        </div>
+        <Zap size={11} className="text-[#444]" />
       </div>
 
       {/* Body */}
       <div className="divide-y divide-[#1A1A1A]">
         {loading ? (
           <div className="flex items-center justify-center py-8">
-            <p className="text-xs text-[#383838]">Loading...</p>
+            <p className="text-[11px] text-[#333] font-mono">Loading...</p>
           </div>
         ) : runs.length === 0 ? (
           <div className="flex items-center justify-center py-8">
-            <p className="text-xs text-[#383838] text-center px-4">
+            <p className="text-[11px] text-[#333] text-center px-4 font-mono">
               No agents run today. Start with /brief in Telegram.
             </p>
           </div>
@@ -116,36 +114,26 @@ const AgentActivity: React.FC = () => {
           runs.map(run => {
             const color   = getAgentColor(run.agent_name);
             const summary = parseMetricsSummary(run.metrics);
-            const initials = run.agent_name.slice(0, 2).toUpperCase();
             return (
-              <div key={run.id} className="flex items-start gap-2.5 px-4 py-2.5 hover:bg-[#1A1A1A] transition-colors">
-                {/* Agent badge */}
-                <div
-                  className="w-6 h-6 rounded flex items-center justify-center text-[9px] font-bold shrink-0 mt-0.5"
-                  style={{ background: color + '22', color }}
-                >
-                  {initials}
-                </div>
-
+              <div key={run.id} className="flex items-start gap-2 px-4 py-2 hover:bg-[#141414] transition-colors">
                 {/* Content */}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-1.5 flex-wrap">
                     <span
-                      className="text-[10px] font-semibold shrink-0"
-                      style={{ color }}
+                      className="text-[9px] font-mono font-semibold uppercase tracking-wide border px-1 py-px rounded shrink-0"
+                      style={{ color, borderColor: color + '40' }}
                     >
                       {run.agent_name}
                     </span>
-                    <span className="text-[10px] text-[#555] shrink-0">·</span>
-                    <span className="text-[10px] text-[#909090] font-mono truncate">{run.command}</span>
+                    <span className="text-[10px] text-[#555] font-mono truncate">{run.command}</span>
                   </div>
                   {summary && (
-                    <p className="text-[10px] text-[#555] mt-0.5 truncate">{summary}</p>
+                    <p className="text-[9px] text-[#444] font-mono mt-0.5 truncate">{summary}</p>
                   )}
                 </div>
 
                 {/* Time */}
-                <span className="text-[9px] text-[#383838] font-mono shrink-0 mt-0.5">
+                <span className="text-[9px] text-[#333] font-mono shrink-0 mt-0.5">
                   {timeAgo(run.created_at)}
                 </span>
               </div>

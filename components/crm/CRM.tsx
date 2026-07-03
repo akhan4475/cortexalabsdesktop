@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
-  LayoutDashboard, Phone, MapPin, Briefcase, KeyRound, BarChart3, LogOut,
-  Search, Bell, Loader2, X, Clock, Radio, Zap, Terminal,
+  LayoutDashboard, MapPin, Briefcase, KeyRound, BarChart3, LogOut,
+  Search, Loader2, Terminal,
   Brain, DollarSign, GitBranch, Sparkles, LayoutTemplate, Activity,
-  Archive, Package, Monitor, Lightbulb, Mic, PanelLeft, ChevronRight, BookOpen,
-  Users, MessageSquare, Megaphone, CalendarDays
+  Archive, Package, Monitor, Lightbulb, PanelLeft,
+  Users, CalendarDays
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { supabase } from '../../lib/supabase';
@@ -99,8 +99,6 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const [isLoading, setIsLoading] = useState(true);
     const [userId, setUserId] = useState<string | null>(null);
-    const [showNotifications, setShowNotifications] = useState(false);
-    const notificationRef = useRef<HTMLDivElement>(null);
 
     // Global selection state for cross-view navigation
     const [navContext, setNavContext] = useState<{ leadId?: string; campaignId?: string }>({});
@@ -136,18 +134,6 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    // Handle clicks outside notification popup
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (notificationRef.current && !notificationRef.current.contains(event.target as Node)) {
-                setShowNotifications(false);
-            }
-        };
-        if (showNotifications) {
-            document.addEventListener('mousedown', handleClickOutside);
-        }
-        return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, [showNotifications]);
 
     const fetchUserData = async () => {
         try {
@@ -699,13 +685,6 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
         onLogout();
     };
 
-    const latestMessages = [
-        { id: '1', leadName: 'Sarah Connor', text: 'Yes, I spoke to the team. We are ready.', time: '2m ago' },
-        { id: '2', leadName: 'John Wick', text: 'Can we move the demo to 3 PM?', time: '15m ago' },
-        { id: '3', leadName: 'Tony Stark', text: 'The automation workflow looks perfect.', time: '1h ago' },
-        { id: '4', leadName: 'Bruce Wayne', text: 'Send over the updated contract.', time: '3h ago' },
-    ];
-
     const navGroups = [
         {
             label: '',
@@ -839,10 +818,10 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
                                         title={!isSidebarOpen ? item.label : undefined}
                                         className={`relative w-full flex items-center gap-2.5 transition-colors duration-150 group
                                             ${isSidebarOpen ? 'px-3 py-1.5 mx-1.5' : 'px-0 py-2 justify-center'}
-                                            ${isSidebarOpen ? 'rounded-md w-[calc(100%-12px)]' : 'w-full'}
+                                            ${isSidebarOpen ? 'w-[calc(100%-12px)]' : 'w-full'}
                                             ${active
-                                                ? 'bg-[#CD3D35]/10 text-[#F2F2F2]'
-                                                : 'text-[#555] hover:text-[#909090] hover:bg-[#141414]'
+                                                ? 'text-[#F2F2F2]'
+                                                : 'text-[#555] hover:text-[#909090]'
                                             }`}
                                     >
                                         {active && isSidebarOpen && (
@@ -886,56 +865,27 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
 
             {/* ── Main ────────────────────────────────── */}
             <div className="flex-1 flex flex-col min-w-0">
-                <header className="h-12 bg-[#0A0A0A] border-b border-[#1A1A1A] flex items-center justify-between px-5 shrink-0 z-10">
-                    <h2 className="text-sm font-semibold text-[#F2F2F2]">
+                <header className="h-10 bg-[#0A0A0A] border-b border-[#1A1A1A] flex items-center justify-between px-5 shrink-0 z-10">
+                    <h2 className="text-[11px] font-semibold text-[#F2F2F2] tracking-wide uppercase">
                         {viewTitles[currentView] ?? currentView}
                     </h2>
                     <div className="flex items-center gap-3">
                         <div className="relative hidden md:block">
-                            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[#555] w-3 h-3" />
+                            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[#444] w-3 h-3" />
                             <input
                                 type="text"
                                 placeholder="Search..."
-                                className="bg-[#141414] border border-[#2A2A2A] rounded pl-7 pr-3 py-1 text-xs text-[#F2F2F2] focus:outline-none focus:border-[#CD3D35]/40 w-44 placeholder-[#555] transition-colors"
+                                className="bg-[#111111] border border-[#1E1E1E] rounded pl-7 pr-3 py-1 text-[11px] text-[#F2F2F2] focus:outline-none focus:border-[#CD3D35]/30 w-40 placeholder-[#444] transition-colors"
                             />
                         </div>
-                        <div className="relative" ref={notificationRef}>
-                            <button
-                                onClick={() => setShowNotifications(!showNotifications)}
-                                className={`relative p-1.5 rounded transition-colors ${showNotifications ? 'bg-[#CD3D35]/10 text-[#CD3D35]' : 'text-[#555] hover:text-[#909090]'}`}
-                            >
-                                <Bell size={14} />
-                                <span className="absolute top-1.5 right-1.5 w-1 h-1 bg-[#CD3D35] rounded-full" />
-                            </button>
-                            <AnimatePresence>
-                                {showNotifications && (
-                                    <motion.div
-                                        initial={{ opacity: 0, y: 8, scale: 0.96 }}
-                                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                                        exit={{ opacity: 0, y: 8, scale: 0.96 }}
-                                        transition={{ duration: 0.12 }}
-                                        className="absolute right-0 mt-1.5 w-72 bg-[#141414] border border-[#2A2A2A] rounded-lg shadow-2xl z-50 overflow-hidden"
-                                    >
-                                        <div className="p-3 border-b border-[#2A2A2A] flex items-center justify-between">
-                                            <span className="text-xs font-semibold text-[#F2F2F2]">Notifications</span>
-                                            <button onClick={() => setShowNotifications(false)} className="text-[#555] hover:text-[#909090]"><X size={12} /></button>
-                                        </div>
-                                        <div className="max-h-64 overflow-y-auto">
-                                            {latestMessages.map((msg) => (
-                                                <div key={msg.id} className="p-3 border-b border-[#1A1A1A] hover:bg-[#1E1E1E] cursor-pointer transition-colors">
-                                                    <div className="flex justify-between items-start mb-0.5">
-                                                        <span className="text-xs font-medium text-[#F2F2F2]">{msg.leadName}</span>
-                                                        <span className="text-[10px] text-[#555] flex items-center gap-1"><Clock size={9} />{msg.time}</span>
-                                                    </div>
-                                                    <p className="text-[11px] text-[#909090] line-clamp-1">{msg.text}</p>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
-                        </div>
-                        <div className="w-7 h-7 rounded-full bg-[#CD3D35]/15 border border-[#CD3D35]/25 flex items-center justify-center text-[10px] font-bold text-[#CD3D35]">
+                        <button
+                            onClick={handleLogout}
+                            className="flex items-center gap-1.5 text-[#444] hover:text-[#909090] transition-colors"
+                            title="Sign out"
+                        >
+                            <LogOut size={13} />
+                        </button>
+                        <div className="w-6 h-6 rounded bg-[#1A1A1A] border border-[#2A2A2A] flex items-center justify-center text-[9px] font-bold text-[#CD3D35] font-mono">
                             AK
                         </div>
                     </div>

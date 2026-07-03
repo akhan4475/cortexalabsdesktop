@@ -118,16 +118,11 @@ const KPI: React.FC<{
   icon: React.FC<{ size?: number; className?: string }>;
   color: string;
   small?: boolean;
-}> = ({ label, value, sub, icon: Icon, color, small }) => (
-  <div className="bg-[#141414] border border-[#2A2A2A] rounded-lg p-4 hover:border-[#383838] transition-colors">
-    <div className="flex items-center justify-between mb-2">
-      <p className="text-[10px] text-[#555] uppercase tracking-wider font-semibold">{label}</p>
-      <div className="p-1.5 rounded" style={{ background: color + '18' }}>
-        <Icon size={12} style={{ color }} />
-      </div>
-    </div>
-    <p className={`font-bold font-mono text-[#F2F2F2] leading-none ${small ? 'text-xl' : 'text-2xl'}`}>{value}</p>
-    {sub && <p className="text-[10px] text-[#555] mt-1">{sub}</p>}
+}> = ({ label, value, sub }) => (
+  <div className="bg-[#111111] border border-[#1E1E1E] rounded p-3 hover:border-[#2A2A2A] transition-colors">
+    <p className={`font-semibold font-mono text-[#F2F2F2] leading-none ${sub ? 'text-xl' : 'text-2xl'}`}>{value}</p>
+    {sub && <p className="text-[9px] text-[#555] font-mono mt-0.5">{sub}</p>}
+    <p className="text-[9px] text-[#444] uppercase tracking-widest mt-1.5">{label}</p>
   </div>
 );
 
@@ -336,16 +331,15 @@ const DashboardHome: React.FC<DashboardHomeProps> = ({ clients, demoEvents, allL
       {/* ── Header ── */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-base font-semibold text-[#F2F2F2]">Dashboard</h1>
-          <p className="text-xs text-[#555]">
+          <p className="text-[9px] text-[#444] uppercase tracking-widest font-mono">
             {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
           </p>
         </div>
         <div className="flex items-center gap-2">
-          <div className="flex bg-[#141414] border border-[#2A2A2A] rounded overflow-hidden">
+          <div className="flex bg-[#0A0A0A] border border-[#1E1E1E] rounded overflow-hidden">
             {(['Day', 'Week', 'Month'] as Timeframe[]).map(t => (
               <button key={t} onClick={() => setTimeframe(t)}
-                className={`px-3 py-1 text-xs font-medium transition-colors ${timeframe === t ? 'bg-[#CD3D35] text-white' : 'text-[#555] hover:text-[#909090]'}`}>
+                className={`px-3 py-1 text-[10px] font-medium transition-colors ${timeframe === t ? 'bg-[#CD3D35] text-white' : 'text-[#444] hover:text-[#909090]'}`}>
                 {t}
               </button>
             ))}
@@ -354,7 +348,7 @@ const DashboardHome: React.FC<DashboardHomeProps> = ({ clients, demoEvents, allL
       </div>
 
       {/* ── Top KPI row (8 cards) ── */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-8 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-8 gap-2">
         <KPI label={`Revenue (${timeframe})`} value={fmt(stats.totalRevenue)} icon={DollarSign} color="#CD3D35" />
         <KPI label="MRR"             value={fmt(revMetrics.mrr)}         sub="monthly"          icon={TrendingUp}    color="#22C55E" />
         <KPI label="ARR"             value={fmt(revMetrics.arr)}         sub="annualized"       icon={Activity}      color="#3B82F6" />
@@ -372,7 +366,7 @@ const DashboardHome: React.FC<DashboardHomeProps> = ({ clients, demoEvents, allL
         <div className="xl:col-span-2 space-y-5">
 
           {/* Revenue / Profit chart */}
-          <div className="bg-[#141414] border border-[#2A2A2A] rounded-lg p-4">
+          <div className="bg-[#111111] border border-[#1E1E1E] rounded p-4">
             <div className="flex items-center justify-between mb-4">
               <div>
                 <p className="text-sm font-semibold text-[#F2F2F2]">Revenue Trend</p>
@@ -405,30 +399,30 @@ const DashboardHome: React.FC<DashboardHomeProps> = ({ clients, demoEvents, allL
           </div>
 
           {/* Pipeline snapshot */}
-          <div className="bg-[#141414] border border-[#2A2A2A] rounded-lg p-4">
+          <div className="bg-[#111111] border border-[#1E1E1E] rounded p-4">
             <div className="flex items-center justify-between mb-3">
               <p className="text-sm font-semibold text-[#F2F2F2]">Pipeline Snapshot</p>
               <p className="text-[10px] text-[#555] font-mono">{allLeads.length} total leads</p>
             </div>
-            <div className="space-y-1.5">
+            <div className="space-y-1">
               {PIPELINE_SNAP.map(stage => {
                 const count = pipelineCounts[stage.id] ?? 0;
                 const pct   = (count / totalLeads) * 100;
                 return (
                   <div key={stage.id} className="flex items-center gap-2">
-                    <span className="text-[10px] text-[#555] w-24 shrink-0 truncate">{stage.label}</span>
-                    <div className="flex-1 h-3 bg-[#0A0A0A] rounded overflow-hidden relative">
+                    <span className="text-[9px] text-[#444] w-24 shrink-0 truncate">{stage.label}</span>
+                    <div className="flex-1 h-[3px] bg-[#1A1A1A] rounded-full overflow-hidden relative">
                       {count > 0 && (
                         <motion.div
                           initial={{ width: 0 }}
                           animate={{ width: `${pct}%` }}
                           transition={{ duration: 0.4, delay: 0.05 }}
-                          className="h-full rounded"
-                          style={{ background: stage.color + 'CC' }}
+                          className="h-full rounded-full"
+                          style={{ background: stage.color }}
                         />
                       )}
                     </div>
-                    <span className="text-[10px] font-mono text-[#555] w-5 text-right shrink-0">{count}</span>
+                    <span className="text-[9px] font-mono text-[#444] w-5 text-right shrink-0">{count}</span>
                   </div>
                 );
               })}
@@ -441,32 +435,32 @@ const DashboardHome: React.FC<DashboardHomeProps> = ({ clients, demoEvents, allL
         <div className="space-y-5">
 
           {/* Activity Feed */}
-          <div className="bg-[#141414] border border-[#2A2A2A] rounded-lg overflow-hidden">
+          <div className="bg-[#111111] border border-[#1E1E1E] rounded overflow-hidden">
             <div className="flex items-center justify-between px-4 py-3 border-b border-[#1A1A1A]">
               <p className="text-sm font-semibold text-[#F2F2F2]">Activity</p>
               <button onClick={() => setShowFullActivity(true)} className="text-[10px] text-[#CD3D35] hover:text-[#E85550] transition-colors">See all</button>
             </div>
             <div className="divide-y divide-[#1A1A1A]">
               {recentActivity.length === 0 ? (
-                <p className="text-xs text-[#383838] text-center py-8">No recent activity.</p>
+                <p className="text-[11px] text-[#333] text-center py-8">No recent activity.</p>
               ) : recentActivity.map(ev => (
-                <div key={ev.id} className="flex items-start gap-2.5 px-4 py-2.5 hover:bg-[#1A1A1A] transition-colors">
-                  <div className="mt-0.5 p-1.5 rounded bg-[#1E1E1E] shrink-0">{actIcon(ev.type)}</div>
+                <div key={ev.id} className="flex items-center gap-2 px-4 py-2 hover:bg-[#141414] transition-colors">
+                  <div className="shrink-0 mt-px">{actIcon(ev.type)}</div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-1.5">
-                      <p className="text-xs font-medium text-[#F2F2F2] truncate">{ev.title}</p>
-                      {ev.value && <span className="text-[9px] font-bold text-[#CD3D35] bg-[#CD3D35]/10 px-1 rounded shrink-0">{ev.value}</span>}
+                      <p className="text-[11px] font-medium text-[#D0D0D0] truncate">{ev.title}</p>
+                      {ev.value && <span className="text-[9px] font-mono text-[#CD3D35] border border-[#CD3D35]/25 px-1 rounded shrink-0">{ev.value}</span>}
                     </div>
-                    <p className="text-[10px] text-[#555] truncate">{ev.subtitle}</p>
+                    <p className="text-[9px] text-[#444] truncate">{ev.subtitle}</p>
                   </div>
-                  <span className="text-[9px] text-[#383838] font-mono shrink-0 mt-0.5">{ev.date === todayStr ? 'Today' : ev.date.slice(5)}</span>
+                  <span className="text-[9px] text-[#333] font-mono shrink-0">{ev.date === todayStr ? 'Today' : ev.date.slice(5)}</span>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Attention: active-stage leads */}
-          <div className="bg-[#141414] border border-[#2A2A2A] rounded-lg overflow-hidden">
+          <div className="bg-[#111111] border border-[#1E1E1E] rounded overflow-hidden">
             <div className="px-4 py-3 border-b border-[#1A1A1A] flex items-center justify-between">
               <p className="text-sm font-semibold text-[#F2F2F2]">Needs Attention</p>
               <span className="text-[10px] font-mono text-[#555]">{attentionLeads.length} active</span>
@@ -478,17 +472,13 @@ const DashboardHome: React.FC<DashboardHomeProps> = ({ clients, demoEvents, allL
                 const stg = (PIPELINE_STAGES as readonly { id: string; label: string; color: string }[]).find(p => p.id === lead.status);
                 const color = stg?.color ?? '#555';
                 return (
-                  <div key={lead.id} className="flex items-center gap-2.5 px-4 py-2.5 hover:bg-[#1A1A1A] transition-colors">
-                    <div className="w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold shrink-0"
-                      style={{ background: color + '22', color }}>
-                      {lead.name?.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()}
-                    </div>
+                  <div key={lead.id} className="flex items-center gap-2 px-4 py-2 hover:bg-[#141414] transition-colors">
                     <div className="flex-1 min-w-0">
-                      <p className="text-xs font-medium text-[#F2F2F2] truncate">{lead.name}</p>
-                      {lead.company && <p className="text-[10px] text-[#555] truncate">{lead.company}</p>}
+                      <p className="text-[11px] font-medium text-[#D0D0D0] truncate">{lead.name}</p>
+                      {lead.company && <p className="text-[9px] text-[#444] truncate">{lead.company}</p>}
                     </div>
-                    <span className="text-[9px] px-1.5 py-0.5 rounded font-medium shrink-0"
-                      style={{ background: color + '20', color }}>
+                    <span className="text-[9px] px-1.5 py-0.5 rounded border font-mono shrink-0 uppercase tracking-wide"
+                      style={{ borderColor: color + '50', color }}>
                       {stg?.label ?? lead.status}
                     </span>
                   </div>
@@ -501,12 +491,12 @@ const DashboardHome: React.FC<DashboardHomeProps> = ({ clients, demoEvents, allL
       </div>
 
       {/* ── Performance Calendar ── */}
-      <div className="bg-[#141414] border border-[#2A2A2A] rounded-lg p-5">
+      <div className="bg-[#111111] border border-[#1E1E1E] rounded p-5">
         <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
           <p className="text-sm font-semibold text-[#F2F2F2]">Performance Calendar</p>
           <div className="flex items-center gap-2">
             {/* Metric toggle */}
-            <div className="flex bg-[#0A0A0A] border border-[#2A2A2A] rounded overflow-hidden">
+            <div className="flex bg-[#0A0A0A] border border-[#1E1E1E] rounded overflow-hidden">
               {(['Profits', 'Demos'] as MetricMode[]).map(m => (
                 <button key={m} onClick={() => setMetricMode(m)}
                   className={`px-2.5 py-1 text-[10px] font-medium transition-colors ${metricMode === m ? 'bg-[#CD3D35] text-white' : 'text-[#555] hover:text-[#909090]'}`}>
@@ -515,7 +505,7 @@ const DashboardHome: React.FC<DashboardHomeProps> = ({ clients, demoEvents, allL
               ))}
             </div>
             {/* Month / Year toggle */}
-            <div className="flex bg-[#0A0A0A] border border-[#2A2A2A] rounded overflow-hidden">
+            <div className="flex bg-[#0A0A0A] border border-[#1E1E1E] rounded overflow-hidden">
               <button onClick={() => setCalendarMode('Month')} title="Month"
                 className={`p-1.5 transition-colors ${calendarMode === 'Month' ? 'bg-[#1E1E1E] text-[#F2F2F2]' : 'text-[#555] hover:text-[#909090]'}`}>
                 <CalendarDays size={12} />
@@ -617,8 +607,8 @@ const DashboardHome: React.FC<DashboardHomeProps> = ({ clients, demoEvents, allL
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               onClick={() => setShowFullActivity(false)} className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
             <motion.div initial={{ opacity: 0, scale: 0.96, y: 12 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0 }}
-              className="relative w-full max-w-xl bg-[#141414] border border-[#2A2A2A] rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[75vh]">
-              <div className="flex items-center justify-between p-4 border-b border-[#2A2A2A]">
+              className="relative w-full max-w-xl bg-[#111111] border border-[#1E1E1E] rounded-lg overflow-hidden flex flex-col max-h-[75vh]">
+              <div className="flex items-center justify-between p-4 border-b border-[#1E1E1E]">
                 <div>
                   <p className="text-sm font-semibold text-[#F2F2F2]">Full Activity Stream</p>
                   <p className="text-[10px] text-[#555]">Last 30 days</p>
