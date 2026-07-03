@@ -191,8 +191,17 @@ def dispatch(chat_id: str, text: str):
     """
     Route a message to the right handler in a background thread.
     Sets task_active while running; on finish, drains the queue.
+    /reset bypasses the lock so a stuck state can always be cleared.
     """
     global task_active
+
+    # /reset is always instant — never queued
+    if text.strip().lower() == "/reset":
+        with task_lock:
+            task_active = False
+            task_queue.clear()
+        send(chat_id, "Reset. Queue cleared — ready for new commands.")
+        return
 
     def worker():
         global task_active
@@ -214,8 +223,8 @@ def dispatch(chat_id: str, text: str):
         if task_active:
             task_queue.append((chat_id, text))
             send(chat_id,
-                 f"_One agent is already running. Your message is queued "
-                 f"(position {len(task_queue)})._")
+                 f"_Agent running. Queued your message (position {len(task_queue)}). "
+                 f"Send /reset to cancel if it's stuck._")
             return
         task_active = True
 
@@ -270,11 +279,11 @@ def _route(chat_id: str, text: str):
         cmd = lower.split()[0]
         args = text_stripped[len(cmd):].strip()
         if cmd in BOSS_SLASH:
-            typing(chat_id)
+            send(chat_id, f"_Running {cmd}..._")
             prompt = BOSS_SLASH[cmd]
             if args:
                 prompt += f" Additional context: {args}"
-            result = run_agent("boss", prompt)
+            result = run_agent("boss", prompt, timeout=120)
             send(chat_id, result)
             return
         if cmd == "/run":
@@ -301,13 +310,13 @@ def _route(chat_id: str, text: str):
         return
 
     # ── Free-form chat → Boss agent ───────────────────────────────────────────
-    typing(chat_id)
+    send(chat_id, "_Thinking..._")
     prompt = (
         f"The user sent you a free-form message. Respond naturally and helpfully as the "
         f"CortexaLabs Agency OS. If the message implies an action (check leads, run follow-ups, "
         f"generate a brief, etc.) execute it. Here is their message:\n\n\"{text_stripped}\""
     )
-    result = run_agent("boss", prompt)
+    result = run_agent("boss", prompt, timeout=90)
     send(chat_id, result)
 
 # ── YouTube URL detection ─────────────────────────────────────────────────────
@@ -350,6 +359,7 @@ You can talk to me naturally — just type anything and I'll respond.
 /leads — leads needing action
 /run [agent] — run scout | setter | sales | analyst | content | factory
 /brief\_time HH:MM — change daily brief time (default 09:00)
+/reset — cancel stuck task and clear queue
 /help — this message
 
 *Auto-detection:*
