@@ -1,12 +1,16 @@
 # Objection Handling Skill
 
-## Status: [POPULATE FROM YOUTUBE SCRAPE]
+## Status: PARTIALLY POPULATED — 2026-07-14 (v1 — Objection 2 only, from Armando Garcia 90-day plan)
+**Sources:**
+- Armando Garcia — 90-day WAS agency plan (offer_design, q8) ← Agree-Clarify-Reframe framework, price objection
 
-**Sources to scrape:**
+**Last updated:** 2026-07-14
+
+**Still needs research:**
 - YouTube: search "web design agency objection handling 2024"
-- YouTube: search "sales objections contractor clients how to handle"
 - YouTube: search "I need to think about it objection response"
-- Channels: Cole Gordon, Charlie Morgan, Alex Hormozi
+- Channels: Cole Gordon, Alex Hormozi
+- Objections 1, 3, 4, 5, 6 below are still unpopulated placeholders
 
 ---
 
@@ -47,15 +51,23 @@ Follow-up question:
 
 ### Objection 2: "It's too expensive"
 
-[POPULATE — price objection framework]
+**Framework: Agree → Clarify → Reframe.** Never argue or immediately drop price. Agree with the concern, then ask a question that pulls the prospect's own job value into the conversation — their number does the reframing, not yours.
 
 ```
-Response:
-[POPULATE]
+Agree:
+"I completely understand."
 
-Reframe:
-[POPULATE]
+Clarify (ask, don't assert):
+"Can I ask what is one new customer worth to your business?"
+
+Reframe (let their answer do the work):
+[They state their job value, e.g. "$10,000 for a roofing job"]
+"So if [$600-$1,100] gets you even one extra job like that, does the fee still feel like a stretch?"
 ```
+
+Per-niche job value reference for this reframe (cited in source material, cross-check against `context/icp.md` before relying on it): roofing $8,000-$30,000/job, HVAC $5,000-$20,000/install, concrete $3,000-$100,000/job. Pool, landscaping, remodeling, painters — not covered in source material yet, still needs research before using confidently on those calls.
+
+See also `skills/offer-design/SKILL.md` → ROI Framing for the same script used proactively (before price objection even comes up).
 
 ### Objection 3: "I already have a website / someone doing this"
 
@@ -127,10 +139,10 @@ Know the difference:
 
 ---
 
-## Sources to Scrape
+## Sources
+- [Armando Garcia: 90-day WAS agency plan](../../intelligence/youtube/offer_design/2026-07-14-armando-garcia-90-day-was-agency-plan.md) — Objection 2 (price) only
 
-1. [POPULATE]
-2. [POPULATE]
-3. [POPULATE]
-
-Scrape date: [ADD DATE WHEN POPULATED]
+## Still to Scrape
+1. Objection 1: "I need to think about it"
+2. Objection 3: "I already have a website / someone doing my marketing"
+3. Objections 4-6, risk reversal language, DM objection responses

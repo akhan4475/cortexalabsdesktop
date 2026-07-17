@@ -1,0 +1,35 @@
+{
+  "niche": "roofing",
+  "hero_image": {
+    "source": "Stage 9 (hero-image-agent via Gemini)",
+    "mood": "confident-and-grounded",
+    "subject": "Completed roof on a real job site. Crew visible but not posed. Low-angle looking up at the roofline.",
+    "lighting": "Golden hour or overcast. Avoid harsh midday shadows.",
+    "overlay": "rgba(10,15,26,0.55) applied via CSS -- do NOT bake into the image.",
+    "target_path": "public/images/hero-bg.jpg",
+    "min_resolution": "1440x900"
+  },
+  "service_images": {
+    "source": "Stock or client-supplied, Stage 4",
+    "pattern": "Each service card uses a dark-gradient-overlay background image. 600x400px minimum.",
+    "naming": "public/images/services/{service-slug}.jpg",
+    "fallback": "CSS gradient using --color-surface and --primary-slate"
+  },
+  "gallery_images": {
+    "source": "Client-supplied before/after pairs, Stage 4 (asset-scraper-agent)",
+    "pattern": "Pairs: before-{n}.jpg / after-{n}.jpg. 4:3 aspect ratio. Real job site only -- no stock.",
+    "naming": "public/images/gallery/before-{n}.jpg and after-{n}.jpg",
+    "minimum_pairs": 3
+  },
+  "team_photos": {
+    "source": "Client-supplied or scraped from GBP/social, Stage 4",
+    "pattern": "Square crop. Natural light. No studio-style white backgrounds.",
+    "naming": "public/team/{first-last}.jpg"
+  },
+  "badge_assets": {
+    "source": "Manual drop -- see niche-playbook/trust-badges/MANUAL-DROP-NEEDED.md",
+    "naming": "public/badges/{badge-type}.{svg|png}",
+    "required": ["gaf-certified.svg"],
+    "optional": ["bbb-a-plus.svg", "owens-corning-preferred.svg"]
+  }
+}

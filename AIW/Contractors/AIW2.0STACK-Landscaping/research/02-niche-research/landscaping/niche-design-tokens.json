@@ -1,0 +1,46 @@
+{
+  "niche_slug": "landscaping",
+  "extractedAt": "2026-06-30T00:00:00Z",
+  "winner": "greenoasis",
+  "componentSources": {
+    "colorSystemFrom": "greenoasis",
+    "typographyFrom": "greenoasis",
+    "trustBarFrom": "mountainscapers",
+    "ctaFrom": "keanelandscaping",
+    "navigationFrom": "keanelandscaping",
+    "shapeMotif": "leaf"
+  },
+  "palette": {
+    "primary": "#0d3320",
+    "primary_dark": "#091f14",
+    "primary_slate": "#1a4d30",
+    "accent": "#4ade80",
+    "accent_light": "#86efac",
+    "accent_dark": "#16a34a",
+    "neutral": "#94a3b8",
+    "neutral_dim": "#475569",
+    "silver": "#cbd5e1",
+    "ink": "#f8fafc"
+  },
+  "typography": {
+    "heading": "Fraunces",
+    "body": "Plus Jakarta Sans",
+    "headingFontUrl": "Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300",
+    "bodyFontUrl": "Plus+Jakarta+Sans:wght@400;500;600;700;800"
+  },
+  "motion": {
+    "preset": "restrained",
+    "duration_ms": 400,
+    "stagger_ms": 80
+  },
+  "theme_mode": "light",
+  "shape_motif": "leaf",
+  "meta_title": "Landscaping Template | Professional Lawn & Landscape",
+  "meta_description": "Premium landscaping and landscape design services. Free estimates. Licensed and insured.",
+  "sources": {
+    "raw_dir": "research/02-niche-research/landscaping/templates/raw",
+    "color_dir": "research/02-niche-research/landscaping/templates/raw/greenoasis",
+    "typo_dir": "research/02-niche-research/landscaping/templates/raw/greenoasis",
+    "pick": "research/02-niche-research/landscaping/templates/pick.json"
+  }
+}

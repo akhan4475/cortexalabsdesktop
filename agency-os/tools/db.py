@@ -6,8 +6,10 @@ Usage:
   python tools/db.py leads get <lead_id>
   python tools/db.py leads update <lead_id> '<data_json>'
   python tools/db.py leads insert '<data_json>'
+  python tools/db.py leads bulk-insert '<array_json>'
   python tools/db.py campaigns list [niche]
   python tools/db.py campaigns get <campaign_id>
+  python tools/db.py campaigns create '<data_json>'
   python tools/db.py intel insert '<data_json>'
   python tools/db.py intel list [category] [limit]
   python tools/db.py brief insert '<data_json>'
@@ -71,12 +73,16 @@ def cmd_log(args):
     metrics = parse_json_arg(args.metrics_json, "metrics") if args.metrics_json else {}
     client = get_client()
     row = {
-        "agent": args.agent,
-        "command": args.command,
-        "status": "completed",
-        "metrics": metrics,
+        "agent":        args.agent,
+        "command":      args.command,
+        "status":       metrics.get("status", "completed"),
+        "metrics":      metrics,
         "completed_at": datetime.now(timezone.utc).isoformat(),
     }
+    # user_id is nullable after migration 003 — agents are system processes
+    owner_uid = os.getenv("OWNER_USER_ID")
+    if owner_uid:
+        row["user_id"] = owner_uid
     res = client.table("agent_runs").insert(row).execute()
     out({"ok": True, "inserted": res.data})
 
@@ -93,7 +99,7 @@ def cmd_leads(args):
         q = client.table("leads").select("*")
         if args.niche:
             q = q.eq("niche", args.niche)
-        limit = int(args.limit) if args.limit else 50
+        limit = int(args.limit) if args.limit else 1000
         q = q.limit(limit)
         res = q.execute()
         out(res.data)
@@ -116,6 +122,17 @@ def cmd_leads(args):
         data.setdefault("created_at", datetime.now(timezone.utc).isoformat())
         res = client.table("leads").insert(data).execute()
         out({"ok": True, "inserted": res.data})
+
+    elif sub == "bulk-insert":
+        rows = parse_json_arg(args.data_json, "lead bulk-insert data")
+        if not isinstance(rows, list):
+            print("ERROR: bulk-insert expects a JSON array", file=sys.stderr)
+            sys.exit(1)
+        now = datetime.now(timezone.utc).isoformat()
+        for row in rows:
+            row.setdefault("created_at", now)
+        res = client.table("leads").insert(rows).execute()
+        out({"ok": True, "inserted_count": len(res.data), "rows": res.data})
 
     else:
         print(f"ERROR: Unknown leads subcommand: {sub}", file=sys.stderr)
@@ -144,6 +161,25 @@ def cmd_campaigns(args):
             sys.exit(1)
         out(res.data[0])
 
+    elif sub == "create":
+        data = parse_json_arg(args.data_json, "campaign create data")
+        data.setdefault("created_at", datetime.now(timezone.utc).isoformat())
+        data.setdefault("status", "active")
+        data.setdefault("campaign_type", "dms")
+        data.setdefault("leads_scraped", 0)
+        data.setdefault("dms_sent", 0)
+        data.setdefault("replies", 0)
+        data.setdefault("bookings", 0)
+        data.setdefault("closed", 0)
+        data.setdefault("revenue", 0)
+        res = client.table("campaigns").insert(data).execute()
+        out({"ok": True, "campaign": res.data})
+
+    elif sub == "update":
+        data = parse_json_arg(args.data_json, "campaign update data")
+        res = client.table("campaigns").update(data).eq("id", args.campaign_id).execute()
+        out({"ok": True, "updated": res.data})
+
     else:
         print(f"ERROR: Unknown campaigns subcommand: {sub}", file=sys.stderr)
         sys.exit(1)
@@ -153,6 +189,25 @@ def cmd_campaigns(args):
 # intel
 # ---------------------------------------------------------------------------
 
+def cmd_runs(args):
+    client = get_client()
+    sub = args.runs_cmd
+
+    if sub == "list":
+        limit = int(args.limit) if args.limit else 20
+        res = (
+            client.table("agent_runs")
+            .select("*")
+            .order("completed_at", desc=True)
+            .limit(limit)
+            .execute()
+        )
+        out(res.data)
+    else:
+        print(f"ERROR: Unknown runs subcommand: {sub}", file=sys.stderr)
+        sys.exit(1)
+
+
 def cmd_intel(args):
     client = get_client()
     sub = args.intel_cmd
@@ -160,11 +215,11 @@ def cmd_intel(args):
     if sub == "insert":
         data = parse_json_arg(args.data_json, "intel insert data")
         data.setdefault("created_at", datetime.now(timezone.utc).isoformat())
-        res = client.table("intel").insert(data).execute()
+        res = client.table("intelligence_items").insert(data).execute()
         out({"ok": True, "inserted": res.data})
 
     elif sub == "list":
-        q = client.table("intel").select("*")
+        q = client.table("intelligence_items").select("*")
         if args.category:
             q = q.eq("category", args.category)
         limit = int(args.limit) if args.limit else 50
@@ -188,7 +243,7 @@ def cmd_brief(args):
     if sub == "insert":
         data = parse_json_arg(args.data_json, "brief insert data")
         data.setdefault("created_at", datetime.now(timezone.utc).isoformat())
-        res = client.table("briefs").insert(data).execute()
+        res = client.table("daily_briefs").insert(data).execute()
         out({"ok": True, "inserted": res.data})
 
     else:
@@ -275,7 +330,7 @@ def build_parser():
 
     p_leads_list = leads_subs.add_parser("list")
     p_leads_list.add_argument("niche", nargs="?", help="Filter by niche")
-    p_leads_list.add_argument("limit", nargs="?", default="50", help="Max results")
+    p_leads_list.add_argument("limit", nargs="?", default="1000", help="Max results")
 
     p_leads_get = leads_subs.add_parser("get")
     p_leads_get.add_argument("lead_id")
@@ -287,6 +342,9 @@ def build_parser():
     p_leads_ins = leads_subs.add_parser("insert")
     p_leads_ins.add_argument("data_json")
 
+    p_leads_bulk = leads_subs.add_parser("bulk-insert")
+    p_leads_bulk.add_argument("data_json")
+
     # campaigns
     p_camps = subs.add_parser("campaigns", help="Campaigns table operations")
     camps_subs = p_camps.add_subparsers(dest="campaigns_cmd", required=True)
@@ -296,6 +354,19 @@ def build_parser():
 
     p_camps_get = camps_subs.add_parser("get")
     p_camps_get.add_argument("campaign_id")
+
+    p_camps_create = camps_subs.add_parser("create")
+    p_camps_create.add_argument("data_json")
+
+    p_camps_upd = camps_subs.add_parser("update")
+    p_camps_upd.add_argument("campaign_id")
+    p_camps_upd.add_argument("data_json")
+
+    # runs
+    p_runs = subs.add_parser("runs", help="Agent runs table operations")
+    runs_subs = p_runs.add_subparsers(dest="runs_cmd", required=True)
+    p_runs_list = runs_subs.add_parser("list")
+    p_runs_list.add_argument("limit", nargs="?", default="20", help="Max results")
 
     # intel
     p_intel = subs.add_parser("intel", help="Intel table operations")
@@ -345,6 +416,7 @@ def main():
         "log": cmd_log,
         "leads": cmd_leads,
         "campaigns": cmd_campaigns,
+        "runs": cmd_runs,
         "intel": cmd_intel,
         "brief": cmd_brief,
         "builds": cmd_builds,

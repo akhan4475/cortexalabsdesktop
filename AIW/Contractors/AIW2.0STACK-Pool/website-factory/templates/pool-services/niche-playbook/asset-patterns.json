@@ -1,0 +1,51 @@
+{
+  "$schemaVersion": 1,
+  "categories": [
+    {
+      "slug": "hero",
+      "altKeywords": ["pool", "swimming pool", "backyard pool", "spa", "clean pool"],
+      "filenameKeywords": ["hero", "pool", "banner", "header", "main"],
+      "selectorHints": ["#hero img", ".hero img", ".banner img", "[class*='hero'] img"],
+      "exclude": ["logo", "icon", "thumbnail", "badge"],
+      "priority": 1
+    },
+    {
+      "slug": "before-after",
+      "altKeywords": ["before", "after", "green pool", "algae", "dirty pool", "clean pool", "transformation"],
+      "filenameKeywords": ["before", "after", "green", "algae", "transformation", "recovery"],
+      "exclude": ["logo", "icon"],
+      "priority": 2
+    },
+    {
+      "slug": "technician-at-work",
+      "altKeywords": ["technician", "tech", "cleaning", "service", "worker", "professional", "pool guy"],
+      "filenameKeywords": ["tech", "service", "worker", "clean", "staff", "crew", "team-work"],
+      "selectorHints": [".team img", ".service img", ".about img"],
+      "exclude": ["before", "after", "logo"],
+      "priority": 3
+    },
+    {
+      "slug": "completed-pools",
+      "altKeywords": ["sparkling", "crystal", "result", "finished", "completed", "clean water", "blue water"],
+      "filenameKeywords": ["result", "finished", "completed", "clean", "sparkling", "project", "gallery"],
+      "selectorHints": [".gallery img", ".portfolio img", ".projects img"],
+      "exclude": ["before", "green", "algae"],
+      "priority": 4
+    },
+    {
+      "slug": "founder-or-team",
+      "altKeywords": ["owner", "founder", "team", "staff", "headshot", "portrait", "meet"],
+      "filenameKeywords": ["owner", "founder", "team", "staff", "headshot", "portrait", "about"],
+      "selectorHints": [".founder img", ".owner img", ".about img", ".team img"],
+      "exclude": ["pool", "equipment", "logo"],
+      "priority": 5
+    },
+    {
+      "slug": "equipment",
+      "altKeywords": ["pump", "filter", "heater", "equipment", "motor", "valve", "plumbing"],
+      "filenameKeywords": ["pump", "filter", "heater", "equipment", "motor"],
+      "exclude": ["logo", "badge"],
+      "priority": 6
+    }
+  ]
+}

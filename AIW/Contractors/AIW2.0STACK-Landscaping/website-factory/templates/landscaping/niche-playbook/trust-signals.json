@@ -1,0 +1,84 @@
+{
+  "niche": "landscaping",
+  "version": "1.0",
+  "primary_trust_signals": [
+    "Licensed, Bonded & Insured (state contractor license number shown above nav)",
+    "Google reviews rating displayed as star rating with count",
+    "BBB badge in trust bar (monochrome, above nav)",
+    "Before/after project photos (visual proof beats all other trust signals for visual buyers)",
+    "Owner photo with first name and years of experience",
+    "Response time guarantee (within 2 hours)"
+  ],
+  "secondary_trust_signals": [
+    "Free estimate (lowers barrier to contact)",
+    "Local city/neighborhood served (area-specific trust)",
+    "Process steps (removes uncertainty about what happens next)",
+    "Written privacy line on the form"
+  ],
+  "trust_bar_pattern": "thin strip ABOVE nav: license left, phone center (clickable), BBB badge right",
+  "trust_chips": [
+    "Licensed & Insured",
+    "Same-Day Response",
+    "Free Estimates"
+  ],
+  "why_choose_defaults": [
+    "We Show Up On Time",
+    "You See Results",
+    "One Point of Contact",
+    "No Mess Left Behind"
+  ],
+  "badge_placement": "trust bar above nav + trust-bar-inline section (position 2 on homepage)",
+  "review_platform_priority": ["Google", "Facebook"],
+  "niche_badges": [
+    {
+      "id": "nalp",
+      "label": "NALP Member",
+      "full_name": "National Association of Landscape Professionals",
+      "priority": "medium",
+      "collect_from": "client's website or membership card",
+      "condition": "always"
+    },
+    {
+      "id": "isa-arborist",
+      "label": "ISA Certified Arborist",
+      "full_name": "International Society of Arboriculture",
+      "priority": "high",
+      "collect_from": "client's ISA credential page or certificate",
+      "condition": "only if tree care service is offered"
+    },
+    {
+      "id": "licensed-irrigation",
+      "label": "Licensed Irrigation Contractor",
+      "full_name": "State irrigation contractor license",
+      "priority": "high",
+      "collect_from": "client provides license number; badge generated in-template",
+      "condition": "only if irrigation service is offered"
+    },
+    {
+      "id": "bbb",
+      "label": "BBB Accredited",
+      "full_name": "Better Business Bureau",
+      "priority": "medium",
+      "collect_from": "client's BBB profile URL -- Stage 4 scrapes badge image",
+      "condition": "only if client holds active BBB accreditation"
+    },
+    {
+      "id": "google-guaranteed",
+      "label": "Google Guaranteed",
+      "full_name": "Google Local Services Ads background-check badge",
+      "priority": "medium",
+      "collect_from": "client's Google Business Profile",
+      "condition": "only if client runs Google Local Services Ads"
+    },
+    {
+      "id": "angi",
+      "label": "Angi Verified",
+      "full_name": "Angi (formerly Angie's List) verified badge",
+      "priority": "low",
+      "collect_from": "client's Angi profile page",
+      "condition": "optional; low conversion lift for landscaping niche"
+    }
+  ],
+  "badge_collect_note": "Stage 4 (asset-scraper agent) attempts to harvest badge images from the client's existing website, GBP, and linked profiles. If a badge is listed above as required (priority high) but cannot be harvested, Stage 4 flags it as missing and the trust-bar-inline section hides that slot rather than showing a broken image.",
+  "conversion_note": "Portfolio/gallery is the primary trust driver for landscaping. Visual buyers need proof before pitch. Portfolio is placed at position 4 (before why-choose and reviews), immediately after services so prospects can verify capability."
+}

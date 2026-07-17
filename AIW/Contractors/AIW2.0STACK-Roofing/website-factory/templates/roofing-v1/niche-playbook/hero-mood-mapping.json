@@ -1,0 +1,27 @@
+{
+  "niche": "roofing",
+  "winner_source": "perth-roof-replacements",
+  "mood": "confident-and-grounded",
+  "composition": {
+    "layout": "full-bleed-dark",
+    "overlay": "rgba(10,15,26,0.55)",
+    "gradient_direction": "bottom-to-top",
+    "headline_position": "left-center",
+    "headline_style": "uppercase bold condensed",
+    "subtext_position": "below headline",
+    "cta_position": "below subtext",
+    "cta_layout": "dual-horizontal",
+    "cta_primary": "teal fill",
+    "cta_secondary": "ghost white border",
+    "social_proof_position": "below CTAs",
+    "social_proof_format": "star-row + review count inline"
+  },
+  "photo_direction": {
+    "subject": "Completed roof in good weather. Crew visible but not posed. Actual job site preferred.",
+    "angle": "Low-angle looking up at the roofline to convey scale.",
+    "lighting": "Golden hour or overcast preferred. Avoid harsh midday shadows.",
+    "avoid": ["Stock photo handshakes", "Men pointing at clipboards", "Generic suburb house without context"],
+    "overlay_purpose": "Darken enough to keep white text readable at WCAG AA (4.5:1 minimum)."
+  },
+  "tone": "Calm authority. The homeowner is spending $15k+. The hero should feel like the company has done this a thousand times."
+}

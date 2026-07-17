@@ -1,0 +1,113 @@
+{
+  "$schemaVersion": 1,
+  "trustStripCount": 5,
+  "placements": ["hero", "floating-strip", "why-choose-us", "service-page", "footer"],
+  "badges": [
+    {
+      "id": "cpco-certified",
+      "name": "CPCO Certified",
+      "matchKeywords": ["cpco", "certified pool contractor", "pool contractor certification"],
+      "filename": "cpco-certified.svg",
+      "issuer": "Pool & Hot Tub Alliance",
+      "issuerUrl": "https://www.phta.org",
+      "tier": "mid",
+      "isMultiColor": false
+    },
+    {
+      "id": "phta-member",
+      "name": "PHTA Member",
+      "matchKeywords": ["phta", "pool hot tub alliance", "apsp"],
+      "filename": "phta-member.svg",
+      "issuer": "Pool & Hot Tub Alliance",
+      "issuerUrl": "https://www.phta.org",
+      "tier": "mid",
+      "isMultiColor": false
+    },
+    {
+      "id": "cpo-certified",
+      "name": "CPO Certified",
+      "matchKeywords": ["cpo", "certified pool operator", "nspf"],
+      "filename": "cpo-certified.svg",
+      "issuer": "Pool & Hot Tub Alliance",
+      "issuerUrl": "https://www.phta.org",
+      "tier": "entry",
+      "isMultiColor": false
+    },
+    {
+      "id": "licensed-insured",
+      "name": "Licensed & Insured",
+      "matchKeywords": ["licensed", "insured", "contractor license", "liability insurance"],
+      "filename": "licensed-insured.svg",
+      "issuer": "State Contractor License Board",
+      "tier": "entry",
+      "isMultiColor": false
+    },
+    {
+      "id": "google-5star",
+      "name": "5-Star Google Rated",
+      "matchKeywords": ["google", "5 star", "five star", "4.9", "5.0"],
+      "filename": "google-5star.svg",
+      "issuer": "Google",
+      "tier": "mid",
+      "isMultiColor": true
+    },
+    {
+      "id": "bbb-accredited",
+      "name": "BBB Accredited",
+      "matchKeywords": ["bbb", "better business bureau", "accredited"],
+      "filename": "bbb-accredited.svg",
+      "issuer": "Better Business Bureau",
+      "tier": "mid",
+      "isMultiColor": false
+    },
+    {
+      "id": "homeadvisor-approved",
+      "name": "HomeAdvisor Approved",
+      "matchKeywords": ["homeadvisor", "home advisor", "angi"],
+      "filename": "homeadvisor-approved.svg",
+      "issuer": "HomeAdvisor / Angi",
+      "tier": "entry",
+      "isMultiColor": false
+    },
+    {
+      "id": "eco-certified",
+      "name": "Eco-Friendly Chemicals",
+      "matchKeywords": ["eco", "green", "environmental", "eco-friendly", "low chlorine"],
+      "filename": "eco-certified.svg",
+      "tier": "entry",
+      "isMultiColor": false
+    },
+    {
+      "id": "google-guaranteed",
+      "name": "Google Guaranteed",
+      "matchKeywords": ["google guaranteed", "google screened", "google local services"],
+      "filename": "google-guaranteed.svg",
+      "issuer": "Google",
+      "issuerUrl": "https://ads.google.com/local-services-ads",
+      "tier": "top",
+      "isMultiColor": true,
+      "niche": "pool-services",
+      "notes": "Distinct from the 5-star review badge. Signals Google has background-checked the business and backs the work with a guarantee. High conversion trust signal for service-only and full-service archetypes."
+    },
+    {
+      "id": "before-after-documented",
+      "name": "Photo-Documented Every Visit",
+      "matchKeywords": ["before and after", "before after photos", "photo documentation", "photo proof"],
+      "filename": "before-after-documented.svg",
+      "tier": "top",
+      "isMultiColor": false,
+      "niche": "pool-services",
+      "notes": "Top trust signal #1 from customer voice research. Verbatim: 'before and after pictures = peace of mind'. Removes the primary anxiety for recurring service customers who are not present during the visit."
+    },
+    {
+      "id": "satisfaction-guarantee",
+      "name": "Satisfaction Guarantee",
+      "matchKeywords": ["satisfaction guarantee", "money back", "re-service", "come back free", "not happy"],
+      "filename": "satisfaction-guarantee.svg",
+      "tier": "mid",
+      "isMultiColor": false,
+      "niche": "pool-services",
+      "notes": "Trust signal #5 from research. Reduces first-booking risk and differentiates from 'hit or miss' competition. Copy lock: 'Not satisfied? We come back, no charge.' See copy-locks.json -> riskReversalLine."
+    }
+  ]
+}

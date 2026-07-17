@@ -1,0 +1,259 @@
+{
+  "niche": "roofing",
+  "generatedAt": "2026-06-26",
+  "routes": [
+    {
+      "id": "home",
+      "path": "/",
+      "component": "HomePage",
+      "tier": "root",
+      "title": "Roofing in [City], [State] -- [Company Name]",
+      "metaDescription": "Licensed roofing contractor in [City]. Free inspections, same-day estimates, and [N]+ 5-star reviews. Call [Phone] today.",
+      "sections": [
+        "StickyNav",
+        "Hero",
+        "TrustBar",
+        "EstimateForm",
+        "ServicesGrid",
+        "WhyUs",
+        "BeforeAfterGallery",
+        "TeamSection",
+        "ReviewTiles",
+        "ProcessSteps",
+        "InsuranceSection",
+        "FAQAccordion",
+        "FinalCTA",
+        "Footer"
+      ],
+      "keywordAnchors": ["roofing [city]", "roofing contractor [city]", "roof replacement [city]"]
+    },
+    {
+      "id": "about",
+      "path": "/about",
+      "component": "AboutPage",
+      "tier": "core",
+      "title": "About [Company Name] -- [City] Roofing Contractor",
+      "metaDescription": "Meet the team behind [Company Name]. Licensed, insured, and [N]+ 5-star reviews in [City], [State].",
+      "sections": [
+        "StickyNav",
+        "PageHero",
+        "TeamSection",
+        "CompanyStory",
+        "TrustBar",
+        "ReviewTiles",
+        "FinalCTA",
+        "Footer"
+      ],
+      "keywordAnchors": ["roofing company [city]", "[company name] reviews"]
+    },
+    {
+      "id": "reviews",
+      "path": "/reviews",
+      "component": "ReviewsPage",
+      "tier": "core",
+      "title": "[N] Reviews -- [Company Name] Roofing [City]",
+      "metaDescription": "Read [N] verified customer reviews for [Company Name]. [Star rating] stars. Licensed roofing contractor in [City], [State].",
+      "sections": [
+        "StickyNav",
+        "PageHero",
+        "ReviewGrid",
+        "TrustBar",
+        "FinalCTA",
+        "Footer"
+      ],
+      "keywordAnchors": ["[company name] reviews", "best roofer [city]"]
+    },
+    {
+      "id": "gallery",
+      "path": "/gallery",
+      "component": "GalleryPage",
+      "tier": "core",
+      "title": "Roofing Projects -- Before & After Gallery -- [Company Name]",
+      "metaDescription": "View before and after photos of completed roofing projects in [City]. Real work, real results.",
+      "sections": [
+        "StickyNav",
+        "PageHero",
+        "GalleryGrid",
+        "FinalCTA",
+        "Footer"
+      ],
+      "keywordAnchors": ["roofing gallery [city]", "roof replacement photos"]
+    },
+    {
+      "id": "contact",
+      "path": "/contact",
+      "component": "ContactPage",
+      "tier": "core",
+      "title": "Contact [Company Name] -- Free Roof Estimate in [City]",
+      "metaDescription": "Request a free roof estimate in [City], [State]. Call [Phone] or fill out the form. Same-day response.",
+      "sections": [
+        "StickyNav",
+        "PageHero",
+        "EstimateForm",
+        "TeamSection",
+        "Footer"
+      ],
+      "keywordAnchors": ["free roof estimate [city]", "roofing quote [city]"]
+    },
+    {
+      "id": "service-roof-replacement",
+      "path": "/services/roof-replacement",
+      "component": "ServiceRoofReplacementPage",
+      "tier": "pillar",
+      "hasSilos": "city",
+      "title": "Roof Replacement in [City], [State] -- [Company Name]",
+      "metaDescription": "Full roof replacement in [City]. Licensed, insured, GAF certified. Free estimate. Call [Phone].",
+      "sections": [
+        "StickyNav",
+        "ServiceHero",
+        "TrustBar",
+        "EstimateForm",
+        "ServiceDetail",
+        "BeforeAfterGallery",
+        "ReviewTiles",
+        "FAQAccordion",
+        "FinalCTA",
+        "Footer"
+      ],
+      "keywordAnchors": ["roof replacement [city]", "new roof [city]", "roof replacement cost [city]"]
+    },
+    {
+      "id": "service-roof-repair",
+      "path": "/services/roof-repair",
+      "component": "ServiceRoofRepairPage",
+      "tier": "pillar",
+      "hasSilos": "city",
+      "title": "Roof Repair in [City], [State] -- [Company Name]",
+      "metaDescription": "Roof repair in [City]. Fast response, honest estimates, licensed crew. Call [Phone].",
+      "sections": [
+        "StickyNav",
+        "ServiceHero",
+        "TrustBar",
+        "EstimateForm",
+        "ServiceDetail",
+        "ReviewTiles",
+        "FAQAccordion",
+        "FinalCTA",
+        "Footer"
+      ],
+      "keywordAnchors": ["roof repair [city]", "roof leak repair [city]"]
+    },
+    {
+      "id": "service-storm-damage",
+      "path": "/services/storm-damage",
+      "component": "ServiceStormDamagePage",
+      "tier": "pillar",
+      "hasSilos": "city",
+      "title": "Storm Damage Roof Repair in [City] -- [Company Name]",
+      "metaDescription": "Storm damage to your roof? [Company Name] handles repairs and insurance claims in [City]. Free assessment.",
+      "sections": [
+        "StickyNav",
+        "ServiceHero",
+        "TrustBar",
+        "EstimateForm",
+        "ServiceDetail",
+        "InsuranceSection",
+        "ReviewTiles",
+        "FAQAccordion",
+        "FinalCTA",
+        "Footer"
+      ],
+      "keywordAnchors": ["storm damage roof repair [city]", "hail damage roof [city]", "insurance claim roof [city]"]
+    },
+    {
+      "id": "service-emergency-repair",
+      "path": "/services/emergency-roof-repair",
+      "component": "ServiceEmergencyRepairPage",
+      "tier": "pillar",
+      "title": "Emergency Roof Repair in [City] -- 24/7 -- [Company Name]",
+      "metaDescription": "Emergency roof repair in [City]. 24/7 response. Licensed crew dispatched fast. Call [Phone] now.",
+      "sections": [
+        "StickyNav",
+        "ServiceHero",
+        "TrustBar",
+        "EstimateForm",
+        "ServiceDetail",
+        "ReviewTiles",
+        "FinalCTA",
+        "Footer"
+      ],
+      "keywordAnchors": ["emergency roof repair [city]", "24 hour roof repair [city]", "emergency roofer [city]"]
+    },
+    {
+      "id": "insurance-claims",
+      "path": "/insurance-claims",
+      "component": "InsuranceClaimsPage",
+      "tier": "pillar",
+      "title": "Roof Insurance Claims in [City] -- [Company Name] Guides You",
+      "metaDescription": "We handle the entire insurance claim process for your roof in [City]. From adjuster visit to final sign-off. Call [Phone].",
+      "sections": [
+        "StickyNav",
+        "ServiceHero",
+        "TrustBar",
+        "InsuranceSection",
+        "ProcessSteps",
+        "ReviewTiles",
+        "FAQAccordion",
+        "FinalCTA",
+        "Footer"
+      ],
+      "keywordAnchors": ["roof insurance claim [city]", "insurance claim roof repair [city]", "storm damage insurance roof"]
+    },
+    {
+      "id": "area-template",
+      "path": "/areas/[city-slug]",
+      "component": "AreaPage",
+      "tier": "pillar",
+      "hasSilos": "city",
+      "title": "Roofing Contractor in [Suburb], [State] -- [Company Name]",
+      "metaDescription": "Trusted roofing contractor serving [Suburb]. Free estimates, licensed crew, [N]+ reviews. Call [Phone].",
+      "sections": [
+        "StickyNav",
+        "ServiceHero",
+        "TrustBar",
+        "EstimateForm",
+        "ServicesGrid",
+        "ReviewTiles",
+        "FinalCTA",
+        "Footer"
+      ],
+      "keywordAnchors": ["roofing [suburb]", "roofer [suburb]", "roof replacement [suburb]"],
+      "isTemplate": true
+    }
+  ],
+  "perServicePageTemplate": {
+    "pathPattern": "/services/[service-slug]/[city-slug]",
+    "component": "ServiceAreaPage",
+    "title": "[Service] in [Suburb], [State] -- [Company Name]",
+    "sections": ["StickyNav", "ServiceHero", "TrustBar", "EstimateForm", "ServiceDetail", "ReviewTiles", "FinalCTA", "Footer"]
+  },
+  "perAreaPageTemplate": {
+    "pathPattern": "/areas/[city-slug]",
+    "component": "AreaPage",
+    "title": "Roofing in [Suburb], [State] -- [Company Name]",
+    "sections": ["StickyNav", "ServiceHero", "TrustBar", "EstimateForm", "ServicesGrid", "ReviewTiles", "FinalCTA", "Footer"]
+  },
+  "aliasPages": [
+    {
+      "id": "storm-damage-alias",
+      "alias": "/storm-damage",
+      "tier": "pillar",
+      "fallbackUrl": "/services/storm-damage",
+      "notes": "Short URL for storm-event marketing campaigns and GMB posts"
+    },
+    {
+      "id": "insurance-alias",
+      "alias": "/insurance",
+      "tier": "pillar",
+      "fallbackUrl": "/insurance-claims",
+      "notes": "Short URL for insurance claim outreach"
+    },
+    {
+      "id": "estimate-alias",
+      "alias": "/estimate",
+      "tier": "core",
+      "fallbackUrl": "/contact",
+      "notes": "Short URL for CTA links in email and social"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "url": "https://web.archive.org/web/20250328043842id_/https://horvathroofinginc.com/",
+  "status_code": null,
+  "content": null,
+  "raw_content": null,
+  "is_spa": null,
+  "extracted_text": null,
+  "publication_date": null,
+  "accessibility_tree": null,
+  "headers": {},
+  "redirect_chain": [],
+  "console_errors": [],
+  "render_engine": null,
+  "render_ms": null,
+  "mode_used": null,
+  "error": "raw fetch failed: HTTPSConnectionPool(host='web.archive.org', port=443): Max retries exceeded with url: /web/20250328043842id_/https://horvathroofinginc.com/ (Caused by NewConnectionError(\"HTTPSConnection(host='web.archive.org', port=443): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it\"))"
+}

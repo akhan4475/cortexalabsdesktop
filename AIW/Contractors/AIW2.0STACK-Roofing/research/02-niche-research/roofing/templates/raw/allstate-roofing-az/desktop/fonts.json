@@ -1,0 +1,32 @@
+[
+  {
+    "family": "Montserrat",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "700",
+    "style": "normal"
+  },
+  {
+    "family": "PhoneIcon",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "toggle",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "icomoon",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "awb-icons",
+    "weight": "400",
+    "style": "normal"
+  }
+]

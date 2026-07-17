@@ -1,0 +1,14 @@
+{
+  "$comment": "Template registry. Per-niche entries written by Module 2D when /build-niche-template runs. No `default` entry: every niche must be generated from research before Stage 10.1 can build a client.",
+  "byNiche": {
+    "roofing-v1": {
+      "templatePath": "templates/roofing-v1",
+      "templateVersion": 1,
+      "generatedAt": "2026-06-26T00:00:00Z",
+      "winner": "perth-roof-replacements",
+      "nichePlaybook": "templates/roofing/niche-playbook",
+      "gatesPassed": ["1", "2", "3", "6"],
+      "gatesWarned": ["4", "5"]
+    }
+  }
+}

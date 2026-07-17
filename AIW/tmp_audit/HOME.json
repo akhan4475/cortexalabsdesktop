@@ -1,0 +1,32 @@
+{
+  "url": "https://silverridgeroofing.com/",
+  "status_code": 200,
+  "content": "<!doctype html>\n<html lang=\"en-US\" prefix=\"og: https://ogp.me/ns#\">\n<head><meta charset=\"UTF-8\"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\\/7\\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf(\"?\")==-1){if(href.indexOf(\"#\")==-1){document.location.href=href+\"?nowprocket=1\"}else{document.location.href=href.replace(\"#\",\"?nowprocket=1#\")}}else{if(href.indexOf(\"#\")==-1){document.location.href=href+\"&...",
+  "raw_content": "<!doctype html>\n<html lang=\"en-US\" prefix=\"og: https://ogp.me/ns#\">\n<head><meta charset=\"UTF-8\"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\\/7\\....",
+  "is_spa": false,
+  "extracted_text": null,
+  "publication_date": null,
+  "accessibility_tree": null,
+  "headers": {
+    "Server": "nginx",
+    "Date": "Wed, 15 Jul 2026 16:33:16 GMT",
+    "Content-Type": "text/html; charset=UTF-8",
+    "Transfer-Encoding": "chunked",
+    "Connection": "keep-alive",
+    "Vary": "Accept-Encoding",
+    "Cache-Control": "max-age=0, public",
+    "Expires": "Wed, 15 Jul 2026 16:33:16 GMT",
+    "X-Httpd-Modphp": "1",
+    "X-Powered-By": "WP Rocket/3.15.6",
+    "Host-Header": "6b7412fb82ca5edfd0917e3957f05d89",
+    "X-Proxy-Cache": "MISS",
+    "X-Proxy-Cache-Info": "0 NC:000000 UP:",
+    "Content-Encoding": "gzip"
+  },
+  "redirect_chain": [],
+  "console_errors": [],
+  "render_engine": null,
+  "render_ms": null,
+  "mode_used": "raw",
+  "error": null
+}

@@ -1,0 +1,32 @@
+{
+  "studentName": "Ayaan Khan",
+  "currentModule": "m2d_complete",
+  "candidateNiches": [
+    "home-services-general",
+    "painting-contractors",
+    "roofing",
+    "landscaping-lawn-care",
+    "pool-gutter-services",
+    "dental-clinics",
+    "medspa",
+    "chiropractic-health",
+    "gym-fitness-studios",
+    "general-contractors"
+  ],
+  "finalistNiches": [
+    "roofing",
+    "landscaping",
+    "pool-gutter"
+  ],
+  "chosenNiche": "landscaping",
+  "lastUpdated": "2026-05-20",
+  "interviewNotes": {
+    "section1": "Age 18, UMBC first year. Background: content creation > trading > reselling (replicas, stopped when pandabuy shut down) > AI automation (1 year, never monetized) > AI voice agents (1-2 months, dental/medspa focus, didn't sell) > websites with AI (current). Built custom OS CRM with Twilio dialer. Cold called ~20-30 times over 3-4 months. Closed 1 client: painting business, $600, home services. Summer 2026 locked in, 3.5 months available.",
+    "section2": "Home services (uncle owns construction/roofing/contracting + 1 live client). Medical/clinics (studied ~1 month for voice agents). Gym/fitness (personal). Law (interested but holding off).",
+    "section3": "Computer/digital fluency (family go-to). Conviction that AI monetization works. Understands why websites matter for SEO and trust. Painting client: 365 views in 10 active days, top Google and Maps ranking, 1-2 contact form leads.",
+    "section4": "No warm network of business owners. Peer network in TRW and Discord (other AI web agency owners). Facebook groups identified but not yet joined.",
+    "section5": "One $600 payment. Sees gap clearly: bad Maps listings, no websites, no reviews, no contact forms, no trust badges.",
+    "section6": "Prefers home services (friendly, fast close, one-shot builds). Open to medical/chiro for higher ticket. Avoids low AOV niches (restaurants, gyms). Qualifier: 6+ reviews in past 6 months.",
+    "section7": "50-60 hrs/week. $100-200 capital, part-time job planned. Design 4/5, sales 2/5, SEO 3/5, content 3/5. 12-month target: $50-100k/month profit."
+  }
+}

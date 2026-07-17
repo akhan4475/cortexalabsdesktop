@@ -84,7 +84,13 @@ function getLeadNiche(lead: { campaignId: string; niche?: string }, folderMap: F
 const DM_STAGE_IDS    = new Set(DM_STAGES.map(s => s.id)    as string[]);
 const EMAIL_STAGE_IDS = new Set(EMAIL_STAGES.map(s => s.id) as string[]);
 
-function getLeadPipeline(status: string): PipelineTab {
+function getLeadPipeline(status: string, campaignId?: string, folderMap?: FolderMap): PipelineTab {
+  if (campaignId && folderMap) {
+    const a = folderMap[campaignId];
+    if (a?.channelId === 'cold-dms')    return 'dms';
+    if (a?.channelId === 'cold-emails') return 'emails';
+    if (a?.channelId === 'cold-calls')  return 'calls';
+  }
   if (DM_STAGE_IDS.has(status))    return 'dms';
   if (EMAIL_STAGE_IDS.has(status)) return 'emails';
   return 'calls';
@@ -721,8 +727,8 @@ const Pipeline: React.FC<PipelineProps> = ({
   const nicheCounts = useMemo(() => {
     const counts: Record<string, number> = {};
     allLeads.forEach(l => {
-      const pipeline = getLeadPipeline(l.status);
-      if (pipeline !== activeTab && !(activeTab === 'calls' && !DM_STAGE_IDS.has(l.status) && !EMAIL_STAGE_IDS.has(l.status))) return;
+      const pipeline = getLeadPipeline(l.status, l.campaignId, folderMap);
+      if (pipeline !== activeTab) return;
       const niche = getLeadNiche(l, folderMap, campaigns);
       if (niche) counts[niche] = (counts[niche] ?? 0) + 1;
     });
@@ -731,8 +737,8 @@ const Pipeline: React.FC<PipelineProps> = ({
 
   const filteredLeads = useMemo(() => {
     let leads = allLeads.filter(l => {
-      const pipeline = getLeadPipeline(l.status);
-      return pipeline === activeTab || (activeTab === 'calls' && !DM_STAGE_IDS.has(l.status) && !EMAIL_STAGE_IDS.has(l.status));
+      const pipeline = getLeadPipeline(l.status, l.campaignId, folderMap);
+      return pipeline === activeTab;
     });
     if (selectedNiche !== 'all') {
       leads = leads.filter(l => getLeadNiche(l, folderMap, campaigns) === selectedNiche);
@@ -824,7 +830,7 @@ const Pipeline: React.FC<PipelineProps> = ({
           <Phone size={12} />
           Cold Calls
           <span className={`text-[9px] px-1.5 py-0.5 rounded-full font-mono ${activeTab === 'calls' ? 'bg-[#CD3D35]/20 text-[#CD3D35]' : 'bg-white/5 text-[#555]'}`}>
-            {allLeads.filter(l => getLeadPipeline(l.status) === 'calls').length}
+            {allLeads.filter(l => getLeadPipeline(l.status, l.campaignId, folderMap) === 'calls').length}
           </span>
         </button>
         <button
@@ -838,7 +844,7 @@ const Pipeline: React.FC<PipelineProps> = ({
           <MessageSquare size={12} />
           Cold DMs
           <span className={`text-[9px] px-1.5 py-0.5 rounded-full font-mono ${activeTab === 'dms' ? 'bg-blue-500/20 text-blue-400' : 'bg-white/5 text-[#555]'}`}>
-            {allLeads.filter(l => getLeadPipeline(l.status) === 'dms').length}
+            {allLeads.filter(l => getLeadPipeline(l.status, l.campaignId, folderMap) === 'dms').length}
           </span>
         </button>
         <button
@@ -852,7 +858,7 @@ const Pipeline: React.FC<PipelineProps> = ({
           <Mail size={12} />
           Cold Emails
           <span className={`text-[9px] px-1.5 py-0.5 rounded-full font-mono ${activeTab === 'emails' ? 'bg-green-500/20 text-green-400' : 'bg-white/5 text-[#555]'}`}>
-            {allLeads.filter(l => getLeadPipeline(l.status) === 'emails').length}
+            {allLeads.filter(l => getLeadPipeline(l.status, l.campaignId, folderMap) === 'emails').length}
           </span>
         </button>
       </div>

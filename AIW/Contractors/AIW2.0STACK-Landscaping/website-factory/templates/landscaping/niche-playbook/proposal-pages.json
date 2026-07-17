@@ -1,0 +1,54 @@
+{
+  "niche": "landscaping",
+  "version": "1.0",
+  "proposal_structure": [
+    {
+      "page": 1,
+      "title": "Cover",
+      "content": "Company logo, client name, project address, date. Dark forest-green cover with leaf motif."
+    },
+    {
+      "page": 2,
+      "title": "About Us",
+      "content": "Founder name, years in business, license number, insurance confirmation, 2-3 key differentiators. No more than 150 words."
+    },
+    {
+      "page": 3,
+      "title": "What We Heard",
+      "content": "3-4 bullet points restating the client's stated goals in their own language. Shows listening. No fluff."
+    },
+    {
+      "page": 4,
+      "title": "Our Approach",
+      "content": "How we will tackle this specific project. References the 3-step process. No generic copy."
+    },
+    {
+      "page": 5,
+      "title": "Investment",
+      "content": "Line-item estimate: labor, materials, cleanup. Subtotals. Optional: payment schedule. Clean table layout."
+    },
+    {
+      "page": 6,
+      "title": "Our Work",
+      "content": "3-4 before/after project photos with city and service type labels. Proof over promises."
+    },
+    {
+      "page": 7,
+      "title": "What Clients Say",
+      "content": "2-3 Google reviews, full text. Star rating. Reviewer first name and neighborhood."
+    },
+    {
+      "page": 8,
+      "title": "Next Steps",
+      "content": "How to accept: call, email, or sign. Timeline for project start after acceptance. Deposit terms."
+    }
+  ],
+  "design_guidance": {
+    "primary_color": "#0d3320",
+    "accent": "#4ade80",
+    "font_heading": "Fraunces",
+    "font_body": "Plus Jakarta Sans",
+    "logo_placement": "top-left every page",
+    "page_numbers": true
+  }
+}

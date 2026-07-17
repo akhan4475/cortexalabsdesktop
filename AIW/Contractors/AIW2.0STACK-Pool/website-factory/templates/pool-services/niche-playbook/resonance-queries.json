@@ -1,0 +1,23 @@
+{
+  "$schemaVersion": 1,
+  "queryTemplates": [
+    "pool cleaning service {city}",
+    "pool maintenance {city} {state}",
+    "best pool service company {city}",
+    "pool repair {city}",
+    "green pool {city} help",
+    "how much does pool cleaning cost {city}",
+    "pool cleaning service recommendations {city}",
+    "weekly pool service {city}"
+  ],
+  "subreddits": {
+    "cityBased": ["r/{city}", "r/{state}"],
+    "nicheGeneral": ["r/pools", "r/swimmingpools", "r/HomeImprovement"],
+    "audience": ["r/HomeOwners", "r/firsttimehomebuyer", "r/Frugal"]
+  },
+  "perQueryLimits": {
+    "posts": 50,
+    "commentsPerPost": 100
+  },
+  "costCapUsd": 0.5
+}

@@ -1,0 +1,237 @@
+{
+  "templateSlug": "roofing-v2",
+  "generatedAt": "2026-07-15",
+  "routes": [
+    {
+      "path": "/",
+      "slug": "home",
+      "component": "HomePage",
+      "title": "{companyName} | Roofing Contractor in {city}, {state}",
+      "description": "Trusted roofing contractor in {city}. Free inspections, financing available, 24/7 emergency service. {certBadge} certified.",
+      "type": "core"
+    },
+    {
+      "path": "/about",
+      "slug": "about",
+      "component": "AboutPage",
+      "title": "About {companyName} | Local Roofing Experts in {city}",
+      "description": "Meet the {companyName} team. Serving {city} since {yearFounded}. {certBadge} certified, fully insured.",
+      "type": "core"
+    },
+    {
+      "path": "/services",
+      "slug": "services",
+      "component": "ServicesPage",
+      "title": "Roofing Services | {companyName} | {city}, {state}",
+      "description": "Complete roofing services in {city}: replacement, repair, storm damage, gutters, siding and more.",
+      "type": "core"
+    },
+    {
+      "path": "/services/roof-replacement",
+      "slug": "roof-replacement",
+      "component": "ServicePage",
+      "title": "Roof Replacement in {city}, {state} | {companyName}",
+      "description": "Expert roof replacement in {city}. Financing available. Free estimate. {certBadge} certified contractor.",
+      "type": "service"
+    },
+    {
+      "path": "/services/roof-repair",
+      "slug": "roof-repair",
+      "component": "ServicePage",
+      "title": "Roof Repair in {city}, {state} | {companyName}",
+      "description": "Fast, reliable roof repair in {city}. We fix leaks, missing shingles, storm damage and more.",
+      "type": "service"
+    },
+    {
+      "path": "/services/roof-inspection",
+      "slug": "roof-inspection",
+      "component": "ServicePage",
+      "title": "Roof Inspection in {city}, {state} | {companyName} Pro Inspection",
+      "description": "Get a free {companyName} Pro Inspection in {city}. Detailed written report, photos, no-obligation estimate.",
+      "type": "service"
+    },
+    {
+      "path": "/services/storm-damage",
+      "slug": "storm-damage",
+      "component": "ServicePage",
+      "title": "Storm Damage Roof Repair in {city}, {state} | {companyName}",
+      "description": "Storm damage roofing in {city}. We work with your insurance company and handle the claims process.",
+      "type": "service"
+    },
+    {
+      "path": "/services/insurance-claims",
+      "slug": "insurance-claims",
+      "component": "ServicePage",
+      "title": "Roof Insurance Claims in {city} | {companyName}",
+      "description": "{companyName} helps {city} homeowners navigate roof insurance claims after storm damage.",
+      "type": "service"
+    },
+    {
+      "path": "/services/residential-roofing",
+      "slug": "residential-roofing",
+      "component": "ServicePage",
+      "title": "Residential Roofing in {city}, {state} | {companyName}",
+      "description": "Complete residential roofing services in {city}. Replacement, repair, maintenance and new installation.",
+      "type": "service"
+    },
+    {
+      "path": "/services/commercial-roofing",
+      "slug": "commercial-roofing",
+      "component": "ServicePage",
+      "title": "Commercial Roofing in {city}, {state} | {companyName}",
+      "description": "Commercial roofing services for {city} businesses. Flat roofs, TPO, EPDM, metal and more.",
+      "type": "service"
+    },
+    {
+      "path": "/services/new-roof-installation",
+      "slug": "new-roof-installation",
+      "component": "ServicePage",
+      "title": "New Roof Installation in {city}, {state} | {companyName}",
+      "description": "New roof installation in {city}. Quality materials, certified installers, financing options available.",
+      "type": "service"
+    },
+    {
+      "path": "/services/asphalt-shingles",
+      "slug": "asphalt-shingles",
+      "component": "ServicePage",
+      "title": "Asphalt Shingle Roofing in {city}, {state} | {companyName}",
+      "description": "Asphalt shingle installation and replacement in {city}. GAF, CertainTeed, Owens Corning available.",
+      "type": "service"
+    },
+    {
+      "path": "/services/metal-roofing",
+      "slug": "metal-roofing",
+      "component": "ServicePage",
+      "title": "Metal Roofing in {city}, {state} | {companyName}",
+      "description": "Standing seam and metal panel roofing in {city}. Energy efficient, 50+ year lifespan.",
+      "type": "service"
+    },
+    {
+      "path": "/services/gutters",
+      "slug": "gutters",
+      "component": "ServicePage",
+      "title": "Gutter Installation and Repair in {city} | {companyName}",
+      "description": "Seamless gutter installation and repair in {city}. Leaf guards, downspout extensions, full system.",
+      "type": "service"
+    },
+    {
+      "path": "/services/siding",
+      "slug": "siding",
+      "component": "ServicePage",
+      "title": "Siding Installation and Repair in {city} | {companyName}",
+      "description": "Siding services in {city}: vinyl, fiber cement, wood repair and full replacement.",
+      "type": "service"
+    },
+    {
+      "path": "/roof-care-club",
+      "slug": "roof-care-club",
+      "component": "RoofCareClubPage",
+      "title": "Roof Care Club | Maintenance Membership | {companyName}",
+      "description": "Join the {companyName} Roof Care Club. Annual inspections, priority scheduling, member discounts.",
+      "type": "core"
+    },
+    {
+      "path": "/financing",
+      "slug": "financing",
+      "component": "FinancingPage",
+      "title": "Roofing Financing Options in {city} | {companyName}",
+      "description": "Flexible roofing financing in {city}. Monthly payment plans, same-as-cash options, apply in minutes.",
+      "type": "core"
+    },
+    {
+      "path": "/our-process",
+      "slug": "our-process",
+      "component": "ProcessPage",
+      "title": "Our Process | {companyName} Pro Inspection | {city}",
+      "description": "How {companyName} works: free inspection, written report, transparent pricing, no-pressure estimate.",
+      "type": "core"
+    },
+    {
+      "path": "/service-areas",
+      "slug": "service-areas",
+      "component": "ServiceAreasPage",
+      "title": "Service Areas | {companyName} | {state}",
+      "description": "{companyName} serves {city} and surrounding areas. View our full coverage map.",
+      "type": "core"
+    },
+    {
+      "path": "/service-areas/:location",
+      "slug": "location-page",
+      "component": "LocationPage",
+      "title": "Roofing Contractor in {locationName}, {state} | {companyName}",
+      "description": "Trusted roofing contractor serving {locationName}. Free inspections, financing, 24/7 emergency.",
+      "type": "location",
+      "template": true
+    },
+    {
+      "path": "/reviews",
+      "slug": "reviews",
+      "component": "ReviewsPage",
+      "title": "Customer Reviews | {companyName} | {city}, {state}",
+      "description": "See what {city} homeowners say about {companyName}. Hundreds of 5-star reviews.",
+      "type": "core"
+    },
+    {
+      "path": "/faq",
+      "slug": "faq",
+      "component": "FAQPage",
+      "title": "Roofing FAQ | {companyName} | {city}",
+      "description": "Common roofing questions answered by the {companyName} team in {city}.",
+      "type": "core"
+    },
+    {
+      "path": "/blog",
+      "slug": "blog",
+      "component": "BlogPage",
+      "title": "Roofing Blog | {companyName} | {city}, {state}",
+      "description": "Roofing tips, storm damage guides, and maintenance advice from the {companyName} team.",
+      "type": "blog"
+    },
+    {
+      "path": "/blog/:slug",
+      "slug": "blog-post",
+      "component": "BlogPostPage",
+      "title": "{postTitle} | {companyName}",
+      "description": "{postExcerpt}",
+      "type": "blog",
+      "template": true
+    },
+    {
+      "path": "/contact",
+      "slug": "contact",
+      "component": "ContactPage",
+      "title": "Contact {companyName} | Free Roof Estimate in {city}",
+      "description": "Contact {companyName} for a free roof inspection in {city}. Available 24/7 for emergencies.",
+      "type": "core"
+    },
+    {
+      "path": "/free-estimate",
+      "slug": "free-estimate",
+      "component": "FreeEstimatePage",
+      "title": "Get a Free Roofing Estimate | {companyName} | {city}",
+      "description": "Schedule your free {companyName} Pro Inspection in {city}. No obligation, written report included.",
+      "type": "core"
+    },
+    {
+      "path": "/gallery",
+      "slug": "gallery",
+      "component": "GalleryPage",
+      "title": "Project Gallery | {companyName} | {city} Roofing",
+      "description": "See completed roofing projects by {companyName} across {city} and surrounding areas.",
+      "type": "core"
+    },
+    {
+      "path": "/emergency",
+      "slug": "emergency",
+      "component": "EmergencyPage",
+      "title": "24/7 Emergency Roofing in {city} | {companyName}",
+      "description": "Emergency roofing repair in {city}. Available 24/7 for storm damage, leaks, and urgent repairs.",
+      "type": "core"
+    }
+  ],
+  "totalRoutes": 28,
+  "corePages": 14,
+  "servicePages": 11,
+  "templatePages": 2,
+  "blogPages": 1
+}

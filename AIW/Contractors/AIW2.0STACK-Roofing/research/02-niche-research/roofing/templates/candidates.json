@@ -1,0 +1,139 @@
+{
+  "niche": "roofing",
+  "generatedAt": "2026-06-26",
+  "source": "Phase 1 — sourced from maps-reviews.json (GMB data) and serp-rankings.json (organic rankers)",
+  "candidates": [
+    {
+      "slug": "allstate-roofing-az",
+      "name": "Allstate Roofing Contractors (Phoenix AZ)",
+      "url": "https://www.allstateroofingaz.com/",
+      "source": "maps-reviews.json",
+      "stars": 4.9,
+      "reviewCount": 214,
+      "city": "Phoenix, AZ",
+      "notes": "High review volume, active GMB, BBB A+ mentioned, women-owned. Strong Sun Belt presence."
+    },
+    {
+      "slug": "stonecreek-roofing-az",
+      "name": "Stonecreek Roofing (Phoenix AZ)",
+      "url": "https://www.stonecreekroofingaz.com/",
+      "source": "maps-reviews.json",
+      "stars": null,
+      "reviewCount": null,
+      "city": "Phoenix, AZ",
+      "notes": "Mentioned in customer voice verbatim quotes. Phoenix Sun Belt market."
+    },
+    {
+      "slug": "colony-roofers",
+      "name": "Colony Roofers (Atlanta GA)",
+      "url": "https://www.colonyroofers.com/",
+      "source": "maps-reviews.json",
+      "stars": null,
+      "reviewCount": null,
+      "city": "Atlanta, GA",
+      "notes": "Named in multiple verbatim customer reviews. Named salesperson (Lucio) praised for process explanation. Strong trust-building example."
+    },
+    {
+      "slug": "perth-roof-replacements",
+      "name": "Perth Roof Replacements (student manual pick)",
+      "url": "https://perth-roofreplacments.vercel.app/",
+      "source": "manual",
+      "stars": null,
+      "reviewCount": null,
+      "city": "Perth, AU",
+      "notes": "Student manual pick. Vercel-hosted roofing site. Capture for design and layout reference."
+    },
+    {
+      "slug": "gravity-roof",
+      "name": "Gravity Roof (student manual pick)",
+      "url": "https://gravityroof.com/",
+      "source": "manual",
+      "stars": null,
+      "reviewCount": null,
+      "city": "Unknown",
+      "notes": "Student manual pick. Replacing brownroofingaz.com."
+    },
+    {
+      "slug": "phoenix-roofing-repair",
+      "name": "Phoenix Roofing & Repair",
+      "url": "https://phoenixroofingandrepair.com/",
+      "source": "maps-reviews.json (people also search)",
+      "stars": 4.9,
+      "reviewCount": 1018,
+      "city": "Phoenix, AZ",
+      "notes": "1,018 reviews at 4.9 stars. Highest review count in dataset. Market leader signal."
+    },
+    {
+      "slug": "priority-roofs-dallas",
+      "name": "Priority Roofs (Dallas TX)",
+      "url": "https://priorityroofs.com/location/dallas/",
+      "source": "maps-reviews.json",
+      "stars": null,
+      "reviewCount": null,
+      "city": "Dallas, TX",
+      "notes": "Dallas Sun Belt market. Has city-specific landing pages (signals good SEO structure)."
+    },
+    {
+      "slug": "lyons-roofing",
+      "name": "Lyons Roofing (Phoenix AZ)",
+      "url": "https://www.lyonsroofing.com/",
+      "source": "maps-reviews.json",
+      "stars": null,
+      "reviewCount": null,
+      "city": "Phoenix, AZ",
+      "notes": "UTM parameters on GMB link suggest active digital marketing. Phoenix market."
+    },
+    {
+      "slug": "champion-roofing",
+      "name": "Champion Roofing",
+      "url": "https://championroofing.com/emergency-roof-repair-service",
+      "source": "serp-rankings.json (organic rank, 'emergency roof repair')",
+      "stars": null,
+      "reviewCount": null,
+      "city": "Unknown",
+      "notes": "Ranks organically for 'emergency roof repair'. Good emergency/service page structure to study."
+    },
+    {
+      "slug": "jp-carroll-roofing",
+      "name": "JP Carroll Roofing",
+      "url": "https://jpcarrollroofing.com/services/emergency-roof-repair/",
+      "source": "serp-rankings.json (organic rank, 'emergency roof repair')",
+      "stars": null,
+      "reviewCount": null,
+      "city": "Unknown",
+      "notes": "Ranks organically for emergency repair. Clean service page URL structure."
+    },
+    {
+      "slug": "columbus-roofing-co",
+      "name": "Columbus Roofing Co (student manual pick)",
+      "url": "https://columbusroofingco.com/",
+      "source": "manual",
+      "stars": null,
+      "reviewCount": null,
+      "city": "Columbus, OH",
+      "notes": "Student manual pick."
+    },
+    {
+      "slug": "the-roofing-broker",
+      "name": "The Roofing Broker (student manual pick)",
+      "url": "https://theroofingbroker.com/",
+      "source": "manual",
+      "stars": null,
+      "reviewCount": null,
+      "city": "Unknown",
+      "notes": "Student manual pick."
+    },
+    {
+      "slug": "rapid-response-roofs",
+      "name": "Rapid Response Roofs (student manual pick)",
+      "url": "https://rapidresponseroofs.com/",
+      "source": "manual",
+      "stars": null,
+      "reviewCount": null,
+      "city": "Unknown",
+      "notes": "Student manual pick."
+    }
+  ],
+  "manualPicksRequested": false,
+  "selectedForCapture": null
+}

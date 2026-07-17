@@ -1,0 +1,64 @@
+{
+  "niche": "roofing",
+  "generatedAt": "2026-06-26",
+  "sourceWinner": "perth-roof-replacements",
+  "palette": {
+    "bg": "#0A0F1A",
+    "surface": "#111827",
+    "surfaceAlt": "#F9FAFB",
+    "primary": "#0ABFBC",
+    "primaryDark": "#089A97",
+    "textPrimary": "#FFFFFF",
+    "textSecondary": "#E5E7EB",
+    "textDark": "#111827",
+    "textMuted": "#6B7280",
+    "border": "#1F2937",
+    "borderLight": "#E5E7EB",
+    "trustBg": "#0F172A",
+    "star": "#F59E0B"
+  },
+  "typography": {
+    "headingFamily": "Barlow Condensed",
+    "bodyFamily": "Inter",
+    "headingWeights": [600, 700, 800],
+    "bodyWeights": [400, 500, 600],
+    "googleFontsUrlFragment": "family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600",
+    "heroH1Size": "72px",
+    "heroH1Weight": 800,
+    "heroH1Transform": "uppercase",
+    "heroH1LetterSpacing": "-0.02em",
+    "sectionH2Size": "40px",
+    "sectionH2Weight": 700,
+    "sectionH2Transform": "uppercase",
+    "bodySize": "16px",
+    "bodyLineHeight": 1.6
+  },
+  "motionPreset": "restrained",
+  "motionConfig": {
+    "pageLoadFade": { "duration": "400ms", "easing": "ease-out" },
+    "scrollReveal": { "translateY": "24px", "duration": "350ms", "easing": "ease-out", "threshold": 0.2 },
+    "ctaHover": { "scale": 1.03, "duration": "150ms" },
+    "cardHover": { "translateY": "-4px", "duration": "200ms" },
+    "prefersReducedMotion": "disable-all"
+  },
+  "themeMode": "dark-light-hybrid",
+  "shapeMotif": "angular",
+  "borderRadius": {
+    "button": "4px",
+    "card": "6px",
+    "image": "0px"
+  },
+  "spacing": {
+    "sectionPaddingY": "80px",
+    "sectionPaddingYMobile": "48px",
+    "containerMaxWidth": "1200px",
+    "heroMinHeight": "100vh",
+    "heroMinHeightMobile": "85vh",
+    "navHeight": "64px"
+  },
+  "components": {
+    "stickyNav": { "transparentOnHero": true, "darkOnScroll": true, "height": "64px" },
+    "ctaButton": { "height": "52px", "paddingX": "20px", "fontSize": "16px", "fontFamily": "Barlow Condensed", "fontWeight": 600, "textTransform": "uppercase", "borderRadius": "4px" },
+    "mobileSticky": { "enabled": true, "height": "56px", "position": "fixed-bottom", "columns": 2 }
+  }
+}

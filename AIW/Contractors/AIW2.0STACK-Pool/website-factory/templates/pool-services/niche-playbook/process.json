@@ -1,0 +1,31 @@
+{
+  "$schemaVersion": 1,
+  "stepCount": 4,
+  "sectionHeading": "How Our Pool Service Works",
+  "steps": [
+    {
+      "n": 1,
+      "title": "Get a Free Quote",
+      "description": "Fill out our quick form or call us. We respond within one business day with transparent pricing and no obligation.",
+      "iconHint": "clipboard"
+    },
+    {
+      "n": 2,
+      "title": "We Inspect Your Pool",
+      "description": "A certified technician visits, tests your water chemistry, checks the equipment, and notes any issues.",
+      "iconHint": "magnifying-glass"
+    },
+    {
+      "n": 3,
+      "title": "Service Is Completed",
+      "description": "We clean, balance, and service your pool. You receive a written service report after every single visit.",
+      "iconHint": "wrench"
+    },
+    {
+      "n": 4,
+      "title": "Enjoy a Clean Pool",
+      "description": "Dive in. We schedule your next visit and handle any follow-up so you never have to think about pool maintenance again.",
+      "iconHint": "sun"
+    }
+  ]
+}

@@ -15,6 +15,7 @@ Run: python telegram-bot/bot.py
 import json
 import os
 import re
+import signal
 import subprocess
 import sys
 import threading
@@ -145,18 +146,31 @@ def run_agent(agent_key: str, prompt: str, timeout: int = 300) -> str:
     )
 
     try:
-        result = subprocess.run(
+        # CREATE_NEW_PROCESS_GROUP lets us kill the entire claude.cmd→node.exe
+        # child tree on Windows when the timeout fires.
+        flags = subprocess.CREATE_NEW_PROCESS_GROUP if sys.platform == "win32" else 0
+        proc = subprocess.Popen(
             [CLAUDE_CMD, "--print", short_msg],
-            capture_output=True, text=True,
-            timeout=timeout, cwd=str(AGENCY_DIR),
-            encoding="utf-8", errors="replace",
+            stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+            cwd=str(AGENCY_DIR), encoding="utf-8", errors="replace",
+            creationflags=flags,
         )
-        out = result.stdout.strip()
-        if result.returncode != 0 and result.stderr:
-            return f"Agent error:\n{result.stderr[:800]}"
+        try:
+            stdout, stderr = proc.communicate(timeout=timeout)
+        except subprocess.TimeoutExpired:
+            # Kill the whole process tree, not just the top-level cmd.exe
+            if sys.platform == "win32":
+                subprocess.call(["taskkill", "/F", "/T", "/PID", str(proc.pid)],
+                                stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            else:
+                os.killpg(os.getpgid(proc.pid), signal.SIGKILL)
+            proc.wait()
+            return f"Agent timed out after {timeout}s."
+
+        out = stdout.strip()
+        if proc.returncode != 0 and stderr:
+            return f"Agent error:\n{stderr[:800]}"
         return out or "(Agent returned no output)"
-    except subprocess.TimeoutExpired:
-        return f"Agent timed out after {timeout}s."
     except FileNotFoundError:
         return "ERROR: `claude` CLI not found. Make sure Claude Code is installed and in PATH."
     except Exception as e:
@@ -168,18 +182,29 @@ def run_os_change(instruction: str, timeout: int = 600) -> str:
     Run Claude Code in the cortexalabs root to make app changes.
     Uses claude --print with the instruction directly (no agent file).
     """
-    cmd = [CLAUDE_CMD, "--print", instruction]
     try:
-        result = subprocess.run(
-            cmd, capture_output=True, text=True,
-            timeout=timeout, cwd=str(WORK_DIR),
+        flags = subprocess.CREATE_NEW_PROCESS_GROUP if sys.platform == "win32" else 0
+        proc = subprocess.Popen(
+            [CLAUDE_CMD, "--print", instruction],
+            stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+            cwd=str(WORK_DIR), encoding="utf-8", errors="replace",
+            creationflags=flags,
         )
-        out = result.stdout.strip()
-        if result.returncode != 0 and result.stderr:
-            return f"Error making changes:\n{result.stderr[:800]}"
+        try:
+            stdout, stderr = proc.communicate(timeout=timeout)
+        except subprocess.TimeoutExpired:
+            if sys.platform == "win32":
+                subprocess.call(["taskkill", "/F", "/T", "/PID", str(proc.pid)],
+                                stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            else:
+                os.killpg(os.getpgid(proc.pid), signal.SIGKILL)
+            proc.wait()
+            return "OS change timed out. The task may still be running — check the terminal."
+
+        out = stdout.strip()
+        if proc.returncode != 0 and stderr:
+            return f"Error making changes:\n{stderr[:800]}"
         return out or "(No output from Claude)"
-    except subprocess.TimeoutExpired:
-        return "OS change timed out. The task may still be running — check the terminal."
     except FileNotFoundError:
         return "ERROR: `claude` CLI not found."
     except Exception as e:

@@ -1,0 +1,26 @@
+{
+  "niche": "roofing",
+  "preferred": {
+    "homeowner": ["homeowner", "you"],
+    "customer": ["customer", "client"],
+    "price": ["cost", "price", "estimate"],
+    "worker": ["crew", "roofer", "installer"],
+    "damaged_roof": ["damaged roof", "compromised roof"],
+    "insurance": ["insurance claim", "claim", "adjuster"],
+    "warranty": ["warranty", "guarantee"],
+    "estimate": ["free estimate", "free inspection", "estimate"]
+  },
+  "avoid": {
+    "avoid": ["solution", "leverage", "synergy", "seamless", "robust", "cutting-edge",
+              "game-changer", "world-class", "industry-leading", "best-in-class",
+              "passion", "passionate", "revolutionize", "disrupt"],
+    "reason": "These words have been overused in contractor marketing. Homeowners read them as filler."
+  },
+  "segment_voice": {
+    "storm_damage_emergency": "Direct and calm. The homeowner is stressed. Lead with relief: 'We handle this every day. Here is what happens next.'",
+    "insurance_navigation": "Empathetic and educational. Many homeowners have never filed a roof claim. Explain steps without jargon.",
+    "replacement_planning": "Matter-of-fact. The homeowner has accepted the cost. They want confidence in the company, not a sales pitch.",
+    "repair_inquiry": "Efficient. Answer 'will this hold?' first. Give them a fast path to an honest assessment.",
+    "general": "Plain. Short sentences. No buzzwords. One idea per sentence."
+  }
+}

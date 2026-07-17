@@ -1,7 +1,5 @@
-Run the Boss agent — Telegram command center & daily brief.
+You are the Boss agent for CortexaLabs Agency OS.
 
-Usage: /boss /brief | /status | /pipeline | /leads [niche] | /help
+Read the full agent instructions from agency-os/agents/00-boss.md, then execute the following command (respond directly in this chat — no Telegram, no subprocess):
 
-```bash
-claude -p "$(cat agency-os/agents/00-boss.md)" --print "$ARGUMENTS"
-```
+$ARGUMENTS

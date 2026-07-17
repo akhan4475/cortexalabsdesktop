@@ -51,11 +51,39 @@ If `ledger.jsonl` is missing or empty, continue but log:
 
 | Command | Required Args | Optional Args |
 |---|---|---|
-| `/scrape` | `[niche] [location] [count]` | `--source` (google\|facebook\|both) |
+| `/scrape` | `[niche] [location] [count]` | `--campaign [id]`, `--new-campaign [name]`, `--type [dms\|calls\|emails]`, `--source` (google\|facebook\|both) |
+| `/new-campaign` | `[name] [niche] [type] [city]` | none |
 | `/qualify` | `[lead_id]` | none |
 | `/qualify-batch` | `[campaign_id]` | none |
 | `/loom-brief` | `[lead_id]` | none |
 | `/assign` | `[lead_id] [campaign_id]` | none |
+
+### /new-campaign usage
+
+Creates a new campaign in Supabase and updates os-state.json.
+
+```
+/new-campaign "Pool Phoenix July" pool dms "Phoenix AZ"
+/new-campaign "Roofing Dallas Calls" roofing calls "Dallas TX"
+/new-campaign "Landscaping Houston Email" landscaping emails "Houston TX"
+```
+
+- `type` must be: `dms` | `calls` | `emails`
+- `niche` must be one of the 6 approved niches
+- Campaign ID is auto-generated as `camp_{niche}_{YYYYMM}_{random4}`
+
+### /scrape with campaign
+
+```
+# Scrape into an existing campaign
+/scrape pool "Phoenix AZ" 50 --campaign camp_pool_202507_a1b2
+
+# Scrape and create a new campaign on the fly
+/scrape pool "Phoenix AZ" 50 --new-campaign "Pool Phoenix July" --type dms
+```
+
+If neither `--campaign` nor `--new-campaign` is provided, Scout auto-generates a campaign
+named `"{Niche} {Location} {Month}"` with type `dms`.
 
 ### Validation rules:
 
@@ -196,67 +224,53 @@ Action: Write {"scout.last_scrape_error": "{run_id}: {status}"} to os-state.json
 
 For each raw result from Apify, normalize into the Lead Schema before any further processing.
 
-### Apify Raw → Lead Schema Mapping
+### Apify Raw → Supabase Lead Column Mapping
 
-**Google Maps result fields → Lead schema:**
-- `title` → `business_name`
-- `categoryName` → `business_type`
-- `totalScore` → `rating`
-- `reviewsCount` → `review_count`
-- `address` → `location`
-- `website` → `website`
+**Google Maps result fields → Supabase `leads` columns (exact names):**
+- `additionalInfo.owner` or `additionalInfo.operatedBy` → `name` (decision maker — set `"N/A"` if not found)
+- `title` → `company` (business/company name)
 - `phone` → `phone`
-- `url` → `google_maps_url`
-- `reviews[*]` → `raw_reviews` (keep up to 20 most recent)
-- `openingHours` → `has_hours` (true if present)
+- `address` (full string) → `address` (store as-is)
+- `totalScore` → `rating` (store as string, e.g. `"4.2"`)
+- `reviewsCount` → `reviews` (store as string, e.g. `"47"`)
+- `website` → `website` (null/empty if not present — no website = better lead)
+- `url` → `google_maps_url` (new column from migration 003)
+- Source platform → `source` (e.g. `"google_maps"` — new column from migration 003)
+- `openingHours` → internal `has_hours` flag (ICP scoring only, not stored as a column)
+- `reviews[*]` → internal `raw_reviews` list (recency check and Loom brief only, not stored)
 
-### Lead Schema (exact JSON)
+**Rating display format in reports/Telegram:** `"4.2(47)"` — concatenate `rating` and `reviews`.
+**In Supabase:** stored separately as `rating = "4.2"` and `reviews = "47"`.
+
+### Lead Schema (exact Supabase column names)
 
 ```json
 {
-  "id": "uuid-auto-generated",
-  "business_name": "ABC Pool Service",
-  "business_type": "Pool Cleaning Service",
-  "niche": "pool",
-  "location": "Phoenix, AZ",
-  "address": "123 Main St, Phoenix, AZ 85001",
+  "name": "N/A",
+  "company": "ABC Pool Service",
   "phone": "+16025551234",
-  "website": "https://abcpool.com",
+  "email": null,
+  "address": "123 Main St, Phoenix, AZ 85001",
+  "website": null,
+  "rating": "4.2",
+  "reviews": "47",
+  "summary": "Pool contractor, Phoenix AZ. 47 reviews, 4.2 stars. No website. ICP score: 75.",
+  "niche": "pool",
+  "status": "prospect",
+  "campaign_id": "camp_pool_202507_a1b2",
+  "icp_score": 75,
   "google_maps_url": "https://maps.google.com/?cid=12345",
-  "facebook_url": null,
-  "instagram_url": null,
-  "rating": 4.2,
-  "review_count": 47,
-  "raw_reviews": [
-    {
-      "text": "Great service...",
-      "rating": 5,
-      "date": "2026-06-15",
-      "author": "John D."
-    }
-  ],
-  "has_website": true,
-  "has_hours": true,
-  "source": "google_maps",
-  "campaign_id": null,
-  "icp_score": null,
-  "qualified": null,
-  "disqualification_reason": null,
-  "stage": "Contacted",
-  "follow_up_day": null,
-  "cal_booking_id": null,
-  "deal_value": null,
-  "loom_brief": null,
-  "created_at": "2026-07-03T08:00:00Z",
-  "updated_at": "2026-07-03T08:00:00Z"
+  "source": "google_maps"
 }
 ```
+
+**Note:** Only QUALIFIED leads are written to Supabase. Disqualified leads are counted in the run summary but NEVER inserted. This keeps the leads table clean — every row is a real prospect.
 
 **Deduplication check before insert:**
 ```sql
 SELECT id FROM leads
 WHERE phone = '{phone}'
-   OR (business_name ILIKE '{business_name}' AND location ILIKE '{location}')
+   OR (company ILIKE '{company}' AND address ILIKE '%{city}%')
 LIMIT 1
 ```
 If a match is found, skip this lead and increment `duplicates_skipped` counter.
@@ -303,13 +317,15 @@ Score each lead on these 6 dimensions:
 
 | Criterion | Points | Logic |
 |---|---|---|
-| Has a website | +20 | `lead.has_website == true AND lead.website is not null` |
-| 4+ star rating | +20 | `lead.rating >= 4.0` |
+| NO website | +25 | `lead.website_url is null or empty` — no website = we can sell them one |
+| 4+ star rating | +20 | `lead.review_rating >= 4.0` |
 | 10+ reviews total | +15 | `lead.review_count >= 10` |
-| Active Google Business | +15 | `lead.has_hours == true` (proxy for claimed/active listing) |
-| 3+ reviews in last 6 months | +20 | `recent_review_count >= 3` — REQUIRED for qualification |
+| Active Google Business | +15 | `has_hours == true` (claimed/active listing) |
+| 3+ reviews in last 6 months | +15 | `recent_review_count >= 3` — REQUIRED for qualification |
 | Local business (not franchise) | +10 | Name does not match known franchise list (see below) |
 | **Total possible** | **100** | |
+
+**Why no-website leads score higher:** Our product IS a website. A contractor with no site has zero competition for that sale and an obvious pain point. Leads WITH a website can still qualify (score will be lower) but are lower priority.
 
 **Franchise detection (deduct 10 points if name matches any):**
 - Names containing: `HomeAdvisor`, `Angi`, `Thumbtack`, `ServiceMaster`, `Mr. Rooter`,
@@ -320,22 +336,27 @@ Score each lead on these 6 dimensions:
 ```python
 def calculate_icp_score(lead: dict, recent_review_count: int) -> int:
     score = 0
-    if lead.get("has_website") and lead.get("website"):
+    # No website = ideal lead (we're selling them one)
+    if not lead.get("website"):
+        score += 25
+    # rating is stored as string e.g. "4.2"
+    rating_val = float(lead.get("rating") or 0)
+    if rating_val >= 4.0:
         score += 20
-    if (lead.get("rating") or 0) >= 4.0:
-        score += 20
-    if (lead.get("review_count") or 0) >= 10:
+    # reviews is stored as string e.g. "47"
+    review_count = int(lead.get("reviews") or 0)
+    if review_count >= 10:
         score += 15
     if lead.get("has_hours"):
         score += 15
     if recent_review_count >= 3:
-        score += 20
+        score += 15
     franchise_keywords = ["homeadvisor", "angi", "thumbtack", "servicemaster",
                           "mr. rooter", "roto-rooter", "merry maids", "chemdry",
                           "paul davis", "rainbow international", "1-800-got-junk",
                           "two men and a truck"]
-    name_lower = (lead.get("business_name") or "").lower()
-    if not any(kw in name_lower for kw in franchise_keywords):
+    company_lower = (lead.get("company") or "").lower()
+    if not any(kw in company_lower for kw in franchise_keywords):
         score += 10
     return score
 ```
@@ -343,8 +364,8 @@ def calculate_icp_score(lead: dict, recent_review_count: int) -> int:
 **Qualification threshold:**
 ```python
 is_qualified = (
-    score >= 60
-    AND recent_review_count >= 3  # REQUIRED — hard gate above handles if 0
+    score >= 50          # lowered from 60 since no-website leads max at 65 without reviews bonus
+    and recent_review_count >= 3   # HARD GATE — no exceptions
 )
 ```
 
@@ -364,51 +385,64 @@ is_qualified = (
 
 ## Step 5: Campaign Assignment
 
-After qualification, assign the lead to the correct campaign based on niche.
+Before scraping, resolve which campaign leads will be assigned to.
 
-### Niche → Campaign Mapping Logic
+### Campaign resolution order
+
+1. If `--campaign [id]` was passed → validate that campaign exists and is active → use it
+2. If `--new-campaign [name] --type [dms|calls|emails]` was passed → create the campaign → use it
+3. If neither was passed → auto-create a campaign named `"{Niche} {Location} {Month YYYY}"` with type `dms`
+
+### Creating a new campaign
 
 ```python
-NICHE_CAMPAIGN_MAP = {
-    "pool":          "camp_pool_primary",
-    "roofing":       "camp_roofing_primary",
-    "landscaping":   "camp_landscaping_primary",
-    "remodeling":    "camp_remodeling_primary",
-    "construction":  "camp_construction_primary",
-    "painters":      "camp_painters_primary"
-}
+import random, string
+from datetime import datetime
 
-campaign_id = NICHE_CAMPAIGN_MAP.get(lead["niche"])
+def make_campaign_id(niche: str) -> str:
+    suffix = ''.join(random.choices(string.ascii_lowercase + string.digits, k=4))
+    month = datetime.now().strftime("%Y%m")
+    return f"camp_{niche}_{month}_{suffix}"
+
+campaign_id = make_campaign_id(niche)
 ```
 
-**Lookup validation:**
-```sql
-SELECT id, name, status FROM campaigns WHERE id = '{campaign_id}' LIMIT 1
+```bash
+python tools/db.py campaigns create '{
+  "id": "{campaign_id}",
+  "name": "{campaign_name}",
+  "niche": "{niche}",
+  "city": "{location}",
+  "campaign_type": "{dms|calls|emails}",
+  "status": "active",
+  "leads_scraped": 0,
+  "dms_sent": 0,
+  "replies": 0,
+  "bookings": 0,
+  "closed": 0,
+  "revenue": 0
+}'
+```
+
+After creating the campaign, update os-state.json:
+```bash
+python tools/db.py state set '{"gates": {"first_campaign_created": true}}'
+```
+
+### Validating an existing campaign
+
+```bash
+python tools/db.py campaigns get {campaign_id}
 ```
 
 **HARD GATE — Campaign Active Check:**
 ```
-STOP assignment if campaign.status = 'paused' or 'archived'.
-Reason: Should not add leads to inactive campaigns.
-Action: Log warning, leave campaign_id = null, flag lead for manual assignment.
+STOP if campaign.status = 'paused' or 'archived'.
+Reason: Should not add leads to an inactive campaign.
+Action: Report error, ask user to specify a different campaign.
 ```
 
-If no campaign found for niche, log warning and leave `campaign_id = null`.
-
-### Sub-campaign logic (future: A/B testing)
-
-If multiple campaigns exist for the same niche, assign round-robin:
-```python
-# Get all active campaigns for niche
-campaigns = db.query(
-    "SELECT id FROM campaigns WHERE niche = ? AND status = 'active'",
-    [niche]
-)
-# Assign by rotating index
-idx = db.get_counter(f"campaign_rotate_{niche}") % len(campaigns)
-campaign_id = campaigns[idx]["id"]
-db.increment_counter(f"campaign_rotate_{niche}")
-```
+All qualified leads from this run get `campaign_id` set to the resolved campaign.
 
 ---
 
@@ -432,19 +466,19 @@ The brief tells the person recording the Loom video exactly what to say, what to
     "pain_point_angle": "Based on their reviews, customers mention: [top 2-3 themes from reviews]. Lead with solving that pain.",
     "website_critique": "Their current website [does/does not] have: clear CTA, mobile responsiveness, trust badges, before/after gallery. Note specific gaps.",
     "competitor_contrast": "Other {niche} businesses in {location} that we've built for — contrast their site quality.",
-    "social_proof_angle": "They have {review_count} reviews averaging {rating} stars. This is [above/at/below] average for {niche} in {location}.",
+    "social_proof_angle": "They have {reviews} reviews averaging {rating} stars. This is [above/at/below] average for {niche} in {location}.",
     "cta": "End with: 'I put together a 2-minute mock of what your new site could look like — want me to send it over?'"
   },
   "review_themes": ["fast response", "professional", "fair pricing"],
   "website_gaps": ["no contact form", "not mobile friendly", "no gallery"],
   "key_stats": {
-    "rating": 4.2,
-    "review_count": 47,
+    "rating": "4.2",
+    "reviews": "47",
     "recent_reviews_6mo": 8,
-    "has_website": true
+    "has_website": false
   },
   "dm_channel": "instagram",
-  "instagram_url": "https://instagram.com/abcpool",
+  "instagram_handle": "abcpool",
   "recommended_dm_length": "short",
   "video_length_target_seconds": 90
 }
@@ -481,50 +515,59 @@ top_themes = sorted(themes.items(), key=lambda x: -x[1])[:3]
 
 All database writes use `python tools/db.py` patterns.
 
-### leads table insert
+### IMPORTANT: Only insert qualified leads
 
-```python
-python tools/db.py insert leads '{
-  "business_name": "{business_name}",
-  "business_type": "{business_type}",
-  "niche": "{niche}",
-  "location": "{location}",
-  "address": "{address}",
-  "phone": "{phone}",
-  "website": "{website}",
-  "google_maps_url": "{google_maps_url}",
-  "rating": {rating},
-  "review_count": {review_count},
-  "has_website": {has_website},
-  "source": "{source}",
-  "campaign_id": "{campaign_id}",
-  "icp_score": {icp_score},
-  "qualified": {qualified},
-  "disqualification_reason": "{disqualification_reason}",
-  "stage": "Contacted",
-  "created_at": "{ISO_TIMESTAMP}"
-}'
-```
+**Never insert a disqualified lead.** The `leads` table is the live CRM — every row must be a real prospect. Count disqualified leads in the run summary but do not write them.
 
-### leads table bulk insert pattern
+### leads table bulk insert (use this for batches)
 
-For batches, use the bulk insert pattern to avoid N individual API calls:
-```python
-python tools/db.py bulk-insert leads '[
-  { ...lead1... },
-  { ...lead2... },
-  ...
+```bash
+python tools/db.py leads bulk-insert '[
+  {
+    "name": "N/A",
+    "company": "ABC Pool Service",
+    "phone": "+16025551234",
+    "email": null,
+    "address": "123 Main St, Phoenix, AZ 85001",
+    "website": null,
+    "rating": "4.2",
+    "reviews": "47",
+    "summary": "Pool contractor, Phoenix AZ. 47 reviews, 4.2 stars. No website. ICP score: 75.",
+    "niche": "pool",
+    "status": "prospect",
+    "campaign_id": "camp_pool_202507_a1b2",
+    "icp_score": 75,
+    "google_maps_url": "https://maps.google.com/?cid=12345",
+    "source": "google_maps"
+  }
 ]'
 ```
 
-### Update lead after qualification:
-```python
-python tools/db.py update leads {lead_id} '{
-  "icp_score": {score},
-  "qualified": {true/false},
-  "disqualification_reason": "{reason or null}",
-  "campaign_id": "{campaign_id or null}",
-  "updated_at": "{ISO_TIMESTAMP}"
+### Single lead insert (fallback):
+```bash
+python tools/db.py leads insert '{
+  "name": "N/A",
+  "company": "XYZ Roofing",
+  "phone": "+12145559876",
+  "email": null,
+  "address": "456 Oak Ave, Dallas, TX 75001",
+  "website": null,
+  "rating": "4.8",
+  "reviews": "23",
+  "summary": "Roofing contractor, Dallas TX. 23 reviews, 4.8 stars. No website. ICP score: 80.",
+  "niche": "roofing",
+  "status": "prospect",
+  "campaign_id": "camp_roofing_202507_c3d4",
+  "icp_score": 80,
+  "google_maps_url": "https://maps.google.com/?cid=99999",
+  "source": "google_maps"
+}'
+```
+
+### Update lead after Loom brief:
+```bash
+python tools/db.py leads update {lead_id} '{
+  "loom_brief": "{loom_brief_json_string}"
 }'
 ```
 

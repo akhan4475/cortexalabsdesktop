@@ -44,6 +44,12 @@ DO $$ BEGIN
   END IF;
 END $$;
 
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='user_credentials' AND column_name='apify_api_token') THEN
+    ALTER TABLE user_credentials ADD COLUMN apify_api_token TEXT DEFAULT NULL;
+  END IF;
+END $$;
+
 -- ─────────────────────────────────────────────
 -- NEW TABLES
 -- ─────────────────────────────────────────────

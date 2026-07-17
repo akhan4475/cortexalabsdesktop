@@ -1,0 +1,34 @@
+{
+  "niche": "roofing",
+  "slots": [
+    {
+      "id": "hero_bg",
+      "path": "public/images/hero-bg.jpg",
+      "description": "Full-bleed hero background. Completed roof, real job site. Minimum 1440x900px.",
+      "required": true,
+      "stage": "Stage 9 (hero-image-agent generates this via Gemini)"
+    },
+    {
+      "id": "before_after_1_before",
+      "path": "public/images/gallery/before-1.jpg",
+      "description": "Before photo of a real completed job. Labeled with city + service type.",
+      "required": false,
+      "stage": "Stage 4 (asset-scraper-agent)"
+    },
+    {
+      "id": "before_after_1_after",
+      "path": "public/images/gallery/after-1.jpg",
+      "description": "After photo matching before-1. Same project.",
+      "required": false,
+      "stage": "Stage 4 (asset-scraper-agent)"
+    },
+    {
+      "id": "team_founder",
+      "path": "public/team/founder.jpg",
+      "description": "Founder headshot. Square crop preferred. Natural light. No suits.",
+      "required": false,
+      "stage": "Stage 4 (asset-scraper-agent)"
+    }
+  ],
+  "fallback_strategy": "All image slots have CSS-driven placeholder backgrounds. The site renders without photos; real photos replace placeholders at Stage 4."
+}

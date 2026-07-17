@@ -1,0 +1,58 @@
+{
+  "version": 2,
+  "module": "m2b_complete",
+  "niche": null,
+  "studentName": "Ayaan Khan",
+  "gates": {
+    "setup.complete": false,
+    "agency.brandLocked": false,
+    "m1.profileLocked": true,
+    "m2a.scoresLocked": true,
+    "m2b.researchComplete": true,
+    "m2c.nicheDecided": false,
+    "m2d.templateBuilt": false,
+    "m3.offerLocked": false,
+    "m4.factoryStructureLoaded": false,
+    "m5.factoryBriefLocked": false,
+    "factory.tailored": false,
+    "factory.deployed": false,
+    "m6.engineStructureLoaded": false,
+    "m7.engineBriefLocked": false,
+    "engine.deployed": false,
+    "engine.contextPasted": false,
+    "factory.generated": false
+  },
+  "credentials": {
+    "anthropic": false,
+    "apify": true,
+    "supabase": false,
+    "vercel": false,
+    "assemblyAi": false,
+    "github": false
+  },
+  "deployments": {
+    "factory": null,
+    "engine": null
+  },
+  "factoryRuns": [],
+  "history": [
+    {
+      "timestamp": "2026-05-20T00:00:00Z",
+      "command": "/discovery",
+      "outcome": "complete",
+      "note": "m1.profileLocked set to true. 10 raw niche candidates surfaced."
+    },
+    {
+      "timestamp": "2026-05-20T00:00:00Z",
+      "command": "/score-niches",
+      "outcome": "complete",
+      "note": "m2a.scoresLocked set to true. Top 3 finalists: Roofing (26), Landscaping (25), Pool & Gutter (22). Gym/Fitness swapped out by student override -- low ticket filter."
+    },
+    {
+      "timestamp": "2026-05-20T18:45:00Z",
+      "command": "/research",
+      "outcome": "complete",
+      "note": "m2b.researchComplete set to true. 7 sub-task markdowns + synthesis.md written for all 3 niches. Total Apify cost: ~$1.69. Actors used: google-search-scraper, crawler-google-places, reddit-scraper-lite."
+    }
+  ]
+}

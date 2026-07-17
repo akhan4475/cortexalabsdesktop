@@ -1,0 +1,49 @@
+{
+  "niche": "roofing",
+  "templateVersion": 1,
+  "generatedAt": "2026-06-26T00:00:00Z",
+  "winner": "perth-roof-replacements",
+  "designMix": {
+    "heroFrom": "perth-roof-replacements",
+    "colorSystemFrom": "perth-roof-replacements",
+    "typographyFrom": "perth-roof-replacements",
+    "sectionOrderFrom": "priority-roofs-dallas",
+    "formPatternFrom": "priority-roofs-dallas",
+    "namedTeamFrom": "priority-roofs-dallas",
+    "trustStackFrom": "colony-roofers",
+    "insuranceSectionFrom": "stonecreek-roofing-az",
+    "faqFrom": "jp-carroll-roofing"
+  },
+  "components": [
+    "StickyNav", "Hero", "TrustBar", "EstimateForm", "ServicesGrid",
+    "WhyUs", "BeforeAfterGallery", "TeamSection", "ReviewTiles",
+    "ProcessSteps", "InsuranceSection", "FAQAccordion", "FinalCTA",
+    "Footer", "MobileStickyBar", "PageHero", "ServiceHero"
+  ],
+  "pages": [
+    "HomePage", "AboutPage", "ReviewsPage", "GalleryPage", "ContactPage",
+    "ServiceRoofReplacementPage", "ServiceRoofRepairPage",
+    "ServiceStormDamagePage", "ServiceEmergencyRepairPage",
+    "InsuranceClaimsPage", "AreaPage", "NotFoundPage"
+  ],
+  "routes": [
+    "/", "/about", "/reviews", "/gallery", "/contact",
+    "/services/roof-replacement", "/services/roof-repair",
+    "/services/storm-damage", "/services/emergency-roof-repair",
+    "/insurance-claims", "/insurance", "/storm-damage",
+    "/estimate", "/areas/:citySlug"
+  ],
+  "nichePlaybook": [
+    "copy-locks.json", "trust-signals.json", "process.json", "vocabulary.json",
+    "motion-preset.json", "theme.json", "hero-mood-mapping.json",
+    "photo-manifest.json", "asset-patterns.json", "proposal-pages.json",
+    "hero-composition.md", "copywriting.md", "cro-rules.md", "design-vocabulary.md"
+  ],
+  "sops": ["roofing-master.sop.md"],
+  "agents": ["roofing-copy-agent.md", "roofing-uplift-agent.md"],
+  "checklists": ["sop-compliance.md", "design-fidelity.md"],
+  "gates": {
+    "m2d.templateBuilt": true,
+    "factory.generated": true
+  }
+}

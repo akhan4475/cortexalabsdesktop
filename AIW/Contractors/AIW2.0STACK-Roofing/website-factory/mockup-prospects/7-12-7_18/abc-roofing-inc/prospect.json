@@ -1,0 +1,23 @@
+{
+  "niche": "roofing",
+  "business_name": "ABC Roofing Inc",
+  "short_name": "ABC Roofing",
+  "phone": "(410) 555-0101",
+  "city": "Baltimore",
+  "state": "MD",
+  "rating": 4.8,
+  "review_count": 62,
+  "license_number": "MHIC #98765",
+  "service_areas": [
+    "Baltimore",
+    "Towson",
+    "Catonsville"
+  ],
+  "service_slugs": [
+    "roof-replacement",
+    "roof-repair",
+    "storm-damage",
+    "insurance-claims"
+  ],
+  "owner_name": "James"
+}

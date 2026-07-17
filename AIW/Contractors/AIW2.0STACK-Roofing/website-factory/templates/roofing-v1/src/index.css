@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/*
+ * index.css template — Module 2D substitutes the {{...}} slots with
+ * per-niche values from niche-design-tokens.json before writing this
+ * file to templates/{niche-slug}/src/index.css.
+ */
+
+:root {
+  --primary: 90 180 174;
+  --primary-dark: 74 160 154;
+  --primary-slate: 45 120 116;
+  --accent: 245 158 11;
+  --accent-light: 253 230 138;
+  --accent-dark: 217 119 6;
+  --neutral: 98 114 128;
+  --neutral-dim: 143 160 173;
+  --silver: 226 230 234;
+  --ink: 29 43 56;
+}
+/* ── Semantic colour tokens ─────────────────────────────────────────────── */
+/* Arbitrary Tailwind classes (bg-[var(--color-bg)] etc.) resolve here.    */
+[data-theme-mode="light"] {
+  --color-bg:           #FFFFFF;
+  --color-surface:      #F4F6F7;
+  --color-surface-alt:  #EEF1F3;
+  --color-trust-bg:     #F4F6F7;
+  --color-border:       rgba(0, 0, 0, 0.08);
+  --color-border-light: rgba(0, 0, 0, 0.05);
+  --color-star:         #F59E0B;
+  --color-dark-section: #0C1C26;
+  --nav-height:         96px;
+}
+
+[data-theme-mode="dark"] {
+  --color-bg:           #0A0F1A;
+  --color-surface:      #111827;
+  --color-surface-alt:  #1A2235;
+  --color-trust-bg:     #070D18;
+  --color-border:       rgba(255, 255, 255, 0.10);
+  --color-border-light: rgba(255, 255, 255, 0.06);
+  --color-star:         #F59E0B;
+  --color-dark-section: #0C1C26;
+  --nav-height:         96px;
+}
+
+/* Universal foundation rules (apply to every niche) */
+
+html {
+  /* Smart quotes everywhere */
+  quotes: "\201C" "\201D" "\2018" "\2019";
+  /* Variable-font optical sizing */
+  font-optical-sizing: auto;
+}
+
+/* Tabular figures for any number near another number (prices, ratings, counts) */
+.tabular-nums,
+.font-tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Reduced-motion gate — universal accessibility rule. Components MUST
+   honour this; motion utilities collapse to near-zero duration. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Em-dash audit (universal). No em-dash should ever land in source.
+   This selector exists as a visible debugging surface during dev: if
+   anyone types one, it renders highlighted so we catch it before ship. */
+[data-em-dash-audit]::after {
+  content: attr(data-em-dash-audit);
+  background: yellow;
+  color: red;
+}
+
+/* Trust bar conveyor belt — items scroll from left to right */
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0%); }
+}
+.animate-marquee-right {
+  animation: marquee-right 40s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-right { animation: none; }
+}

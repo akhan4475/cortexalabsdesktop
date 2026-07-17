@@ -1,0 +1,392 @@
+[
+  {
+    "family": "DSLCFontAwesome",
+    "weight": "normal",
+    "style": "normal"
+  },
+  {
+    "family": "star",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "WooCommerce",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Font Awesome 5 Brands",
+    "weight": "normal",
+    "style": "normal"
+  },
+  {
+    "family": "Font Awesome 5 Duotone",
+    "weight": "900",
+    "style": "normal"
+  },
+  {
+    "family": "Font Awesome 5 Pro",
+    "weight": "300",
+    "style": "normal"
+  },
+  {
+    "family": "Font Awesome 5 Pro",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Font Awesome 5 Pro",
+    "weight": "900",
+    "style": "normal"
+  },
+  {
+    "family": "DIN-Bold-Condensed",
+    "weight": "normal",
+    "style": "normal"
+  },
+  {
+    "family": "DINNextLTPro-MediumCond",
+    "weight": "normal",
+    "style": "normal"
+  },
+  {
+    "family": "DIN-Regular",
+    "weight": "normal",
+    "style": "normal"
+  },
+  {
+    "family": "DIN-Regular-Condensed",
+    "weight": "normal",
+    "style": "normal"
+  },
+  {
+    "family": "Acme",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "300",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "300",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "300",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "300",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "300",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "300",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "300",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "300",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "300",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "300",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "500",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "500",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "500",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "500",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "500",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "500",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "500",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "500",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "500",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "500",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "600",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "600",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "600",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "600",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "600",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "600",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "600",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "600",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "600",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "600",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "700",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "700",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "700",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "700",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "700",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "700",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "700",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "700",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "700",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "700",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "800",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "800",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "800",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "800",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "800",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "800",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "800",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "800",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "800",
+    "style": "normal"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "800",
+    "style": "normal"
+  }
+]

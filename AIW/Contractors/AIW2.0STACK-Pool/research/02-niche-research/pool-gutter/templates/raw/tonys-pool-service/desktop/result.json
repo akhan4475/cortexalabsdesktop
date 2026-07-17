@@ -1,0 +1,2863 @@
+{
+  "run_id": "0bv091IzubylmayQk",
+  "cost_usd": 0.007199166666666667,
+  "items": [
+    {
+      "html": "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"//www.w3.org/TR/html4/loose.dtd\"><html lang=\"en\"><head>\n<title>Pool Company | Littleton, CO - Tony's Pool Service</title>\n\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n<meta http-equiv=\"Cache-Control\" content=\"max-age=1800\">\n<meta name=\"ROBOTS\" content=\"INDEX,FOLLOW\"><meta name=\"DESCRIPTION\" content=\"Turn to our pool company for top-quality cleaning products and equipment. We also specialize in several service areas including pool restoration in Littleton, CO.\n\"><meta name=\"KEYWORDS\" content=\"pool company littleton, co\n\">  \n<script src=\"//assets.myregisteredsite.com/javascript/com/jquery/latest/jquery.js\"></script>\n\n<style type=\"text/css\">\n/* ---------------------------------- */\t\n/* ---------------------------------- */\t\n/*TEMPLATE - DesignTest1c_rx */\n/*Updated 5/21/18 */\n/* ---------------------------------- */\t\n/* ---------------------------------- */\t\n\n/* ---------------------------------- */\t\n/* ---------------------------------- */\t\n/*CSS Reset*/\n/* ---------------------------------- */\t\n/* ---------------------------------- */\t\n\n.clearfix:before,\n.clearfix:after { content: \" \"; display: table; }\n.clearfix:after { clear: both; }\n.clearfix { *zoom: 1; }\nhtml, html body {  margin: 0;  padding: 0; height: 100%; min-height: 100%, width: 100%; }\nbody p { margin-top: 0; margin-bottom: 0; display:block} \nbody p + p { margin-top: 0; }\ntable {border-collapse: collapse !important}\n*, *:before, *:after { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }\n\n/* ---------------------------------- */\t\n/* ---------------------------------- */\t\n/*Sections*/\n/* ---------------------------------- */\t\n/* ---------------------------------- */\t\nbody {font-size: 11pt; min-width: 320px; position: relative; overflow-x: hidden; }\ndiv, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, \n pre, form, p, blockquote, .sectionTitle { \n\tmargin: 0; \n\tpadding: 0; \n\tline-height: 1.5; \n\tdirection: ltr; }\n\th1, h2, h3, h4, h5, h6, body {font-family: \"Open Sans\", \"Helvetica Neue\", \"Helvetica\", Helvetica, Arial, sans-serif; }\n\t\nbr[style=\"clear: both\"]{ display: none; }\t\n\n/* Needs BODY selector to overwrite uaDefaultStylesReset.css */\t\nbody p, body  a { \n\tfont-family: inherit; \n\tmargin-top: 0;\n\tmargin-bottom: 1em}\t\t\n\t\tbody p a, \n\t\tbody p a.button,\n\t\tbody p a.buttonInverted,\n\t\tbody p .button {margin-bottom: 0}\n\t\t\n.rsp_content a img, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {margin-bottom: 0}\n/* Needs BODY selector to overwrite uaDefaultStylesReset.css */\t\nbody h1, body h2, body h3, body h4, body h5, body h6 { \n\tfont-style: normal; \n\ttext-rendering: optimizeLegibility; \n\tline-height: 1; \n\tmargin-bottom: .5em;\t\n\tmargin-top: 0; }\t\n\th1, h2, h3, h4, h5, h6 {font-weight: normal}\n\t\n/* removed body .section-container specific selector */\n\th1 {font-size:32px}\n\th2 {font-size: 24px}\n\t\ntable {\t\n\tborder-collapse: collapse;\n\ttable-layout:fixed;\n\tborder-spacing: 0;}\t\n\ttable.columns.small-icon {table-layout:auto}\n\t\nimg, video {\n\tmax-width: 100%;\n\theight: auto;}\t\n\t.rsp_content img {margin-bottom: 1em}\n\t\t.fullWidthColumnFull img {margin-bottom: 0}\n\t\n@media only screen and (max-width: 768px) {\n\timg {float: none !important}\n\ta[href^=tel] { color: inherit !important;}\n\tbody p { -webkit-text-size-adjust:100% }\n}\t\n\t\n\t\n\niframe {max-width: 100%;}\t\n\n.section ul, .section ol { margin: 0 25px 14px;  }\n\n.button, .buttonInverted, #layout input.form-element[type=\"submit\"], .wsp_print_btn_text, .buttonGhost {\n\tdisplay: inline-block;\n\tcursor: pointer;\n\ttext-align:center;\n\tmargin: 0 inherit;\n\tmargin-bottom: 1em;\n\tborder: 0;\n\tpadding: 10px 25px; \n\tborder-radius: 5px; \n\ttext-decoration: none;\n\tfont-weight: 700; \n\ttransition: all 0.3s ease 0s;\n\t-webkit-appearance: none;\n}\n\t.button.buttonGhost, .buttonGhost {\n\t\tbackground: transparent;\n\t\tborder-width: 2px;\t\t\t\n\t\tpadding: 2px 23px; \n\t\tborder-style: solid;}\n\t\t\n.section-container {\n\twidth: 100%; \n\tmargin: 0; \n\tpadding: 0; }\t\n.section {\n\tmax-width: 960px;\n\tmargin: 0 auto; }\n\t\t.section.fullWidthColumn {max-width: 100%}\n\t.rsp_kv.section {padding: 100px 0}\n\t.rsp_kvSubpage.section {padding: 50px 0}\t\t\n\t.rsp_content {padding: 50px 0 35px}\n\t\t.rsp_content.fullWidthColumn {padding: 0}\n\t\t\n\t.rsp_kv p:only-of-type {margin-bottom: 0}\n\t\n\n.fullwidth, .fullwidthStatic, .fullWidth, .fullWidthStatic, span.fullwidth > img, span.fullWidth > img {\n\tbackground-repeat: no-repeat;\n\twidth: 100%;\n\t-moz-transform: none;\n\tbackground-position: center top;\n\t-webkit-transform: translateZ(0);\t\n\t-webkit-background-size: cover;\n\t-moz-background-size: cover;\n\t-o-background-size: cover;\n\tbackground-size: cover; \n\tborder-left: 0 !important;\n\tborder-right: 0 !important; }\n\n\t.fullwidthStatic, .fullwidthStatic img { background-attachment: fixed; }\t\n\t.KV-Text-Left .fullwidth {background-position: right top}\t\n\tp img.fullwidth, p img.fullWidth, p .fullwidth img, p .fullWidth img {margin-bottom: -1em}\n\t\n\t/* 50/50 Content Block */\n\t\t.fullWidthColumnInfo {\n\t\t\tfloat: right; \n\t\t\tmax-width: 452px; \n\t\t\tpadding: 40px 0;}\n\t\t\t.fullWidthColumnImage-mirrored .fullWidthColumnInfo {float: left}\n\t\t.fullWidthColumnFull {\n\t\t\toverflow: hidden;}\n\t\t.fullWidthColumnFull img {\n\t\t\tdisplay:block; \n\t\t\theight: 100%; \n\t\t\twidth: auto; \n\t\t\tmax-width: none; \n\t\t\tmin-width: 100%;}\n\t\t.fullWidthColumnImage-mirrored .fullWidthColumnFull img {float: right;}\n\t\t.rsp_content.fullWidthColumnImage > table > tbody > tr > td:last-child {padding: 0;}\n\t\t\t.rsp_content.fullWidthColumnImage-mirrored > table > tbody > tr > td:first-child {padding: 0;}\n\t\t\t.rsp_content.fullWidthColumnImage-mirrored > table > tbody > tr > td:last-child {padding: 0 0 0 2%;}\n\t\t@media only screen and (max-width: 960px) { \t\t\n\t\t\t.rsp_content.fullWidthColumnImage > table > tbody > tr > td,\n\t\t\t.rsp_content.fullWidthColumnImage-mirrored.fullWidthColumnImage-mirrored > table > tbody > tr > td {padding: 0}\n\t\t\t.fullWidthColumnImage {overflow: hidden;} \n\t\t\t.fullWidthColumnInfo {\n\t\t\t\tmax-width: 100%; \n\t\t\t\tpadding: 50px 20px 35px; \n\t\t\t\tfloat: none}\n\t\t\t.fullWidthColumnFull img {\n\t\t\t\theight: auto; \n\t\t\t\tmax-width: 100%;\n\t\t\t}\n\t\t}\n\t\t@media only screen and (max-width: 768px) { \n\t\t\t.fullWidthColumnInfo {padding: 20px}\n\t\t}\n\t/* END 50/50 Content Block */\n\n.rsp_box { padding: 25px } \t\t\t\n\n/* Header */\n.rsp_header {padding: 20px 0; overflow: hidden; }\n.header h1, .header h2, .header h3, .header h4, .header h5, .header a, .header p {margin-bottom: 0} \n\n.Header-LogoLeft-PhoneRight .phone {\n\ttext-align: right;\n\twidth: 100%;\n\tdisplay:inline-block}\t\n\t.rsp_header .half {width: 50%; float: left;}\n\t.rsp_header h1, .rsp_header h2, .rsp_header h3, .rsp_header h4, .rsp_header p, .rsp_header a  {margin-bottom: 0}\t\n\t.header a, .rsp_header a {display:inline-block;}\n\t\n#companyname a img {max-width: 100%}\t\n\n.Header-Centered img {margin-bottom: 10px; display: block;}\t\t\t\t\t\n.Header-Centered .phone img {margin-bottom: 0; float: left; margin-right: 10px;}\n.Header-Centered .phone {display: inline-block; line-height: 1;}\t\n\n@media only screen and (max-width: 960px) {\n\t.rsp_header {padding:20px;}\n}\n@media only screen and (max-width: 768px) {\n\t.rsp_header .half {width: 100%; float: none;}\n\t.Header-LogoLeft-PhoneRight .phone {\n\t\ttext-align: center;\n\t\tmargin-top: 1em}\t\n}\n\t\n\t\t\t\t.phone table {display: inline-block;}\n\t\t\t\t\t.phone table:last-child {margin-left: 20px}\n\t\t\t\t\t@media only screen and (max-width: 768px) {\n\t\t\t\t\t\t.phone table {table-layout: inherit}\n\t\t\t\t\t\t.phone.phone td {width: auto !important; display: table-cell !important}\t\n\t\t\t\t\t}\n\t\t\t\t\t@media only screen and (max-width: 568px) {\n\t\t\t\t\t#companyslogan { width: calc(100% - 40px); }\n\t\t\t\t\t.header .phone { margin: 0 auto; float: none}\n\t\t\t\t\t.header .button { display: inline-block; }\n\t\t\t\t\t.header .hamburger { padding: 10px 0 !important; }\n\t\t\t\t\t}\n.header form {\n    display: block;\n    float: right;\n    text-align: right;\n    width: 100%;\n}\n@media only screen and (max-width: 768px) {\n  .header form {float: none}\n}\n.header input {\n    display: inline-block;\n    height: 35px;\n    margin-bottom: 0;\n    padding: 0 10px;\n}\n.header input[type=\"text\"] {\n    border: 1px solid #ccc;\n    box-sizing: border-box;\n}\n.header .phone {\n    display: table;\n    float: right;\n    font-size: 14pt;\n    line-height: 25px;\n    margin-bottom: 0.5em;\n    width: auto;\n\tfloat: right;\n}\n\n#companyslogan * {clear:both}\n@media only screen and (max-width: 768px) {\n  .header .phone {float: none}\n}\n.header .phone img {\n    display: inline-block;\n    float: left !important;\n    padding-right: 5px;\n}\n.header span#rsp_cart {\n    display: inline-block;\n    float: right;\n    margin-bottom: 0;\n    margin-left: 20px;\n    position: relative;\n    text-align: left;\n    width: auto;\n}\n.header span#rsp_cart a {\n    display: inline-block;\n    line-height: 25px;\n}\n.header span#rsp_cart a:hover {\n    text-decoration: underline;\n}\n\n/* Column Padding */\n.rsp_content > div > table > tbody > tr > td,\n.rsp_content > table > tbody > tr > td {padding: 0 2%}\n\n\n.rsp_content > div> table > tbody > tr > td:first-child,\t\n.rsp_content > table > tbody > tr > td:first-child {padding: 0 2% 0 0}\n\n.rsp_content > div > table > tbody > tr > td:last-child,\t\n.rsp_content > table > tbody > tr > td:last-child {padding: 0 0 0 2%}\n\n\n.rsp_content > table.columns,\n.rsp_content > div > table.columns {width: 104%; margin: 0 -2%}\n  \n.rsp_content > table.columns > tbody > tr > td,\n.rsp_content > div > table.columns > tbody > tr > td {padding: 0 2%}\n\n/* Added to address a comment in RSP-106 */\n.rsp_content > div > table > tbody > tr > td[colspan],\n.rsp_content > table > tbody > tr > td[colspan] {\n    padding: 0;\n}\n    \n@media only screen and (max-width: 768px) {\n.rsp_content > table.columns,\n.rsp_content > div > table.columns {width: 100%; margin: 0}  \n}\n\t\n\n.small-icon.small-icon .icon {padding: 0}\t\t\n\t\t\n\t\n@media only screen and (max-width: 960px) {\n\t.rsp_content .columns.four > tbody > tr > td {\n\t\twidth: 40%;\n\t\tdisplay: inline-block;\n\t}\n\t\n\t\t.rsp_content.fullWidthColumn > table > tbody > tr > td,\n\t\t.rsp_content.fullWidthColumn > table > tbody > tr > td:first-child,\n\t\t.rsp_content.fullWidthColumn > table > tbody > tr > td:last-child {padding: 0}\n\t\t\t\t\n        .Addons-2Column-RightForm > table > tbody > tr > td:first-child {padding: 0 2% 0 0}\n        .Addons-2Column-RightForm > table > tbody > tr > td:last-child {padding: 0 0 0 2%}\t\t\t\t\n\n\t\n\t.small-icon.small-icon .icon {padding: 0}\n\n\t.rsp_kv.section {padding: 100px 20px 85px}\n\t.rsp_kvSubpage.section,\n\t.rsp_content.section {padding: 50px 20px 35px}\n\t\n\t\n}\n\n\n@media only screen and (max-width: 768px) {\n\n\t/* fix for old template */\n\ttable td {padding: 0}\n\timg {margin-bottom: 1em}\n\t\n\n\t.section.section.section {padding:20px;}\n\t\n\t.rsp_content > table > tbody > tr > td, \n\t.rsp_content > table > tbody > tr > td:first-child, \n\t.rsp_content > table > tbody > tr > td:last-child,\n\t.Addons-2Column-RightForm > table > tbody > tr > td,\n\t.Addons-2Column-RightForm > table > tbody > tr > td:first-child, \n\t.Addons-2Column-RightForm > table > tbody > tr > td:last-child {padding: 0}\n\t\n\t\n\t.rsp_kv img,  .rsp_kv table {margin: 0}\n\t.rsp_kvSubpage {text-align: center}\n\t\n\t.rsp_kv.section {padding: 20px !important}\n\t.section.section td,\n\t.rsp_content .columns.four > tbody > tr > td {\n\t\tdisplay: block;\n\t\tpadding: 0;\n\t\twidth: 100% !important}\n\t\t\n\t.blank {display:none !important;}\n\t.fullwidth.fullwidth {background-position: center top;}\n\n\t.small-icon.small-icon .icon {    \n\t\tdisplay: inline-block;\n\t\twidth: 25%;}\n\t.small-icon.small-icon .column-text {\n\t\tdisplay: inline-block;\n\t\tpadding: 0 0 20px 15px;\n\t\twidth: 65%;}\n}\n\n\n/* ---------------------------------- */\t\n/* ---------------------------------- */\t\n/* DEFAULT COLORS */\n/* ---------------------------------- */\n/* ---------------------------------- */\n\nbody, h1, h2, h3, h4, h5, h6 {color: #333}\n.primaryColorbg, .secondary-webcomMenu {background-color:#ccc}\n.button, #layout input.form-element[type=\"submit\"] {\n\tbackground-color: #666;\n\tcolor: #fff;\n\t}\n.hamburger div {\n\tcolor: #333;\n\tborder-color: #333;\t}\n\t.hamburger span, \n\t.hamburger span:before, \n\t.hamburger span:after {background-color: #333;}\n\t\nli.hamburger a:before {background: transparent !important}\n\t\n#slide-navContainer {background: #333}\n\t#slide-navContainer a {color: #fff}\n\t#slide-navContainer a, #slide-navContainer a:before {background: transparent !important}\n\t\n\n\n\n/* ---------------------------------- */\t\n/* ---------------------------------- */\t\n/* NAV */\n/* ---------------------------------- */\n/* ---------------------------------- */\n\n/* ---------------------------------- */\n/* START structure.css nav fixes */\t\n/* ---------------------------------- */\n.section #styleNav ul { margin: 0;}\n#styleNav {visibility: visible !important;}\nprimary-webcomMenu-offset {position: auto !important}\n.primary-webcomMenu,\n.primary-webcomMenuItem,\n.primary-webcomMenuItem-bottom,\t\n.primary-webcomMenuItem-top,\t\n.primary-webcomMenuItem-right,\n.primary-webcomMenuItem-left,\n.primary-webcomMenuItem-middle,\n.primary-webcomMenuItem {\n\tfloat: none;\n\theight: auto !important;\n\tpadding: 0 !important}\ndiv.primary-webcomMenu-bottom, \ndiv.secondary-webcomMenu-bottom {\n\tposition: auto;\n\tfloat: left}\n.primary-webcomMenuItem-middle, .secondary-webcomMenuItem-middle { text-overflow:ellipsis; }\t\n/* ---------------------------------- */\n/* END structure.css nav fixes */\n/* ---------------------------------- */\n\n\n#navContainer, #nav, #styleNav {\n\tdisplay: inline-block;\n\twidth: 100%;\n\t}\t\n#nav ul { max-height: 65px;}\n#nav ul li ul { max-height: none; }\n.primary-webcomMenu {\n\tfloat: left;\n\tpadding: 0;\n\tmargin: 0;\n\theight: auto !important;\n\twidth: auto !important}\n.primary-webcomMenu li {\n\tlist-style-type: none;\n\tmax-width: 250px;\n\tdisplay: block;\n\tfloat: left;\n\t}\nli.primary-webcomMenuItem > a { position: relative; }\n.primary-webcomMenu li.selected > a { font-weight: bold;}\n.primary-webcomMenu li.selected a:hover { text-decoration: none; }\n.primary-webcomMenu a {\t\t\n\tdisplay: block;\n\ttext-overflow: ellipsis;\n\toverflow:hidden;\n\twhite-space:nowrap;\n\ttext-decoration: none; \n\ttext-transform: uppercase; \n\tpadding: 20px 10px; \n\tmargin: 0 5px;\n\tmargin-bottom: 0}\n\t.primary-webcomMenu a:hover {text-decoration: underline;}\n\t\t\t\n.primary-webcomMenu ul {\n\tpadding: 0;\n\tposition: absolute;\n\tleft: 0;\n\twidth: 100%\n\tz-index: 100;\n\t}\n\t#navContainer .secondary-webcomMenu {box-shadow: inset 0 3px 5px rgba(0,0,0,0.2);}\n\t\n.primary-webcomMenu ul li {\n\tdisplay: block;\n\twidth: 100%;\n    float: left;\n    list-style-type: none;\n    max-width: 100%;\n\t}\t\n\t.primary-webcomMenu ul li a{\n    padding: 15px 10px 0;\n    width: 100%;\n\t}\n\t\t.primary-webcomMenu ul li:last-child a{padding-bottom: 15px}\n\n\t.primary-webcomMenu li:hover ul {\n\t  display: block;\n\t}\t\n\t\n\t.primary-webcomMenu li {\n    display: block;\n    float: left;\n    list-style-type: none;\n    max-width: 100%;\n}\n\n@media only screen and (max-width:768px) {\n\t.primary-webcomMenu-offset { display: block; margin: 0; }          \n}\n\n\n\n/* ---------------------------------- */\t\n/* ---------------------------------- */\t\n/* HAMBURGER ICON */\n/* ---------------------------------- */\n/* ---------------------------------- */\n.hamburger div {\n\tcursor: pointer;\n\tdisplay:inline;\n\tborder-radius: 3px;\n\tmargin-top: 14px;\n\ttext-align: center;\n\tbackground: none; \n\tz-index:95;\n\tdisplay: block;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tpadding: 5px 12px;\n\t}\t\n\t.hamburger div:after {content: 'MENU';padding-right: 30px} \n.hamburger span, \n.hamburger span:before, \n.hamburger span:after {\n\tborder: 0 none;\n\tborder-radius: 1px;\n\tcontent: \"\";\n\tcursor: pointer;\n\tdisplay: block;\n\theight: 3px;\n\tmargin: auto;\n\tpadding: 0;\n\tposition: absolute;\n\tright: 0;\n\ttop: 47%;\n\twidth: 25px;\n\tmargin-right: 15px;\n\tz-index: 100;}\n\t.hamburger span:before {top: -6px;}\n\t.hamburger span:after {bottom: -11px;} \n\t.hamburger span::before, .hamburger span::after {\n\t\tmargin-right: 0;\n\t}\t\n.hamburger a {\n\tdisplay: block;\n\tpadding: 0}\n\t.hamburger.hamburger a:hover {text-decoration: none}\n\n\n@media only screen and (max-width: 768px) {\t\n\t.hamburger a { \n\t\tposition: relative;\n\t\theight: 25px;\n\t\twidth: 25px;}\t\n\t\t.hamburger div {display:none}\n\t.hamburger span, \n\t.hamburger span:before, \n\t.hamburger span:after {top: 45%; margin: auto;}\n\t.hamburger span:before {top: -6px;}\n\t.hamburger span:after {bottom: -11px;} \t\t\n}\n\n\t\n\n/* ---------------------------------- */\t\n/* ---------------------------------- */\t\n/* SLIDE OUT NAV */\n/* ---------------------------------- */\n/* ---------------------------------- */\n#slide-navContainer {\t\t\n\tposition: fixed; \n\ttop: 0; \n\tright: -250px; \n\twidth: 250px; \n\theight: 100%; \n\tz-index: 3000; \n\toverflow-y: auto;\n\toverflow-x: hidden;\n\tmargin-bottom: 0;}\n\t#slide-navContainer #nav {    \n\t\tmargin-top: 45px;\n\t\tbackground-color: #333;\n\t\twidth: 90%;}\n\t\t\n#slide-navContainer ul { \n\tlist-style-type: none; \n\tfloat: none;\n\tposition: initial;\n\tbackground-color: transparent;\n\tpadding: 0; }\n\t#slide-navContainer li {\n\t\twidth: 100%;\n\t\tmax-width: 100%; }\n\t#slide-navContainer ul ul {\n\t\tdisplay:block;\n\t\tpadding: 0 0 0 20px; \n\t\tposition: relative; }\n\t#slide-navContainer.primaryColorbg #styleNav ul li ul li {\n\t\tborder-bottom: none; background-color: transparent; }\n\t\n#slide-navContainer a {\n\tdisplay: block;  \n\tfloat: none; \n\twidth: 100%;\n\tpadding: 10px;  \n\tmargin: 0; \n    text-overflow: unset;\n    white-space: pre-line;\n\toverflow:hidden;\n\ttext-decoration: none; \n\ttext-align:left;}\n\t#slide-navContainer a:hover { text-decoration: underline; }\n    #slideout-menu-toggle { \n\t\ttext-indent: 0;\n\t\tdisplay: block; \n\t\tline-height: 1;\n\t\ttext-decoration: none; \n\t\tz-index: 100; }\n    #slideout-menu-toggle:hover {  }\n\n\t/* ---------------------------------- */\n\t/* CLOSE BUTTON */\n\t/* ---------------------------------- */\n\t#navContainer .close {display:none; height: 0; visibility:hidden}\n\t#slide-navContainer .close {\n\t\tfont-size: 36px;\n\t\tline-height: 36px;\n\t\tpadding: 0;\n\t\tposition: absolute;\n\t\tright: 10px;\n\t\ttop: 0;\n\t}\n\t#slide-navContainer .close:hover {text-decoration: none}\n\t#slide-navContainer .close span:after {\n\t\ttext-align: right; \n\t\tdisplay: block;\n\t\tcontent:'\\00D7'; }\n\n@media only screen and (max-width: 768px) {\t\n\t.primary-webcomMenu-bottom, .secondary-webcomMenu-bottom {float: right !important;}\t\n\t#slide-navContainer ul ul {display: block}\t\n\t#nav .section {padding: 10px 20px}\n\t.primary-webcomMenu {width: 100% !important}\n\t#slideout-menu-toggle {float: right}\n}\n\n/* ---------------------------------- */\n/* ---------------------------------- */\n/* STICKY NAV */\n/* ---------------------------------- */\n/* ---------------------------------- */\n#sticky-navContainer { display: block; z-index: 2002; position: fixed; top: -120px; width: 100%; -webkit-transition: top 0.3s linear; -moz-transition: top 0.3s linear; transition: top 0.3s linear; }\n#sticky-navContainer .primary-webcomMenu li ul { display: none; }\n#sticky-navContainer .primary-webcomMenu li:hover ul { display: block;\t}\n#sticky-navContainer #nav-toggle span { margin-top: 6px;  }\n#sticky-navContainer ul li { position: relative; }\n#sticky-navContainer .section { padding: 0 !important; margin-top: 0; }\n#sticky-navContainer .close { display: none; }\n@media only screen and (max-width: 768px) {\n#sticky-navContainer #nav-toggle span { margin: 0; }\n#sticky-navContainer #slideout-menu-toggle { padding: 10px 10px 10px 0;}\n}\n\n/* ---------------------------------- */\n/* ---------------------------------- */\n/* FOOTER */\n/* ---------------------------------- */\n/* ---------------------------------- */\n\n\n.box {display: table; height: 100%; margin-bottom: -20px; }\n#layout, #mtx_footer{ display: table-row; }\n#footer .footercontent ul.adr li.street-address {display: block;}\n#mtx_footer #footer { padding: 20px 0; text-align: center; width: 100%;}\n#mtx_footer #footer span { display: inline-block; }\n#mtx_footer #footer span.street-address:after { content: \", \"}\n#mtx_footer #footer br { display: none; }\n#mtx_footer .footercontent {display: block; max-width: 960px; margin: 0 auto;position: relative; padding: 0; }\n#mtx_footer .footercontent center { display: block; width: 100%; margin: 0; padding: 30px 0 10px;  }\n#mtx_footer .footercontent a { text-decoration: none; display: inline-block; margin: 0 10px; padding: 5px 0;}\n#mtx_footer .footercontent a:hover { text-decoration: underline; }\n#mtx_footer .footercontent table { line-height: 150%; text-align: center; }\n#mtx_footer .footercontent table td, .footercontent table tr { display: inline-block; text-align: center;}\n#mtx_footer .footercontent table td { padding: 0 5px;}\n#mtx_footer .footercontent table tr { margin: 10px 0 0;}\n#mtx_footer .footercontent span.fn.org { position: absolute; top: 0;font-size: 20px; left: 50%; transform: translateX(-50%); -webkit-transform: translateX(-50%); -moz-transform: translateX(-50%);}\n@media only screen and (max-width: 768px) {\n#mtx_footer .footercontent ul.adr li {float: none}\n#mtx_footer .footercontent span.fn.org { font-size: 16px }\n#mtx_footer #footer font { font-size: 11px; }\n#mtx_footer .vcard table table td[nowrap=\"\"] { text-align: center; white-space: normal; }\n#mtx_footer .footercontent table tr { margin: 0;}\n}\n\n\n#mtx_footer { width: 100%; }\n.footercontent { padding: 40px 0; width: 100%; margin: 0 auto; }\n.footercontent .vcard {display: block; max-width: 960px; margin: 0 auto; }\n.footercontent h4, .footercontent .businessname { display: block; clear: both; text-align: center; }\n.footercontent h4.fn.org a, .footercontent .businessname a{ font-size: 24px; text-decoration: none; margin: 0 0 0.3em; font-weight: bold; }\n.footercontent ul { list-style-type: none;}\n.footercontent li { font-size: 14px; line-height: 20px;}\n.footercontent ul.mtx_footnav { display: table; clear: both; margin: 0 auto; }\n.footercontent ul.mtx_footnav a { margin-bottom: 0.5em; text-decoration: none; }\n.footercontent ul.mtx_footnav a:hover { text-decoration: underline; }\n.footercontent ul.mtx_footnav li { display: inline; margin: 0 .5em}\n.footercontent ul.mtx_footnav li ul { display: none;  }\n.footercontent ul.mtx_buscontact { display: table; clear: both; list-style-type: none; margin: 0 auto 1em;; text-align: center; }\n.footercontent ul.mtx_buscontact li { display: inline-block; margin: 0;}\n.footercontent ul.mtx_buscontact li::after { content:\" |\"}\n.footercontent ul.mtx_buscontact li:last-child::after { content: \"\";}\n.footercontent ul.mtx_buscontact li.tel::before {content: \"Phone: \" }\n.footercontent ul.mtx_buscontact li.mtx_fax::before {content: \"Fax: \" }\n.footercontent ul.mtx_buscontact li.mtx_cell::before {content: \"Cell: \" }\n.footercontent ul.adr { font-weight: bold; display:table; margin: 0 auto; }\n.footercontent ul.adr li { font-weight: normal; display: inline; float: left; margin: 0 3px 0 0; padding: 0; }\n.footercontent ul.adr li::after { content: \",\"}\n.footercontent ul.adr li:last-child::after { content: \"\"}\n.footercontent #mtx_copyright { text-align: center; font-size: 10px; margin: 1em auto 0;}\n.footercontent .email #footerContact, .footercontent .email .footer_contact_component { display: inline-block; }\n#mtx_footer .footercontent a.footer_contact_email { margin: 0 }\n.footercontent ul.adr li.region::after { content: \"\"; }\n.footercontent ul.mtx_footnav, .footercontent ul.adr, #mtx_footer #footer .vcard div[style=\"width: 100%\"], #mtx_footer #footer .vcard table[style=\"width: 100%\"] { text-align: center; }\n#mtx_footer #footer .vcard br, #mtx_footer #footer .vcard br { display: initial; }\n\n\n/* Video Embed Fix */\nbody .html5-video-container { z-index: auto !important; }\n\n/* ---------------------------------- */\t\n/* ---------------------------------- */\t\n/* Contact Form*/\n/* ---------------------------------- */\t\n/* ---------------------------------- */\t\n\n\ndiv[id*=\"webcom-component-form\"] > table > tbody > tr > td:first-child,\ndiv[id*=\"webcom-component-form\"] > table > tbody > tr > td:last-child,\ndiv[id*=\"webcom-component-feedback\"] > table > tbody > tr > td:first-child,\ndiv[id*=\"webcom-component-feedback\"] > table > tbody > tr > td:last-child {display:none}\n\ndiv[id*=webcom-component-form] td[width*=\"10%\"],\ndiv[id*=webcom-component-feedback] td[width*=\"10%\"] { width: 100% !important; }\n\nform[id^=webcom-component-form],\nform[id^=webcom-component-feedback] {\n\twidth: 100%;\n\tmargin: 0 auto;\n}\n\nform[id^=webcom-component-form] table, \nform[id^=webcom-component-feedback] table, \n.form-element[type=text],\n.web_com_custom_form .form-element-size-large[type=\"text\"], \n.web_com_custom_form table.form-element-size-large, \n.web_com_custom_form textarea.form-element-size-large, \n.web_com_custom_form select.form-element-size-large,\n.web_com_custom_form table td.FirstName input,\n.web_com_custom_form table td.LastName input,\n.web_com_custom_form table[class*=large], \n.web_com_custom_form input[class*=large], \n.web_com_custom_form table[class*=large], \n.web_com_custom_form textarea[class*=large], \n.web_com_custom_form select[class*=large] {\n\tpadding: 5px !important;\n\t-webkit-box-sizing: border-box;\n\t-moz-box-sizing: border-box;\n\tbox-sizing: border-box; \n\tmax-width: 100% !important;\n\tmin-width: 100% !important;\n\twidth: 100% !important}\n\t\n@media only screen and (max-width: 768px) {\n\n\tform[id^=webcom-component-form],\n\tform[id^=webcom-component-feedback] {width: 100%;}\n\t\t\n\t.web_com_custom_form table td.FirstName,\n\t.web_com_custom_form table td.LastName{\n\t\tpadding-left: 0 !important;\n\t\twidth: 100% !important}\n}\t\n\n\n/* POPUP CONTACT */\n\n.fc_overlay { width: auto !important; height: auto !important; }\n.fc_container { max-width: 90% !important;}\n#footer #fc_form_header, #footer #fc_form_container label { color: #333;}\n#fc_form_container form { display: block; }\n#fc_form_container tr { display: block; margin: 0; padding: 0; }\n#fc_form_container table td { padding: 0; }\n#fc_form_container table td[width=\"45%\"] { display: none important;}\n#fc_form_container table td[width=\"10%\"] { display: block; width: 100%}\n\n/* ---------------------------------- */\t\n/* ---------------------------------- */\t\n/* ECOMM */\n/* ---------------------------------- */\t\n/* ---------------------------------- */\t\n\n\n.mtrx_ecom_layout { display: block; margin: 0 auto; max-width: 960px; padding: 20px;}\n\n.Header-EcommerceSearch h2, .Header-EcommerceSearch img, .Header-EcommerceSearch div { display: inline-block; }\n.Header-EcommerceSearch form { float: right; display: block; width: 100%; text-align: right; }\n.Header-EcommerceSearch input { height: 35px; padding: 0 10px; display: inline-block; margin-bottom: 0}\n.Header-EcommerceSearch input[type='text'] { \n\tborder: 1px solid #ccc;\n\tbox-sizing: border-box;  }\n.Header-EcommerceSearch div.phone { display: table; width: auto; margin-bottom: 0.5em; float: right;  line-height: 25px; font-size: 14pt; }\n.Header-EcommerceSearch div.phone img { float: left !important; display:inline-block; padding-right: 5px;  }\n.Header-EcommerceSearch span#rsp_cart { float: right; position: relative; width: auto; margin-left: 20px; margin-bottom: 0;  text-align:left; display: inline-block;  }\n.Header-EcommerceSearch span#rsp_cart a { display: inline-block; line-height: 25px; }\n.Header-EcommerceSearch span#rsp_cart a:hover { text-decoration: underline; }\n.mtrx_ecom_layout #page .result .description { line-height: 150%; }\n#page div.results-grid { width: 100%; }\nbody #page-content h1, body #page-content h2, body #page-content h3, body #page-content h4, body #page-content h5, body #page-content h6 { line-height: inherit; }\n.mtrx_ecom_layout a:hover { text-decoration: none;  }\n#page .result h3 { overflow: none; height: auto; font-size: 16px; }\n#page div.results .result { height: auto; overflow: none; width: 100%; }\n#page div.results .result .thumbnail { display: inline-block; float: left; max-width: 20%; margin-right: 5%; }\n#page div.results .result .details { display: inline-block; overflow: auto; padding: 0px; text-align: left; width: 75%; }\n#page div.results .result .amount {   width: auto; float: right; text-align: right; }\n#page div.results .result .description { margin-bottom: 0; font-size: 13px;}\nbody .mtrx_ecom_layout #page .btn-add-to-cart, body .mtrx_ecom_layout #page.content a.btn-main, body .mtrx_ecom_layout div.upsell-panel a.btn-main, body .mtrx_ecom_layout #page .btn-add {\n\tdisplay: inline-block;\n\tcursor: pointer;\n\ttext-align:center;\n\tmargin: 0 inherit;\n\tmargin-bottom: 1em;\n\tborder: 0;\n\tpadding: 10px 25px; \n\tborder-radius: 5px; \n\ttext-decoration: none;\n\tfont-weight: 700; \n\ttransition: all 0.3s ease 0s;\n}\n\t\n@media only screen and (max-width: 768px) {\n\n#webcom_ecomm_category_title { display: block; position: relative; background: rgba(0,0,0,0.05); padding: 10px; cursor: pointer; }\n#webcom_ecomm_category_title::after { content: \" \\25BE\"; }\n#webcom_ecomm_category_title.rsp_active::after { content: \" \\25B4\"; }\n.mtrx_ecom_layout #cats { display: block; border: 1px solid rgba(0,0,0,0.05); padding: 10px; margin-top: -10px;  }\n.mtrx_ecom_layout #cats { display: none; }\n#cats.rsp_active { display: block; }  \n\n\t.Header-EcommerceSearch div.phone { margin: 10px auto 0; float: none; }\n\t.Header-EcommerceSearch form { margin: 10px auto 0 ; float: none; text-align: center; max-width: 350px; }\n\t.Header-EcommerceSearch input[type='text'] { width: 70%;}\n\t.Header-EcommerceSearch input[type='submit'] { width: 28%; }\n\t.Header-EcommerceSearch h2, .Header-EcommerceSearch img, .Header-EcommerceSearch div { display: block; margin: 0 auto; }\n\t.Header-EcommerceSearch h2 { margin-bottom: 0; }\n\t.Header-EcommerceSearch div { float: none; width: 100%; }\n\t.Header-EcommerceSearch span { text-align: center; margin: 0; line-height: auto; margin-bottom: 0.5em;}\n\t.Header-EcommerceSearch span.phone { margin: 0 auto; float: none; }\n\t.Header-EcommerceSearch span.phone img { display: inline-block; margin: 0; }\t\n\t\n\t\n\t\n.cart-gridview .row-item { position: relative; }\n.cart-gridview .cell-remove { position: absolute; top: 0; right: 20px;}\t\n.mtrx_ecom_layout table td, #cart-contents .cart-gridview .cell-product  { display: block; width: auto;}\n#cart-links { margin: 0 auto 5px !important; }\n\n#search-box { display: none; }\n#search-box input { display: inline-block; }\n#search-box .search-field { width: 76% !important; height: 30px !important; padding: 0 !important; text-indent: 5px;  }\n#search-box .btn-search { width: 22% !important; margin: 0 0 0 1%; height: 30px !important; padding: 0 !important;}\n.paging .page-mode { display: none; }\n.paging { font-size: 12px !important; }\n#page div.results-grid .result { width: 33%; max-width: 33%;}\n\t.cart-gridview table { \n\t\twidth: 100%; \n\t\tborder-collapse: collapse; \n\t}\n\t/* Zebra striping */\n\t.cart-gridview tr:nth-of-type(odd) {\n\t}\n\t.cart-gridview th, .calculations-hack { \n\t\tdisplay: none !important;\n\t}\n\t.cart-gridview td, .cart-gridview th { \n\t\tpadding: 6px; \n\t\ttext-align: left; \n\t}\n\t.cart-gridview table, .cart-gridview thead, .cart-gridview tbody, .cart-gridview th, .cart-gridview td, .cart-gridview tr {\n\t\t\tdisplay: block;\n\t\t}\n\n\t\t.cart-gridview thead tr {\n\t\t\tposition: absolute;\n\t\t\ttop: -9999px;\n\t\t\tleft: -9999px;\n\t\t}\n\n\t\t.cart-gridview td {\n\t\t\tborder: none;\n\t\t\tposition: relative;\n\t\t\tpadding-left: 35% !important;\n\t\t\tclear: both;\n\t\t}\n\t\t.cart-gridview td.cart-summary { padding-left: 0 !important;}\n\t\t.cart-gridview td.cart-summary .coupons { width: 100%; margin: 0; }\n\t\t.cart-gridview td.cart-summary label { font-size: 14px; padding: 10px 20px; line-height: 16px;}\n\t\t.cart-gridview td.cart-summary label em { font-size: 10px; margin: 0; padding: 0;}\n\t\t.cart-gridview td.cart-summary .coupons input.text { width: 80%; margin: 0 0 0 6px; padding: 0;}\n\t\t.cart-gridview .cart-summary .calculations tr, .cart-gridview .cart-summary .calculations table td { border: 0;}\t\n\t\t.cart-gridview td:before {\n\t\t\tposition: absolute;\n\t\t\ttop: 6px;\n\t\t\tleft: 6px;\n\t\t\tpadding-right: 10px;\n\t\t\twhite-space: nowrap;\n\t\t}\n\n\t\t.cart-gridview td.cell-quantity:before { content: \"Quantity\"; }\n\t\t.cart-gridview td.cell-thumbnail:before { content: \"\"; }\n\t\t.cart-gridview td.cell-product:before { content: \"Product\"; }\n\t\t.cart-gridview td.cell-price:before { content: \"Price\"; }\n\t\t.cart-gridview td.cell-total:before { content: \"Total\"; }\n\t\t.cart-gridview .row-option { display: block; }\n\t\t.cart-gridview tr.row-option { border-top: 0;}\n\t\t.cart-gridview tr.row-option td:nth-of-type(1):before { content: \"Options\";}\n\n\t\t.cart-gridview td.cart-summary:nth-of-type(1):before, .cart-gridview .cart-summary .calculations td:nth-of-type(1):before { content: \"\"; }\n\t\t#cart-contents .cart-gridview .cart-summary .calculations { clear: both; width: 100%; float: none; }\n\t\t#cart-contents .cart-gridview .calculations td { padding: 0 8px; }\n.option select { width: 100%;}\ndiv.wrapper-main #billing-address div.left { max-width: 100%; min-width: 200px; }\ndiv.wrapper-main #page-body div.secure-text { float: none; position: relative; }\ndiv.wrapper-main #page-body { padding: 0;}\ndiv.wrapper-main #billing-address input, div.wrapper-main #billing-address select, div.wrapper-main input.text, div.wrapper-main select, div.wrapper-main textarea { width: 100%; margin: 0;}\ndiv.wrapper-main #billing-address .checkbox input { float: left; width: auto;}\ndiv.wrapper-main #billing-address .checkbox { margin: 20px 0 0; }\ndiv.wrapper-main .summary .calculations, div.wrapper-main .final-summary .calculations { width: 35%; margin: 0; }\ndiv.wrapper-main .summary { width: 80%; float: none; }\n\nbody .cart-gridview tr { border: none; }\n#cart-contents .cart-gridview .calculations td:first-child { width: 35%}\n#cart-contents .cart-gridview .calculations td { padding: 0 8px; width: auto; display: inline-block; text-align: right; }\nbody #cart-contents .cart-gridview .cart-summary { margin-top: 20px; border-top: 2px solid #ccc; }\n#page.product-detail .quantity-discounts .netprice{ font-weight: bold; }\n.cart-gridview .row-option td.cell-product::before { content: ''; }\n.cart-gridview .cell-thumbnail { display: none; }\n#cart-contents .cart-gridview tr.row-item.alt { background: rgba(0,0,0,0.02); margin-top: 20px; }\nbody div.wrapper-main form label { width: auto !important;}  \ndiv#page.product-detail .gallery img { display: block; margin: 0 auto; }\n.paging .page-mode { display: inline-block; float: right; }\n.paging .page-mode label { display: none; }\n#ctl00_mainContent_productBrowser_pagerTop_ctl00_gridButton , a#ctl00_mainContent_productBrowser_pagerTop_ctl00_listButton { display: inline-block; position: relative; text-indent: -9999em; width: 26px; height: 26px; cursor: pointer; }\n#ctl00_mainContent_productBrowser_pagerTop_ctl00_gridButton:before { display: block; content: ''; position: absolute; height: 12px; width: 12px; background: rgba(0,0,0,0.2); border-radius: 2px; box-shadow: 14px 0 0 rgba(0,0,0,0.2),14px 14px 0 rgba(0,0,0,0.2),0 14px 0 rgba(0,0,0,0.2) ;}\n.disabled#ctl00_mainContent_productBrowser_pagerTop_ctl00_gridButton:before { background: rgba(0,0,0,0.5);box-shadow: 14px 0 0 rgba(0,0,0,0.5),14px 14px 0 rgba(0,0,0,0.5),0 14px 0 rgba(0,0,0,0.5) ;}\n#ctl00_mainContent_productBrowser_pagerTop_ctl00_listButton:before {display: block; content: ''; position: absolute; height: 6px; width: 6px; background: rgba(0,0,0,0.2); border-radius: 18px; box-shadow: 0 10px 0 rgba(0,0,0,0.2), 0 20px 0 rgba(0,0,0,0.2)}\n#ctl00_mainContent_productBrowser_pagerTop_ctl00_listButton:after {display: block; content: ''; position: absolute; top:0; left: 9px;height: 5px; width: 18px; background: rgba(0,0,0,0.2);  box-shadow: 0 10px 0 rgba(0,0,0,0.2), 0 20px 0 rgba(0,0,0,0.2)}\n.disabled#ctl00_mainContent_productBrowser_pagerTop_ctl00_listButton:before {background: rgba(0,0,0,0.5); box-shadow: 0 10px 0 rgba(0,0,0,0.5), 0 20px 0 rgba(0,0,0,0.5)}\n.disabled#ctl00_mainContent_productBrowser_pagerTop_ctl00_listButton:after {background: rgba(0,0,0,0.5);  box-shadow: 0 10px 0 rgba(0,0,0,0.5), 0 20px 0 rgba(0,0,0,0.5)}\n#ctl00_mainContent_productBrowser_pagerBottom_ctl00_gridButton , a#ctl00_mainContent_productBrowser_pagerBottom_ctl00_listButton { display: inline-block; position: relative; text-indent: -9999em; width: 26px; height: 26px; cursor: pointer; }\n#ctl00_mainContent_productBrowser_pagerBottom_ctl00_gridButton:before { display: block; content: ''; position: absolute; height: 12px; width: 12px; background: rgba(0,0,0,0.2); border-radius: 2px; box-shadow: 14px 0 0 rgba(0,0,0,0.2),14px 14px 0 rgba(0,0,0,0.2),0 14px 0 rgba(0,0,0,0.2) ;}\n.disabled#ctl00_mainContent_productBrowser_pagerBottom_ctl00_gridButton:before { background: rgba(0,0,0,0.5);box-shadow: 14px 0 0 rgba(0,0,0,0.5),14px 14px 0 rgba(0,0,0,0.5),0 14px 0 rgba(0,0,0,0.5) ;}\n#ctl00_mainContent_productBrowser_pagerBottom_ctl00_listButton:before {display: block; content: ''; position: absolute; height: 6px; width: 6px; background: rgba(0,0,0,0.2); border-radius: 18px; box-shadow: 0 10px 0 rgba(0,0,0,0.2), 0 20px 0 rgba(0,0,0,0.2)}\n#ctl00_mainContent_productBrowser_pagerBottom_ctl00_listButton:after {display: block; content: ''; position: absolute; top:0; left: 9px;height: 5px; width: 18px; background: rgba(0,0,0,0.2);  box-shadow: 0 10px 0 rgba(0,0,0,0.2), 0 20px 0 rgba(0,0,0,0.2)}\n.disabled#ctl00_mainContent_productBrowser_pagerBottom_ctl00_listButton:before {background: rgba(0,0,0,0.5); box-shadow: 0 10px 0 rgba(0,0,0,0.5), 0 20px 0 rgba(0,0,0,0.5)}\n.disabled#ctl00_mainContent_productBrowser_pagerBottom_ctl00_listButton:after {background: rgba(0,0,0,0.5);  box-shadow: 0 10px 0 rgba(0,0,0,0.5), 0 20px 0 rgba(0,0,0,0.5)}\n\n}\n@media only screen and (max-width: 568px) {\n#page div.results-grid .results-row { display: inline; }\n#page div.results-grid .result { display: inline-block; width: 46%; max-width: 46%; padding: 20px 0 0; margin: 0 0 0 2%; text-align: center; }\n#page div.results-grid .result .thumbnail { display: block; width: 100%; float: left; margin: 0 10px 0 0 !important; }\n#page div.results-grid .result .thumbnail img { display: block; margin: 0 auto;}\n#page div.results-grid .result h3 { margin: 0; text-align: center; }\n#page div.results-grid .result h3 a { text-decoration: none; }\n#page div.results-grid .result .amount { display: inline-block; text-align: center; margin: 0 auto; width: auto;}\n#page div.results-grid .result .description { display: none;  }\n#page div.results-grid { width: 100%;}\n}\n@media only screen and (max-width: 468px) {\n#page-content #subheader h2 { text-align: center; }\n#page.product-detail .image { text-align: center; float: none; margin: 0 auto;}\n#page.product-detail div.gallery { float: none; }\n#page div.results-grid .results-row, \n#page div.results-grid { width: 100%;}\n}\n\n\n\n\n/* ---------------------------------- */\t\n/* ---------------------------------- */\t\n/*COUPONS*/\n/* ---------------------------------- */\t\n/* ---------------------------------- */\n.coupon {margin-bottom: 1em}\t\n.rsp_coupon.section {padding: 100px 0}\n.section.section td.wsp_print_btn_left, .section.section td.wsp_print_btn_right{display: none !important;}\n.section div[align=center] div[style*=\"height: 27px\"] { height: auto !important; }\n#table_border { width: 100% !important;}\n.wsp_print_btn_middle{\n    background: none !important;\n    height: auto;\n    text-align:center;\n    vertical-align:middle;\n    white-space:nowrap;\n}\n\n.wsp_print_btn_text {\n\ttext-decoration: none;\n\tcolor: inherit !important;\n\tpadding: 10px;\n\tmargin: 0;\n}\n.wsp_print_btn {\n    cursor: default;\n    font-family: inherit !important;\n    font-size: inherit;\n    font-size-adjust:none;\n    font-style:normal;\n    font-variant:normal;\n    font-weight:normal;\n    font-size-adjust:none;\n    line-height:normal;\n    white-space:nowrap;\n    margin: 0 auto;\n\twidth: auto !important;\n}\n.wsp_print_btn .wsp_print_btn_middle {height: auto }\n\ntable.wsp_print_btn td { padding: 0;}\n\n\n@media only screen and (max-width: 768px) {\n\t.coupon-clear { max-width: 100%; overflow-x: auto;}\t\n}\n\n/* ---------------------------------- */\t\n/* ---------------------------------- */\t\n/*MAPS*/\n/* ---------------------------------- */\t\n/* ---------------------------------- */\t\n.map-address {display: none}\n.fullWidthColumnFull {position: relative}\ndiv[id^=webcom-component-map], .map-container, .map-source, #layout .inner-map-container, .inner-map-container iframe {\n\twidth: 100% !important;\n\tmin-height: 360px;\n}\n.fullwidthmap iframe{width: 100%}\n\n.inner-map-container p, .inner-map-container br {display:none !important}\t \n\n@media only screen and (max-width: 768px) {\n\t.fullWidthColumnInfo {max-width: 100%; float: none}\n}\n\n\n/* ---------------------------------- */\t\n/* ---------------------------------- */\t\n/*PHOTO ALBUM*/\n/* ---------------------------------- */\t\n/* ---------------------------------- */\t\n\n@media only screen and (max-width: 768px) {\n\tdiv[id^=\"webcom-component-photoalbum\"] {margin-bottom: 1em}\n}\n/* ---------------------------------- */\t\n/* ---------------------------------- */\t\n/*GALLERY*/\n/* ---------------------------------- */\t\n/* ---------------------------------- */\t\n.rsp_gallery { position: relative; min-height: 150px; background: #000 ; }\n.rsp_gallery p { display: none; }\n.rsp_gallery .album-title { position: absolute; z-index: 10; width: 80%; height: 50%; margin: auto; top: 0; left: 0; bottom: 0; right: 0; text-align: center; font-size: 52px !important; color: #fff !important; text-shadow: 0 2px 4px rgba(0,0,0,0.5); line-height: 100% !important;}\n.rsp_gallery .galleria-container { height: auto !important;\tpadding-bottom: 35% }\n.rsp_gallery .galleria-info-text, .rsp_gallery .galleria-container .galleria-info {\tdisplay: none !important; }\n.rsp_gallery .galleria-container .galleria-info, .rsp_gallery .galleria-nav-bar  { filter: none; background: none !important; }\n.rsp_gallery .galleria-nav-bar  { left: 0 !important; width: 100%; }\n.rsp_gallery .galleria-container .galleria-nav-items { float: none; margin: 0 auto; display: table; }\n.rsp_gallery .galleria-container .galleria-nav-items .arrow {  border-radius: 100%;  margin: 0 10px;  background-image: none; display: block !important; }\n.rsp_gallery .galleria-container .galleria-counter { display: none; }\n.rsp_gallery .galleria-container .galleria-nav-items .arrow[style=\"background-color: rgb(136, 136, 136);\"] { background-color: rgba(0,0,0,0.6) !important; }\n.rsp_gallery .galleria-container .galleria-nav-items div { width: 15px; height: 15px; }\n.galleria-container { \n\twidth: 100% !important;\n}\n.galleria-container img {\n\twidth: 100% !important;\n\tleft: 0 !important;\n}\n.galleria-container .galleria-counter {\n  position: absolute !important;\n  right: 0px !important;\n  left: auto !important;\n  background-color: none !important;\n  z-index: 10;\n  opacity: 0.3 !important;\n}\n.galleria-container .galleria-nav-items .arrow {\n  display: none !important;\n}\nul.lightSlider {\n    margin: 0;\n}\n@media only screen and (max-width: 767px) {\n\t.rsp_gallery .galleria-container { padding-bottom: 50% }\n\t.rsp_gallery .album-title { font-size: 30px !important; }\n}\n/* ---------------------------------- */\t\n/* ---------------------------------- */\t\n/*RESPONSIVE DATA TABLES*/\n/* ---------------------------------- */\t\n/* ---------------------------------- */\t\n.responsiveTable td { \n\t-ms-word-break: break-all;\n\tword-break: break-all;\n\tword-break: break-word;\n\t}\n@media only screen and (max-width: 760px),(min-device-width: 768px) and (max-device-width: 1024px)  {\n\t.responsiveTable .tableHeader {display: none}\n\t.responsiveTable table, .responsiveTable thead, .responsiveTable tbody, .responsiveTable th, .responsiveTable td, .responsiveTable tr { display: block; }\n\t\n\t.responsiveTable td { \n\t\tposition: relative;\n\t\tpadding-left: 50% !important; \t\t\n\t}\n\t\n\t.responsiveTable td:before { \n\t\tposition: absolute;\n\t\tleft: 15px;\n\t\twidth: 45%; \n\t\tpadding-right: 10px; \n\t\twhite-space: normal;\n\t}\n}\n\n/* ---------------------------------- */\t\n/* ---------------------------------- */\t\n/*IMAGE EFFECTS*/\n/* ---------------------------------- */\t\n/* ---------------------------------- */\n\nspan.circle img, .circle { border-radius: 50%; -webkit-border-radius: 50%; -moz-border-radius: 50%; -o-border-radius: 50%;}\nspan.roundedcorners img, .roundedcorners { border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -o-border-radius: 5px; }\nspan[class*=stackedphoto] img, span[class*=hvr] img { margin: 0; }\nspan[class*=stackedphoto], span[class*=hvr] { margin-bottom: 20px; }\n\n.circle-red-border-5px img { border-radius: 50%; -webkit-border-radius: 50%; -moz-border-radius: 50%; -o-border-radius: 50%; border: 5px solid #DB3744; }\n.circle-blue-border-2px img { border-radius: 50%; -webkit-border-radius: 50%; -moz-border-radius: 50%; -o-border-radius: 50%; border: 2px solid #4C6CAE; }\n\n.frame { display: inline-block; position: relative; border: 4px solid #fff; }\n.frame:before {  content: ''; position: absolute; top: -7px; left: -7px; width: 0; height: 0; border-style: solid; border-width: 30px 30px 0 0; border-color: #0d0d0d transparent transparent transparent; }\n.frame:after { content: ''; position: absolute; bottom: -7px; right: -7px; width: 0; height: 0; border-style: solid; border-width: 30px 30px 0 0; border-color: #0d0d0d transparent transparent transparent; -ms-transform: rotate(180deg); -webkit-transform: rotate(180deg); transform: rotate(180deg); }\n.frame a, .frame img { margin: 0px ; }\n\n.polaroid img { display: inline-block;  border: 5px solid #fff; -webkit-box-shadow: 6px 6px 13px rgba(0, 0, 0, 0.15); -moz-box-shadow: 6px 6px 13px rgba(0, 0, 0, 0.15); -o-box-shadow: 6px 6px 13px rgba(0, 0, 0, 0.15); box-shadow: 6px 6px 13px rgba(0, 0, 0, 0.15);  border-bottom: 30px solid #fff; }\n.polaroid img, .polaroid a { margin: 0px; }\n\n.taped-up { display: inline-block; position: relative; border: 4px solid #fff; -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0,.2); -moz-box-shadow: 3px 3px 5px rgba(0, 0, 0,.2); -o-box-shadow: 3px 3px 5px rgba(0, 0, 0,.2); box-shadow: 3px 3px 5px rgba(0, 0, 0,.2); }\n.taped-up:before { content: ''; position: absolute; background-color: rgba(255,255,255,0.6); height: 26px; left: 25%; top: -15px; width: 50%; -ms-transform: rotate(5deg); -webkit-transform: rotate(5deg); transform: rotate(5deg); box-shadow: 1px 1px 1px rgba(0,0,0,0.1); border-style: dotted; border-color: rgba(0,0,0,0.1); border-width: 0 2px;}\n.taped-up:nth-of-type(odd):before { -ms-transform: rotate(-8deg); -webkit-transform: rotate(-8deg); transform: rotate(-8deg); }\n.taped-up:nth-of-type(even):before { -ms-transform: rotate(-2deg); -webkit-transform: rotate(-2deg); transform: rotate(-2deg); }\n.taped-up:first-child:before { -ms-transform: rotate(5deg); -webkit-transform: rotate(5deg); transform: rotate(5deg); }\n.taped-up:last-child:before { -ms-transform: rotate(2deg); -webkit-transform: rotate(2deg); transform: rotate(2deg); }\n.taped-up a, .taped-up img { margin: 0px ; }\n\n.taped-up-skew a, .taped-up-skew img {  margin: 0px ; }\n.taped-up-skew { display: inline-block; position: relative; border: 4px solid #fff; box-shadow: 3px 3px 5px rgba(0, 0, 0,.2); }\n.taped-up-skew:before { content: ''; position: absolute; background-color: rgba(255,255,255,0.6); height: 26px; left: 25%; top: -15px; width: 50%; -ms-transform: rotate(5deg);-webkit-transform: rotate(5deg); transform: rotate(5deg); box-shadow: 1px 1px 1px rgba(0,0,0,0.1); border-style: dotted; border-color: rgba(0,0,0,0.1); border-width: 0 2px; }\n\nspan.hvr-outline-out:hover::before, span.hvr-outline-out:active::before, span.hvr-outline-out:focus::before { left: -6px; right: -6px; top: -6px; bottom: -6px; }\nspan.hvr-outline-out::before {\n    border: 3px solid rgba(0,0,0,0.4);\n    bottom: 0;\n    content: \"\";\n    left: 0;\n    position: absolute;\n    right: 0;\n    top: 0;\n    transition-duration: 0.3s;\n    transition-property: top, right, bottom, left;\n \n}\nspan.hvr-outline-out {\n    backface-visibility: hidden;\n    box-shadow: 0 0 1px rgba(0, 0, 0, 0);\n    position: relative;\n    -ms-transform: translateZ(0px);\n\t-webkit-transform: translateZ(0px);\n\ttransform: translateZ(0px);\n  display: inline-block;\n}\n\nspan.hvr-float img:hover, span.hvr-float > img:active, span.hvr-float img:focus { -ms-transform: translateY(-5px); -webkit-transform: translateY(-5px); transform: translateY(-5px); }\nspan.hvr-float img {\n    backface-visibility: hidden;\n    position: relative;\n    -ms-transform: translateZ(0px);\n\t-webkit-transform: translateZ(0px);\n\ttransform: translateZ(0px);\n    transition-duration: 0.3s;\n    transition-property: transform;\n}\n\nspan.hvr-float-shadow:hover::before, span.hvr-float-shadow:active::before, span.hvr-float-shadow:focus::before { opacity: 1; -ms-transform: translateY(5px); -webkit-transform: translateY(5px); transform: translateY(5px); }\nspan.hvr-float-shadow::before {\n    background: rgba(0, 0, 0, 0) radial-gradient(ellipse at center center, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 80%) repeat scroll 0 0;\n    content: \"\";\n    height: 10px;\n    left: 5%;\n    opacity: 0;\n    pointer-events: none;\n    position: absolute;\n    top: 100%;\n    transition-duration: 0.3s;\n    transition-property: transform, opacity;\n    width: 90%;\n    z-index: -1;\n}\nspan.hvr-float-shadow {\n    backface-visibility: hidden;\n    box-shadow: 0 0 1px rgba(0, 0, 0, 0);\n    position: relative;\n    -ms-transform: translateZ(0px);\n\t-webkit-transform: translateZ(0px);\n\ttransform: translateZ(0px);\n    transition-duration: 0.3s;\n    transition-property: transform;\n}\n\nspan.hvr-grow img:hover, span.hvr-grow img:active, span.hvr-grow img:focus { -ms-transform: scale(1.1,1.1); -webkit-transform: scale(1.1,1.1); transform: scale(1.1,1.1); }\nspan.hvr-grow img {\n    backface-visibility: hidden;\n    box-shadow: 0 0 1px rgba(0, 0, 0, 0);\n    -ms-transform: translateZ(0px);\n\t-webkit-transform: translateZ(0px);\n\ttransform: translateZ(0px);\n    transition-duration: 0.3s;\n    transition-property: transform;\n}\n\nspan.hvr-grow-shadow img:hover, span.hvr-grow-shadow img:active, span.hvr-grow-shadow img:focus { box-shadow: 0 10px 10px -10px rgba(0,0,0,0.4); -ms-transform: scale(1.1,1.1); -webkit-transform: scale(1.1,1.1); transform: scale(1.1,1.1); }\nspan.hvr-grow-shadow img {\n\tbackface-visibility: hidden;\n\tbox-shadow: 0 0 1px rgba(0, 0, 0, 0);\n\t-ms-transform: translateZ(0px);\n\t-webkit-transform: translateZ(0px);\n\ttransform: translateZ(0px);\n\ttransition-duration: 0.3s;\n\ttransition-property: box-shadow, transform;\n}\n\nspan[class*=stackedphoto] {\n\t-webkit-box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n\t-moz-box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n\tbox-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n\tborder: 6px solid #fff;\n\tposition: relative; \n\tdisplay: inline-block;\n\tbox-sizing: border-box;\n}\nspan.stackedphoto::before {\n\tcontent: \"\";\n\theight: 100%; \n\twidth: 100%; \n\tposition: absolute;\n\tz-index: -1;\n\ttop: 0px;\n\tleft: -10px;\n\tbackground: #eff4de;\n\tborder: 6px solid #fff;\n\t-webkit-box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n\t-moz-box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n\tbox-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n\t-webkit-transform: rotate(-5deg);\n\t-moz-transform: rotate(-5deg);\n\t-o-transform: rotate(-5deg);\n\t-ms-transform: rotate(-5deg);\n\ttransform: rotate(-5deg);\n}\nspan.hvr-stackedphoto::before {\n\tcontent: \"\";\n\theight: 100%; \n\twidth: 100%; \n\tposition: absolute;\n\tz-index: -1;\n\ttop: 0px;\n\tleft: -10px;\n\tbackground: #eff4de;\n\tborder: 6px solid #fff;\n\t-webkit-box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n\t-moz-box-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n\tbox-shadow: 2px 2px 5px rgba(0,0,0,0.3);\n\t-webkit-transform: rotate(-5deg);\n\t-moz-transform: rotate(-5deg);\n\t-o-transform: rotate(-5deg);\n\t-ms-transform: rotate(-5deg);\n\ttransform: rotate(-5deg);\n\ttransition-property: transform;\n\ttransition-duration: .2s;\n}\nspan.hvr-stackedphoto:hover::before {\n    transform: rotate(0deg);\n}\n\n\n/* ---------------------------------- */\n/* ---------------------------------- */\n/* CLICK TO CALL STYLE */\n/* ---------------------------------- */\n/* ---------------------------------- */\n.click-to-call { text-decoration: none; color: currentColor; }\n\n\n/* ---------------------------------- */\n/* ---------------------------------- */\n/* DISABLE RESIZE HANDLES ON TINYMCE */\n/* ---------------------------------- */\n/* ---------------------------------- */\n.mce-resizehandle { display: none !important; }\n\n\n/* ---------------------------------- */\n/* ---------------------------------- */\n/* HIDE ON MOBILE */\n/* ---------------------------------- */\n/* ---------------------------------- */\n@media only screen and (max-width: 480px){\n     .hide-on-mobile {\n            display: none;\n     }\n}\n\n\n/* ---------------------------------- */\n/* ---------------------------------- */\n/* MATRIX BUG FIXES */\n/* ---------------------------------- */\n/* ---------------------------------- */\n\n/* FIREFOX EMPTY PARAGRAPH FIX */\n#layout>table>tbody>tr>td>div>table>tbody>tr>td>div>table+p:empty {\n  display:none;\n}\n\n\n\n/* ---------------------------------- */\n/* ---------------------------------- */\n/* TEMPLATE SPECIFIC */\n/* ---------------------------------- */\n/* ---------------------------------- */\n\n\n/* ---------------------------------- */\n/* HEADER */\n/* ---------------------------------- */\n#sticky-navContainer #nav .section {margin: 0 !important;} \n#companyslogan { float: right; }\n.header .button { float: right; }\n\t\t\t\t\t@media only screen and (max-width: 768px) {\n\t\t\t\t\t.header { text-align: center; }\n\t\t\t\t\t\t.header #companyslogan { float: none; margin: 0 auto; }\n.header .button { float: none; }\n\t\t\t\t\t\t.header img { margin-bottom: 0; }\n\t\t\t\t\t\t.phone { margin: 0.5em auto; }\n\t\t\t\t\t\t.phone.phone td {width: auto !important; display: table-cell !important}\t\n\t\t\t\t\t}\n\t\t\t\t\t@media only screen and (max-width: 568px) {\n\t\t\t\t\t\t.header .phone { margin: 0 auto; }\n\t\t\t\t\t\t.header .hamburger { padding: 10px 0 !important; }\n\t\t\t\t\t\t.header #companyslogan { text-align: center; padding: 10px 0;}\n\t\t\t\t\t}\n\n.header form {\n    display: block;\n    float: right;\n    text-align: right;\n    width: 100%;\n}\n.header input {\n    display: inline-block;\n    height: 35px;\n    margin-bottom: 0;\n    padding: 0 10px;\n}\n.header input[type=\"text\"] {\n    border: 1px solid #ccc;\n    box-sizing: border-box;\n}\n.header .phone {\n    display: table;\n    font-size: 14pt;\n    line-height: 25px;\n    margin-bottom: 0.5em;\n    width: auto;\n}\n.header .phone img {\n    display: inline-block;\n    float: left !important;\n    padding-right: 5px;\n}\n.header span#rsp_cart {\n    display: inline-block;\n    float: right;\n    margin-bottom: 0;\n    margin-left: 20px;\n    position: relative;\n    text-align: left;\n    width: auto;\n}\n.header span#rsp_cart a {\n    display: inline-block;\n    line-height: 25px;\n}\n.header span#rsp_cart a:hover {\n    text-decoration: underline;\n}\t\t\n/*.box {background-color: transparent !important}*/\n</style>\n\n<!--[if IE]>\n<style>@media only screen and (max-width: 960px) {\t\n\t.section td, .section tr, .section tbody {\n\t\tdisplay: block !important;\n\t\twidth: 100% !important; \n\t\tfloat: left;\n\t\tclear: both; margin: 0 auto; text-align: center;\n\t\t} }\n</style>\n<![endif]-->\n\n<script type=\"text/javascript\">\n$( document ).ready(function() {\n\n\t\n\t\n\t///////////\n\t// \tMAKE PHONE IN THE HEADER CLICK TO CALL\n\t///////////\n\tif( /Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {\n\t\tvar ttdPhoneNumber = $('#CTCPhoneNumber').text();\n\t\tttdPhoneNumber = ttdPhoneNumber.replace(/\\ /g, '');\n\t\tttdPhoneNumber = ttdPhoneNumber.replace(/\\(/g, '');\n\t\tttdPhoneNumber = ttdPhoneNumber.replace(/\\)/g, '');\n\t\tttdPhoneNumber = ttdPhoneNumber.replace(/\\-/g, '');\n\n\t\t$('#CTCPhoneNumber').wrapInner( '<a href=\"\" style=\"text-decoration:none !important; color: inherit !important;\"></a>' );\n\t\t$('#CTCPhoneNumber').find('a').attr( 'href', 'tel:' + ttdPhoneNumber );\n\t\t\n\t\t\t// mobile click-to-call\n\t\t\t$('.mtx_buscontact .value').addClass('click-to-call');\n\t\t\t$('.click-to-call').each(function() {\t\n\t\t\t\tvar ctcNumber = $(this).text();\n\t\t\t\t$(this).html('<a href=\"tel:'+ctcNumber+'\" rel=\"nofollow\" style=\"text-decoration: none; color: currentColor;\">'+ctcNumber+'</a>');\n\t\t\t})\n\t}\n\n\t\n\t\n\t///////////\n\t// \tECOMM CLEANUP\n\t///////////\t\n    if(window.location.href.indexOf(\"SecureCart\") > -1) {\n\t\t   $( \".mtrx_ecom_layout > table > tbody > tr:first-child , .mtrx_ecom_layout > table > tbody > tr:nth-child(2) > td:first-child\" ).css( \"display\", \"none\" );\n\t}\t\n\t$(\"#webcom_ecomm_category_title\").click(function(e){\n\n\t\t\t$('#webcom_ecomm_category_title').toggleClass('rsp_active');\n\t\t\t$('#cats').toggleClass('rsp_active');\n\t\t\t\te.preventDefault();\n\t});\n\t\n\t///////////\n\t// MOBILE VIEWPORT FIX\n\t///////////\n\t\n\t$('head').append('<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">');\n\n\t///////////\n\t// HIDE AUTO GENERATED <BR>'S WHEN ADDING NEW CONTENT BLOCK\n\t///////////\n\n    $('br[style=\"clear: both;\"]').css( \"display\", \"none\" );\n    $('br[style=\"clear:both;\"]').css( \"display\", \"none\" );\n   \n   \n\t///////////\n\t// STRIP HARDCODED IMAGE HEIGHTS AND WIDTHS\n\t///////////\n\n   $('img').each(function(){\n        $(this).removeAttr('width')\n        $(this).removeAttr('height');\n    });\n  \n   \n\t///////////\n\t// \tDUPLICATE NAV TO USE FOR SLIDE OUT NAVIGATION\n\t///////////\n\t\n\t$( \"#navContainer\" ).clone().attr('id', 'slide-navContainer').appendTo( \"body\" );\n\n\t///////////\n\t// CREATE STICKY NAV \n\t///////////\n\t$( \"#navContainer\" ).clone().attr('id', 'sticky-navContainer').appendTo( \"body\" );\n\tvar stickyTop = $(\".header\").outerHeight(true) + $(\"#navContainer\").outerHeight(true) + 150;\n\n\t\t$(window).scroll(function () {\n\t    if ($(window).scrollTop() > stickyTop) {\n\t\t\t$('#sticky-navContainer').css('top', '0');\n\t\t\t\n\t    }else {\n\t\t\t$('#sticky-navContainer').css('top', '-120px');\n\t\t}\n\t});\n\t\n\t$(\"#sticky-navContainer\").addClass(\"primaryColorbg\");\n\t$('#sticky-navContainer').each(function(){\n     $('#nav', this).wrapAll('<div class=\"section\"></div>')\n\t}); \n\t\n   \n\t///////////\n\t//\tiOS REMOVE FIXED BG\n\t///////////\n\tif( /iPhone|iPad|iPod/i.test(navigator.userAgent) ) {\n\t\t$('html, body, .fullwidthStatic, table, td, div').css('background-attachment', 'scroll');\n\t}  \n   \n\t///////////\n\t// \tREMOVE ANY <P> and <BR> TAGS AFTER THE MAP EMBED\n\t///////////\n\t\n\t$('div[id*=\"webcom-component-map\"]').parent().find('p').remove();\n\t$('div[id*=\"webcom-component-map\"]').parent().find('br').remove();\n   \n\t///////////\n\t// \tRESPONSIVE EMBEDDED VIDEOS\n\t//  fluidvids.js v2.4.1 | (c) 2014 @toddmotto | https://github.com/toddmotto/fluidvids\n\t///////////\n\t\n!function(e,t){\"function\"==typeof define&&define.amd?define(t):\"object\"==typeof exports?module.exports=t:e.fluidvids=t()}(this,function(){\"use strict\";function e(e){return new RegExp(\"^(https?:)?//(?:\"+d.players.join(\"|\")+\").*$\",\"i\").test(e)}function t(e,t){return parseInt(e,10)/parseInt(t,10)*100+\"%\"}function i(i){if((e(i.src)||e(i.data))&&!i.getAttribute(\"data-fluidvids\")){var n=document.createElement(\"div\");i.parentNode.insertBefore(n,i),i.className+=(i.className?\" \":\"\")+\"fluidvids-item\",i.setAttribute(\"data-fluidvids\",\"loaded\"),n.className+=\"fluidvids\",n.style.paddingTop=t(i.height,i.width),n.appendChild(i)}}function n(){var e=document.createElement(\"div\");e.innerHTML=\"<p>x</p><style>\"+o+\"</style>\",r.appendChild(e.childNodes[1])}var d={selector:[\"iframe\",\"object\"],players:[\"www.youtube.com\",\"player.vimeo.com\"]},o=[\".fluidvids {\",\"width: 100%; max-width: 100%; position: relative;\",\"}\",\".fluidvids-item {\",\"position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;\",\"}\"].join(\"\"),r=document.head||document.getElementsByTagName(\"head\")[0];return d.render=function(){for(var e=document.querySelectorAll(d.selector.join()),t=e.length;t--;)i(e[t])},d.init=function(e){for(var t in e)d[t]=e[t];d.render(),n()},d});\n\t\n\n\t\n\t///////////\n\t// \tFIX COUPON OVERFLOW\n\t///////////\n\t$('.wsp_print_btn').parent().parent().addClass('coupon-clear');\n\n\n\t///////////\n\t// \tBACKGROUND-COVER IE6-8 SUPPORT\n\t// \tLibrary homepage: https://github.com/Metafalica/background-size-emu\n\t///////////\n\t\n\t///////////\n\t// \tRESPONSIVE DATA TABLES\n\t///////////\t\n\tvar sheet = (function() {\n\t\t// Create the <style> tag\n\t\tvar style = document.createElement(\"style\");\n\n\t\t// Add a media (and/or media query) here if you'd like!\n\t\t// style.setAttribute(\"media\", \"screen\")\n\t\tstyle.setAttribute(\"media\", \"only screen and (max-width : 768px)\")\n\n\t\t// WebKit hack :(\n\t\tstyle.appendChild(document.createTextNode(\"\"));\n\n\t\t// Add the <style> element to the page\n\t\tdocument.head.appendChild(style);\n\n\t\treturn style.sheet;\n\t})();\n\n\t$('.responsiveTable tr:first').addClass('tableHeader');\n\t$('.tableHeader td, .tableHeader th').addClass('colHeader');\n\t$('.responsiveTable').each( function(){\t\n\t\tvar i=0;\n\t\tvar tableID = '#' + $(this).attr(\"id\");\t\n\t\tif (tableID == '#undefined'){\n\t\t\ttableID = '';\n\t\t}\n\t\t$(this).find(\"td\").each( function(){\t\n\t\t\tvar heading = $(this).closest('table').find( \".tableHeader .colHeader\" ).eq( i ).html();\n\t\t\tif (heading == '' || heading == 'undefined' || !heading){\n\t\t\t\theading = $(this).closest('table').find( \".tableHeader .colHeader\" ).eq( i ).html();\t\n\t\t\t}\n\t\t\ti++;\n\t\t\tsheet.insertRule(tableID + '.responsiveTable td:nth-of-type(' + i + '):before {content: \"' + heading + '\"; font-weight:bold;}', 0);\n\t\t});\n\t});\n});\n$(window).on(\"load resize\",function(e){\n\n\t\n\t///////////\n\t// HEADER TOP PADDING\n\t///////////\n\t$(\"#layout .section\").first().css(\"padding-top\", \"\");\n\n\n\t///////////\n\t// NAV SELECT DROPDOWN\n\t///////////\n\t\n\t\n\t$('.primary-webcomMenu li').css(\"text-indent\", \"0\");\n\t\n\t\n\t$(\"#navContainer #slideout-menu-toggle, #sticky-navContainer #slideout-menu-toggle\").remove();\n\tvar width = 0;\n\tvar navwidth = $('#styleNav').width();\n\tnavwidth = navwidth-115;\n\tvar stickywidth = $('.section').width();\n\tstickywidth = stickywidth-115;\n\tvar toowide = 'no';\n\t\n\tpagewidth = window.innerWidth;\n\tif (pagewidth <= 768){\n\t\ttoowide = 'yes';\t\n\t\t$( \"#navContainer ul:first > li, #sticky-navContainer ul:first > li\" ).each(function(){\n\t\t\t$(this).css(\"display\", \"none\");\t\n\t\t});\n\t} else {\n\t\t$( \"#navContainer ul:first > li\" ).each(function() {\n\t\t\twidth = width + $(this).outerWidth(true);\n\t\t\tif (width < navwidth){\n\t\t\t\ttoowide = 'no';\n\t\t\t\t$(this).css(\"display\", \"block\");\t\t\t\n\t\t\t}\t\t\n\t\t\tif (width > navwidth){\n\t\t\t\ttoowide = 'yes';\n\t\t\t\t$(this).css(\"display\", \"none\");\t\t\t\n\t\t\t}\t\t\n\t\t});\n\t\twidth=0;\n\t\t$( \"#sticky-navContainer ul:first > li\" ).each(function() {\n\t\t\twidth = width + $(this).outerWidth(true);\n\t\t\tif (width < stickywidth){\n\t\t\t\ttoowide = 'no';\n\t\t\t\t$(this).css(\"display\", \"block\");\t\t\t\n\t\t\t}\t\t\n\t\t\tif (width > stickywidth){\n\t\t\t\ttoowide = 'yes';\n\t\t\t\t$(this).css(\"display\", \"none\");\t\t\t\n\t\t\t}\t\t\n\t\t});\n\t}\n\tif (toowide == 'yes') {\t\t\n\t\t$('#navContainer .primary-webcomMenu, #sticky-navContainer .primary-webcomMenu').append(\"<li id='slideout-menu-toggle' class='hamburger'><a href='#' id='nav-toggle' ><span></span><div></div></a></li>\"); \n\t}\t\n\t\t\n\t///////////\n\t// SLIDE OUT MENU TOGGLE\n\t///////////\t\t\n\t\n\t$(\"#slideout-menu-toggle, .close\").click(function(e){\n\t\tvar distance = $('#slide-navContainer').css('right');\n\t\t\n\t\tif (distance == \"auto\" || distance == \"0px\") {\n\t\t\t$('#slide-navContainer').animate({\"right\":\"-250px\"}, \"slow\");\n\t\t} else {\t \n\t\t\t$('#slide-navContainer').animate({\"right\":\"0px\"}, \"slow\");\n\t\t}\t   \n\t\t\n\t\te.preventDefault();\n\t});\n});\n\n\n\n</script>\n\n\n\n\n<style></style><link href=\"//assets.myregisteredsite.com/css/button.css\" rel=\"stylesheet\" type=\"text/css\"><style id=\"_app_designed_custom_css\" type=\"text/css\">/*Button*/  \n.button { \n\tbackground: #42A5F5; \n\tcolor: #ffffff; \n}\n.buttonInverted { }\n.buttonGhost { }\n\n/*Click to call*/\n.click-to-call { }\n.hide-on-mobile {}\n\n/*Primary & Accent Colors Styles*/  \n.primaryColor {}\n.primaryColorbg {}\n.accentColor {}\n.accentColorbg{}\n.sectionTitle {}\n\n/*Layout Effects*/\n.circle { }\n.roundedcorners { }\n.fullWidth {}\n.fullwidthStatic {}\n.responsiveTable {}\n\n\n\n.black-outline { text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 2px 2px 2px rgba(255,255,255,0.5); }\n.white-outline { text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff, 2px 2px 2px rgba(0,0,0,0.5); }\n.grey-outline-15px { outline: 15px solid; outline-offset: -15px; outline-color: rgba(0, 0,0, 0.6); }\n.circle-red-border-5px {  }\n.circle-blue-border-2px {  }\n\n.frame { }\n.polaroid { }\n.stackedphoto { }\n.taped-up-skew { }\n.hvr-stackedphoto { }\n.hvr-outline-out { }\n.hvr-float { }\n.hvr-float-shadow { }\n.hvr-grow { }\n.hvr-grow-shadow { }\n\n\n\n</style>\n<style id=\"_template_custom_css\" type=\"text/css\">.header {\n    \n    background-position: top center;\n    background-color: #FFF;\n    background-repeat: repeat;\n}\n#navContainer\n{\n    border-top-style: solid;\n    border-bottom-style: solid;\n    border-width: 1px;\n    border-color: #F0F0F0;\n    position: relative;\n    z-index: 1;\n    font-family: 'Montserrat';\n    font-size: 12.5pt;\n    font-weight: normal;\n    letter-spacing: .5pt;\n    color: #2A2A2A;\n    text-shadow: 2px 2px 2px rgba(0,0,0,0);\n    background: -webkit-linear-gradient(#fff, #fff);\n    /*Safari*/\n    background: -o-linear-gradient(#fff, #fff);\n    /*Opera*/\n    background: -moz-linear-gradient(#fff, #fff);\n    /*Firefox*/\n    background: linear-gradient(#fff, #fff);\n    /* Standard*/\n}\n.selected a {\n    opacity: 1 !important;\n    color: #fff;\n}\n\n.primary-webcomMenuItem a:hover {\n    text-decoration: none!important;\n    opacity: 1;\n    color: #fff;\n}\n\n.primary-webcomMenu li.selected > a {\n    color: #fff;\n}\n\nbody {\n    font-size: 13.5pt;\n    line-height: 1.5;\n    color: #474747;\n}\nh1 {\n    font-size: 45pt;\n    font-family: 'Montserrat';\n    color: #042F58;\n    font-weight: bold;\n    text-shadow:\n    2px 2px 1px rgba(0,0,0,0);\n}\nh2 {\n    font-size: 21pt;\n    font-family: 'Montserrat';\n    color: #009BF0;\n    text-transform: uppercase;\n    font-weight: normal;\n    text-shadow: 2px 2px 1px rgba(0,0,0, .0);\n}\n\n.cta {\n    font-size: 35pt;\n    font-family: 'Montserrat';\n    font-weight: bold;\n    color: #16290E;\n    line-height: normal !important;\n    text-shadow: 2px 2px 2px rgba(255,255,255,0.5);\n}\n\n.cta2 {\n    font-size: 37pt;\n    font-family: 'Montserrat';\n    text-transform: uppercase;\n    font-weight: normal;\n    color: #fff;\n    line-height: normal !important;\n\n    text-shadow: 2px 2px 2px rgba(0,0,0,0.2);\n}\n\n.cta3 {\n    font-size: 75pt;\n    font-family: 'Montserrat';\n    text-transform: uppercase;\n    font-weight: bold;\n    letter-spacing: 2px;\n    color: #fff;\n    line-height: normal !important;\n    text-shadow:\n    2px 2px 2px rgba(0,0,0,0.35);\n}\n.cta4 {\n    font-size: 30pt;\n    font-family: 'Montserrat';\n\n    font-weight: normal;\n    color: #fff;\n    line-height: normal !important;\n\n    text-shadow: 2px 2px 2px rgba(0,0,0,0.2);\n}\n\n.pq {\n    font-size: 55pt;\n    font-family: 'Montserrat';\n    font-weight: bold;\n    text-transform: uppercase;\n    letter-spacing: 1pt;\n    color: #fff;\n    line-height: normal !important;\n    text-shadow:\n    2px 2px 2px rgba(0,0,0,0.5);\n}\n.pq2 {\n    font-size: 65pt;\n    font-family: 'Montserrat';\n    font-weight: bold;\n    letter-spacing: 1pt;\n    color: #F0F0F0;\n    line-height: normal !important;\n    text-shadow:\n    2px 2px 2px rgba(0,0,0,0.35);\n}\n\nul.lista {\n\n    list-style-image: url(//000n9je.wcomhost.com/files/130521288.png);\n    /*USE VANITY URL TO CHANGE BULLET TO AN IMAGE*/\n    font-size: 13pt;\n    color: #009BF0;\n}\nul.listb {\n\n    list-style-image: url(//000n9je.wcomhost.com/files/130521289.png);\n    /*USE VANITY URL TO CHANGE BULLET TO AN IMAGE*/\n    font-size: 13pt;\n}\n\nul.lista a {\n    text-decoration: none;\n    /*REMOVES UNDERLINE FOR LINKED TEXT*/\n    color: #fff;\n}\n\nul.lista a:hover {\n    text-decoration: underline;\n    /*UNDERLINES LINKED TEXT ON HOVER*/\n}\n\ntable td:not(:last-child) ul {\n    margin-bottom: 0;\n}\n\n.pqbox {\n    margin-bottom: 15em !important;\n    margin-top: 10em !important;\n}\n.pqbox2 {\n    margin-bottom: 10em !important;\n    margin-top: 10em !important;\n}\n\n.interiorLinks {\n    color: #fff;\n    font-size: 55pt;\n    font-family: 'Montserrat';\n    font-weight: bold;\n    letter-spacing: 2px;\n    text-transform: uppercase;\n    text-shadow: 2px 2px 1px rgba(0,0,0, .7);\n}\n.fullbleed a {\n    display: block;\n    height: 300px!important;\n    margin-bottom: 0;\n}\n.fullbleed td {\n    background-size: 100% auto!important;\n}\n.fullbleed a:hover {\n    background: rgba(0,0,0,.5);\n}\n\n@media only screen and (max-width: 480px) {\n    body {\n        font-size: 12pt;\n    }\n    h1 {\n        font-size: 25pt;\n    }\n    h2 {\n        font-size: 18pt;\n    }\n    .cta {\n        font-size: 25pt;\n    }\n    .cta2 {\n        font-size: 16pt;\n    }\n    .cta3 {\n        font-size: 20pt;\n        font-weight: normal;\n    }\n    .pq {\n        font-size: 23pt;\n    }\n    .pq2 {\n        font-size: 25pt;\n    }\n    .pqbox {\n        margin-bottom: 0em !important;\n        margin-top: 0em !important;\n        background: rgba(0,0,0,0.3);\n\n    }\n    .pqbox2 {\n        margin-bottom: 5em !important;\n        margin-top: 5em !important;\n    }\n    .interiorLinks {\n        font-size: 25pt;\n    }\n    .fullbleed td {\n        display: block!important;\n        background-size: auto 100%!important;\n        background-position: center center;\n    }\n}\n\n@media only screen and (max-width: 768px) {\n    .Header-EcommerceSearch input[type='text'] {\n        width: 55%;\n    }\n    .Header-EcommerceSearch input[type='submit'] {\n        width: 43%;\n    }\n\n    .green-box {\n        background-color: rgba(61, 145, 74, 0.7);\n        padding: 30px 40px 30px 40px;\n        margin-right: -3.3em;\n        margin-left: -3.3em;\n    }\n}\n\n.picborderl {\n    border: 2px solid #009BF0;\n    display: inline-block;\n    margin: 0px;\n    border-radius: 0px;\n    overflow: hidden;\n}\n.picborderl img {\n    margin-bottom: -1px;\n}\n\n.rsp_content a {\n    text-decoration: none;\n    font-weight: bold;\n}\n.rsp_content a:hover:not(.button) {\n    text-decoration: underline;\n}\n\n.fullwidth, .fullwidthStatic, .fullWidth, .fullWidthStatic, span.fullwidth > img, span.fullWidth > img {\n    -moz-transform: none;\n}\n\nbody {\n    background: #ffffff;\n}\n.alt {\n    background: #e2e2e2;\n}\n\n/*PRIMARY COLOR*/\n.primaryColor, .companyname, h1, h3, a {\n    color: #042F58;\n}\n.primaryColorbg, .secondary-webcomMenu {\n    background: #042F58;\n}\n.primaryColorbg, #navContainer ul ul:before, .secondary-webcomMenu {\n    border-color: #042F58;\n}\n.hamburger div {\n    color: #042F58;\n    border-color: #042F58;\n}\n.hamburger span, .hamburger span:before, .hamburger span:after {\n    background-color: #042F58;\n}\n.secondary-webcomMenu li {\n    border-bottom: 1px solid #042F58;\n}\n\n/*PRIMARY COLOR TEXT*/\n.primaryColorbg, .primaryColorbg a, .primaryColorbg .hamburger div, .hamburger div, .secondary-webcomMenu {\n    color: #ffffff;\n}\n.primaryColorbg .hamburger div, .hamburger div {\n    border-color: #ffffff;\n}\n.primaryColorbg .hamburger span, .primaryColorbg .hamburger span:before, .primaryColorbg .hamburger span:after {\n    background-color: #009BF0;\n}\n\n/*ACCENT COLOR*/\n.accentColorbg, .accentButton {\n    background-color: #042F58;\n}\n\n/*ACCENT COLOR TEXT*/\n.accentColor, h4, h5, h6, .sectionTitle, .accentColorbg, .accentButton {\n    color: #042F58;\n}\n\n/*FOOTER*/\n#mtx_footer {\n    background-color: #042F58;\n}\n#footer span, #footer div, #footer p, .footercontent, #footer font, #footer a, #footer a:hover, #footer a:visited {\n    color: #ffffff;\n}\n\n/*BUTTON*/\n.button, a.button, .button a, .wsp_print_btn_text, #layout input.form-element[type=\"submit\"] {\n    background: #009BF0;\n    color: #fff;\n    font-family: 'Montserrat';\n    font-size: 11pt;\n    font-weight: bold;\n    text-transform: uppercase;\n    border-radius: 3px;\n    letter-spacing: 1.5px;\n    transform: translateY(-5px);\n    box-shadow: 0px 3px 0px #02669D;\n    text-shadow:\n    1px 1px 1px rgba(0,0,0,0);\n}\n\n.button:hover, a.button:hover, .button a:hover, .wsp_print_btn_text:hover, #layout input.form-element[type=\"submit\"]:hover {\n    background: #02669D;\n    -webkit-transform: translate(0, 0);\n    transform: translateY(0px);\n    box-shadow: 0px 0px 0px #02669D;\n    color: #fff;\n    transition: all .3s;\n    transition-timing-function: cubic-bezier(.39,1.34,.3,1.35);\n    text-shadow:\n    1px 1px 1px rgba(0,0,0,0.5);\n\n}\n\n.buttonGhost, a.buttonGhost, .buttonGhost a {\n    border-color: #042F58;\n    color: #042F58;\n}\n\n.buttonGhost:hover, a.buttonGhost:hover,.buttonGhost a:hover {\n    background: #042F58;\n    color: #ffffff;\n}\n\n.buttonInverted, a.buttonInverted,.buttonInverted a {\n    color: #042F58;\n    background: #ffffff;\n}\n\n.buttonInverted:hover, a.buttonInverted:hover, .buttonInverted a:hover {\n    color: #365979;\n    background: #ffffff;\n}\n\n.buttonGhost.buttonInverted, a.buttonInverted.buttonGhost, .buttonInverted.buttonGhost a {\n    border-color: #ffffff;\n    color: #ffffff;\n}\n\n.buttonGhost.buttonInverted:hover, a.buttonInverted.buttonGhost:hover, .buttonInverted.buttonGhost a:hover {\n    color: #042F58;\n    background: #ffffff;\n}\n/*---------------------------------*/\n/*--- NAV ANIMATION TOP TO BOTTOM ---*/\n/*---------------------------------*/\nli.primary-webcomMenuItem > a {\n    position: relative;\n}\nli.primary-webcomMenuItem > a:hover {\n    text-decoration: none;\n}\nli.primary-webcomMenuItem > a:before {\n    z-index: -1;\n    position: absolute;\n    width: 100%;\n    height: 0px;\n    left: 0px;\n    top: 0px;\n    content: '';\n    opacity: 1;\n    transition: all 0.3s;\n    background: rgba(0, 155, 240, 0.27);\n}\nli.primary-webcomMenuItem > a:hover:before, li.selected.primary-webcomMenuItem > a:before {\n    height: 100%;\n}\nli.selected.primary-webcomMenuItem > a:before {\n    background: rgb(0, 155, 240);\n}\n/*---------------------------------*/\n/*--- END NAV ANIMATION ---*/\n/*---------------------------------*/\n\n/*---------------------------------*/\n/*--- CENTERED NAV---*/\n/*---------------------------------*/\n.primary-webcomMenu-offset {\n    display: table;\n    margin: 0 auto;\n}\n@media only screen and (max-width:768px) {\n    .primary-webcomMenu-offset {\n        display: block;\n        margin: 0;\n    }\n}\n/*---------------------------------*/\n/*--- END CENTERED NAV ---*/\n/*---------------------------------*/\n.float {\n    display: inline-block;\n    vertical-align: middle;\n    -webkit-transform: translateZ(0);\n    transform: translateZ(0);\n    box-shadow: 0 0 1px rgba(0, 0, 0, 0);\n    -webkit-backface-visibility: hidden;\n    backface-visibility: hidden;\n    -moz-osx-font-smoothing: grayscale;\n    -webkit-transition-duration: 0.3s;\n    transition-duration: 0.3s;\n    -webkit-transition-property: transform;\n    transition-property: transform;\n    -webkit-transition-timing-function: ease-out;\n    transition-timing-function: ease-out;\n}\n.float:hover, .float:focus, .float:active {\n    -webkit-transform: translateY(-8px);\n    transform: translateY(-8px);\n}\n/*---CSS to display address on single line in mobile---*/\n@media only screen and (max-width: 460px) {\n    ul.adr {\n        width: 100%;\n    }\n    #footer li.street-address {\n        display: inherit;\n    }\n    .footercontent ul.adr li.street-address::after {\n        content: \"\";\n    }\n}\n\n@media only screen and (max-width: 768px) {\n    .Header-EcommerceSearch input[type='text'] {\n        width: 55%;\n    }\n    .Header-EcommerceSearch input[type='submit'] {\n        width: 43%;\n    }\n}\n/*---------------------------------*/\n/*--- DESIGN PADDING AND MARGINS ---*/\n/*---------------------------------*/.rsp_kv.section {\n    padding: 17vh 0 calc(17vh - 1em)\n}\n.rsp_content {\n    padding: 11vh 0 calc(11vh - 1em)\n}\n.rsp_content.lbw_teaser {\n    padding-top: 11vh;\n    padding-bottom: calc(11vh - 1em)\n}\nbody a,body p {\n    margin-bottom: 1.5em\n}\np .fullWidth img,p .fullwidth img,p img.fullWidth,p img.fullwidth {\n    margin-bottom: -1.5em\n}\n#nav ul {\n    max-height: none\n}\n.section.section {\n    margin: auto;\n    max-width: 1200px\n}\n.section .section {\n    margin: 0!important\n}\n#layout .fullWidthColumnImage.section {\n    margin: 0;\n    max-width: 100%\n}\n.footercontent ul.mtx_buscontact li::after {\n    display: none\n}\n@media only screen and (min-width:961px) {\n    .fullWidthColumnInfo {\n        max-width: calc(600px - 4%);\n        margin-left: 10%\n    }\n    .fullWidthColumnInfo[style*='float: left;'] {\n        margin-left: 0;\n        margin-right: 10%\n    }}\n@media only screen and (max-width:960px) {\n    .fullWidthColumnInfo {\n        margin: 5%\n    }\n    .designtest1crx .header > .rsp_header.section.section {\n        padding: 20px;\n    }}\n@media only screen and (max-width:1280px) {\n    .rsp_kv.section {\n        padding: 17vh 0 calc(17vh - 1em) !important;\n    }\n\n    /* OVERIDES THE .section.section.section  */\n    .rsp_content {\n        padding: 11vh 0 calc(11vh - 1em)\n    }\n    #layout .section,#sticky-navContainer .section,.section.section {\n        margin: 0 5%\n    }}\n#mtx_copyright {\n    text-align: center!important\n}\n@media only screen and (max-width: 768px) {\n    .section.section.section {\n        padding: 11vh 15px calc(11vh - 1em);\n    }}\n/*---------------------------------*/\n/*--- END DESIGN PADDING AND MARGINS ---*/\n/*---------------------------------*/\n</style>\n<script>window['matrixMiscInfo'] = {}</script>\n\n<script>\nwindow['matrixMiscInfo'].partnerId = 'wdc_difm';\nwindow['matrixMiscInfo'].isPublish = true\n</script>\n\n<script language=\"JavaScript\" type=\"text/javascript\" src=\"scripts/browserBehavior.js\"></script><style>p { margin-top: 0; margin-bottom: 0; } p + p { margin-top: 1em; }</style>\n\n<script language=\"JavaScript\" type=\"text/javascript\" src=\"scripts/utils.js\"></script>\n\n<script language=\"JavaScript\" type=\"text/javascript\" src=\"//assets.myregisteredsite.com/javascript/com/web/useragent/shared.js\"></script>\n\n<script language=\"JavaScript\" type=\"text/javascript\" src=\"scripts/navigation.js\"></script>\n\n<link rel=\"StyleSheet\" type=\"text/css\" href=\"//assets.myregisteredsite.com/css/uaDefaultStylesReset.css\">\n\n<script language=\"JavaScript\" type=\"text/javascript\" src=\"scripts/popup.js\"></script>\n\n<script language=\"JavaScript\" type=\"text/javascript\">var wsp_htmlref_blank='scripts/blank.html';</script>\n<style type=\"text/css\" media=\"print\"></style><script type=\"text/javascript\" src=\"//assets.myregisteredsite.com/javascript/com/web/ResourceLoader.js\"></script>\n<script type=\"text/javascript\">\nWebCom.ResourceLoader.setShared(true);\nWebCom.ResourceLoader.setSecure(false);\nWebCom.ResourceLoader.loadLib('com.jquery', '', true);\nWebCom.ResourceLoader.loadLib('com.web.components.navigation', '1.1', true);\nWebCom.ResourceLoader.loadLib('com.web.core', '', true);\nWebCom.ResourceLoader.loadLib('com.jqueryvalidate', '', true);\nWebCom.ResourceLoader.loadLib('com.web.components.form', '1.0', true);\nWebCom.ResourceLoader.loadLib('com.web.components.footercontact', '1.0', true);\n</script><script src=\"https://assets.myregisteredsite.com/javascript/com/jquery/latest/jquery.js\"></script><script src=\"https://assets.myregisteredsite.com/javascript/com/web/components/navigation/1.1/navigation.js\"></script><script src=\"https://assets.myregisteredsite.com/javascript/com/web/core/latest/core.js\"></script><script src=\"https://assets.myregisteredsite.com/javascript/com/jqueryvalidate/latest/jqueryvalidate.js\"></script><script src=\"https://assets.myregisteredsite.com/javascript/com/web/components/form/1.0/form.js\"></script><script src=\"https://assets.myregisteredsite.com/javascript/com/web/components/footercontact/1.0/footercontact.js\"></script>\n<script type=\"text/javascript\">WebCom.ResourceLoader.flushResourcesQueue();</script><script src=\"https://assets.myregisteredsite.com/javascript/com/jquery/latest/hoverIntent.js\"></script><script src=\"https://assets.myregisteredsite.com/javascript/com/jquery/latest/bgIframe.js\"></script><script src=\"https://assets.myregisteredsite.com/javascript/com/web/components/navigation/1.1/js/superfish.js\"></script><script src=\"https://assets.myregisteredsite.com/javascript/com/web/components/navigation/1.1/js/handler.js\"></script><script src=\"https://assets.myregisteredsite.com/javascript/com/web/components/navigation/1.1/js/helper.js\"></script><script src=\"https://assets.myregisteredsite.com/javascript/com/web/components/navigation/1.1/js/positioner.js\"></script><link href=\"https://assets.myregisteredsite.com/javascript/com/web/components/navigation/1.1/css/structure.css\" rel=\"stylesheet\"><script src=\"https://assets.myregisteredsite.com/javascript/com/web/components/form/1.0/js/utils.js\"></script><script src=\"https://assets.myregisteredsite.com/javascript/com/web/components/form/1.0/js/resources.js\"></script><script src=\"https://assets.myregisteredsite.com/javascript/com/web/components/form/1.0/js/templates.js\"></script><link href=\"https://assets.myregisteredsite.com/javascript/com/web/components/form/1.0/css/form.css\" rel=\"stylesheet\"><link href=\"https://assets.myregisteredsite.com/javascript/com/web/components/form/1.0/css/form_generic.css\" rel=\"stylesheet\"><script src=\"https://assets.myregisteredsite.com/javascript/com/jquery/latest/jquery.json-2.2.min.js\"></script><script src=\"https://assets.myregisteredsite.com/javascript/com/web/components/footercontact/1.0/js/templates.js\"></script><link href=\"https://assets.myregisteredsite.com/javascript/com/web/components/footercontact/1.0/css/footercontact.css\" rel=\"stylesheet\">\n<script type=\"text/javascript\" language=\"JavaScript\">\n<!--\njQuery(document).ready(function() {WebCom.ResourceLoader.setDocumentClosed(true);WebCom.Components.Navigation.init({\"styleNav\":{\"secondary\":{\"button\":{\"stretch\":\"vertical\",\"width\":\"auto\",\"bullet\":\"none\"},\"orientation\":\"vertical\",\"delay\":\"fast\",\"position\":{\"offsetH\":0,\"reference\":\"self\",\"offsetV\":0},\"type\":\"flyout\",\"decoration\":{\"stretch\":\"vertical\"},\"animation\":{\"effect\":\"none\",\"speed\":\"default\"},\"direction\":{\"x\":\"right\",\"y\":\"down\"}},\"primary\":{\"button\":{\"stretch\":\"horizontal\",\"width\":\"auto\",\"bullet\":\"none\",\"height\":72},\"orientation\":\"horizontal\",\"singleline\":true,\"width\":960,\"decoration\":{\"stretch\":\"horizontal\"},\"height\":72,\"animation\":{\"effect\":\"none\",\"speed\":\"none\"}}}});WebCom.Components.Form.renderInstances([{\"miscData\":{\"renderMode\":\"Publish\",\"q\":\"7EdfoRk7I10OsHdQamvklPrUivktm1KkGixgvFOKGid768TItp9Im3WbVsvh6dMI1k0hI/d7liaW\\r\\nOMsCXm8VONHiP0dLUUHSfiJVI7YYP0n8r5yvCZ471KNvby4iUXup0B1Yy21awb+yLiEwyZ7QP+bo\\r\\nPhUme+FAtbtVXurcRkFgKtFPTS/l8mrHoXkwuNvhKyGQF/xKNl98VrWvXQy9opr6ly59ukPjlEqz\\r\\nP/x577OrtFwvYb5Tw2VwT2PZWcqR9JhvKur1SFCU9b3+y2lKf9hvP9NvcyMNBnxtHd4xOiqlJvFF\\r\\nmk4hquw1IF+P52F1Cydw+9mJ8guQkFlyyiSh/sVt8Y7CCFAMJIH98v6s8LB7BwLnzPUDln+WDTGT\\r\\nxFR3HVzNUTm5s6wFXs+Z1OUsqCrIwXgSTPzsIGnqtqS8vk2Rr+VsFYavH6Bi+DnSseUOFpCyQlsA\\r\\nCweDuzgBvqrDMKQQaLB5w0RYu1VtY3GTHQhC3CHe7WTG7kr9GDgviU+MUe2w5arYJ7s5ZhmfPAqW\\r\\nAAAyId6hzkgDkbLFEPzcLLseS7KnZx2f5aax0MpXZtqZ8ww5RW0LZ+/yURHpuvLJMCvnuQTOiBbP\\r\\nbBQeOgt2CAdQeBa/StHKAkJ2TEPt870WNGYr6X9YWJVh2VV8XgRvuZsxrPLFagIwsM381JINOz2x\\r\\nGXtjT7L8A7KY+Aspif5aWRet7cenpQvIGvDGDIfhxEWYy4G6R/kPn4NDchFEmtbEm7WA9+pqwksU\\r\\n31QNmULgJ4SrpHzzZBpdYjAQD/ZBkzDuaKTFYl+GKZ/AmRcNfdPuDPH11BYG57/kiYGfeHAFBtk8\\r\\nW+qBsRcqR5y+yY+CS2SA685A94AHyRw+PYkcdE9KBafIA/1/7GkqJCXZ3yluZC94flj/+jS9tOQ1\\r\\n1kFIeJgc8wXjlbcts3i4NPGLI6ErOsBr7RnkvgvLapFsxTX8DdQF8BhQ5zRKdMrWZ2hU70YF1RUR\\r\\nCZjaP7Yqt31drKia6DWMitjoExPARpbm88IokEe5umXhbNAUyOY8L0d5g3xBnKLAjA6dRIeVX5Rc\\r\\nRbr9TZFPCQyTVhQSk10bBcXtbbI4CoiwcExYll0dC+0lcFO6odjbHijGGx5R/pmHUX/uYpG3uhNn\\r\\nGPdkgDw0O74qvzfZrOmy1AHsRwUgFaoefiBijBSkN2oTIpkoF8Y2nKxo7O+pnoIrSpn53TjSy31H\\r\\nZCkWcQ+Y0d2rukhl8gB84qCPqBpPgnnpO6pfOHUpxIJJ75sGSybYKeD8SLetkM2s6vQa8NB2Hhv6\\r\\njyjObrPmsBR5va6dfZ9lRlFwfWfx66RH1SayhpNuProUuvCPwElvGS5xaoIvduerQheq6/iYxl3D\\r\\nl+sQdZPjPb883eXRiaM22FKhm3RFlWceRG3RxHts3T3DM8ImG+h0pCU+jj5NDmNGtuBGyhdtB6jF\\r\\nHCChnVa/d6DHOjhFosBc5PRbJ0/cLYDo2lEerxJ2kOGnyA55OVMvDn2QJKogW8+HkuLL/poXp+E/\\r\\nFSzkCEzbcCoHUoolx0EnHc5P5xkr8WVxvaNjrZmsnlTErhIXZ9zMm62f4TOvBZO0VJ64gw+JPSGc\\r\\nNmPxQHJvj9kXja6HlEXC3gefsJJvCKQ4ngtWg908F9zXf1e5JoejfEYtCSkdmJsl+uPCZhMlrdIW\\r\\nDqY7FWYGc2EvtWeHCNEQlREA8hqs8rOm6RTQV21VsNJEHicD11yzN+0KnMsukxyuSUrwuz6scqy6\\r\\n+UzeCLqSfrcAHdmRCMRO9gTzDT5aVGgsA9YCBW1jUnBh4OcEYjtbHj8lmGfaAwYvOcyed5wk2vCz\\r\\nULGoIi5BBaFeAmLZFWvJ5GqUJNDVFfj2QcRC5qnAxtu6tKtzF0ZynDTLW4zijdgStQL4wCSzTyoo\\r\\nBGycTuv7Z0HW2AK9iwBBdZ8ptUcUzGAacixRsOciwm4/i5ECupgnln+kBWg+SEIqAzPTlZFRoUaY\\r\\nrYBboTkjGxmt2z0ly5BvKinoUktq6eQ4OmpFXmRSzzd3D4lCMpTFcBVcnEEghT/25HEnbYjBDJqd\\r\\nO3IIQQQTISueSvhoASnVLl6Uoi/BbrAtShxrT13tt50rtYMaPk/vo8os6AkUufpyEq2qccIJ/ww8\\r\\nJEtadr4QbLQ8vgu/FbQVgSNBNgMTzP4ch8ufZYTioaVIP6Itpds3VNWTJhU2Ta1IbXm3vj8yyR23\\r\\nS3kBOXbtGpkqRL6YtmipxF8L2e0tzweSGa0+XAxNiGt18Smt8f0/RHxGMVsSgDMtGc36VQzvlY8D\\r\\n+KFoL9sdGKvhb8or2JNE60QZv/RLc46oAcPHoSOLFWPCFEgfMsLe+DTGdmq+wNUpK+lq4TNEGM7Y\\r\\ne4zFmVlhmyFFfpmo6dhYUFrd6wv1awPaQOI0TEjySqChUUElAeV1+HTJzSB4pUy3fZp6Jg7xtWwd\\r\\nNMkKlEcN+9XspiWI9Ui2ZmSFwFopsIEfwEtvkrhQIUZ6Eqt9pDayoYgH7smTcVL3A44x62+S1SpV\\r\\nSaz2A2btxzLSSAG5k+w7/zzQplMV5KQL5B5HvfSKjzW9HKOoG7oIcXYTjW15mqagHbMVI12YqHve\\r\\n1EX4SIVnag+B31At1xA6+eIBTCGGfolxnFpd3yTQguk2AjdjD8VDr2Nh5hQ7edSJOvp3yM5ui6AN\\r\\npRW63KNC68gMd/QZQZPBxcpgQhyHRW0czCIvXyEz5y+T5byS9Yjnn2nRwmIuu00RdJUCHQekBKrQ\\r\\nhF5XS9AFl6I6qNXlE9z0R9nUO11Kor5MOpVOA6oCpPGsasoJg+uQ5s20n9wNjWpXkClXd5au6SqP\\r\\nQ1Xd+NQB/Kj6Mtqw8d31ZAxwnCvIGvuHpi2Ux3T6uKRkz+A3sYjBv4OXvcs1x6JqmdQUfm/XYNG0\\r\\n3btestZb8P4MaYYvuNBpdwfEO2WQsi7aAzU7C/NbjskGQJDFkfnyspKzl0CkxUABbZR7v87eSdN2\\r\\nU34WrVHRNYBU5WjIgT/26Ml5UXuJtn1a3aZrRbv7vIGdspUyUgmQOFXuzl8tHoG8cYfkZYMSYu7p\\r\\nbHtxwcP+nVP9duRfdmAvlLEROVD66w0EsT/3wMedQ8ZyyKH5gley1ok70ooaiZ+5ECFTUqe0X429\\r\\nanIaq9zmB0RnzfgwXTrm8wkKdhvOWYUxxTsKo7XN81fRKFIyWtht/aJGRzSs4ZE57WobJpf7eGY9\\r\\nTIdR779zcc4daDkKTMVxs7LA1iwIL0bNAOBrrw2YhXEbykFrJhb/Joimn8DOqcdW7EdMKxjB8K+t\\r\\nL4ZutWO0uFg+qRGkjDAxWCnUmnUyJa8gPLMi3AxgLBsmFYrc5fX7xTQeoPTyrYx0PRWfYCXL5sdc\\r\\nUnSEGCCcMUpPvO0Qo2MRPJoHyIDLFTXn3Qto3D4L6l3HG/5C93afpTF4n3X4frDwxr+Jo/CIjEnC\\r\\nifIuhnv830ryGx5yXuuHKbgbRyaNPURq/tyd+BMkBEbYhCqrO9Pu8hpZ9PqMs0RNsUGIj5RNi+P7\\r\\n/OLyE/9bt4uB1j4itxh/P4ShRtQ7LAxMUtuNtL3dTY9d4AJmnDzsaCQOk/cvJSLhDKADF6WOBYOC\\r\\nKKV6LFMFGKP14DcVe+rq0t6f72VlKrka3ATZaaFlIeLUFJEJDXScNiDc7iEf5gmbMk4QD8529Ipd\\r\\njZrcnUjdkUa8MZCZGODJnHbgjIobSuaBvkyHRU/5SY3i2/I+NEYNmkejtTehM0TFyw7GwBAgJH1A\\r\\na5mLvHVifHkD09a1r93iYe58WjzJ4xaUyqFy1pGYzk1SIEttSANFjZ/wmvZkUZXFnlOSuLXsSPVP\\r\\nUMILWpL/9G4U30KaGa2JUYpI7r6izQ0Ux7lPetQ37tZFXSGWf1qFuaCqTIfTfI+lTGuxW6V4MIt5\\r\\nGCSyShI0P5LWYCpogyAbNekxbVic5QYjLkt6kmWxf5zhH33z1A36dt7X6YAvgBBxtn9BH+IZ9qsY\\r\\nXrfqnLGY5FhxF5e4EuQm3XExF6BmqritKBZWWib6XluJ3J+9SakuaSQWRGG4ySdR/Qi/N9hMWju/\\r\\nOT6mfNHpXsOHigVaLV0Lf+udlRBCGInJdFxywI8IQFEPqzxWpNOt7bo6zpNbGRHAbEDVe8Km5ovD\\r\\ndyaIPDLnxEQYSk6+OMYW3g8/tFrAxaikUh8cyfJNJnVEBjWG/oUql4UCm/nyZaLmkNolHWSbIWeY\\r\\nEYRX5TFCbuVQRILCypkDES6+qiG5vOJrFeYGKvdTYwedIjkp7qtRPgeEaDoFbPo6n0086EzL19D/\\r\\nfD7GCZi24yohLy9hmccZP5B8l0phIlarn31B6T4kvno6jx1pZKrjhlKjjfEHtCCmlwC7jEE4t79j\\r\\nDSuOpf0QvnzB51SgVwCSAEy3FFr8L8xVo7sWllgr7EsfSXdpKFXvQkSSKSADcXAXXEo39e0Xk59u\\r\\nia6VfY2EdY5AdYLvDqQwA20FPnVZ7J7AcGcEWZa1XbyQk4iYRsXnZIcov5UCFIM4uBYuBkVo9gVB\\r\\na+MEPF0pNawkMOkNo/5v8cLv1CxWLBAhuIUu8uA1zIKj+ikoDhKYplEyEl5kdCqUFpvw1Kqg16br\\r\\nw182e7PJWqem7EHR1CRyrOChy99sfH26rF1lUMSR3nld41d4oOMAEyck5kbkkYtiQBAwRWM160XO\\r\\nKcj05V2280JVdMRpfYcvcgljtCS1YC+JRAqzx4ex33ThIuvkYO76kendE757wU2hVp8eiJyx4UiT\\r\\nmvhjnni6FEgxvelKL8XOU3CxaZ1Q6tqpvNm/+SaqZchEgSsud376iroDx5Ia7+JPjwSORjC2vxIc\\r\\nhgDib71XbTQudLDG1Bw9PtQI7GqkQEf4oHHEtD1DRClN+lOUPjFFvdSMGWKsJQAW4+4HWwsTvjFi\\r\\nCf/FQE/q5yulz3HNUgBzETtiPG5sPWPYpWFKDVRVURPtk0IIGmw1avPwIjMaSgNWrwwxqVfYET2B\\r\\nMam7W1SDXzmtfUoKk0xRnA1ca1dCYroP2Xx/zF6CUBbiV7h0XVf0U3MQDL8KYX5zXAnX54a95VNz\\r\\nPUrjowblbvpF0YqsUwpcWrr1X4nR1g==\"},\"componentData\":{\"form\":{\"template\":\"InformationRequest\",\"settings\":{\"formId\":1444336668405,\"formType\":\"form\",\"form2db\":false,\"postSubmission\":{\"errorValue\":\"Oops! There was a problem submitting your form. Please try again.\",\"message\":\"Thanks for your submission!\",\"type\":\"showMessage\",\"url\":\"http://yourdomain.com/thankyou.html\"},\"isSecure\":false,\"emailDelivery\":\"copy\",\"formatting\":{\"useCustomStyle\":false,\"postSubmissionMsgColor\":\"\",\"formAlignment\":\"\",\"label\":{\"color\":\"\",\"size\":\"\",\"fontFace\":\"\",\"fontWeight\":\"\"},\"errorMsgColor\":\"#c70202\",\"requiredTextColor\":\"#c70202\"}},\"creationTime\":\"2015-10-08T16:37:56\",\"elements\":[{\"isRequired\":true,\"children\":[{\"isRequired\":true,\"children\":[],\"validators\":[],\"defaultValue\":\"\",\"name\":\"FirstName\",\"width\":\"medium\",\"options\":{},\"label\":\"First Name\",\"type\":\"TextBox\",\"height\":\"medium\"},{\"isRequired\":true,\"children\":[],\"validators\":[],\"defaultValue\":\"\",\"name\":\"LastName\",\"width\":\"medium\",\"options\":{},\"label\":\"Last Name\",\"type\":\"TextBox\",\"height\":\"medium\"}],\"validators\":[],\"defaultValue\":\"\",\"toolTip\":\"\",\"name\":\"name\",\"width\":\"large\",\"options\":{},\"label\":\"Name\",\"type\":\"PersonName\",\"height\":\"medium\"},{\"isRequired\":true,\"children\":[],\"validators\":[],\"defaultValue\":\"\",\"name\":\"email\",\"width\":\"large\",\"options\":{},\"label\":\"Email\",\"type\":\"TextBox\",\"height\":\"medium\"},{\"isRequired\":true,\"children\":[],\"validators\":[],\"defaultValue\":\"\",\"name\":\"PhoneNumber\",\"width\":\"large\",\"options\":{},\"label\":\"Phone Number\",\"type\":\"TextBox\",\"height\":\"medium\"},{\"isRequired\":true,\"children\":[],\"validators\":[],\"defaultValue\":\"\",\"name\":\"comments\",\"width\":\"large\",\"options\":{},\"label\":\"Comments\",\"type\":\"TextArea\",\"height\":\"medium\"},{\"isRequired\":false,\"children\":[],\"validators\":[],\"defaultValue\":\"\",\"name\":\"formClientName\",\"width\":\"medium\",\"options\":{},\"label\":\"Client number\",\"type\":\"TextBox\",\"height\":\"medium\"},{\"isRequired\":false,\"children\":[],\"validators\":[],\"defaultValue\":\"\",\"name\":\"Submit\",\"width\":\"small\",\"options\":{},\"label\":\"Untitled\",\"type\":\"Submit\",\"value\":\"Submit\",\"height\":\"medium\"}],\"name\":\"Information Request\",\"description\":\"\",\"formProcessorUrl\":\"#\",\"id\":\"webcom-layout-area\",\"title\":\"\"}},\"id\":\"webcom-component-form-62404572692505016\"}]);});\n// -->\n</script><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><style media=\"only screen and (max-width : 768px)\"></style></head>\n<body>\n<div class=\"box designtest1crx\">\n<div id=\"globaltext\" class=\"rsp_kvglobaltext\"><div align=\"left\"><table cellpadding=\"0\" width=\"100%\" cellspacing=\"0\">\n<tbody>\n<tr>\n<td align=\"center\">\n<table cellpadding=\"0\" width=\"100%\" cellspacing=\"0\" style=\"background-color: rgba(255, 255, 255, 0);\" class=\"rsp_kvOverlayBG\">\n<tbody>\n<tr align=\"center\">\n<td width=\"100%\" style=\"background-color: #042f58; width: 100%;\">\n<div class=\"section rsp_content Content-3Column-Image\" style=\"padding-top: 5px; padding-bottom: 5px;\">\n<div class=\"off-box\" style=\"background-color: rgba(255, 255, 255, 0);\">\n<table cellpadding=\"0\" width=\"100%\" cellspacing=\"0\" class=\"columns\">\n<tbody>\n<tr align=\"center\">\n<td width=\"33%\" valign=\"top\"><span style=\"color: #ffffff;\"><strong><span style=\"font-family: Montserrat;\">A Licensed &amp; Insured Company&nbsp; |&nbsp;&nbsp;Seasonal Positions Available During the Summer&nbsp; |&nbsp;&nbsp;<a style=\"color: #ffffff;\" href=\"https://www.pentair.com/en-us/products/residential/pool-spa-equipment.html\" target=\"_blank\">Cleaning Products&nbsp;\u00bb</a></span></strong> </span></td>\n</tr>\n</tbody>\n</table>\n</div>\n</div>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n</tbody>\n</table></div></div>\n<div class=\"header\">\n\t<div class=\"section rsp_header Header-EcommerceSearch\">\n\t\t<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">\n\t\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td width=\"50%\">\n\t\t\t\t\t<div id=\"companyname\"><div><p><a href=\"/\" target=\"_self\"><img title=\"Tony's Pool Service\" assetid=\"130614119\" src=\"image/130614119.png\" border=\"0\" alt=\"Tony's Pool Service\" selectedfileurl=\"files/130614119.png\" mce_src=\"/matrix/servlet/ShowAsset;jsessionid=0726DFB0D5544A4506A7E545EF84EBB4?id=130614119&amp;_dt=1548250260331\"></a></p></div></div>\n\t\t\t\t</td>\n\t\t\t\t<td width=\"50%\">\n\t\t\t\t\t<div id=\"companyslogan\"><div><style><!--\n.headerContent {\n            text-align: right;\n        }\n        @media screen and (max-width: 768px){\n        .headerContent {\n            text-align: center;\n        }\n        .headerContent img{\n            display: inline-block;\n        }\n        }\n--></style><div class=\"headerContent\">\n<table cellpadding=\"0\" cellspacing=\"0\" class=\"phone\"></table>\n<p><span style=\"color: #042f58; text-decoration: none solid #474747;\"><sub><span style=\"font-size: 0pt;\"><img src=\"//graphics.web.com/wdc_201502_matrix/images/phone-white.png\" alt=\"Phone Icon\"></span></sub><strong>&nbsp;<span style=\"font-size: 16pt; font-family: Montserrat;\">(720) 408-3720</span></strong></span></p>\n<p><span style=\"font-size: 12pt;\"><span style=\"font-family: Montserrat; color: #042f58; text-decoration: none solid #474747;\">Follow</span>&nbsp;</span><a href=\"https://www.facebook.com/groups/168143147202437/?fref=nf\" target=\"_blank\"><img title=\"Facebook Icon\" style=\"margin-bottom: -4px;\" assetid=\"126925680\" src=\"image/126925680.png\" border=\"0\" alt=\"Facebook Icon\" selectedfileurl=\"files/126925680.png\" mce_src=\"/matrix/servlet/ShowAsset;jsessionid=00A266C35946E561BB114E41178D74A0?id=126925680&amp;_dt=1519046159984\"></a>&nbsp;</p>\n<p><span style=\"font-family: Montserrat; color: #ffffff; text-decoration: none solid #474747;\"><span style=\"color: #042f58; text-decoration: none solid #474747;\">Monday - Friday: 7:00 a.m. - 4:00 p.m</span>.</span></p>\n<p><span style=\"font-size: 8pt;\">&nbsp;</span></p>\n<p><a href=\"contact-tony-s-pool-service.html\" target=\"_self\" class=\"button\">Contact Us Today</a></p>\n</div></div></div>\t\n\t\t\t\t</td>\n\t\t\t</tr>\n\t\t</tbody></table>\n\t</div>\n</div>\n<div id=\"navContainer\" class=\"primaryColorbg clearfix\">\n<a href=\"#\" class=\"close\"><span></span></a>\n\t<div id=\"nav\">\n\t\t<div class=\"section\">\n\t\t\t\n<!-- css nav -->\n<div id=\"styleNav\" style=\"visibility: visible;\"><div class=\"primary-webcomMenu-offset\"><div class=\"primary-webcomMenu-bottom\" style=\"z-index: 2001; position: relative; left: 0px; top: 0px;\"><div class=\"primary-webcomMenu-top\"><div class=\"primary-webcomMenu-right\"><div class=\"primary-webcomMenu-left\"><div class=\"primary-webcomMenu-middle\"><ul class=\"primary-webcomMenu superfish\" style=\"width: 960px; height: 72px;\"><li class=\"selected primary-webcomMenuItem\" style=\"height: 72px; text-indent: 0px; display: block;\"><a href=\"/\"><div class=\"primary-webcomMenuItem-bottom\" style=\"height: 72px;\"><div class=\"primary-webcomMenuItem-top\" style=\"height: 72px;\"><div class=\"primary-webcomMenuItem-right\" style=\"height: 72px;\"><div class=\"primary-webcomMenuItem-left\" style=\"height: 72px;\"><div class=\"primary-webcomMenuItem-middle\" style=\"padding-top: 23.5px; padding-bottom: 23.5px; height: 72px;\">Home</div></div></div></div></div></a></li><li class=\"primary-webcomMenuItem\" style=\"height: 72px; text-indent: 0px; display: block;\"><a href=\"pool-supplies.html\"><div class=\"primary-webcomMenuItem-bottom\" style=\"height: 72px;\"><div class=\"primary-webcomMenuItem-top\" style=\"height: 72px;\"><div class=\"primary-webcomMenuItem-right\" style=\"height: 72px;\"><div class=\"primary-webcomMenuItem-left\" style=\"height: 72px;\"><div class=\"primary-webcomMenuItem-middle\" style=\"padding-top: 23.5px; padding-bottom: 23.5px; height: 72px;\">Products</div></div></div></div></div></a></li><li class=\"primary-webcomMenuItem\" style=\"height: 72px; text-indent: 0px; display: block;\"><a href=\"tony-s-pool-service-testimonials.html\"><div class=\"primary-webcomMenuItem-bottom\" style=\"height: 72px;\"><div class=\"primary-webcomMenuItem-top\" style=\"height: 72px;\"><div class=\"primary-webcomMenuItem-right\" style=\"height: 72px;\"><div class=\"primary-webcomMenuItem-left\" style=\"height: 72px;\"><div class=\"primary-webcomMenuItem-middle\" style=\"padding-top: 23.5px; padding-bottom: 23.5px; height: 72px;\">Testimonials</div></div></div></div></div></a></li><li class=\"primary-webcomMenuItem\" style=\"height: 72px; text-indent: 0px; display: block;\"><a href=\"tony-s-pool-service-photos.html\"><div class=\"primary-webcomMenuItem-bottom\" style=\"height: 72px;\"><div class=\"primary-webcomMenuItem-top\" style=\"height: 72px;\"><div class=\"primary-webcomMenuItem-right\" style=\"height: 72px;\"><div class=\"primary-webcomMenuItem-left\" style=\"height: 72px;\"><div class=\"primary-webcomMenuItem-middle\" style=\"padding-top: 23.5px; padding-bottom: 23.5px; height: 72px;\">Gallery</div></div></div></div></div></a></li><li class=\"primary-webcomMenuItem\" style=\"height: 72px; text-indent: 0px; display: block;\"><a href=\"about-tony-s-pool-service.html\"><div class=\"primary-webcomMenuItem-bottom\" style=\"height: 72px;\"><div class=\"primary-webcomMenuItem-top\" style=\"height: 72px;\"><div class=\"primary-webcomMenuItem-right\" style=\"height: 72px;\"><div class=\"primary-webcomMenuItem-left\" style=\"height: 72px;\"><div class=\"primary-webcomMenuItem-middle\" style=\"padding-top: 23.5px; padding-bottom: 23.5px; height: 72px;\">About Us</div></div></div></div></div></a></li><li class=\"primary-webcomMenuItem\" style=\"height: 72px; text-indent: 0px; display: block;\"><a href=\"pool-services.html\"><div class=\"primary-webcomMenuItem-bottom\" style=\"height: 72px;\"><div class=\"primary-webcomMenuItem-top\" style=\"height: 72px;\"><div class=\"primary-webcomMenuItem-right\" style=\"height: 72px;\"><div class=\"primary-webcomMenuItem-left\" style=\"height: 72px;\"><div class=\"primary-webcomMenuItem-middle\" style=\"padding-top: 23.5px; padding-bottom: 23.5px; height: 72px;\">Services</div></div></div></div></div></a></li><li class=\"primary-webcomMenuItem\" style=\"height: 72px; text-indent: 0px; display: block;\"><a href=\"contact-tony-s-pool-service.html\"><div class=\"primary-webcomMenuItem-bottom\" style=\"height: 72px;\"><div class=\"primary-webcomMenuItem-top\" style=\"height: 72px;\"><div class=\"primary-webcomMenuItem-right\" style=\"height: 72px;\"><div class=\"primary-webcomMenuItem-left\" style=\"height: 72px;\"><div class=\"primary-webcomMenuItem-middle\" style=\"padding-top: 23.5px; padding-bottom: 23.5px; height: 72px;\">Contact</div></div></div></div></div></a></li></ul></div></div></div></div></div></div></div><div style=\"clear:both\"></div><script type=\"text/javascript\" language=\"JavaScript\">\n<!--\ndocument.getElementById('styleNav').style.visibility ='hidden';\n// -->\n</script>\n<!-- css nav -->\n\n\t\t</div>\n\t</div>\n</div>\n\n\t<div class=\"section-container clearfix\">\n\t\t<div id=\"layout\"><!-- home_5_im_none -->\n<table cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" border=\"0\">\n  <tbody><tr>\n    <td>\n      \n      <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n        <tbody><tr>\n          <td></td>\n        </tr>\n      </tbody></table>\n      <!-- ADD CUSTOM BLOCK -->\n      <div align=\"left\">\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n  <tbody><tr>\n    <td align=\"center\" valign=\"top\">\n    <div align=\"left\"><table cellspacing=\"0\" width=\"100%\" class=\"fullwidth   fullWidth\" style=\"background-color: #eeeeee; ;background-image: url(files/131072221.jpg)\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td align=\"center\">\n<table cellpadding=\"0\" width=\"100%\" cellspacing=\"0\" style=\"background-color: rgba(255, 255, 255, 0);\" class=\"rsp_kvOverlayBG\">\n<tbody>\n<tr align=\"center\">\n<td width=\"100%\" style=\"background-color: rgba(0, 0, 0, 0.1); width: 100%;\">\n<div class=\"section KV-Text-Centered rsp_kv\">\n<table cellpadding=\"0\" width=\"100%\" cellspacing=\"0\">\n<tbody>\n<tr align=\"center\">\n<td>\n<div class=\"off-box\" style=\"background-color: rgba(255, 255, 255, 0);\">\n<table cellpadding=\"5\" cellspacing=\"5\" style=\"width: 100%;\" class=\"pqbox\">\n<tbody>\n<tr>\n<td>\n<p class=\"customheader1\" style=\"text-align: center;\"><span class=\"pq\">A Swimming Pool Store Delivered to Your Door</span></p>\n</td>\n</tr>\n</tbody>\n</table>\n</div>\n</td>\n</tr>\n</tbody>\n</table>\n</div>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n</tbody>\n</table></div></td>\n  </tr>\n</tbody></table>\n</div><br style=\"clear: both; display: none;\"><div align=\"left\">\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n  <tbody><tr>\n    <td align=\"center\" valign=\"top\">\n    <div align=\"left\"><table cellspacing=\"0\" width=\"100%\" class=\" fullWidth\" style=\"background-image: url(files/130592833.jpg)\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td align=\"center\">\n<table cellpadding=\"0\" width=\"100%\" cellspacing=\"0\" style=\"background-color: rgba(255, 255, 255, 0);\" class=\"rsp_kvOverlayBG\">\n<tbody>\n<tr align=\"center\">\n<td width=\"100%\">\n<div class=\"section rsp_content Content-3Column-Image\" style=\"padding-top: 15px; padding-bottom: 15px;\">\n<div class=\"off-box\" style=\"background-color: rgba(255, 255, 255, 0);\"><span style=\"font-size: 8pt;\">&nbsp;</span><br>\n<table cellpadding=\"0\" width=\"100%\" cellspacing=\"0\" class=\"columns\">\n<tbody>\n<tr align=\"center\">\n<td width=\"33%\" valign=\"top\"><span style=\"font-family: Montserrat; text-transform: uppercase; color: #ffffff; text-decoration: none solid #474747;\"><a data-bt-pidname=\"Products\" target=\"_self\" href=\"pool-supplies.html\" style=\"color: #ffffff;\"><img title=\"Pool Icon\" assetid=\"130594436\" src=\"image/130594436.png\" border=\"0\" class=\"float\" alt=\"Pool Icon\" selectedfileurl=\"files/130594436.png\" mce_src=\"/matrix/servlet/ShowAsset;jsessionid=79C0A1208B439DFC7EAD10C89E182EE8?id=130594436&amp;_dt=1548106543190\"><br>Products<br><br></a></span></td>\n<td width=\"33%\" valign=\"top\"><span style=\"font-family: Montserrat; text-transform: uppercase; color: #ffffff; text-decoration: none solid #474747;\"><a data-bt-pidname=\"Services\" target=\"_self\" href=\"pool-services.html\" style=\"color: #ffffff;\"><img title=\"Thumbs Up Icon\" assetid=\"130594437\" src=\"image/130594437.png\" border=\"0\" class=\"float\" alt=\"Thumbs Up Icon\" selectedfileurl=\"files/130594437.png\" mce_src=\"/matrix/servlet/ShowAsset;jsessionid=79C0A1208B439DFC7EAD10C89E182EE8?id=130594437&amp;_dt=1548106563787\"><br>Services<br><br></a></span></td>\n<td width=\"33%\" valign=\"top\"><span style=\"font-family: Montserrat; text-transform: uppercase; color: #ffffff; text-decoration: none solid #474747;\"><a data-bt-pidname=\"Testimonials\" target=\"_self\" href=\"tony-s-pool-service-testimonials.html\" style=\"color: #ffffff;\"><img title=\"Testimonial Icon\" assetid=\"130594438\" src=\"image/130594438.png\" border=\"0\" class=\"float\" alt=\"Testimonial Icon\" selectedfileurl=\"files/130594438.png\" mce_src=\"/matrix/servlet/ShowAsset;jsessionid=79C0A1208B439DFC7EAD10C89E182EE8?id=130594438&amp;_dt=1548106576646\"><br>Testimonials<br><br></a></span></td>\n<td width=\"33%\" valign=\"top\"><span style=\"font-family: Montserrat; text-transform: uppercase; color: #ffffff; text-decoration: none solid #474747;\"><a data-bt-pidname=\"Gallery\" target=\"_self\" href=\"tony-s-pool-service-photos.html\" style=\"color: #ffffff;\"><img title=\"Snorkel Icon\" assetid=\"130594435\" src=\"image/130594435.png\" border=\"0\" class=\"float\" alt=\"Snorkel Icon\" selectedfileurl=\"files/130594435.png\" mce_src=\"/matrix/servlet/ShowAsset;jsessionid=79C0A1208B439DFC7EAD10C89E182EE8?id=130594435&amp;_dt=1548106596930\"><br>Gallery<br><br></a></span></td>\n</tr>\n</tbody>\n</table>\n</div>\n</div>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n</tbody>\n</table></div></td>\n  </tr>\n</tbody></table>\n</div><br style=\"clear: both; display: none;\"><div align=\"left\">\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n  <tbody><tr>\n    <td align=\"center\" valign=\"top\">\n    <div align=\"left\"><table cellspacing=\"0\" width=\"100%\" class=\" fullWidth\" style=\"background-image: url(files/130593035.jpg)\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td align=\"center\">\n<table cellpadding=\"0\" width=\"100%\" cellspacing=\"0\" style=\"background-color: rgba(255, 255, 255, 0);\" class=\"rsp_kvOverlayBG\">\n<tbody>\n<tr align=\"center\">\n<td width=\"100%\">\n<div class=\"section rsp_content Content-3Column-Image\">\n<div class=\"off-box\" style=\"background-color: rgba(255, 255, 255, 0);\">\n<h1>A Full-Service Pool &amp; Spa Company</h1>\n<p>Your search for a customer-oriented pool company is over. At Tony's Pool Service in Littleton, CO, we provide you with all of the services and products you need so that you can have great water fun. Our lead technician, Tony, makes sure that all of our residential and commercial clients are completely satisfied when they turn to us for assistance. He'll do the same for you. Our team of professionals looks forward to handling your pool and spa needs.</p>\n<h2>Professional Pool Techs at Your Service</h2>\n<p>We take pride in only hiring the best technicians to work for our company. All of our experts are thoroughly trained and value our beliefs. Additionally, they are always dressed in uniform and drive marked trucks so that you know they work for our business.</p>\n<table cellpadding=\"0\" width=\"100%\" cellspacing=\"0\" class=\"columns\">\n<tbody>\n<tr align=\"center\">\n<td width=\"33%\" valign=\"top\">\n<p><a href=\"pool-services.html\" target=\"_self\"><img title=\"Pool Renovations\" assetid=\"131065217\" src=\"image/131065217.png\" border=\"0\" class=\"float\" alt=\"Pool Renovations\" selectedfileurl=\"files/131065217.png\" mce_src=\"/matrix/servlet/ShowAsset;jsessionid=82F984A1DB28FB3CB9E78AB5F6B5E136?id=131065217&amp;_dt=1551968899752\"><br>POOL RENOVATIONS</a></p>\n</td>\n<td width=\"33%\" valign=\"top\">\n<p><a href=\"pool-services.html\" target=\"_self\"><img title=\"Winterization\" assetid=\"131065219\" src=\"image/131065219.png\" border=\"0\" class=\"float\" alt=\"Winterization\" selectedfileurl=\"files/131065219.png\" mce_src=\"/matrix/servlet/ShowAsset;jsessionid=82F984A1DB28FB3CB9E78AB5F6B5E136?id=131065219&amp;_dt=1551968915597\"><br>WINTERIZATION</a></p>\n</td>\n<td width=\"33%\" valign=\"top\">\n<p><a href=\"pool-services.html\" target=\"_self\"><img title=\"Pool &amp; Spa Cover\" assetid=\"131065119\" src=\"image/131065119.png\" border=\"0\" class=\"float\" alt=\"Pool &amp; Spa Cover\" selectedfileurl=\"files/131065119.png\" mce_src=\"/matrix/servlet/ShowAsset;jsessionid=82F984A1DB28FB3CB9E78AB5F6B5E136?id=131065119&amp;_dt=1551968939685\"><br>POOL &amp; SPA COVERS</a></p>\n</td>\n</tr>\n<tr align=\"center\">\n<td width=\"33%\" valign=\"top\"><a href=\"pool-services.html\" target=\"_self\"><img title=\"Chemical Supplies\" assetid=\"131072298\" src=\"image/131072298.png\" border=\"0\" class=\"float\" alt=\"Chemical Supplies\" selectedfileurl=\"files/131072298.png\" mce_src=\"/matrix/servlet/ShowAsset;jsessionid=7EBA68AC65F03086F5C3E78124853A94?id=131072298&amp;_dt=1551992435663\"><br>SUPPLIES</a></td>\n<td width=\"33%\" valign=\"top\">\n<p><a href=\"pool-services.html\" target=\"_self\"><img title=\"Equipment Repair &amp; Replacement\" assetid=\"131065421\" src=\"image/131065421.png\" border=\"0\" class=\"float\" alt=\"Equipment Repair &amp; Replacement\" selectedfileurl=\"files/131065421.png\" mce_src=\"/matrix/servlet/ShowAsset;jsessionid=82F984A1DB28FB3CB9E78AB5F6B5E136?id=131065421&amp;_dt=1551969676300\"><br>EQUIPMENT REPAIR &amp; REPLACEMENT</a></p>\n</td>\n<td width=\"33%\" valign=\"top\">\n<p><a href=\"pool-services.html\" target=\"_self\"><img title=\"Pipes for Pump\" assetid=\"130594429\" src=\"image/130594429.png\" border=\"0\" alt=\"Pipes for Pump\" selectedfileurl=\"files/130594429.png\" mce_src=\"/matrix/servlet/ShowAsset;jsessionid=82F984A1DB28FB3CB9E78AB5F6B5E136?id=130594429&amp;_dt=1551968268160\"><br>PLUMBING &amp; PIPING</a></p>\n</td>\n</tr>\n</tbody>\n</table>\n</div>\n</div>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n</tbody>\n</table></div></td>\n  </tr>\n</tbody></table>\n</div><br style=\"clear: both; display: none;\"><div align=\"left\">\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n  <tbody><tr>\n    <td align=\"center\" valign=\"top\">\n    <div align=\"left\"><table cellspacing=\"0\" width=\"100%\" class=\"fullwidth fullwidthStatic\" style=\"background-color: #eeeeee; ;background-image: url(files/130593049.jpg)\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td align=\"center\">\n<table cellpadding=\"0\" width=\"100%\" cellspacing=\"0\" style=\"background-color: rgba(255, 255, 255, 0);\" class=\"rsp_kvOverlayBG\">\n<tbody>\n<tr align=\"center\">\n<td width=\"100%\" style=\"background-color: rgba(0, 0, 0, 0.5); width: 100%;\">\n<div class=\"section KV-Text-Centered rsp_kv\">\n<table cellpadding=\"0\" width=\"100%\" cellspacing=\"0\">\n<tbody>\n<tr align=\"center\">\n<td>\n<div class=\"off-box\" style=\"background-color: rgba(255, 255, 255, 0);\">\n<p class=\"customheader1\"><span class=\"cta2\">Hire us to maintain your spa or swimming pool.</span></p>\n<p><span class=\"cta2\">Call (720) 408-3720</span></p>\n</div>\n</td>\n</tr>\n</tbody>\n</table>\n</div>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n</tbody>\n</table></div></td>\n  </tr>\n</tbody></table>\n</div><br style=\"clear: both; display: none;\"><div align=\"center\">\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n  <tbody><tr>\n    <td align=\"center\" valign=\"top\">\n    <div align=\"left\"><table cellpadding=\"0\" width=\"100%\" cellspacing=\"0\">\n<tbody>\n<tr>\n<td align=\"center\">\n<table cellpadding=\"0\" width=\"100%\" cellspacing=\"0\" style=\"background-color: rgba(255, 255, 255, 0);\" class=\"rsp_kvOverlayBG\">\n<tbody>\n<tr align=\"center\">\n<td width=\"100%\">\n<div class=\"section rsp_content Content-3Column-Image\" style=\"padding-top: 15px; padding-bottom: 2px;\">\n<div class=\"off-box\" style=\"background-color: rgba(255, 255, 255, 0);\">\n<table cellpadding=\"0\" width=\"100%\" cellspacing=\"0\" class=\"columns\">\n<tbody>\n<tr align=\"center\">\n<td width=\"33%\" valign=\"top\"><a href=\"http://www.poolguardusa.com/\" target=\"_blank\"><img title=\"A Proud Pool Guard Dealer\" assetid=\"130594621\" src=\"image/130594621.png\" border=\"0\" alt=\"A Proud Pool Guard Dealer\" selectedfileurl=\"files/130594621.png\" mce_src=\"/matrix/servlet/ShowAsset;jsessionid=79C0A1208B439DFC7EAD10C89E182EE8?id=130594621&amp;_dt=1548107384745\"><br><br></a></td>\n<td width=\"33%\" valign=\"top\"><img title=\"APSP Career Institute Accredited\" assetid=\"130594620\" src=\"image/130594620.png\" border=\"0\" alt=\"APSP Career Institute Accredited\" selectedfileurl=\"files/130594620.png\" mce_src=\"/matrix/servlet/ShowAsset;jsessionid=79C0A1208B439DFC7EAD10C89E182EE8?id=130594620&amp;_dt=1548107424437\"></td>\n</tr>\n</tbody>\n</table>\n</div>\n</div>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n</tbody>\n</table></div></td>\n  </tr>\n</tbody></table>\n</div><br style=\"clear: both; display: none;\"><div align=\"left\">\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n  <tbody><tr>\n    <td align=\"center\" valign=\"top\">\n    <div align=\"left\"><table cellspacing=\"0\" width=\"100%\" class=\" fullWidth\" style=\"background-image: url(files/130592833.jpg)\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td align=\"center\">\n<div class=\"section Addons-2Column-RightForm rsp_content rsp_addons\">\n<table cellpadding=\"0\" width=\"100%\" cellspacing=\"0\">\n<tbody>\n<tr align=\"left\" height=\"100%\">\n<td width=\"50%\" valign=\"top\">\n<table cellpadding=\"0\" width=\"100%\" cellspacing=\"0\">\n<tbody>\n<tr valign=\"top\" align=\"left\">\n<td>\n<h2><span style=\"color: #009bf0; text-decoration: none solid #474747;\">Our Philosophy</span></h2>\n<p><span style=\"color: #ffffff; text-decoration: none solid #474747;\">At Tony's Pool Service, we believe in delivering a high standard of service at a fair price. We believe in excellence and completing a job right the first time. If a customer is not pleased, we do what it takes to make it right. Many of our clients have been with us for over 27 years. In many cases, we are now working with the next generation. We value the relationships we have built with our clients and are grateful for their continued loyalty.</span></p>\n<p><span style=\"color: #ffffff; text-decoration: none solid #474747;\"><a target=\"_self\" href=\"about-tony-s-pool-service.html\" class=\"button\" style=\"color: #ffffff;\">Learn More&nbsp;\u00bb</a></span></p>\n<table cellpadding=\"5\" cellspacing=\"5\" style=\"width: 100%;\">\n<tbody>\n<tr>\n<td style=\"vertical-align: top;\"><span style=\"color: #ffffff; text-decoration: none solid #474747;\"><strong>Phone</strong></span><br><span style=\"color: #ffffff; text-decoration: none solid #474747;\">(720) 408-3720</span><br><br></td>\n<td style=\"width: 60%; vertical-align: top;\"><span style=\"color: #ffffff; text-decoration: none solid #474747;\"><strong>Hours of Operation</strong></span><br><span style=\"color: #ffffff; text-decoration: none solid #474747;\">Monday - Friday: 7:00 a.m. - 4:00 p.m.</span><br><br></td>\n</tr>\n<tr>\n<td><span style=\"color: #ffffff; text-decoration: none solid #474747;\"><strong>Follow</strong></span><br><span style=\"color: #ffffff; text-decoration: none solid #474747;\"><a style=\"color: #ffffff;\" href=\"https://www.facebook.com/groups/168143147202437/?fref=nf\" target=\"_blank\"><img title=\"Facebook Icon\" assetid=\"130591635\" src=\"image/130591635.png\" border=\"0\" alt=\"Facebook Icon\" selectedfileurl=\"files/130591635.png\" mce_src=\"/matrix/servlet/ShowAsset;jsessionid=79C0A1208B439DFC7EAD10C89E182EE8?id=130591635&amp;_dt=1548096510805\"><br><br></a><span style=\"font-size: 8pt;\">&nbsp;</span></span></td>\n<td style=\"vertical-align: top;\"><span style=\"color: #ffffff; text-decoration: none solid #474747;\"><strong>Service Area</strong></span><br><span style=\"color: #ffffff; text-decoration: none solid #474747;\">Denver Metro Area</span></td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n<td width=\"50%\" valign=\"top\" align=\"center\"><span style=\"color: #ffffff; text-decoration: none solid #474747;\"><div id=\"webcom-component-form-62404572692505016\"><table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" width=\"100%\"> <tbody><tr> <td align=\"left\" valign=\"top\" width=\"45%\">&nbsp;</td> <td align=\"left\" valign=\"top\" width=\"10%\"><form id=\"webcom-component-form-62404572692505016-form\" class=\"web_com_custom_form\" method=\"post\" action=\"//forms.services.matrixbuilder.com/forms/processor.sfx\" onsubmit=\"return WebCom.Components.Form.submitInstance(this)\">\n<style>#webcom-component-form-62404572692505016 div.form_error{ color: #c70202;}\n#webcom-component-form-62404572692505016 input.form_error,#webcom-component-form-62404572692505016 textarea.form_error{border:1px dotted #c70202 !important; }</style><div class=\"form-element-wrapper\" id=\"name-id\"><label for=\"name\" class=\"form-element-label\" style=\"\">Name</label><table class=\"personName-large\" cellpadding=\"0\" cellspacing=\"0\"><tbody><tr><td class=\"FirstName\"><input class=\"form-element form-element-size-full\" id=\"name-FirstName\" type=\"text\" name=\"name-FirstName\" value=\"\" maxlength=\"\"><label for=\"name-FirstName\" class=\"personName-label\" style=\"font-size:smaller;\">First Name<span style=\"color:#cc0000;font-weight:normal\" valign=\"top\">*</span></label></td><td class=\"LastName\"><input class=\"form-element form-element-size-full\" id=\"name-LastName\" type=\"text\" name=\"name-LastName\" value=\"\" maxlength=\"\"><label for=\"name-LastName\" class=\"personName-label\" style=\"font-size:smaller;\">Last Name<span style=\"color:#cc0000;font-weight:normal\" valign=\"top\">*</span></label></td></tr></tbody></table></div><div class=\"form-element-wrapper\" id=\"email-id\"><label for=\"email\" class=\"form-element-label\" style=\"\">Email<span style=\"color:#cc0000;font-weight:normal\" valign=\"top\">*</span></label><input class=\"form-element form-element-size-large\" id=\"email\" type=\"text\" name=\"email\" value=\"\" maxlength=\"\"></div><div class=\"form-element-wrapper\" id=\"PhoneNumber-id\"><label for=\"PhoneNumber\" class=\"form-element-label\" style=\"\">Phone Number<span style=\"color:#cc0000;font-weight:normal\" valign=\"top\">*</span></label><input class=\"form-element form-element-size-large\" id=\"PhoneNumber\" type=\"text\" name=\"PhoneNumber\" value=\"\" maxlength=\"\"></div><div class=\"form-element-wrapper\" id=\"comments-id\"><label for=\"comments\" class=\"form-element-label\" style=\"\">Comments<span style=\"color:#cc0000;font-weight:normal\" valign=\"top\">*</span></label><textarea rows=\"8\" class=\"form-element form-element-size-large\" id=\"comments\" name=\"comments\"></textarea></div><div class=\"form-element-wrapper\" id=\"formClientName-id\"><label for=\"formClientName\" class=\"form-element-label\" style=\"\">Client number</label><input class=\"form-element form-element-size-medium\" id=\"formClientName\" type=\"text\" name=\"formClientName\" value=\"\" maxlength=\"\"></div><div class=\"form-element-wrapper\" id=\"Submit-id\"><div style=\"text-align: left;\"><input type=\"submit\" class=\"form-element\" name=\"Submit\" value=\"Submit\"></div></div> \n</form></td> <td align=\"left\" valign=\"top\" width=\"45%\">&nbsp;</td> </tr> </tbody></table></div></span></td>\n</tr>\n</tbody>\n</table>\n</div>\n</td>\n</tr>\n</tbody>\n</table></div></td>\n  </tr>\n</tbody></table>\n</div><br style=\"clear: both; display: none;\">\n      <!--  ADD CUSTOM BLOCK END -->\n  </td></tr>\n</tbody></table>\n<!-- END-OF home_5_im_none -->\n</div>\n    </div>\n\t<div id=\"globaltext4\" class=\"rsp_abovefooterglobaltext\"></div>\n\t<div id=\"mtx_footer\" class=\"clearfix\">\n\t\t<div id=\"footer\">\n<!-- FOOTER BLOCK -->\n<div align=\"center\">\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n  <tbody><tr>\n    <td align=\"left\" valign=\"top\">\n    <div itemscope=\"\" id=\"footer_-58_1230408\" class=\"footercontent\" itemtype=\"https://schema.org/LocalBusiness\"><div class=\"vcard\"><p class=\"businessname fn org\" itemprop=\"name\"><b>Tony's Pool Service</b></p><!--Navigation Links--><ul class=\"mtx_footnav\"><li><a href=\"/\">Home</a></li><li><a href=\"pool-supplies.html\">Products</a></li><li><a href=\"tony-s-pool-service-testimonials.html\">Testimonials</a></li><li><a href=\"tony-s-pool-service-photos.html\">Gallery</a></li><li><a href=\"about-tony-s-pool-service.html\">About Us</a></li><li><a href=\"pool-services.html\">Services</a></li><li><a href=\"contact-tony-s-pool-service.html\">Contact</a></li></ul><!--Business Address--><ul class=\"adr\" itemprop=\"address\" itemscope=\"\" itemtype=\"https://schema.org/PostalAddress\"><li class=\"locality\" itemprop=\"addressLocality\">Littleton</li>  <li class=\"region\" itemprop=\"addressRegion\">CO</li>  <li class=\"postal-code\" itemprop=\"postalCode\">80122</li></ul><!--Business Contact--><ul class=\"mtx_buscontact\"><li><span class=\"type\">Phone:</span>&nbsp;<span class=\"value\">(720) 408-3720</span></li></ul></div></div></td>\n  </tr>\n</tbody></table>\n</div><!--WSP_COPYRIGHT--><div id=\"mtx_copyright\" style=\"width:100%;text-align:center;font-size:11px;font-family:Arial\">Copyright \u00a9&nbsp;<span id=\"copyrightyear\">2026</span>&nbsp;<a href=\"//www.web.com\">Web Site Design</a>&nbsp;by Web.com Group, Inc.</div><script type=\"text/javascript\" src=\"//assets.myregisteredsite.com/javascript/copyright/webcom_copyright_kw.js\"></script><!--/WSP_COPYRIGHT-->\n\n<!-- END-OF FOOTER BLOCK -->\n</div>\n\t\t<div class=\"clearfix\"></div>\n\t\t<div id=\"globaltext3\" class=\"rsp_bottomfooterglobaltext\"></div>\n\t</div>\n\t</div>\n\n\n<!--WSP_SC-->\n<script type=\"text/javascript\">\n<!--\ndocument.write('<'+'img src=\"//scorecard.wspisp.net/logger.php'+'?tag=dW5waWQ6MjI5MTY2OTQ7d2RjX2RpZm0%3D&ref='+document.referrer+'&x='+Math.random()+'\" '+'width=\"1\" height=\"1\" alt=\"\" '+'>');\n//-->\n</script><img src=\"//scorecard.wspisp.net/logger.php?tag=dW5waWQ6MjI5MTY2OTQ7d2RjX2RpZm0%3D&amp;ref=&amp;x=0.5504286997441366\" alt=\"\">\n<noscript><img src=\"//scorecard.wspisp.net/logger.php?tag=dW5waWQ6MjI5MTY2OTQ7d2RjX2RpZm0%3D\" width=\"1\" height=\"1\" alt=\"\"></noscript>\n<!--/WSP_SC-->\n<script language=\"JavaScript\" type=\"text/javascript\">WebCom.ResourceLoader.flushResourcesQueue();</script><script language=\"JavaScript\" type=\"text/javascript\">WebCom.ComponentLoader.flushQueue();</script>\n<div id=\"slide-navContainer\" class=\"primaryColorbg clearfix\">\n<a href=\"#\" class=\"close\"><span></span></a>\n\t<div id=\"nav\">\n\t\t<div class=\"section\">\n\t\t\t\n<!-- css nav -->\n<div id=\"styleNav\" style=\"visibility: hidden;\"><ul class=\"primary-webcomMenu\"><li class=\"selected\" style=\"text-indent: 0px;\"><a href=\"/\">Home</a></li><li style=\"text-indent: 0px;\"><a href=\"pool-supplies.html\">Products</a></li><li style=\"text-indent: 0px;\"><a href=\"tony-s-pool-service-testimonials.html\">Testimonials</a></li><li style=\"text-indent: 0px;\"><a href=\"tony-s-pool-service-photos.html\">Gallery</a></li><li style=\"text-indent: 0px;\"><a href=\"about-tony-s-pool-service.html\">About Us</a></li><li style=\"text-indent: 0px;\"><a href=\"pool-services.html\">Services</a></li><li style=\"text-indent: 0px;\"><a href=\"contact-tony-s-pool-service.html\">Contact</a></li></ul></div>\n<!-- css nav -->\n\n\t\t</div>\n\t</div>\n</div><div id=\"sticky-navContainer\" class=\"primaryColorbg clearfix\" style=\"top: 0px;\">\n<a href=\"#\" class=\"close\"><span></span></a>\n\t<div class=\"section\"><div id=\"nav\">\n\t\t<div class=\"section\">\n\t\t\t\n<!-- css nav -->\n<div id=\"styleNav\" style=\"visibility: hidden;\"><ul class=\"primary-webcomMenu\"><li class=\"selected\" style=\"text-indent: 0px; display: block;\"><a href=\"/\">Home</a></li><li style=\"text-indent: 0px; display: block;\"><a href=\"pool-supplies.html\">Products</a></li><li style=\"text-indent: 0px; display: block;\"><a href=\"tony-s-pool-service-testimonials.html\">Testimonials</a></li><li style=\"text-indent: 0px; display: block;\"><a href=\"tony-s-pool-service-photos.html\">Gallery</a></li><li style=\"text-indent: 0px; display: block;\"><a href=\"about-tony-s-pool-service.html\">About Us</a></li><li style=\"text-indent: 0px; display: block;\"><a href=\"pool-services.html\">Services</a></li><li style=\"text-indent: 0px; display: block;\"><a href=\"contact-tony-s-pool-service.html\">Contact</a></li></ul></div>\n<!-- css nav -->\n\n\t\t</div>\n\t</div></div>\n</div></body></html>",
+      "colors": [
+        [
+          "rgb(71, 71, 71)",
+          365
+        ],
+        [
+          "rgb(255, 255, 255)",
+          335
+        ],
+        [
+          "rgb(0, 0, 0)",
+          112
+        ],
+        [
+          "rgb(42, 42, 42)",
+          111
+        ],
+        [
+          "rgb(128, 128, 128)",
+          93
+        ],
+        [
+          "rgb(4, 47, 88)",
+          75
+        ],
+        [
+          "rgb(128, 128, 128) rgb(71, 71, 71)",
+          15
+        ],
+        [
+          "rgba(255, 255, 255, 0)",
+          12
+        ],
+        [
+          "rgb(204, 0, 0)",
+          10
+        ],
+        [
+          "rgb(0, 155, 240)",
+          9
+        ],
+        [
+          "rgb(181, 184, 203)",
+          6
+        ],
+        [
+          "rgb(238, 238, 238)",
+          2
+        ],
+        [
+          "rgb(51, 51, 51)",
+          2
+        ],
+        [
+          "rgb(240, 240, 240)",
+          1
+        ],
+        [
+          "rgba(0, 0, 0, 0.1)",
+          1
+        ],
+        [
+          "rgba(0, 0, 0, 0.5)",
+          1
+        ]
+      ],
+      "fonts": [
+        {
+          "family": "Abril Fatface",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Abril Fatface",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Actor",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Alegreya",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Alegreya",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Alegreya",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Alegreya",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Alegreya",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Alegreya",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Alegreya",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Alegreya",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Alegreya",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Alegreya",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Alegreya",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Alegreya",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Alegreya",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Alegreya",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Alegreya",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Alegreya",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Alegreya",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Alegreya",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Alegreya",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Alegreya",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Alegreya",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Alegreya",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Alegreya",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Alegreya",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Alegreya",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Alegreya",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Alegreya",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Alegreya",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Alegreya Sans",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Alegreya Sans",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Alegreya Sans",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Alegreya Sans",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Alegreya Sans",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Alegreya Sans",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Alegreya Sans",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Alegreya Sans",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Alegreya Sans",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Alegreya Sans",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Alegreya Sans",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Alegreya Sans",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Alegreya Sans",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Alegreya Sans",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Alegreya Sans",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Alegreya Sans",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Alegreya Sans",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Alegreya Sans",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Alegreya Sans",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Alegreya Sans",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Alegreya Sans",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Alegreya Sans",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Alegreya Sans",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Alegreya Sans",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Alegreya Sans",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Alegreya Sans",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Alegreya Sans",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Alegreya Sans",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Amatic SC",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Amatic SC",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Amatic SC",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Amatic SC",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Amatic SC",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Amatic SC",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Amatic SC",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Amatic SC",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Amatic SC",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Amatic SC",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Architects Daughter",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Architects Daughter",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Archivo Narrow",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Archivo Narrow",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Archivo Narrow",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Archivo Narrow",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Archivo Narrow",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Archivo Narrow",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Archivo Narrow",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Archivo Narrow",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Archivo Narrow",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Archivo Narrow",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Archivo Narrow",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Archivo Narrow",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Arizonia",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Arizonia",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Arizonia",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Arvo",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Arvo",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Arvo",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Arvo",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Bangers",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Bangers",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Bangers",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Berkshire Swash",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Berkshire Swash",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Bevan",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Bevan",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Bevan",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Cardo",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Cardo",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Cardo",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Cardo",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Cardo",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Cardo",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Cardo",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Cardo",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Cardo",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Cardo",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Cardo",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Cardo",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Cardo",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Cardo",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Cardo",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Cardo",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Cardo",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Cardo",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Cardo",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Cardo",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Cardo",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Cardo",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Cardo",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Cardo",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Carter One",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Cinzel",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Cinzel",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Cinzel",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Cinzel",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Dancing Script",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Dancing Script",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Dancing Script",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Dancing Script",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Dancing Script",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Dancing Script",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Dosis",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Dosis",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Dosis",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Dosis",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Dosis",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Dosis",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Eczar",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Eczar",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Eczar",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Eczar",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Eczar",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Eczar",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Eczar",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Eczar",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Eczar",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Eczar",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Gravitas One",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Inknut Antiqua",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Inknut Antiqua",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Inknut Antiqua",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Inknut Antiqua",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Inknut Antiqua",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Inknut Antiqua",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Italiana",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Josefin Sans",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Josefin Sans",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Josefin Sans",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Josefin Sans",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Josefin Sans",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Josefin Sans",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Josefin Sans",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Josefin Sans",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Josefin Sans",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Josefin Sans",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Josefin Sans",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Josefin Sans",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Josefin Slab",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Josefin Slab",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Josefin Slab",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Josefin Slab",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Lato",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Lato",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Lato",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Lato",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Lato",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Lato",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Lato",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Lato",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Libre Baskerville",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Libre Baskerville",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Libre Baskerville",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Libre Baskerville",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Libre Baskerville",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Libre Baskerville",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Lobster",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Lobster",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Lobster",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Lobster",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Lobster",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Lora",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Lora",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Lora",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Lora",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Lora",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Lora",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Lora",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Lora",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Lora",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Lora",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Lora",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Lora",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Lora",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Lora",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Lora",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Lora",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Lora",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Lora",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Lora",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Lora",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Lora",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Lora",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Lora",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Lora",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Lora",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Lora",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Lora",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Lora",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Love Ya Like A Sister",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Love Ya Like A Sister",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Lusitana",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Lusitana",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Merriweather",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Merriweather",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Merriweather",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Merriweather",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Merriweather",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Merriweather",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Merriweather",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Merriweather",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Merriweather",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Merriweather",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Merriweather",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Merriweather",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Merriweather",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Merriweather",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Merriweather",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Merriweather",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Merriweather",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Merriweather",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Merriweather",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Merriweather",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Merriweather Sans",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Merriweather Sans",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Merriweather Sans",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Merriweather Sans",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Merriweather Sans",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Merriweather Sans",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Merriweather Sans",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Merriweather Sans",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Merriweather Sans",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Merriweather Sans",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Merriweather Sans",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Merriweather Sans",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Merriweather Sans",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Merriweather Sans",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Merriweather Sans",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Merriweather Sans",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Montserrat",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Montserrat",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Montserrat",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Montserrat",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Montserrat",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Montserrat",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Montserrat",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Montserrat",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Montserrat",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Montserrat",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Montserrat",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Montserrat",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Montserrat",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Montserrat",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Montserrat",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Montserrat",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Montserrat",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Montserrat",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Montserrat",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Montserrat",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Muli",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Muli",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Muli",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Muli",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Muli",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Muli",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Muli",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Muli",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Muli",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Muli",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Muli",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Muli",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Old Standard TT",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Old Standard TT",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Old Standard TT",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Old Standard TT",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Old Standard TT",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Old Standard TT",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Old Standard TT",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Old Standard TT",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Old Standard TT",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Old Standard TT",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Old Standard TT",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Old Standard TT",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Old Standard TT",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Old Standard TT",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Old Standard TT",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Oleo Script",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Oleo Script",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Oleo Script",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Oleo Script",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Open Sans",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Oswald",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Oswald",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Oswald",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Oswald",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Oswald",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Oswald",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Oswald",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Oswald",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Oswald",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Oswald",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Overlock SC",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Overlock SC",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "PT Sans",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "PT Sans",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "PT Sans",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "PT Sans",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "PT Sans",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "PT Sans",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "PT Sans",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "PT Sans",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "PT Sans",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "PT Sans",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "PT Sans",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "PT Sans",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "PT Sans",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "PT Sans",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "PT Sans",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "PT Sans",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "PT Serif",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "PT Serif",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "PT Serif",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "PT Serif",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "PT Serif",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "PT Serif",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "PT Serif",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "PT Serif",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "PT Serif",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "PT Serif",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "PT Serif",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "PT Serif",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "PT Serif",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "PT Serif",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "PT Serif",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "PT Serif",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Pacifico",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Pacifico",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Pacifico",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Pacifico",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Pacifico",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Permanent Marker",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Playfair Display",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Playfair Display",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Playfair Display",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Playfair Display",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Playfair Display",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Playfair Display",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Playfair Display",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Playfair Display",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Playfair Display",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Playfair Display",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Playfair Display",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Playfair Display",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Playfair Display",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Playfair Display",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Playfair Display",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Playfair Display",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Raleway",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Raleway",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Raleway",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Raleway",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Raleway",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Raleway",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Raleway",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Raleway",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Raleway",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Raleway",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Raleway",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Raleway",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Raleway",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Raleway",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Raleway",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Raleway",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Raleway",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Raleway",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Raleway",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Raleway",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Roboto",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Roboto",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Roboto",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Roboto",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Roboto",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Roboto",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Roboto",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Roboto",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Roboto",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Roboto",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Roboto",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Roboto",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Roboto",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Roboto",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Roboto",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Roboto",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Roboto",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Roboto",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Roboto",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Roboto",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Roboto",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Roboto",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Roboto",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Roboto",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Roboto",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Roboto",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Roboto",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Roboto",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Roboto",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Roboto",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Roboto",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Roboto",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Roboto",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Roboto",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Roboto",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Roboto",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Rubik",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Rubik",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Rubik",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Rubik",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Rubik",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Rubik",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Rubik",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Rubik",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Rubik",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Rubik",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Rubik",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Rubik",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Rubik",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Rubik",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Rubik",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Rubik",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Rubik",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Rubik",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Rubik",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Rubik",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Rubik",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Rubik",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Rubik",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Rubik",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Russo One",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Russo One",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Russo One",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Shadows Into Light",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Shadows Into Light",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Stalemate",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Stalemate",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Tangerine",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Tangerine",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Ubuntu",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Ubuntu",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Ubuntu",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Ubuntu",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Ubuntu",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Ubuntu",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Ubuntu",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Ubuntu",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Ubuntu",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Ubuntu",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Ubuntu",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Ubuntu",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Ubuntu",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Ubuntu",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Ubuntu",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Ubuntu",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Ubuntu",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Ubuntu",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Ubuntu",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Ubuntu",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Ubuntu",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Ubuntu",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Ubuntu",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Ubuntu",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "UnifrakturCook",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Vollkorn",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Vollkorn",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Vollkorn",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Vollkorn",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Vollkorn",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Vollkorn",
+          "weight": "400",
+          "style": "italic"
+        },
+        {
+          "family": "Vollkorn",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Vollkorn",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Vollkorn",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Vollkorn",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Vollkorn",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Vollkorn",
+          "weight": "700",
+          "style": "italic"
+        },
+        {
+          "family": "Vollkorn",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Vollkorn",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Vollkorn",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Vollkorn",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Vollkorn",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Vollkorn",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Vollkorn",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Vollkorn",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Vollkorn",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Vollkorn",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Vollkorn",
+          "weight": "700",
+          "style": "normal"
+        },
+        {
+          "family": "Vollkorn",
+          "weight": "700",
+          "style": "normal"
+        }
+      ],
+      "url": "https://www.tonyspoolservice.com/",
+      "#error": false,
+      "#debug": {
+        "requestId": "tFQIf7eihuif7gk",
+        "url": "https://www.tonyspoolservice.com/",
+        "loadedUrl": "https://www.tonyspoolservice.com/",
+        "method": "GET",
+        "retryCount": 0,
+        "errorMessages": [],
+        "statusCode": 200
+      }
+    }
+  ]
+}

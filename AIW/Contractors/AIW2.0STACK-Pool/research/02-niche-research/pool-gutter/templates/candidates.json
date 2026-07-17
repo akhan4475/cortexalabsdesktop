@@ -1,0 +1,95 @@
+{
+  "niche": "pool-services",
+  "generated": "2026-05-20",
+  "sources": {
+    "agencies_file": "01-agencies.md",
+    "cro_file": "04-cro-patterns.md",
+    "seo_file": "06-seo-landscape.md",
+    "external": "cyberoptik.net/blog/best-pool-cleaning-websites"
+  },
+  "candidates": [
+    {
+      "slug": "payan-pools",
+      "url": "https://payanpools.com/",
+      "company": "Payan Pool Service",
+      "market": "Phoenix, AZ",
+      "segment": "full-service cleaning + maintenance",
+      "why_included": "Sun Belt market, sophisticated color scheme, clean layout, credentials and CTAs above fold. Phoenix = year-round demand."
+    },
+    {
+      "slug": "supreme-pool-service",
+      "url": "https://supremepoolservice.com/",
+      "company": "Supreme Pool Service",
+      "market": "Houston, TX",
+      "segment": "cleaning + repair + products",
+      "why_included": "Sun Belt market, detailed service information architecture, strong product/service separation. Houston is a top pool density market."
+    },
+    {
+      "slug": "aquatic-pool-spa",
+      "url": "https://www.aquaticpoolandspa.com/",
+      "company": "Aquatic Pool & Spa Service",
+      "market": "Orlando, FL",
+      "segment": "pool + spa cleaning and repair",
+      "why_included": "Sun Belt market, heavy video and image use, modern design. Florida pool density is among the highest in the US."
+    },
+    {
+      "slug": "blue-science-pools",
+      "url": "https://www.bluescience.com/",
+      "company": "Blue Science Pools",
+      "market": "Dallas, TX",
+      "segment": "cleaning + maintenance + multiple service areas",
+      "why_included": "Sun Belt market, multi-city service area architecture, strong local SEO structure. Good reference for scaling a pool service site."
+    },
+    {
+      "slug": "forever-blue-pools",
+      "url": "https://4everbluepools.com/",
+      "company": "Forever Blue Pools",
+      "market": "San Antonio, TX",
+      "segment": "cleaning + maintenance + trust-first",
+      "why_included": "Veteran-owned trust signals, strong personal brand. Good reference for trust stack and about-page patterns."
+    },
+    {
+      "slug": "desert-mountain-pool",
+      "url": "https://www.desertmountainpoolcare.com/",
+      "company": "Desert Mountain Pool Service",
+      "market": "Scottsdale, AZ",
+      "segment": "cleaning + maintenance",
+      "why_included": "Clean user-friendly layout, intuitive navigation. Scottsdale is high-income pool market. Good UX reference."
+    },
+    {
+      "slug": "tonys-pool-service",
+      "url": "https://www.tonyspoolservice.com/",
+      "company": "Tony's Pool and Spa Services",
+      "market": "Austin, TX",
+      "segment": "cleaning + spa + online quote",
+      "why_included": "Online quote tool integration, personalized estimate platform. Best-in-class lead capture pattern for this niche."
+    },
+    {
+      "slug": "patriot-pool-spa",
+      "url": "https://www.patriotpoolandspa.com/",
+      "company": "Patriot Pool and Spa",
+      "market": "Dallas/Fort Worth, TX",
+      "segment": "cleaning + maintenance + AI chatbot",
+      "why_included": "Standout: AI chatbot integration cited as primary differentiator. Directly relevant to our planned Voiceflow chatbot upsell."
+    },
+    {
+      "slug": "pool-troopers",
+      "url": "https://www.pooltroopers.com/",
+      "company": "Pool Troopers",
+      "market": "Multi-market (TX, FL, AZ)",
+      "segment": "recurring cleaning + pricing transparency",
+      "why_included": "Best example of transparent pricing on homepage, embedded video autoplay, location-based service finder. Multi-state operator with strong CRO patterns."
+    },
+    {
+      "slug": "rising-sun-pools",
+      "url": "https://www.risingsunpools.com/",
+      "company": "Rising Sun Pools",
+      "market": "Raleigh, NC",
+      "segment": "cleaning + installation + renovation",
+      "why_included": "Clear above-fold CTA pattern, strong gallery section. Good reference for installation + maintenance combo sites."
+    }
+  ],
+  "total": 10,
+  "status": "captured",
+  "capture_cost_usd": 0.6877
+}

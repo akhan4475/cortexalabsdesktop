@@ -1,0 +1,47 @@
+{
+  "niche": "roofing",
+  "page_count": 4,
+  "pages": [
+    {
+      "page": 1,
+      "title": "Cover",
+      "content": [
+        "Client company name (large, prominent)",
+        "Prepared by: {student agency name}",
+        "Date",
+        "Hero image: completed roof (same mood as site hero -- low angle, golden hour)"
+      ]
+    },
+    {
+      "page": 2,
+      "title": "The Opportunity",
+      "content": [
+        "Current digital presence audit: what their site looks like now vs competitors",
+        "What homeowners see when they search their name or their service + city",
+        "Gap: trust signals they are missing (no review count visible, no license number, no before/after photos)",
+        "Cost of that gap in plain numbers: 'If you convert 1 more job per month from your site at $8k average ticket, that is $96k/year.'"
+      ]
+    },
+    {
+      "page": 3,
+      "title": "What You Get",
+      "content": [
+        "Website preview (screenshot of the roofing template rendered with their branding)",
+        "14-section home page breakdown with what each section does for the homeowner",
+        "AI chatbot integration point (Voiceflow) -- what it handles",
+        "Mobile-first design (MobileStickyBar always visible)",
+        "Delivery timeline: 5 business days from deposit"
+      ]
+    },
+    {
+      "page": 4,
+      "title": "Investment",
+      "content": [
+        "One-time build fee: $1,000 to $2,000 (student sets based on market)",
+        "What is included: build, copywriting, one revision round, Vercel deploy",
+        "What is not included: hosting (client's Vercel account, free tier), domain, future content updates",
+        "Next step: 'Reply to this email or call {phone} to get started.'"
+      ]
+    }
+  ]
+}

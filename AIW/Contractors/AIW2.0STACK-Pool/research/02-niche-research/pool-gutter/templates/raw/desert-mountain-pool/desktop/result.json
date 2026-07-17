@@ -1,0 +1,21 @@
+{
+  "run_id": "4A9GbkqlUfgdgNZTa",
+  "cost_usd": 0.06798222222222222,
+  "items": [
+    {
+      "#error": true,
+      "#debug": {
+        "requestId": "UNaH2MyRzSvTJn1",
+        "url": "https://www.desertmountainpoolcare.com/",
+        "method": "GET",
+        "retryCount": 3,
+        "errorMessages": [
+          "Error: Navigation timed out after 60 seconds.\n    at handleRequestTimeout (/home/myuser/node_modules/@crawlee/core/crawlers/crawler_utils.js:13:11)\n    at PlaywrightCrawler._handleNavigationTimeout (/home/myuser/node_modules/@crawlee/browser/internals/browser-crawler.js:360:46)\n    at PlaywrightCrawler._handleNavigation (/home/myuser/node_modules/@crawlee/browser/internals/browser-crawler.js:337:24)\n    at async PlaywrightCrawler._runRequestHandler (/home/myuser/node_modules/@crawlee/browser/internals/browser-crawler.js:260:13)\n    at async PlaywrightCrawler._runRequestHandler (/home/myuser/node_modules/@crawlee/playwright/internals/playwright-crawler.js:114:9)\n    at async wrap (/home/myuser/node_modules/@apify/timeout/cjs/index.cjs:54:21)",
+          "Error: Navigation timed out after 60 seconds.\n    at handleRequestTimeout (/home/myuser/node_modules/@crawlee/core/crawlers/crawler_utils.js:13:11)\n    at PlaywrightCrawler._handleNavigationTimeout (/home/myuser/node_modules/@crawlee/browser/internals/browser-crawler.js:360:46)\n    at PlaywrightCrawler._handleNavigation (/home/myuser/node_modules/@crawlee/browser/internals/browser-crawler.js:337:24)\n    at async PlaywrightCrawler._runRequestHandler (/home/myuser/node_modules/@crawlee/browser/internals/browser-crawler.js:260:13)\n    at async PlaywrightCrawler._runRequestHandler (/home/myuser/node_modules/@crawlee/playwright/internals/playwright-crawler.js:114:9)\n    at async wrap (/home/myuser/node_modules/@apify/timeout/cjs/index.cjs:54:21)",
+          "Error: Navigation timed out after 60 seconds.\n    at handleRequestTimeout (/home/myuser/node_modules/@crawlee/core/crawlers/crawler_utils.js:13:11)\n    at PlaywrightCrawler._handleNavigationTimeout (/home/myuser/node_modules/@crawlee/browser/internals/browser-crawler.js:360:46)\n    at PlaywrightCrawler._handleNavigation (/home/myuser/node_modules/@crawlee/browser/internals/browser-crawler.js:337:24)\n    at async PlaywrightCrawler._runRequestHandler (/home/myuser/node_modules/@crawlee/browser/internals/browser-crawler.js:260:13)\n    at async PlaywrightCrawler._runRequestHandler (/home/myuser/node_modules/@crawlee/playwright/internals/playwright-crawler.js:114:9)\n    at async wrap (/home/myuser/node_modules/@apify/timeout/cjs/index.cjs:54:21)",
+          "Error: Navigation timed out after 60 seconds.\n    at handleRequestTimeout (/home/myuser/node_modules/@crawlee/core/crawlers/crawler_utils.js:13:11)\n    at PlaywrightCrawler._handleNavigationTimeout (/home/myuser/node_modules/@crawlee/browser/internals/browser-crawler.js:360:46)\n    at PlaywrightCrawler._handleNavigation (/home/myuser/node_modules/@crawlee/browser/internals/browser-crawler.js:337:24)\n    at async PlaywrightCrawler._runRequestHandler (/home/myuser/node_modules/@crawlee/browser/internals/browser-crawler.js:260:13)\n    at async PlaywrightCrawler._runRequestHandler (/home/myuser/node_modules/@crawlee/playwright/internals/playwright-crawler.js:114:9)\n    at async wrap (/home/myuser/node_modules/@apify/timeout/cjs/index.cjs:54:21)"
+        ]
+      }
+    }
+  ]
+}

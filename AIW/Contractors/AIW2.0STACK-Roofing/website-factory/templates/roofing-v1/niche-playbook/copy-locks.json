@@ -1,0 +1,37 @@
+{
+  "_comment": "Strings that must appear verbatim. The copy agent cannot paraphrase these.",
+  "niche": "roofing",
+  "locks": [
+    {
+      "id": "no_storm_pressure",
+      "copy": "We never pressure you after a storm. We give you the facts and let you decide.",
+      "reason": "Storm chasers are the #1 distrust signal for roofing homeowners. This line directly addresses the fear."
+    },
+    {
+      "id": "insurance_help_included",
+      "copy": "Insurance help is included at no extra charge.",
+      "reason": "Homeowners assume insurance navigation costs extra. Naming the inclusion removes friction."
+    },
+    {
+      "id": "written_estimate",
+      "copy": "Every estimate is written and itemized. No surprises on invoice.",
+      "reason": "Surprise charges are the most common 1-star review trigger in roofing."
+    },
+    {
+      "id": "cleanup_guarantee",
+      "copy": "We run a magnet over the yard and haul every shingle. We leave it cleaner than we found it.",
+      "reason": "Nails in the yard/pool are a recurring homeowner nightmare. Specificity here converts."
+    }
+  ],
+  "blocklist_additions": [
+    "industry-leading",
+    "top-rated",
+    "premium quality",
+    "world-class",
+    "state-of-the-art",
+    "revolutionary",
+    "disruptive",
+    "passion",
+    "passionate"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "niche": "landscaping",
+  "generatedAt": "2026-07-01T03:43:41.110922+00:00",
+  "generator": "tools/generate-factory.py",
+  "blueprintVersion": "1.0",
+  "tokensSource": "research\\02-niche-research\\landscaping\\niche-design-tokens.json",
+  "files": [
+    ".gitignore",
+    "README.md",
+    "eslint.config.js",
+    "index.html",
+    "package.json",
+    "postcss.config.js",
+    "scripts\\inject-theme.mjs",
+    "scripts\\validate-brand-dna.mjs",
+    "src\\App.jsx",
+    "src\\config\\brand-dna.example.js",
+    "src\\config\\brand-dna.js",
+    "src\\index.css",
+    "src\\main.jsx",
+    "tailwind.config.js",
+    "vercel.json",
+    "vite.config.js"
+  ]
+}

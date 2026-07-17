@@ -1,0 +1,112 @@
+{
+  "niche": "landscaping",
+  "generatedAt": "2026-06-30",
+  "routes": [
+    {
+      "path": "/",
+      "page": "HomePage",
+      "file": "HomePage.jsx",
+      "title": "[Company] | [City] Landscaping Design & Installation",
+      "keywordAnchors": ["landscaping company [city]", "landscape design [city]", "lawn care [city]"],
+      "sections": ["TrustBar", "NavBar", "HeroSection", "TrustBarInline", "ServicesSection", "PortfolioSection", "WhyChooseSection", "ProcessSection", "ReviewsSection", "FounderSection", "ServiceAreasSection", "FaqSection", "CtaFinalSection", "FooterSection"]
+    },
+    {
+      "path": "/services",
+      "page": "ServicesPage",
+      "file": "ServicesPage.jsx",
+      "title": "Landscaping Services | [Company] [City]",
+      "keywordAnchors": ["landscaping services [city]", "landscape design install [city]"],
+      "sections": ["NavBar", "HeroSection", "ServicesSection", "WhyChooseSection", "CtaFinalSection", "FooterSection"]
+    },
+    {
+      "path": "/services/:slug",
+      "page": "ServiceDetailPage",
+      "file": "ServiceDetailPage.jsx",
+      "title": "[Service] | [Company] [City]",
+      "keywordAnchors": ["[service] [city]", "[service] near me"],
+      "sections": ["NavBar", "HeroSection", "PortfolioSection", "ProcessSection", "FaqSection", "CtaFinalSection", "FooterSection"],
+      "isDynamic": true
+    },
+    {
+      "path": "/portfolio",
+      "page": "PortfolioPage",
+      "file": "PortfolioPage.jsx",
+      "title": "Our Work | [Company] Landscaping Portfolio",
+      "keywordAnchors": ["landscaping portfolio [city]", "landscape design examples [city]"],
+      "sections": ["NavBar", "PortfolioSection", "CtaFinalSection", "FooterSection"]
+    },
+    {
+      "path": "/about",
+      "page": "AboutPage",
+      "file": "AboutPage.jsx",
+      "title": "About Us | [Company] [City] Landscaping",
+      "keywordAnchors": ["about [company] landscaping", "local landscaper [city]"],
+      "sections": ["NavBar", "FounderSection", "WhyChooseSection", "ReviewsSection", "CtaFinalSection", "FooterSection"]
+    },
+    {
+      "path": "/reviews",
+      "page": "ReviewsPage",
+      "file": "ReviewsPage.jsx",
+      "title": "Customer Reviews | [Company] [City]",
+      "keywordAnchors": ["[company] reviews", "best landscaper [city] reviews"],
+      "sections": ["NavBar", "TrustBarInline", "ReviewsSection", "CtaFinalSection", "FooterSection"]
+    },
+    {
+      "path": "/service-areas",
+      "page": "ServiceAreasPage",
+      "file": "ServiceAreasPage.jsx",
+      "title": "Service Areas | [Company] Landscaping",
+      "keywordAnchors": ["landscaping service area [city]", "landscaper near me"],
+      "sections": ["NavBar", "ServiceAreasSection", "CtaFinalSection", "FooterSection"]
+    },
+    {
+      "path": "/service-areas/:citySlug",
+      "page": "ServiceAreaDetailPage",
+      "file": "ServiceAreaDetailPage.jsx",
+      "title": "Landscaping in [City] | [Company]",
+      "keywordAnchors": ["landscaping [city]", "lawn care [city]", "landscape design [city]"],
+      "sections": ["NavBar", "HeroSection", "ServicesSection", "ReviewsSection", "CtaFinalSection", "FooterSection"],
+      "isDynamic": true
+    },
+    {
+      "path": "/blog",
+      "page": "BlogPage",
+      "file": "BlogPage.jsx",
+      "title": "Landscaping Tips & Guides | [Company] Blog",
+      "keywordAnchors": ["landscaping ideas [city]", "how much does landscaping cost"],
+      "sections": ["NavBar", "BlogIndexSection", "CtaFinalSection", "FooterSection"]
+    },
+    {
+      "path": "/blog/:slug",
+      "page": "BlogPostPage",
+      "file": "BlogPostPage.jsx",
+      "title": "[Post Title] | [Company] Blog",
+      "keywordAnchors": ["landscaping cost [city]", "backyard landscaping ideas"],
+      "sections": ["NavBar", "BlogPostSection", "CtaFinalSection", "FooterSection"],
+      "isDynamic": true
+    },
+    {
+      "path": "/faq",
+      "page": "FaqPage",
+      "file": "FaqPage.jsx",
+      "title": "Landscaping FAQ | [Company] [City]",
+      "keywordAnchors": ["how much does landscaping cost [city]", "landscaping questions"],
+      "sections": ["NavBar", "FaqSection", "CtaFinalSection", "FooterSection"]
+    },
+    {
+      "path": "/contact",
+      "page": "ContactPage",
+      "file": "ContactPage.jsx",
+      "title": "Contact Us | [Company] [City] Landscaping",
+      "keywordAnchors": ["contact [company]", "landscaping quote [city]"],
+      "sections": ["NavBar", "CtaFinalSection", "ServiceAreasSection", "FooterSection"]
+    },
+    {
+      "path": "*",
+      "page": "NotFoundPage",
+      "file": "NotFoundPage.jsx",
+      "title": "Page Not Found | [Company]",
+      "sections": ["NavBar", "NotFoundSection", "FooterSection"]
+    }
+  ]
+}

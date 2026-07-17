@@ -24,7 +24,7 @@ export interface Campaign {
   createdAt: string;
   leadCount: number;
   niche?: NicheId;
-  campaignType?: 'ig_dm' | 'whatsapp_dm' | 'call';
+  campaignType?: 'calls' | 'dms' | 'emails';
 }
 
 // ── Content Engine ────────────────────────────────────────────────────────────

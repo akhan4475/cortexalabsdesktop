@@ -1,0 +1,17 @@
+{
+  "niche": "landscaping",
+  "generatedAt": "2026-06-30",
+  "sources": ["Module 2B agencies", "Module 2B CRO patterns", "SERP search", "student pick"],
+  "candidates": [
+    { "slug": "southernbotanical", "url": "https://www.southernbotanical.com/", "market": "Dallas TX" },
+    { "slug": "scapesincorporated", "url": "https://scapesincorporated.com/", "market": "Dallas TX luxury" },
+    { "slug": "keanelandscaping", "url": "https://keanelandscaping.com/", "market": "Dallas TX" },
+    { "slug": "splendidgardens", "url": "https://www.splendidgardens.net/", "market": "Dallas TX" },
+    { "slug": "divinedesign", "url": "https://www.divinedesignlawncare.com/", "market": "Phoenix AZ" },
+    { "slug": "mountainscapers", "url": "https://www.mountainscapers.com/", "market": "Phoenix AZ" },
+    { "slug": "outsidelandscapegroup", "url": "https://outsidelandscapegroup.com/", "market": "Atlanta GA luxury" },
+    { "slug": "greenoasis", "url": "https://greenoasis-chi.vercel.app/", "market": "design reference (student pick)" },
+    { "slug": "gibbslandscape", "url": "https://gibbslandscape.com/", "market": "Atlanta GA" },
+    { "slug": "completelandsculpture", "url": "https://completelandsculpture.com/", "market": "award-winning" }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "niche": "landscaping",
+  "version": "1.0",
+  "default_steps": [
+    {
+      "n": 1,
+      "title": "Free Consultation",
+      "body": "We visit your property, listen to your vision, and walk the space together. No pressure, no obligation."
+    },
+    {
+      "n": 2,
+      "title": "Custom Design + Quote",
+      "body": "We design a plan around your goals and budget, then send a clear written quote within 24 hours."
+    },
+    {
+      "n": 3,
+      "title": "We Build It Right",
+      "body": "Our crew handles everything — site prep, installation, and full cleanup. You get the yard you imagined."
+    }
+  ],
+  "badge_text": "Most clients are booked within 48 hours.",
+  "badge_subtext": "We keep our schedule tight so every project gets full attention.",
+  "section_heading": "How It Works",
+  "section_label": "Simple Process",
+  "section_body": "Three steps from your first call to a yard you love."
+}

@@ -1,0 +1,731 @@
+[{
+  "#debug": {
+    "requestId": "juGf12mE32yqCH4",
+    "url": "http://www.google.com/search?q=best+landscape+design+install+Atlanta+GA",
+    "loadedUrl": "http://www.google.com/search?q=best+landscape+design+install+Atlanta+GA",
+    "method": "GET",
+    "retryCount": 0,
+    "errorMessages": [],
+    "statusCode": 200
+  },
+  "#error": false,
+  "searchQuery": {
+    "term": "best landscape design install Atlanta GA",
+    "url": "http://www.google.com/search?q=best+landscape+design+install+Atlanta+GA",
+    "device": "DESKTOP",
+    "page": 1,
+    "type": "SEARCH",
+    "domain": "google.com",
+    "countryCode": "US",
+    "languageCode": null,
+    "locationUule": null,
+    "resultsPerPage": 10
+  },
+  "url": "http://www.google.com/search?q=best+landscape+design+install+Atlanta+GA",
+  "hasNextPage": true,
+  "serpProviderCode": "N",
+  "resultsTotal": null,
+  "relatedQueries": [
+    {
+      "title": "Best landscape design install atlanta ga reviews",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Best+landscape+design+install+atlanta+ga+reviews&sa=X&ved=2ahUKEwi33remvLCVAxVG3gIHHbZJNfsQ1QJ6BAguEAE"
+    },
+    {
+      "title": "Best landscape design install atlanta ga reddit",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Best+landscape+design+install+atlanta+ga+reddit&sa=X&ved=2ahUKEwi33remvLCVAxVG3gIHHbZJNfsQ1QJ6BAhPEAE"
+    },
+    {
+      "title": "Residential landscape architect Atlanta",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Residential+landscape+architect+Atlanta&sa=X&ved=2ahUKEwi33remvLCVAxVG3gIHHbZJNfsQ1QJ6BAhLEAE"
+    },
+    {
+      "title": "Landscape designer Atlanta",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Landscape+designer+Atlanta&sa=X&ved=2ahUKEwi33remvLCVAxVG3gIHHbZJNfsQ1QJ6BAhDEAE"
+    },
+    {
+      "title": "Top atlanta landscape companies",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Top+atlanta+landscape+companies&sa=X&ved=2ahUKEwi33remvLCVAxVG3gIHHbZJNfsQ1QJ6BAg7EAE"
+    },
+    {
+      "title": "Residential landscaping Atlanta",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Residential+landscaping+Atlanta&sa=X&ved=2ahUKEwi33remvLCVAxVG3gIHHbZJNfsQ1QJ6BAg5EAE"
+    },
+    {
+      "title": "Commercial landscaping Atlanta",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Commercial+landscaping+Atlanta&sa=X&ved=2ahUKEwi33remvLCVAxVG3gIHHbZJNfsQ1QJ6BAg3EAE"
+    },
+    {
+      "title": "Gibbs Landscape Company",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Gibbs+Landscape+Company&sa=X&ved=2ahUKEwi33remvLCVAxVG3gIHHbZJNfsQ1QJ6BAgvEAE"
+    },
+    {
+      "title": "Best landscape design install atlanta ga reviews",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Best+landscape+design+install+atlanta+ga+reviews&sa=X&ved=2ahUKEwi33remvLCVAxVG3gIHHbZJNfsQ1QJ6BAguEAE"
+    },
+    {
+      "title": "Best landscape design install atlanta ga reddit",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Best+landscape+design+install+atlanta+ga+reddit&sa=X&ved=2ahUKEwi33remvLCVAxVG3gIHHbZJNfsQ1QJ6BAhPEAE"
+    },
+    {
+      "title": "Residential landscape architect Atlanta",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Residential+landscape+architect+Atlanta&sa=X&ved=2ahUKEwi33remvLCVAxVG3gIHHbZJNfsQ1QJ6BAhLEAE"
+    },
+    {
+      "title": "Landscape designer Atlanta",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Landscape+designer+Atlanta&sa=X&ved=2ahUKEwi33remvLCVAxVG3gIHHbZJNfsQ1QJ6BAhDEAE"
+    },
+    {
+      "title": "Top atlanta landscape companies",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Top+atlanta+landscape+companies&sa=X&ved=2ahUKEwi33remvLCVAxVG3gIHHbZJNfsQ1QJ6BAg7EAE"
+    },
+    {
+      "title": "Residential landscaping Atlanta",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Residential+landscaping+Atlanta&sa=X&ved=2ahUKEwi33remvLCVAxVG3gIHHbZJNfsQ1QJ6BAg5EAE"
+    },
+    {
+      "title": "Commercial landscaping Atlanta",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Commercial+landscaping+Atlanta&sa=X&ved=2ahUKEwi33remvLCVAxVG3gIHHbZJNfsQ1QJ6BAg3EAE"
+    },
+    {
+      "title": "Gibbs Landscape Company",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Gibbs+Landscape+Company&sa=X&ved=2ahUKEwi33remvLCVAxVG3gIHHbZJNfsQ1QJ6BAgvEAE"
+    }
+  ],
+  "paidResults": [],
+  "paidProducts": [],
+  "organicResults": [
+    {
+      "title": "Best 15 Landscape Architects & Designers in Atlanta, GA",
+      "websiteTitle": "Houzz",
+      "url": "https://www.houzz.com/professionals/landscape-architect/atlanta-ga-us-probr0-bo~t_11788~r_4180439",
+      "displayedUrl": "https://www.houzz.com › ... › Atlanta / 50 mi",
+      "description": "Atlanta's Tilting Windmill Landscape Design specializes in residential and commercial landscape and garden design and installation. Our approa... Read More.Read more",
+      "emphasizedKeywords": [
+        "Atlanta's Tilting Windmill Landscape Design"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 1
+    },
+    {
+      "title": "Gibbs Landscape Company: Residential and Commercial ...",
+      "websiteTitle": "Gibbs Landscape Company",
+      "url": "https://gibbslandscape.com/",
+      "displayedUrl": "https://gibbslandscape.com",
+      "description": "With over 300 awards, Gibbs Landscape Company earned the reputation as Atlanta's premier landscape design/build and maintenance company. Request a Quote.Read more",
+      "emphasizedKeywords": [
+        "Gibbs Landscape Company"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 2
+    },
+    {
+      "title": "Landscape designer to help update a backyard - Atlanta",
+      "websiteTitle": "Reddit · r/Atlanta",
+      "url": "https://www.reddit.com/r/Atlanta/comments/w3v5nn/landscape_designer_to_help_update_a_backyard/",
+      "displayedUrl": "Reddit › r/Atlanta",
+      "description": "[ Beauty Berry Gardens ](https://www.beautyberrygardens.com/) in Decatur is local and great for landscape design!Read more",
+      "emphasizedKeywords": [
+        "Beauty Berry Gardens"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "commentsAmount": "30+ comments",
+      "lastUpdated": "3 years ago",
+      "type": "organic",
+      "position": 3
+    },
+    {
+      "title": "Atlanta Landscape Design Company",
+      "websiteTitle": "designedlandscapes.com",
+      "url": "https://designedlandscapes.com/",
+      "displayedUrl": "https://designedlandscapes.com",
+      "description": "We are an Atlanta landscape design company, specializing in designing and installing beautiful, sustainable, and functional landscapes for homeowners like you.Read more",
+      "emphasizedKeywords": [
+        "designing and installing beautiful, sustainable, and functional landscapes"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 4
+    },
+    {
+      "title": "Wilson Bros. Landscape -",
+      "websiteTitle": "Wilson Bros. Landscape -",
+      "url": "https://www.wilsonbroslandscape.com/",
+      "displayedUrl": "https://www.wilsonbroslandscape.com",
+      "description": "We are a professional landscape design-build company with a 24 year history of respected, professional design and installation work.Read more",
+      "emphasizedKeywords": [
+        "professional landscape design-build company"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 5
+    },
+    {
+      "title": "TOP 10 BEST Landscape Design in Atlanta, GA",
+      "websiteTitle": "Yelp",
+      "url": "https://www.yelp.com/search?find_desc=Landscape+Design&find_loc=Atlanta%2C+GA",
+      "displayedUrl": "https://www.yelp.com › Home Services",
+      "description": "Top 10 Best Landscape Design Near Atlanta, Georgia · Varela's Landscaping · BM Landscaping · Professional Ground Cover · EJ Elite Hardscape · Gardening Thyme · G&A ...Read more",
+      "emphasizedKeywords": [
+        "Varela's Landscaping"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "averageRating": 4.3,
+      "numberOfReviews": 919,
+      "type": "organic",
+      "position": 6
+    },
+    {
+      "title": "Best Gardening and Landscaping in Atlanta, Georgia of 2026",
+      "websiteTitle": "Trees.com",
+      "url": "https://www.trees.com/gardening-and-landscaping/atlanta-ga",
+      "displayedUrl": "https://www.trees.com › atlanta-ga",
+      "description": "Affordable Landscaping Services designs, installs, and maintains landscapes and irrigation systems for residential and commercial clients.Read more",
+      "date": "2024-07-05T12:00:00.000Z",
+      "emphasizedKeywords": [
+        "designs, installs, and maintains landscapes and irrigation systems"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 7
+    },
+    {
+      "title": "Luxury Landscaping in Atlanta, Alpharetta & Surrounding Areas",
+      "websiteTitle": "Outside Landscape Group",
+      "url": "https://outsidelandscapegroup.com/",
+      "displayedUrl": "https://outsidelandscapegroup.com",
+      "description": "Luxury landscape company in Atlanta, Alpharetta & Surrounding areas. Expert landscape design & installation. 20+ years of expertise. Custom solutions.",
+      "emphasizedKeywords": [
+        "Expert landscape design & installation"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 8
+    },
+    {
+      "title": "Atlanta Landscape Design & Build",
+      "websiteTitle": "Oasis Landscapes & Irrigation",
+      "url": "https://oasislandscape.com/residential/design-build/",
+      "displayedUrl": "https://oasislandscape.com › Residential Landscaping",
+      "description": "The Oasis team is dedicated to implementing the best landscape design solutions for you and your home. ... Atlanta, GA. 30360. (770)913-9033. Canton Office.Read more",
+      "emphasizedKeywords": [
+        "best landscape design",
+        "Atlanta",
+        "GA"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 9
+    }
+  ],
+  "suggestedResults": [],
+  "peopleAlsoAsk": [],
+  "customData": null,
+  "htmlSnapshotUrl": "https://api.apify.com/v2/key-value-stores/4yk0TuOJHFEFmCs78/records/juGf12mE32yqCH4-0.html?signature=1sims2KgoonW0rB5jBdeb"
+},
+{
+  "#debug": {
+    "requestId": "OcD4mBP1a6TY3W0",
+    "url": "http://www.google.com/search?q=top+residential+landscaping+company+Dallas+website+award",
+    "loadedUrl": "http://www.google.com/search?q=top+residential+landscaping+company+Dallas+website+award",
+    "method": "GET",
+    "retryCount": 0,
+    "errorMessages": [],
+    "statusCode": 200
+  },
+  "#error": false,
+  "searchQuery": {
+    "term": "top residential landscaping company Dallas website award",
+    "url": "http://www.google.com/search?q=top+residential+landscaping+company+Dallas+website+award",
+    "device": "DESKTOP",
+    "page": 1,
+    "type": "SEARCH",
+    "domain": "google.com",
+    "countryCode": "US",
+    "languageCode": null,
+    "locationUule": null,
+    "resultsPerPage": 10
+  },
+  "url": "http://www.google.com/search?q=top+residential+landscaping+company+Dallas+website+award",
+  "hasNextPage": true,
+  "serpProviderCode": "N",
+  "resultsTotal": null,
+  "relatedQueries": [
+    {
+      "title": "Top residential landscaping company dallas website award reviews",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Top+residential+landscaping+company+dallas+website+award+reviews&sa=X&ved=2ahUKEwjnsviovLCVAxUbR2wGHXk3JIIQ1QJ6BAg3EAE"
+    },
+    {
+      "title": "Residential landscaping Dallas",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Residential+landscaping+Dallas&sa=X&ved=2ahUKEwjnsviovLCVAxUbR2wGHXk3JIIQ1QJ6BAhMEAE"
+    },
+    {
+      "title": "Affordable landscaping Dallas",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Affordable+landscaping+Dallas&sa=X&ved=2ahUKEwjnsviovLCVAxUbR2wGHXk3JIIQ1QJ6BAhLEAE"
+    },
+    {
+      "title": "Commercial landscaping Dallas",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Commercial+landscaping+Dallas&sa=X&ved=2ahUKEwjnsviovLCVAxUbR2wGHXk3JIIQ1QJ6BAhGEAE"
+    },
+    {
+      "title": "Dallas landscape design",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Dallas+landscape+design&sa=X&ved=2ahUKEwjnsviovLCVAxUbR2wGHXk3JIIQ1QJ6BAhCEAE"
+    },
+    {
+      "title": "Southern Botanical",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Southern+Botanical&sa=X&ved=2ahUKEwjnsviovLCVAxUbR2wGHXk3JIIQ1QJ6BAg2EAE"
+    },
+    {
+      "title": "Landscaping Dallas jobs",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Landscaping+Dallas+jobs&sa=X&ved=2ahUKEwjnsviovLCVAxUbR2wGHXk3JIIQ1QJ6BAg1EAE"
+    },
+    {
+      "title": "Bonick Landscaping",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Bonick+Landscaping&sa=X&ved=2ahUKEwjnsviovLCVAxUbR2wGHXk3JIIQ1QJ6BAg9EAE"
+    },
+    {
+      "title": "Top residential landscaping company dallas website award reviews",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Top+residential+landscaping+company+dallas+website+award+reviews&sa=X&ved=2ahUKEwjnsviovLCVAxUbR2wGHXk3JIIQ1QJ6BAg3EAE"
+    },
+    {
+      "title": "Residential landscaping Dallas",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Residential+landscaping+Dallas&sa=X&ved=2ahUKEwjnsviovLCVAxUbR2wGHXk3JIIQ1QJ6BAhMEAE"
+    },
+    {
+      "title": "Affordable landscaping Dallas",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Affordable+landscaping+Dallas&sa=X&ved=2ahUKEwjnsviovLCVAxUbR2wGHXk3JIIQ1QJ6BAhLEAE"
+    },
+    {
+      "title": "Commercial landscaping Dallas",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Commercial+landscaping+Dallas&sa=X&ved=2ahUKEwjnsviovLCVAxUbR2wGHXk3JIIQ1QJ6BAhGEAE"
+    },
+    {
+      "title": "Dallas landscape design",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Dallas+landscape+design&sa=X&ved=2ahUKEwjnsviovLCVAxUbR2wGHXk3JIIQ1QJ6BAhCEAE"
+    },
+    {
+      "title": "Southern Botanical",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Southern+Botanical&sa=X&ved=2ahUKEwjnsviovLCVAxUbR2wGHXk3JIIQ1QJ6BAg2EAE"
+    },
+    {
+      "title": "Landscaping Dallas jobs",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Landscaping+Dallas+jobs&sa=X&ved=2ahUKEwjnsviovLCVAxUbR2wGHXk3JIIQ1QJ6BAg1EAE"
+    },
+    {
+      "title": "Bonick Landscaping",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&gl=US&hl=en&q=Bonick+Landscaping&sa=X&ved=2ahUKEwjnsviovLCVAxUbR2wGHXk3JIIQ1QJ6BAg9EAE"
+    }
+  ],
+  "paidResults": [],
+  "paidProducts": [],
+  "organicResults": [
+    {
+      "title": "Landscape Design Dallas: Landscaping Dallas & Ft. Worth ...",
+      "websiteTitle": "Southern Botanical",
+      "url": "https://southernbotanical.com/",
+      "displayedUrl": "https://southernbotanical.com",
+      "description": "The premier Landscape Company in Dallas-Fort Worth for ・ designing, building, and managing award-winning landscapes since 1995. nationally recognized for ...",
+      "emphasizedKeywords": [
+        "designing, building, and managing award-winning landscapes"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 1
+    },
+    {
+      "title": "Top 7 Best Landscape Designers in Dallas (2026)",
+      "websiteTitle": "Blount Designs",
+      "url": "https://blountdesigns.com/blog/best-landscape-designers-dallas",
+      "displayedUrl": "https://blountdesigns.com › Blog",
+      "description": "The 7 Best Landscape Designers in Dallas (2026) 1. Harold Leidner Landscape Architects ・ 2. Bonick Landscaping — Award-winning residential ...",
+      "date": "2026-06-08T12:00:00.000Z",
+      "emphasizedKeywords": [
+        "1. Harold Leidner Landscape Architects"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 2
+    },
+    {
+      "title": "15 Best Commercial Landscaping Contractors Dallas, TX",
+      "websiteTitle": "Downtobid",
+      "url": "https://downtobid.com/contractors/landscaping/dallas",
+      "displayedUrl": "https://downtobid.com › contractors › dallas",
+      "description": "Landscapes, Inc. The company, based in Dallas-Fort is staffed with licensed individuals and has won numerous awards for its work. -quality commercial and  ...",
+      "emphasizedKeywords": [
+        "Inc",
+        "company",
+        "Dallas",
+        "awards"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 3
+    },
+    {
+      "title": "Bonick Landscaping: Luxury Landscape Architects Dallas",
+      "websiteTitle": "Bonick Landscaping",
+      "url": "https://www.bonicklandscaping.com/",
+      "displayedUrl": "https://www.bonicklandscaping.com",
+      "description": "Bonick Landscaping — luxury landscape architects in Dallas: designing, building & maintaining refined estate landscapes. Schedule a consultation.",
+      "emphasizedKeywords": [
+        "Landscaping",
+        "Dallas"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 4
+    },
+    {
+      "title": "Dallas landscape designer/horticulture consult for single- ...",
+      "websiteTitle": "Reddit · r/Dallas",
+      "url": "https://www.reddit.com/r/Dallas/comments/1dc2t0q/dallas_landscape_designerhorticulture_consult_for/",
+      "displayedUrl": "Reddit › r/Dallas",
+      "description": "We've got a house with multi-level landscaping beds from the previous owner that we want to completely re-work for privacy, shade, etc. We're hoping ...",
+      "emphasizedKeywords": [],
+      "siteLinks": [],
+      "productInfo": {},
+      "commentsAmount": "20+ comments",
+      "lastUpdated": "2 years ago",
+      "type": "organic",
+      "position": 5
+    },
+    {
+      "title": "Best Landscape Architects And Designers",
+      "websiteTitle": "D Magazine",
+      "url": "https://www.dmagazine.com/publications/d-home/2005/march-april/best-landscape-architects-and-designers/",
+      "displayedUrl": "https://www.dmagazine.com › d-home › march-april",
+      "description": "They have won a number of awards for residential landscaping projects, from ranches to contemporary houses. www.mesadesigngroup.com. Naud ...",
+      "date": "2005-03-02T12:00:00.000Z",
+      "emphasizedKeywords": [
+        "They have won a number of awards for residential landscaping projects"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 6
+    },
+    {
+      "title": "Award-Winning Landscaping Company",
+      "websiteTitle": "Complete Landsculpture",
+      "url": "https://completelandsculpture.com/landscaping-awards/",
+      "displayedUrl": "https://completelandsculpture.com › landscaping-awards",
+      "description": "See the awards and recognition Complete Landscculpture has earned for outstanding residential and commercial landscaping projects in Dallas–Fort Worth.",
+      "emphasizedKeywords": [
+        "Complete Landscculpture"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 7
+    },
+    {
+      "title": "Best 15 Landscape Architects & Designers in Dallas, TX",
+      "websiteTitle": "Houzz",
+      "url": "https://www.houzz.com/professionals/landscape-architect/dallas-tx-us-probr0-bo~t_11788~r_4684888",
+      "displayedUrl": "https://www.houzz.com › ... › Dallas / 50 mi",
+      "description": "Best of Houzz winner. Combining creativity with a proven landscape design process, we are recognized as a leader among Dallas, TX landscaping companies.Read more",
+      "emphasizedKeywords": [
+        "Best",
+        "Dallas",
+        "TX landscaping"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 8
+    },
+    {
+      "title": "Luxury Landscaping in Dallas TX: Redefine Your Space",
+      "websiteTitle": "Scapes Incorporated",
+      "url": "https://www.scapesincorporated.com/",
+      "displayedUrl": "https://www.scapesincorporated.com › ... › Contact",
+      "description": "Scapes Inc. is your #1 rated landscaper for upscale outdoor living spaces and landscape design in Dallas. GET STARTED.Read more",
+      "emphasizedKeywords": [
+        "Scapes Inc. is your #1 rated landscaper"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 9
+    }
+  ],
+  "suggestedResults": [],
+  "peopleAlsoAsk": [],
+  "aiOverview": {
+    "type": "live",
+    "content": "Several premier residential landscaping companies in Dallas feature award-winning portfolios and client-focused websites. The most decorated firms with recognized websites include Southern Botanical, Bonick Landscaping, Alterra Landscape Design, Complete Landsculpture, and Scapes Inc.These industry-leading companies are frequently recognized by the National Association of Landscape Professionals (NALP) and the Texas Nursery & Landscape Association (TNLA).Explore their websites for service details, reviews, and galleries of award-winning DFW projects:Explore their websites for service details, reviews, and galleries of award-winning DFW projects:Southern Botanical: View their national and regional award-winning projects on the Southern Botanical website.Bonick Landscaping: Browse high-end estate transformations and pool designs on the Bonick Landscaping portfolio.Complete Landsculpture: Check out extensive NALP award-winning installations on the Complete Landsculpture Awards page.Alterra Landscape Design: View multiple Houzz and Texas Excellence award-winning designs on the Alterra Landscape Design homepage.Scapes Inc.: Explore luxury landscape transformations and outdoor living spaces on the Scapes Inc. website.If you'd like to narrow down these options, tell me:What specific features are you looking to add? (e.g., custom pools, outdoor kitchens, landscape lighting)What is your neighborhood or general location?Are you looking to rebuild an entire yard or just upgrade your current garden maintenance?I can help you pinpoint the best fit for your exact project needs.If you'd like to narrow down these options, tell me:I can help you pinpoint the best fit for your exact project needs.",
+    "sources": [
+      {
+        "url": "https://completelandsculpture.com/landscaping-awards/",
+        "title": "Complete Landsculpture Awards - Dallas",
+        "description": "Complete Landsculpture is an award-winning, full-service landscape design-build and maintenance aftercare firm founded in 1985 tha..."
+      },
+      {
+        "url": "https://southernbotanical.com/",
+        "title": "Landscape Design Dallas: Landscaping Dallas & Ft. Worth ...",
+        "description": "Featured Project. HIGHLAND PARK PROPERTY. Learn more about why this Highland Park property won multiple national awards for excell..."
+      },
+      {
+        "url": "https://www.bonicklandscaping.com/",
+        "title": "Bonick Landscaping: Luxury Landscape Architects Dallas",
+        "description": "Featured Projects * preston hollow landscape design & custom pool build. Preston Hollow, Texas. View Project. * highland park medi..."
+      }
+    ]
+  },
+  "customData": null,
+  "htmlSnapshotUrl": "https://api.apify.com/v2/key-value-stores/4yk0TuOJHFEFmCs78/records/OcD4mBP1a6TY3W0-0.html?signature=GVpXYZOmtRJZE6Lnqm1R"
+},
+{
+  "#debug": {
+    "requestId": "WwBSSot1UwsPdMx",
+    "url": "http://www.google.com/search?q=luxury+landscape+design+company+Dallas+TX+website",
+    "loadedUrl": "http://www.google.com/search?q=luxury+landscape+design+company+Dallas+TX+website",
+    "method": "GET",
+    "retryCount": 0,
+    "errorMessages": [],
+    "statusCode": 200
+  },
+  "#error": false,
+  "searchQuery": {
+    "term": "luxury landscape design company Dallas TX website",
+    "url": "http://www.google.com/search?q=luxury+landscape+design+company+Dallas+TX+website",
+    "device": "DESKTOP",
+    "page": 1,
+    "type": "SEARCH",
+    "domain": "google.com",
+    "countryCode": "US",
+    "languageCode": null,
+    "locationUule": null,
+    "resultsPerPage": 10
+  },
+  "url": "http://www.google.com/search?q=luxury+landscape+design+company+Dallas+TX+website",
+  "hasNextPage": true,
+  "serpProviderCode": "L",
+  "resultsTotal": null,
+  "relatedQueries": [
+    {
+      "title": "Luxury landscape design company dallas tx website reviews",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&hl=en&q=Luxury+landscape+design+company+dallas+tx+website+reviews&sa=X&ved=2ahUKEwjdxpqzvLCVAxUeUKQEHaOKJaUQ1QJ6BAguEAE"
+    },
+    {
+      "title": "Best luxury landscape design company dallas tx website",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&hl=en&q=Best+luxury+landscape+design+company+dallas+tx+website&sa=X&ved=2ahUKEwjdxpqzvLCVAxUeUKQEHaOKJaUQ1QJ6BAg1EAE"
+    },
+    {
+      "title": "Dallas landscape design",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&hl=en&q=Dallas+landscape+design&sa=X&ved=2ahUKEwjdxpqzvLCVAxUeUKQEHaOKJaUQ1QJ6BAg0EAE"
+    },
+    {
+      "title": "Affordable landscaping Dallas",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&hl=en&q=Affordable+landscaping+Dallas&sa=X&ved=2ahUKEwjdxpqzvLCVAxUeUKQEHaOKJaUQ1QJ6BAgzEAE"
+    },
+    {
+      "title": "Residential landscaping Dallas",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&hl=en&q=Residential+landscaping+Dallas&sa=X&ved=2ahUKEwjdxpqzvLCVAxUeUKQEHaOKJaUQ1QJ6BAgyEAE"
+    },
+    {
+      "title": "Southern Botanical",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&hl=en&q=Southern+Botanical&sa=X&ved=2ahUKEwjdxpqzvLCVAxUeUKQEHaOKJaUQ1QJ6BAgxEAE"
+    },
+    {
+      "title": "Residential landscape architect Dallas",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&hl=en&q=Residential+landscape+architect+Dallas&sa=X&ved=2ahUKEwjdxpqzvLCVAxUeUKQEHaOKJaUQ1QJ6BAgwEAE"
+    },
+    {
+      "title": "Commercial landscaping Dallas",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&hl=en&q=Commercial+landscaping+Dallas&sa=X&ved=2ahUKEwjdxpqzvLCVAxUeUKQEHaOKJaUQ1QJ6BAgvEAE"
+    },
+    {
+      "title": "Luxury landscape design company dallas tx website reviews",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&hl=en&q=Luxury+landscape+design+company+dallas+tx+website+reviews&sa=X&ved=2ahUKEwjdxpqzvLCVAxUeUKQEHaOKJaUQ1QJ6BAguEAE"
+    },
+    {
+      "title": "Best luxury landscape design company dallas tx website",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&hl=en&q=Best+luxury+landscape+design+company+dallas+tx+website&sa=X&ved=2ahUKEwjdxpqzvLCVAxUeUKQEHaOKJaUQ1QJ6BAg1EAE"
+    },
+    {
+      "title": "Dallas landscape design",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&hl=en&q=Dallas+landscape+design&sa=X&ved=2ahUKEwjdxpqzvLCVAxUeUKQEHaOKJaUQ1QJ6BAg0EAE"
+    },
+    {
+      "title": "Affordable landscaping Dallas",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&hl=en&q=Affordable+landscaping+Dallas&sa=X&ved=2ahUKEwjdxpqzvLCVAxUeUKQEHaOKJaUQ1QJ6BAgzEAE"
+    },
+    {
+      "title": "Residential landscaping Dallas",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&hl=en&q=Residential+landscaping+Dallas&sa=X&ved=2ahUKEwjdxpqzvLCVAxUeUKQEHaOKJaUQ1QJ6BAgyEAE"
+    },
+    {
+      "title": "Southern Botanical",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&hl=en&q=Southern+Botanical&sa=X&ved=2ahUKEwjdxpqzvLCVAxUeUKQEHaOKJaUQ1QJ6BAgxEAE"
+    },
+    {
+      "title": "Residential landscape architect Dallas",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&hl=en&q=Residential+landscape+architect+Dallas&sa=X&ved=2ahUKEwjdxpqzvLCVAxUeUKQEHaOKJaUQ1QJ6BAgwEAE"
+    },
+    {
+      "title": "Commercial landscaping Dallas",
+      "url": "https://www.google.com/search?sca_esv=12c5d7b316a6f56c&hl=en&q=Commercial+landscaping+Dallas&sa=X&ved=2ahUKEwjdxpqzvLCVAxUeUKQEHaOKJaUQ1QJ6BAgvEAE"
+    }
+  ],
+  "paidResults": [],
+  "paidProducts": [],
+  "organicResults": [
+    {
+      "title": "Landscape Design Dallas: Landscaping Dallas & Ft. Worth ...",
+      "websiteTitle": "Southern Botanical",
+      "url": "https://southernbotanical.com/",
+      "displayedUrl": "https://southernbotanical.com",
+      "description": "The premier Landscape Company in Dallas-Fort Worth for commercial & residential landscape maintenance, certified tree care, and design-build services.",
+      "emphasizedKeywords": [
+        "The premier Landscape Company in Dallas-Fort Worth"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 1
+    },
+    {
+      "title": "Bonick Landscaping: Luxury Landscape Architects Dallas",
+      "websiteTitle": "Bonick Landscaping",
+      "url": "https://www.bonicklandscaping.com/",
+      "displayedUrl": "https://www.bonicklandscaping.com",
+      "description": "Bonick Landscaping — luxury landscape architects in Dallas: designing, building & maintaining refined estate landscapes. Schedule a consultation.",
+      "emphasizedKeywords": [
+        "luxury landscape architects in Dallas"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 2
+    },
+    {
+      "title": "Best 15 Landscape Architects & Designers in Dallas, TX",
+      "websiteTitle": "Houzz",
+      "url": "https://www.houzz.com/professionals/landscape-architect/dallas-tx-us-probr0-bo~t_11788~r_4684888",
+      "displayedUrl": "https://www.houzz.com › ... › Dallas / 50 mi",
+      "description": "MD+C is a luxury landscape architecture company that offers design-build services and project management. Our focus is to provide an outstandi... Read More.Read more",
+      "emphasizedKeywords": [
+        "MD+C is a luxury landscape architecture company"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 3
+    },
+    {
+      "title": "Dallas Luxury Landscape Designers For Custom Backyard ...",
+      "websiteTitle": "artzlandscape.com",
+      "url": "https://artzlandscape.com/",
+      "displayedUrl": "https://artzlandscape.com",
+      "description": "Our luxury landscape designers offer unique, creative and customized designs to the taste of our clients, and their lifestyle. Professional ...Read more",
+      "date": "2025-11-11T12:00:00.000Z",
+      "emphasizedKeywords": [
+        "luxury landscape designers",
+        "designs"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 4
+    },
+    {
+      "title": "Top 7 Best Landscape Designers in Dallas (2026)",
+      "websiteTitle": "Blount Designs",
+      "url": "https://blountdesigns.com/blog/best-landscape-designers-dallas",
+      "displayedUrl": "https://blountdesigns.com › Blog",
+      "description": "Comparing the best landscape designers in Dallas? We ranked seven luxury design-build firms on reviews, recognition, and portfolio.",
+      "date": "2026-06-08T12:00:00.000Z",
+      "emphasizedKeywords": [
+        "seven luxury design-build firms"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 5
+    },
+    {
+      "title": "Melissa Gerstle Design",
+      "websiteTitle": "Melissa Gerstle Design",
+      "url": "https://melissagerstledesign.com/",
+      "displayedUrl": "https://melissagerstledesign.com",
+      "description": "Headquartered in Dallas, Texas, we design landscapes throughout North America and collaborate with architects, builders, and interior designers.",
+      "emphasizedKeywords": [
+        "Dallas",
+        "Texas",
+        "design",
+        "designers"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 6
+    },
+    {
+      "title": "Dallas Landscape Design & Build | Luxury Residential Design ...",
+      "websiteTitle": "Original Landscape Concepts",
+      "url": "https://originallandscapeconcepts.com/",
+      "displayedUrl": "https://originallandscapeconcepts.com",
+      "description": "Dallas landscape design firm with 50+ years combined experience. Luxury residential landscape design, pools and water features, outdoor living, ...",
+      "emphasizedKeywords": [
+        "Dallas landscape design firm with 50+ years combined experience"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 7
+    },
+    {
+      "title": "DDLA Design: Dallas Landscape Architect",
+      "websiteTitle": "DDLA Design",
+      "url": "https://www.ddladesign.com/",
+      "displayedUrl": "https://www.ddladesign.com",
+      "description": "Dallas Landscape Architect specializes in the design of luxury modern residential properties, swimming pools and outdoor living areas.",
+      "emphasizedKeywords": [
+        "Dallas Landscape Architect"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 8
+    },
+    {
+      "title": "Marlin Landscape: Dallas Landscape Services",
+      "websiteTitle": "Marlin Landscape",
+      "url": "https://www.marlinlandscape.com/",
+      "displayedUrl": "https://www.marlinlandscape.com",
+      "description": "Luxury Landscape Services in Dallas, TX. Call For Landscaping Services Near You: (214) 935-3960. Founded in 2002, Marlin Landscape is a full-service and high ...Read more",
+      "emphasizedKeywords": [
+        "Luxury Landscape Services in Dallas, TX"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 9
+    }
+  ],
+  "suggestedResults": [],
+  "peopleAlsoAsk": [],
+  "aiOverview": {
+    "type": "live",
+    "content": "For luxury landscape architecture and design-build services in Dallas, TX, you can explore the portfolios and services of top-rated, high-end firms:If you want, let me know:What specific features you want (e.g., custom pools, outdoor kitchens, fire pits)Your approximate budget or project sizeI can narrow down which company is the best fit for your vision.If you want, let me know:I can narrow down which company is the best fit for your vision.",
+    "sources": []
+  },
+  "customData": null,
+  "htmlSnapshotUrl": "https://api.apify.com/v2/key-value-stores/4yk0TuOJHFEFmCs78/records/WwBSSot1UwsPdMx-0.html?signature=26IvXlegJ77LDx2LT6RE"
+}]

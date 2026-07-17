@@ -1,0 +1,34 @@
+{
+  "niche": "landscaping",
+  "version": "1.0",
+  "theme_mode": "light",
+  "color_system": {
+    "source": "greenoasis",
+    "palette": {
+      "primary": "#0d3320",
+      "primary_dark": "#091f14",
+      "primary_slate": "#1a4d30",
+      "accent": "#4ade80",
+      "accent_light": "#86efac",
+      "accent_dark": "#16a34a",
+      "neutral": "#94a3b8",
+      "neutral_dim": "#475569",
+      "silver": "#cbd5e1",
+      "ink": "#f8fafc"
+    },
+    "palette_rationale": "Dark forest green evokes mature, professional landscaping without rustic or earthy cliche. Bright green accent reads as nature + life against the dark primary. Slate-100 ink is softer than pure white — reduces eye strain on dark backgrounds."
+  },
+  "typography": {
+    "heading": "Fraunces",
+    "body": "Plus Jakarta Sans",
+    "heading_weight": 600,
+    "body_weight": 400,
+    "rationale": "Fraunces is a variable optical-size serif: premium, nature-adjacent, craft-connoting. Plus Jakarta Sans is a clean geometric humanist — readable at any size, modern without feeling tech-startup."
+  },
+  "shape_motif": "leaf",
+  "section_backgrounds": {
+    "light_alt": "bg-primary-slate/5",
+    "dark": "bg-primary",
+    "white": "bg-white"
+  }
+}

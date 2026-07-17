@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/*
+ * index.css template — Module 2D substitutes the {{...}} slots with
+ * per-niche values from niche-design-tokens.json before writing this
+ * file to templates/{niche-slug}/src/index.css.
+ */
+
+:root {
+  --primary: 0 102 204;
+  --primary-dark: 0 51 102;
+  --primary-slate: 85 119 170;
+  --accent: 255 170 0;
+  --accent-light: 255 204 85;
+  --accent-dark: 204 136 0;
+  --neutral: 170 170 170;
+  --neutral-dim: 136 136 136;
+  --silver: 204 204 204;
+  --ink: 34 34 34;
+}
+/* Universal foundation rules (apply to every niche) */
+
+html {
+  /* Smart quotes everywhere */
+  quotes: "\201C" "\201D" "\2018" "\2019";
+  /* Variable-font optical sizing */
+  font-optical-sizing: auto;
+}
+
+/* Tabular figures for any number near another number (prices, ratings, counts) */
+.tabular-nums,
+.font-tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Reduced-motion gate — universal accessibility rule. Components MUST
+   honour this; motion utilities collapse to near-zero duration. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Em-dash audit (universal). No em-dash should ever land in source.
+   This selector exists as a visible debugging surface during dev: if
+   anyone types one, it renders highlighted so we catch it before ship. */
+[data-em-dash-audit]::after {
+  content: attr(data-em-dash-audit);
+  background: yellow;
+  color: red;
+}

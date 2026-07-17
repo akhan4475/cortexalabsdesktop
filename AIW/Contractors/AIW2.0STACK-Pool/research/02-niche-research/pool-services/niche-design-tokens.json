@@ -1,0 +1,92 @@
+{
+  "niche_slug": "pool-services",
+  "extractedAt": "2026-05-20T00:00:00Z",
+  "source": "manual-from-spec",
+  "mix": {
+    "colorSystemFrom": "payan-pools",
+    "typographyFrom": "payan-pools-inter-body-pool-troopers-fjalla-heading",
+    "ctaFrom": "patriot-pool-spa",
+    "heroFrom": "pool-troopers",
+    "navigationFrom": "patriot-pool-spa"
+  },
+  "palette": {
+    "primary": "#0d6cb6",
+    "primary_dark": "#0a1628",
+    "primary_slate": "#1a3a5c",
+    "accent": "#f58026",
+    "accent_light": "#fdebd0",
+    "accent_dark": "#c45e0a",
+    "neutral": "#f0f9ff",
+    "neutral_dim": "#e2edf7",
+    "silver": "#94a3b8",
+    "ink": "#0f172a"
+  },
+  "typography": {
+    "heading": "Fjalla One",
+    "body": "Inter",
+    "headingFontUrl": "https://fonts.googleapis.com/css2?family=Fjalla+One&family=Inter:wght@400;500;600;700&display=swap",
+    "bodyFontUrl": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+  },
+  "motion": {
+    "preset": "restrained",
+    "stagger_ms": 60,
+    "duration_ms": 400,
+    "easing": "ease-out",
+    "scroll_fade": {
+      "opacity_start": 0,
+      "translateY_start": "16px",
+      "duration_ms": 400
+    },
+    "button_hover": {
+      "scale": 1.02,
+      "transition_ms": 150
+    },
+    "card_hover": {
+      "translateY": "-2px",
+      "shadow_lift": true,
+      "transition_ms": 200
+    },
+    "reduced_motion": "disable_all_transitions"
+  },
+  "theme_mode": "light",
+  "shape_motif": "water-ripple",
+  "corner_overlay": {
+    "motif": "concentric-arc",
+    "color": "#2ea3f2",
+    "opacity": 0.08
+  },
+  "icon_set": "lucide-react",
+  "icons_primary": ["Droplets", "Wrench", "Star", "Shield", "Clock", "Check", "MapPin", "Phone", "Calendar", "ChevronRight"],
+  "tailwind_extend": {
+    "colors": {
+      "brand-primary": "#0d6cb6",
+      "brand-primary-dark": "#0a1628",
+      "brand-primary-slate": "#1a3a5c",
+      "brand-accent": "#f58026",
+      "brand-accent-light": "#fdebd0",
+      "brand-accent-dark": "#c45e0a",
+      "brand-neutral": "#f0f9ff",
+      "brand-neutral-dim": "#e2edf7",
+      "brand-silver": "#94a3b8",
+      "brand-ink": "#0f172a"
+    },
+    "fontFamily": {
+      "heading": ["Fjalla One", "sans-serif"],
+      "body": ["Inter", "sans-serif"]
+    }
+  },
+  "css_vars": {
+    "--color-primary": "#0d6cb6",
+    "--color-primary-dark": "#0a1628",
+    "--color-primary-slate": "#1a3a5c",
+    "--color-accent": "#f58026",
+    "--color-accent-light": "#fdebd0",
+    "--color-accent-dark": "#c45e0a",
+    "--color-neutral": "#f0f9ff",
+    "--color-neutral-dim": "#e2edf7",
+    "--color-silver": "#94a3b8",
+    "--color-ink": "#0f172a",
+    "--font-heading": "'Fjalla One', sans-serif",
+    "--font-body": "'Inter', sans-serif"
+  }
+}

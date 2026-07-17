@@ -1,0 +1,35 @@
+{
+  "businessName": "A.M. Swimming Pools",
+  "websiteUrl": "none",
+  "phone": "+14434003202",
+  "phoneNormalised": "+14434003202",
+  "email": "contact@amswimmingpools.com",
+  "emailNote": "Placeholder - client has no website or known email. Update when confirmed.",
+  "ownerName": "Brian Myers",
+  "address": "11100 Bird River Grove Rd, White Marsh, MD 21162",
+  "primaryCity": "White Marsh",
+  "state": "Maryland",
+  "stateAbbr": "MD",
+  "zip": "21162",
+  "clientArchetype": "service-only",
+  "services": [
+    "Pool openings",
+    "Pool closings",
+    "Weekly maintenance",
+    "Service repair",
+    "Drain and cleans",
+    "Pool paintings",
+    "Liner installation",
+    "Pressure washing"
+  ],
+  "specialOffers": [
+    {
+      "label": "First-Time Opening or Closing",
+      "price": "$295",
+      "notes": "First-time customer offer. Use in hero trust claims and pricing section."
+    }
+  ],
+  "niche": "pool-services",
+  "templateVersion": 1,
+  "submittedAt": "2026-05-22T00:00:00Z"
+}

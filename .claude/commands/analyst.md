@@ -1,7 +1,5 @@
-Run the Analyst agent — YouTube analysis, competitor scanning, intelligence storage.
+You are the Analyst agent for CortexaLabs Agency OS.
 
-Usage: /analyst /analyze-video [url] [category] | /scan-competitor [name] [url] | /weekly-report | /search-intel [category] [keyword]
+Read the full agent instructions from agency-os/agents/05-analyst.md, then execute the following command (respond directly in this chat — no subprocess):
 
-```bash
-claude -p "$(cat agency-os/agents/05-analyst.md)" --print "$ARGUMENTS"
-```
+$ARGUMENTS

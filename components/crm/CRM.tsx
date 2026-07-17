@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
   LayoutDashboard, MapPin, Briefcase, KeyRound, BarChart3, LogOut,
-  Search, Loader2, Terminal,
+  Search, Loader2, Terminal, Phone,
   Brain, DollarSign, GitBranch, Sparkles, LayoutTemplate, Activity,
   Archive, Package, Monitor, Lightbulb, PanelLeft,
   Users, CalendarDays
@@ -35,6 +35,7 @@ import Marketing from './Marketing';
 import AIWTerminal from './AIWTerminal';
 import Leads from './Leads';
 import CalendarView from './CalendarView';
+import Instructions from './Instructions';
 
 import { Lead, Campaign, Client, DemoEvent, Dial } from './types';
 
@@ -80,7 +81,7 @@ export type CRMView =
   | 'terminal' | 'builds' | 'mockups'
   | 'memory' | 'insights'
   | 'revenue' | 'analytics' | 'clients' | 'marketing'
-  | 'recordings' | 'credentials' | 'motivation' | 'docs'
+  | 'recordings' | 'credentials' | 'motivation' | 'docs' | 'instructions'
   // legacy compat
   | 'conversations' | 'automations' | 'content' | 'factory' | 'claude';
 
@@ -250,6 +251,21 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
 
     
 
+    const handleUpdateCampaign = async (campaignId: string, data: Partial<Pick<Campaign, 'campaignType' | 'niche'>>) => {
+        try {
+            const update: Record<string, unknown> = {};
+            if (data.campaignType !== undefined) update.campaign_type = data.campaignType;
+            if (data.niche !== undefined) update.niche = data.niche;
+            if (!Object.keys(update).length) return;
+            await supabase.from('campaigns').update(update).eq('id', campaignId);
+            setCampaigns(prev => prev.map(c =>
+                c.id === campaignId ? { ...c, ...data } : c
+            ));
+        } catch (error) {
+            console.error('Error updating campaign:', error);
+        }
+    };
+
     const handleAddCampaign = async (campaign: Campaign, leads: Lead[]) => {
         if (!userId) return;
 
@@ -259,7 +275,9 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
                 user_id: userId,
                 name: campaign.name,
                 created_at: campaign.createdAt,
-                lead_count: campaign.leadCount
+                lead_count: campaign.leadCount,
+                campaign_type: campaign.campaignType ?? null,
+                niche: campaign.niche ?? null,
             });
 
             if (leads.length > 0) {
@@ -697,6 +715,7 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
             items: [
                 { id: 'pipeline',  icon: GitBranch,     label: 'Pipeline'  },
                 { id: 'leads',     icon: Users,         label: 'Leads'     },
+                { id: 'dialer',    icon: Phone,         label: 'Dialer'    },
                 { id: 'calendar',  icon: CalendarDays,  label: 'Calendar'  },
                 { id: 'scraper',   icon: MapPin,        label: 'Scraper'   },
             ],
@@ -736,7 +755,9 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
         {
             label: 'System',
             items: [
-                { id: 'credentials', icon: KeyRound, label: 'Credentials' },
+                { id: 'credentials',   icon: KeyRound,        label: 'Credentials'   },
+                { id: 'motivation',    icon: Sparkles,        label: 'Motivation'    },
+                { id: 'instructions',  icon: LayoutTemplate,  label: 'Instructions'  },
             ],
         },
     ];
@@ -749,7 +770,7 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
         builds: 'Builds', mockups: 'Mockups', memory: 'Memory',
         insights: 'Insights', revenue: 'Revenue', analytics: 'Analytics',
         clients: 'Clients', marketing: 'Marketing', recordings: 'Recordings', credentials: 'Credentials',
-        motivation: 'Motivation', docs: 'Docs',
+        motivation: 'Motivation', docs: 'Docs', instructions: 'Instructions',
     };
 
     if (isLoading) {
@@ -947,6 +968,7 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
                                     onAddCampaign={handleAddCampaign}
                                     onDeleteCampaign={handleDeleteCampaign}
                                     onRenameCampaign={handleRenameCampaign}
+                                    onUpdateCampaign={handleUpdateCampaign}
                                     onAddLead={handleAddLead}
                                     onUpdateLead={handleUpdateLead}
                                     onDeleteLead={handleDeleteLead}
@@ -992,6 +1014,7 @@ const CRM: React.FC<CRMProps> = ({ onLogout }) => {
                             {(currentView === 'credentials' || currentView === 'automations') && <Credentials />}
                             {currentView === 'motivation' && <Motivation />}
                             {currentView === 'docs' && <Docs />}
+                            {currentView === 'instructions' && <Instructions />}
                         </motion.div>
                     </AnimatePresence>
                 </main>

@@ -1,0 +1,28 @@
+{
+  "url": "https://perth-roofreplacments.vercel.app/",
+  "status_code": 200,
+  "content": "<!DOCTYPE html><html lang=\"en-AU\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"preload\" as=\"image\" href=\"/assets/hero-roof-Mx7RMnMD.jpg\" fetchPriority=\"high\"/><link rel=\"stylesheet\" href=\"/assets/styles-B8a0KylK.css\" data-precedence=\"default\"/><link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Oswald:wght@400;500;600;700&amp;family=Cormorant+Garamond:ital,wght@1,500;1,600&amp;...",
+  "raw_content": "<!DOCTYPE html><html lang=\"en-AU\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"preload\" as=\"image\" href=\"/assets/hero-roof-Mx7RMnMD.jpg\"...",
+  "is_spa": false,
+  "extracted_text": null,
+  "publication_date": null,
+  "accessibility_tree": null,
+  "headers": {
+    "Age": "0",
+    "Cache-Control": "public, max-age=0, must-revalidate",
+    "Content-Encoding": "gzip",
+    "Content-Type": "text/html; charset=utf-8",
+    "Date": "Tue, 14 Jul 2026 13:05:44 GMT",
+    "Server": "Vercel",
+    "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+    "X-Vercel-Cache": "MISS",
+    "X-Vercel-Id": "iad1::iad1::8vllg-1784034343967-f3038a2a92e1",
+    "Transfer-Encoding": "chunked"
+  },
+  "redirect_chain": [],
+  "console_errors": [],
+  "render_engine": null,
+  "render_ms": null,
+  "mode_used": "raw",
+  "error": null
+}

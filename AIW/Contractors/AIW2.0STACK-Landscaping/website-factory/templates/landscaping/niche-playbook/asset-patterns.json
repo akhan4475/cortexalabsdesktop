@@ -1,0 +1,23 @@
+{
+  "niche": "landscaping",
+  "version": "1.0",
+  "logo_guidance": {
+    "preferred_format": "SVG or PNG with transparent background",
+    "colors_on_dark": "White or accent-green version required for nav/footer on dark background",
+    "colors_on_light": "Full color or dark version for light section use",
+    "size_guidance": "Minimum 200px wide; height auto"
+  },
+  "icon_guidance": {
+    "service_icons": "Outlined style icons (not filled), 24x24. Use Heroicons or Phosphor Icons. Match primary or accent color.",
+    "prefer_categories": ["leaf", "tree", "droplet", "scissors", "sun", "grid"]
+  },
+  "badge_guidance": {
+    "bbb_badge": "White/monochrome SVG. Place in trust bar above nav. Height 28px.",
+    "license_badge": "Text-only: 'License #XXXXX'. No image needed.",
+    "google_badge": "Stars + rating count. Inline text with Google logo SVG."
+  },
+  "pattern_guidance": {
+    "leaf_motif": "Subtle leaf silhouette used as corner overlays or section dividers. Opacity 0.06-0.08 on primary sections.",
+    "usage": "optional decorative elements only — never structural"
+  }
+}

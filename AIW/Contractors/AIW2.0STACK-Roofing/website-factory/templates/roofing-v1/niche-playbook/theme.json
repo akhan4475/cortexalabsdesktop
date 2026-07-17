@@ -1,0 +1,39 @@
+{
+  "niche": "roofing",
+  "mode": "dark-hero-light-content",
+  "rationale": "Dark hero signals authority and premium. Light content sections improve readability for specs, reviews, and FAQs.",
+  "palette": {
+    "bg": "#0A0F1A",
+    "surface": "#0F1623",
+    "surface_alt": "#F8F9FA",
+    "primary": "#0ABFBC",
+    "primary_dark": "#089A97",
+    "primary_slate": "#0D4D4B",
+    "accent": "#F59E0B",
+    "trust_bg": "#EFF6FF",
+    "star": "#F59E0B",
+    "ink": "#111827",
+    "neutral": "#6B7280",
+    "neutral_dim": "#9CA3AF",
+    "silver": "#E5E7EB",
+    "border": "#1E2A3A",
+    "border_light": "#E5E7EB"
+  },
+  "typography": {
+    "heading_family": "Barlow Condensed",
+    "heading_weight": 700,
+    "heading_style": "uppercase",
+    "body_family": "Inter",
+    "body_weight_default": 400,
+    "body_weight_bold": 600,
+    "google_fonts_url": "https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap"
+  },
+  "shape_motif": "angular",
+  "border_radius": {
+    "button": "4px",
+    "card": "6px",
+    "badge": "4px",
+    "avatar": "4px",
+    "input": "4px"
+  }
+}

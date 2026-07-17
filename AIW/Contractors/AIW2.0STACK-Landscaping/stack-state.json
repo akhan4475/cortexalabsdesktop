@@ -1,0 +1,99 @@
+{
+  "version": 2,
+  "module": "factory_tailored",
+  "niche": "landscaping",
+  "studentName": "Ayaan Khan",
+  "gates": {
+    "setup.complete": false,
+    "agency.brandLocked": false,
+    "m1.profileLocked": true,
+    "m2a.scoresLocked": true,
+    "m2b.researchComplete": true,
+    "m2c.nicheDecided": true,
+    "m2d.templateBuilt": true,
+    "m3.offerLocked": true,
+    "m4.factoryStructureLoaded": true,
+    "m5.factoryBriefLocked": true,
+    "factory.tailored": true,
+    "factory.deployed": false,
+    "m6.engineStructureLoaded": false,
+    "m7.engineBriefLocked": false,
+    "engine.deployed": false,
+    "engine.contextPasted": false,
+    "factory.generated": true
+  },
+  "credentials": {
+    "anthropic": false,
+    "apify": true,
+    "supabase": false,
+    "vercel": false,
+    "assemblyAi": false,
+    "github": false
+  },
+  "deployments": {
+    "factory": null,
+    "engine": null
+  },
+  "factoryRuns": [],
+  "history": [
+    {
+      "timestamp": "2026-05-20T00:00:00Z",
+      "command": "/discovery",
+      "outcome": "complete",
+      "note": "m1.profileLocked set to true. 10 raw niche candidates surfaced."
+    },
+    {
+      "timestamp": "2026-05-20T00:00:00Z",
+      "command": "/score-niches",
+      "outcome": "complete",
+      "note": "m2a.scoresLocked set to true. Top 3 finalists: Roofing (26), Landscaping (25), Pool & Gutter (22). Gym/Fitness swapped out by student override -- low ticket filter."
+    },
+    {
+      "timestamp": "2026-05-20T18:45:00Z",
+      "command": "/research",
+      "outcome": "complete",
+      "note": "m2b.researchComplete set to true. 7 sub-task markdowns + synthesis.md written for all 3 niches. Total Apify cost: ~$1.69. Actors used: google-search-scraper, crawler-google-places, reddit-scraper-lite."
+    },
+    {
+      "timestamp": "2026-06-30T00:00:00Z",
+      "command": "/pick-niche",
+      "outcome": "complete",
+      "note": "m2c.nicheDecided set to true. Chosen niche: landscaping. Roofing and pool-gutter handled in separate cloned folders. Content engine skipped -- already deployed. Focus: website factory only."
+    },
+    {
+      "ts": "2026-07-01T03:43:41.140351+00:00",
+      "event": "factory.generated",
+      "niche": "landscaping"
+    },
+    {
+      "timestamp": "2026-07-01T00:00:00Z",
+      "command": "/tailor-factory",
+      "outcome": "complete",
+      "note": "factory.tailored set to true. Three files modified: (1) trust-signals.json -- added niche_badges array with 6 landscaping-specific badges (NALP, ISA Arborist, Licensed Irrigation, BBB, Google Guaranteed, Angi) with priority, condition, and collect_from fields. (2) website-factory/CLAUDE.md -- added active niche orientation block at top: 'Active niche: landscaping' + pointer to templates/landscaping/niche-playbook/. (3) .claude/lessons/by-agent/05-copy-deck.md -- seeded niche voice rules: voice register, preferred terms, banned words, locked copy strings, locked headline formula, 7 copy rules from customer voice research, segment vocabulary for 3 sub-segments. No other files touched."
+    },
+    {
+      "timestamp": "2026-07-01T00:00:00Z",
+      "command": "/generate-wf-brief",
+      "outcome": "complete",
+      "note": "m5.factoryBriefLocked set to true. Template brief written to research/output/website-factory-brief.md. No real client yet -- all client-specific fields marked [MISSING] with Stage 1 intake instructions. 16 sections covering: client identity (23 fields), services, service areas, portfolio, hours, owner story, reviews, copy (locked + variable), FAQ, trust signals, design system, SEO architecture, hero spec, pages to build, pipeline checklist, and key niche decisions."
+    },
+    {
+      "timestamp": "2026-07-01T00:00:00Z",
+      "command": "/load-factory-structure",
+      "outcome": "complete",
+      "note": "m4.factoryStructureLoaded set to true. Scanned website-factory/ tree (2367 files total). Output: research/_structure/Website_Factory_Structure.md. Documents all agents (19), SOPs (17), skills (12), commands (11), tools (15), niche template components (15), pages (13), playbook files (13), references, client folder convention, and data flow summary."
+    },
+    {
+      "timestamp": "2026-07-01T00:00:00Z",
+      "command": "/craft-offer",
+      "outcome": "complete",
+      "note": "m3.offerLocked set to true. Offer pack written to research/03-offer-pack.md. Positioning sentence, stage check, offer structure ($1,500 one-time), 3 cold DM templates (A/B/C), 5 personalized prospect DMs by profile type, 4 objection responses, money math. Customer language sourced verbatim from 02-customer-voice.md. Trust priority order from 05-trust-signals.md. 5 prospect profiles from 02-niche-decision.md."
+    },
+    {
+      "timestamp": "2026-06-30T00:00:00Z",
+      "command": "/build-niche-template",
+      "outcome": "complete",
+      "note": "m2d.templateBuilt set to true. Mix strategy: GreenOasis palette/typography, Keane nav/CTA/section-order, Mountainscapers trust bar. 15 components, 13 pages, 10 playbook JSON, 4 markdown contracts, 2 SOPs, 2 agents, 2 QA checklists. All 6 validator gates pass. Template at website-factory/templates/landscaping/."
+    }
+  ]
+}

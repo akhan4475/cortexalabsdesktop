@@ -1,0 +1,42 @@
+{
+  "$schemaVersion": 1,
+  "defaultMood": "golden_hour_warm",
+  "moods": {
+    "golden_hour_warm": {
+      "lightingBrief": "Warm directional light from a low angle late afternoon. Long soft shadows on pool deck. Water reflects deep blue-teal. Sky is clear with warm golden tones. Lush landscaping surrounds a sparkling residential pool.",
+      "skyDescriptor": "Clear sky with warm sunset tones near horizon",
+      "shadowDescriptor": "Long, soft shadows across the pool deck",
+      "colorWarmth": "warm"
+    },
+    "bright_midday_clean": {
+      "lightingBrief": "Bright overhead midday sun. Water is crystal clear blue. Pool deck is bright white or beige. High contrast, clean, resort-quality feel. No shadows on the water surface.",
+      "skyDescriptor": "Bright blue sky, no clouds",
+      "shadowDescriptor": "Short sharp shadows, minimal",
+      "colorWarmth": "cool"
+    },
+    "overcast_calm": {
+      "lightingBrief": "Soft overcast light, even exposure across the entire scene. Water appears calm and clean. No harsh highlights or shadows. Professional and trustworthy mood.",
+      "skyDescriptor": "Light overcast, diffused light",
+      "shadowDescriptor": "Minimal, very soft shadows",
+      "colorWarmth": "neutral"
+    },
+    "dramatic_dusk": {
+      "lightingBrief": "Deep blue dusk sky above a lit residential pool. Pool lighting glows from within the water. Exterior lighting illuminates deck and landscaping. Premium luxury feel.",
+      "skyDescriptor": "Deep navy to cobalt blue sky just after sunset",
+      "shadowDescriptor": "Pool lighting creates warm glow on deck",
+      "colorWarmth": "mixed"
+    },
+    "dawn_soft_optimistic": {
+      "lightingBrief": "Soft early morning light with a gentle warm glow on the horizon. Pool surface is still and reflective. Fresh start feel. Quiet residential setting.",
+      "skyDescriptor": "Soft pink and blue dawn sky",
+      "shadowDescriptor": "Very long, very soft morning shadows",
+      "colorWarmth": "warm"
+    }
+  },
+  "regionalOverrides": [
+    { "region": "Arizona", "mood": "bright_midday_clean" },
+    { "region": "Florida", "mood": "golden_hour_warm" },
+    { "region": "Southern California", "mood": "golden_hour_warm" },
+    { "region": "Texas", "mood": "bright_midday_clean" }
+  ]
+}

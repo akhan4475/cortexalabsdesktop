@@ -1,0 +1,37 @@
+{
+  "niche": "landscaping",
+  "version": "1.0",
+  "copy_locks": {
+    "formHeader": "Get Your Free Landscape Estimate",
+    "formSubtext": "We respond within 2 hours. No commitment, no hard sell.",
+    "buttonText": "Get a Free Estimate",
+    "submitButton": "Request My Free Estimate",
+    "privacyLine": "We never share your info. No spam. No hard sell.",
+    "mobileCallLabel": "Call Now",
+    "availableNow": "Available now",
+    "footerCta": "Ready to transform your yard?",
+    "topBar": {
+      "cta": "Call for a Free Estimate"
+    }
+  },
+  "hero_formulas": {
+    "headline_pattern": "Transform Your [City] Yard",
+    "subheadline_pattern": "Responsive, on time, done right — from first call to final cleanup.",
+    "eyebrow_pattern": "[N] Google Reviews"
+  },
+  "trust_chips": [
+    "Licensed & Insured",
+    "Same-Day Response",
+    "Free Estimates"
+  ],
+  "section_labels": {
+    "services": "Our Services",
+    "gallery": "Our Work",
+    "whyChoose": "Why Choose Us",
+    "process": "How It Works",
+    "reviews": "What Clients Say",
+    "founder": "Meet the Owner",
+    "serviceAreas": "Service Areas",
+    "faq": "Common Questions"
+  }
+}

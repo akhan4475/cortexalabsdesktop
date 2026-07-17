@@ -1,0 +1,46 @@
+[
+  {
+    "color": "rgb(0, 0, 0)",
+    "count": 485
+  },
+  {
+    "color": "rgb(0, 113, 133)",
+    "count": 124
+  },
+  {
+    "color": "rgb(255, 255, 255)",
+    "count": 73
+  },
+  {
+    "color": "rgb(247, 122, 20)",
+    "count": 42
+  },
+  {
+    "color": "rgb(77, 77, 77)",
+    "count": 20
+  },
+  {
+    "color": "rgb(245, 245, 245)",
+    "count": 15
+  },
+  {
+    "color": "rgb(2, 187, 219)",
+    "count": 5
+  },
+  {
+    "color": "rgb(124, 209, 96)",
+    "count": 2
+  },
+  {
+    "color": "rgba(255, 255, 255, 0)",
+    "count": 1
+  },
+  {
+    "color": "rgba(0, 0, 0, 0.85)",
+    "count": 1
+  },
+  {
+    "color": "rgba(0, 0, 0, 0.5)",
+    "count": 1
+  }
+]

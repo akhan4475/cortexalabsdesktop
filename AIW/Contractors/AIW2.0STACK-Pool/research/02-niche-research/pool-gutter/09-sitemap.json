@@ -1,0 +1,333 @@
+{
+  "niche": "pool-services",
+  "generated": "2026-05-20",
+  "routes": [
+    {
+      "id": "home",
+      "path": "/",
+      "component": "HomePage",
+      "tier": "root",
+      "title": "[Company Name] | Pool Service in [City]",
+      "metaDescription": "Professional pool cleaning, maintenance, and repair in [City]. Licensed, insured, 5-star rated. Get a free quote today.",
+      "keywordAnchor": "pool service [city]",
+      "sections": [
+        "navbar",
+        "hero",
+        "trust-bar",
+        "services",
+        "pricing",
+        "process",
+        "gallery",
+        "why-choose",
+        "reviews",
+        "contact-form",
+        "service-areas",
+        "faq",
+        "cta-band",
+        "footer"
+      ]
+    },
+    {
+      "id": "services",
+      "path": "/services",
+      "component": "ServicesPage",
+      "tier": "core",
+      "title": "Pool Services | [Company Name]",
+      "metaDescription": "Full-service pool cleaning, maintenance, repair, and seasonal services in [City]. See everything we offer.",
+      "keywordAnchor": "pool services [city]",
+      "sections": [
+        "navbar",
+        "services-hero",
+        "services-grid-full",
+        "trust-bar",
+        "contact-form",
+        "cta-band",
+        "footer"
+      ]
+    },
+    {
+      "id": "pool-cleaning",
+      "path": "/pool-cleaning",
+      "component": "PoolCleaningPage",
+      "tier": "pillar",
+      "title": "Pool Cleaning Service in [City] | [Company Name]",
+      "metaDescription": "Weekly and bi-weekly pool cleaning in [City]. Skimming, vacuuming, chemical balance. Licensed techs. Free quote.",
+      "keywordAnchor": "pool cleaning service [city]",
+      "sections": [
+        "navbar",
+        "service-hero",
+        "service-detail",
+        "trust-bar",
+        "service-process",
+        "faq",
+        "reviews",
+        "contact-form",
+        "cta-band",
+        "footer"
+      ]
+    },
+    {
+      "id": "pool-maintenance",
+      "path": "/pool-maintenance",
+      "component": "PoolMaintenancePage",
+      "tier": "pillar",
+      "title": "Pool Maintenance Plans in [City] | [Company Name]",
+      "metaDescription": "Monthly pool maintenance plans in [City]. Chemicals, filter cleaning, equipment checks. No contracts. Get a quote.",
+      "keywordAnchor": "pool maintenance [city]",
+      "sections": [
+        "navbar",
+        "service-hero",
+        "service-detail",
+        "trust-bar",
+        "service-process",
+        "faq",
+        "reviews",
+        "contact-form",
+        "cta-band",
+        "footer"
+      ]
+    },
+    {
+      "id": "pool-repair",
+      "path": "/pool-repair",
+      "component": "PoolRepairPage",
+      "tier": "pillar",
+      "title": "Pool Repair Service in [City] | [Company Name]",
+      "metaDescription": "Expert pool repair in [City]. Pumps, filters, heaters, leaks. Fast response, warranty on all work. Call today.",
+      "keywordAnchor": "pool repair [city]",
+      "sections": [
+        "navbar",
+        "service-hero",
+        "service-detail",
+        "trust-bar",
+        "service-process",
+        "faq",
+        "reviews",
+        "contact-form",
+        "cta-band",
+        "footer"
+      ]
+    },
+    {
+      "id": "pool-opening-closing",
+      "path": "/pool-opening-closing",
+      "component": "PoolOpeningClosingPage",
+      "tier": "pillar",
+      "title": "Pool Opening & Closing Service in [City] | [Company Name]",
+      "metaDescription": "Professional pool opening and winterization in [City]. Spring startup, fall closing, equipment inspection. Book now.",
+      "keywordAnchor": "pool opening closing service [city]",
+      "sections": [
+        "navbar",
+        "service-hero",
+        "service-detail",
+        "trust-bar",
+        "service-process",
+        "faq",
+        "reviews",
+        "contact-form",
+        "cta-band",
+        "footer"
+      ]
+    },
+    {
+      "id": "about",
+      "path": "/about",
+      "component": "AboutPage",
+      "tier": "core",
+      "title": "About [Company Name] | Pool Service in [City]",
+      "metaDescription": "[Company Name] is a locally-owned pool service company serving [City]. Licensed, insured, [X]+ years experience.",
+      "keywordAnchor": "about [company name] pool service",
+      "sections": [
+        "navbar",
+        "about-hero",
+        "founder-story",
+        "trust-bar",
+        "why-choose",
+        "contact-form",
+        "footer"
+      ]
+    },
+    {
+      "id": "reviews",
+      "path": "/reviews",
+      "component": "ReviewsPage",
+      "tier": "core",
+      "title": "Customer Reviews | [Company Name]",
+      "metaDescription": "See what [City] homeowners say about [Company Name]. [X]+ 5-star reviews on Google. Read real customer experiences.",
+      "keywordAnchor": "pool service reviews [city]",
+      "sections": [
+        "navbar",
+        "reviews-hero",
+        "reviews-grid-full",
+        "contact-form",
+        "cta-band",
+        "footer"
+      ]
+    },
+    {
+      "id": "gallery",
+      "path": "/gallery",
+      "component": "GalleryPage",
+      "tier": "core",
+      "title": "Pool Service Gallery | [Company Name]",
+      "metaDescription": "Before and after photos from [Company Name] pool cleaning and repair jobs in [City]. See the results.",
+      "keywordAnchor": "pool service before after [city]",
+      "sections": [
+        "navbar",
+        "gallery-hero",
+        "gallery-grid-full",
+        "contact-form",
+        "footer"
+      ]
+    },
+    {
+      "id": "contact",
+      "path": "/contact",
+      "component": "ContactPage",
+      "tier": "core",
+      "title": "Contact [Company Name] | Pool Service in [City]",
+      "metaDescription": "Contact [Company Name] for pool service in [City]. Call, email, or fill out our quick form. Free quotes.",
+      "keywordAnchor": "contact pool service [city]",
+      "sections": [
+        "navbar",
+        "contact-hero",
+        "contact-form-full",
+        "service-areas",
+        "footer"
+      ]
+    },
+    {
+      "id": "service-areas",
+      "path": "/service-areas",
+      "component": "ServiceAreasPage",
+      "tier": "core",
+      "title": "Service Areas | [Company Name] Pool Service",
+      "metaDescription": "[Company Name] serves [City] and surrounding areas. See all locations we cover.",
+      "keywordAnchor": "pool service near me [region]",
+      "sections": [
+        "navbar",
+        "service-areas-hero",
+        "service-areas-grid",
+        "contact-form",
+        "footer"
+      ],
+      "hasSilos": "city"
+    },
+    {
+      "id": "location-detail",
+      "path": "/service-areas/:citySlug",
+      "component": "LocationDetailPage",
+      "tier": "pillar",
+      "title": "Pool Service in [City] | [Company Name]",
+      "metaDescription": "[Company Name] provides pool cleaning, maintenance, and repair in [City]. Licensed and insured. Free quote.",
+      "keywordAnchor": "pool service [city]",
+      "sections": [
+        "navbar",
+        "location-hero",
+        "trust-bar",
+        "services",
+        "local-content",
+        "reviews",
+        "contact-form",
+        "service-areas",
+        "footer"
+      ],
+      "isDynamic": true
+    },
+    {
+      "id": "faq",
+      "path": "/faq",
+      "component": "FAQPage",
+      "tier": "core",
+      "title": "Pool Service FAQ | [Company Name]",
+      "metaDescription": "Answers to common questions about pool cleaning, maintenance, and repair in [City]. How often, what's included, pricing.",
+      "keywordAnchor": "pool service faq [city]",
+      "sections": [
+        "navbar",
+        "faq-hero",
+        "faq-full",
+        "contact-form",
+        "footer"
+      ]
+    },
+    {
+      "id": "blog",
+      "path": "/blog",
+      "component": "BlogPage",
+      "tier": "core",
+      "title": "Pool Care Blog | [Company Name]",
+      "metaDescription": "Pool care tips, maintenance guides, and local advice from [Company Name] in [City].",
+      "keywordAnchor": "pool care tips [city]",
+      "sections": [
+        "navbar",
+        "blog-hero",
+        "blog-grid",
+        "contact-form",
+        "footer"
+      ]
+    },
+    {
+      "id": "blog-post",
+      "path": "/blog/:slug",
+      "component": "BlogPostPage",
+      "tier": "core",
+      "title": "[Post Title] | [Company Name]",
+      "metaDescription": "[Post excerpt]",
+      "keywordAnchor": "varies per post",
+      "sections": [
+        "navbar",
+        "blog-post-hero",
+        "blog-post-content",
+        "contact-form",
+        "footer"
+      ],
+      "isDynamic": true
+    },
+    {
+      "id": "not-found",
+      "path": "*",
+      "component": "NotFoundPage",
+      "tier": "core",
+      "title": "Page Not Found | [Company Name]",
+      "sections": [
+        "navbar",
+        "not-found-content",
+        "footer"
+      ]
+    }
+  ],
+  "aliasPages": [
+    {
+      "id": "green-pool-recovery",
+      "tier": "pillar",
+      "title": "Green Pool Recovery | [Company Name]",
+      "fallbackUrl": "/pool-cleaning",
+      "keywordAnchor": "green pool recovery [city]",
+      "note": "High-intent keyword. Can be a standalone page or section on /pool-cleaning. Fallback to /pool-cleaning if not built as standalone."
+    },
+    {
+      "id": "weekly-pool-service",
+      "tier": "pillar",
+      "title": "Weekly Pool Service | [Company Name]",
+      "fallbackUrl": "/pool-cleaning",
+      "keywordAnchor": "weekly pool service [city]"
+    },
+    {
+      "id": "pool-chemical-service",
+      "tier": "pillar",
+      "title": "Pool Chemical Service | [Company Name]",
+      "fallbackUrl": "/pool-maintenance",
+      "keywordAnchor": "pool chemical service [city]"
+    }
+  ],
+  "perServicePageTemplate": {
+    "pathPattern": "/services/:serviceSlug",
+    "component": "ServiceDetailPage",
+    "sections": ["navbar", "service-hero", "service-detail", "trust-bar", "service-process", "faq", "reviews", "contact-form", "cta-band", "footer"]
+  },
+  "perAreaPageTemplate": {
+    "pathPattern": "/service-areas/:citySlug",
+    "component": "LocationDetailPage",
+    "sections": ["navbar", "location-hero", "trust-bar", "services", "local-content", "reviews", "contact-form", "service-areas", "footer"]
+  }
+}

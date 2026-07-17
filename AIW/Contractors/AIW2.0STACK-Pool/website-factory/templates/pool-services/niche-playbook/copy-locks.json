@@ -1,0 +1,41 @@
+{
+  "$schemaVersion": 1,
+  "ctaPrimary": "Get a Free Quote",
+  "ctaSecondary": "View Pricing",
+  "formHeader": "Request Your Free Pool Service Quote",
+  "formPrivacy": "No contracts. No spam. We respond within one business day.",
+  "mobileCallLabel": "Call Now",
+  "thankYouMessage": "Thanks! We will be in touch within one business day with your free quote.",
+  "footerTagline": "Clean pools. Happy homeowners.",
+  "blogIntro": "Pool care tips, maintenance guides, and local advice to help you get the most out of your pool.",
+  "trustStripClaims": [
+    "Licensed & Insured",
+    "5-Star Google Rated",
+    "No Contracts Required",
+    "Same-Week Scheduling",
+    "Certified Technicians"
+  ],
+  "heroTrustClaims": [
+    "Crystal-clear water after every visit",
+    "Certified, background-checked technicians",
+    "Free quotes, no pressure, no contracts",
+    "Serving the area for over a decade"
+  ],
+  "riskReversalLine": "No contracts. No surprise fees. If you are not satisfied with your first service, we will come back for free.",
+  "heroH1Format": "[Service type] in [City] You Can Actually Count On",
+  "reviewsHeaderFormat": "Trusted by [N]+ Homeowners in [City]",
+  "founderSupportingCards": [
+    {
+      "title": "Years in Business",
+      "body_template": "{yearsExp} years serving {serviceRegion} homeowners with professional pool care."
+    },
+    {
+      "title": "Pools Serviced",
+      "body_template": "Over {poolsServiced} pools cleaned, maintained, and repaired across the {serviceRegion} area."
+    },
+    {
+      "title": "Our Guarantee",
+      "body_template": "Every service is backed by our satisfaction guarantee. Not happy? We return at no charge."
+    }
+  ]
+}

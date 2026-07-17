@@ -1,0 +1,103 @@
+{
+  "$schemaVersion": 1,
+  "stockBan": false,
+  "photoShootBriefRequired": false,
+  "categories": [
+    {
+      "slug": "hero",
+      "label": "Hero pool photo",
+      "minCount": 1,
+      "preferredCount": 3,
+      "targetFolder": "hero/",
+      "dimensions": {
+        "minWidth": 1440,
+        "minHeight": 900,
+        "preferredWidth": 2400,
+        "preferredHeight": 1600,
+        "aspectRatio": "16:9"
+      },
+      "lighting": "golden_hour_warm",
+      "composition": "Wide angle, clean sparkling pool in foreground, bright sky or lush landscaping behind. No people required but optional. No green or cloudy water.",
+      "notes": "This is the most important image. Must convey \"clean, clear, resort-quality.\" Avoid stock-looking staged images.",
+      "required": true
+    },
+    {
+      "slug": "before-after",
+      "label": "Before and after pool cleaning",
+      "minCount": 2,
+      "preferredCount": 6,
+      "targetFolder": "work/",
+      "dimensions": {
+        "minWidth": 800,
+        "minHeight": 600,
+        "aspectRatio": "4:3"
+      },
+      "lighting": "bright_midday_clean",
+      "composition": "Side-by-side or sequential shots showing the same pool before (algae, cloudy) and after (crystal clear). Consistent angle and framing.",
+      "notes": "Green pool recovery before/after is especially high-converting for this niche.",
+      "required": true
+    },
+    {
+      "slug": "technician-at-work",
+      "label": "Technician servicing pool",
+      "minCount": 1,
+      "preferredCount": 3,
+      "targetFolder": "work/",
+      "dimensions": {
+        "minWidth": 800,
+        "minHeight": 600,
+        "aspectRatio": "4:3"
+      },
+      "lighting": "bright_midday_clean",
+      "composition": "Technician in branded uniform using equipment (pole, vacuum, test kit). Professional and competent appearance. No messy backgrounds.",
+      "notes": "Builds credibility. Must show branded uniform if possible.",
+      "required": false
+    },
+    {
+      "slug": "equipment",
+      "label": "Pool equipment and machinery",
+      "minCount": 0,
+      "preferredCount": 2,
+      "targetFolder": "work/",
+      "dimensions": {
+        "minWidth": 600,
+        "minHeight": 600,
+        "aspectRatio": "1:1"
+      },
+      "lighting": "any",
+      "composition": "Pump, filter, heater equipment. Clean and well-maintained. Good for repair service pages.",
+      "required": false
+    },
+    {
+      "slug": "founder-or-team",
+      "label": "Owner or team photos",
+      "minCount": 1,
+      "preferredCount": 2,
+      "targetFolder": "team/",
+      "dimensions": {
+        "minWidth": 400,
+        "minHeight": 500,
+        "aspectRatio": "4:5"
+      },
+      "lighting": "natural_indoor",
+      "composition": "Chest up, professional but approachable. Neutral or pool/outdoor background. Direct eye contact with camera.",
+      "notes": "Humanizes the business. Critical for the About page founder section.",
+      "required": true
+    },
+    {
+      "slug": "completed-pools",
+      "label": "Finished pool service results",
+      "minCount": 3,
+      "preferredCount": 8,
+      "targetFolder": "work/",
+      "dimensions": {
+        "minWidth": 800,
+        "minHeight": 600,
+        "aspectRatio": "4:3"
+      },
+      "lighting": "golden_hour_warm",
+      "composition": "Crystal clear pool water, varied angles. Residential settings. Shows the quality of finished work.",
+      "required": true
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "$schemaVersion": 1,
+  "pages": [
+    {
+      "id": "home",
+      "title": "Homepage",
+      "url": "/",
+      "tier": "root",
+      "sections": {
+        "sections": [
+          { "name": "Hero", "description": "Asymmetric split hero with headline, trust chips, and dual CTA buttons. Above the fold.", "tag": "Convert" },
+          { "name": "Trust Bar", "description": "Horizontal strip of trust claims and certifications. Immediately below hero.", "tag": "Trust" },
+          { "name": "Services Grid", "description": "Card grid of all pool services with icons and brief descriptions.", "tag": "Pitch" },
+          { "name": "Pricing & Offers", "description": "Current offers and starting pricing. Reduces friction by setting expectations early.", "tag": "Convert" },
+          { "name": "How It Works", "description": "4-step process section showing how easy it is to book and get service.", "tag": "Process" },
+          { "name": "Photo Gallery", "description": "Before/after and completed pool photos. Visual proof of quality.", "tag": "Proof" },
+          { "name": "Why Choose Us", "description": "Grid of key differentiators drawn from real customer priorities.", "tag": "Trust" },
+          { "name": "Reviews", "description": "Paginated review cards with star ratings, review text, and platform source.", "tag": "Proof" },
+          { "name": "Contact Form", "description": "Lead capture form with service selector and response-time promise.", "tag": "Convert" },
+          { "name": "Service Areas", "description": "Area chip grid linking to local SEO pages for each city served.", "tag": "Local" },
+          { "name": "FAQ", "description": "Accordion FAQ answering the top objections pool service leads have.", "tag": "AEO" },
+          { "name": "CTA Band", "description": "Full-width bottom CTA section with dual CTA (form + phone).", "tag": "Convert" }
+        ]
+      }
+    },
+    {
+      "id": "services",
+      "title": "Services",
+      "url": "/services",
+      "tier": "core",
+      "hasSilos": "service",
+      "sections": {
+        "sections": [
+          { "name": "Services Overview Hero", "description": "Short hero introducing all {service_count} pool services with a supporting CTA.", "tag": "Pitch" },
+          { "name": "Trust Bar", "description": "Credentials and certifications strip.", "tag": "Trust" },
+          { "name": "Full Services Grid", "description": "Complete grid of all {service_count} services with icons, descriptions, and read-more links.", "tag": "Pitch" },
+          { "name": "Contact Form", "description": "Lead capture form.", "tag": "Convert" },
+          { "name": "CTA Band", "description": "Bottom CTA section.", "tag": "Convert" }
+        ]
+      }
+    },
+    {
+      "id": "about",
+      "title": "About",
+      "url": "/about",
+      "tier": "core",
+      "sections": {
+        "sections": [
+          { "name": "About Hero", "description": "Short page hero introducing the team.", "tag": "Story" },
+          { "name": "Trust Bar", "description": "Certifications strip.", "tag": "Trust" },
+          { "name": "Founder Story", "description": "Owner photo, bio, years of experience, mission and vision cards.", "tag": "Team" },
+          { "name": "Why Choose Us", "description": "Differentiator grid.", "tag": "Trust" },
+          { "name": "Contact Form", "description": "Lead capture form.", "tag": "Convert" }
+        ]
+      }
+    },
+    {
+      "id": "reviews",
+      "title": "Reviews",
+      "url": "/reviews",
+      "tier": "core",
+      "sections": {
+        "sections": [
+          { "name": "Reviews Hero", "description": "Hero with aggregate rating stats and Google/Facebook review counts.", "tag": "Proof" },
+          { "name": "Reviews Grid (Full)", "description": "Paginated grid of all customer reviews.", "tag": "Proof" },
+          { "name": "Contact Form", "description": "Lead capture form.", "tag": "Convert" },
+          { "name": "CTA Band", "description": "Bottom CTA.", "tag": "Convert" }
+        ]
+      }
+    },
+    {
+      "id": "gallery",
+      "title": "Gallery",
+      "url": "/gallery",
+      "tier": "core",
+      "sections": {
+        "sections": [
+          { "name": "Gallery Hero", "description": "Short hero introducing before/after and completed pools.", "tag": "Proof" },
+          { "name": "Photo Grid (Full)", "description": "Full gallery grid with lightbox. Before/after and service result photos.", "tag": "Proof" },
+          { "name": "Contact Form", "description": "Lead capture form.", "tag": "Convert" }
+        ]
+      }
+    },
+    {
+      "id": "contact",
+      "title": "Contact",
+      "url": "/contact",
+      "tier": "core",
+      "sections": {
+        "sections": [
+          { "name": "Contact Form (Full)", "description": "Full-width contact form with phone, email, and hours sidebar.", "tag": "Convert" },
+          { "name": "Service Areas", "description": "Area chips confirming we serve the visitor's location.", "tag": "Local" }
+        ]
+      }
+    },
+    {
+      "id": "service-areas",
+      "title": "Service Areas",
+      "url": "/service-areas",
+      "tier": "pillar",
+      "hasSilos": "city",
+      "sections": {
+        "sections": [
+          { "name": "Service Areas Grid", "description": "All {city_count} cities served shown as clickable chips linking to local SEO pages.", "tag": "Local" },
+          { "name": "Service Area Card", "description": "CTA card inviting visitors in the service region to book.", "tag": "Convert" },
+          { "name": "Contact Form", "description": "Lead capture form.", "tag": "Convert" }
+        ]
+      }
+    },
+    {
+      "id": "faq",
+      "title": "FAQ",
+      "url": "/faq",
+      "tier": "core",
+      "sections": {
+        "sections": [
+          { "name": "FAQ Hero", "description": "Short hero page heading.", "tag": "Info" },
+          { "name": "FAQ Accordion", "description": "Full accordion with all FAQ items for AEO and zero-click coverage.", "tag": "AEO" },
+          { "name": "Contact Form", "description": "Lead capture form.", "tag": "Convert" },
+          { "name": "CTA Band", "description": "Bottom CTA.", "tag": "Convert" }
+        ]
+      }
+    },
+    {
+      "id": "blog",
+      "title": "Blog",
+      "url": "/blog",
+      "tier": "core",
+      "sections": {
+        "sections": [
+          { "name": "Blog Hero", "description": "Short hero with blog label and pool care content pitch.", "tag": "SEO" },
+          { "name": "Blog Post Grid", "description": "Grid of published blog posts with cover image, category, date, excerpt.", "tag": "SEO" },
+          { "name": "Contact Form", "description": "Lead capture form.", "tag": "Convert" }
+        ]
+      }
+    }
+  ],
+  "perServicePageTemplate": {
+    "sections": [
+      { "name": "{service_name} Hero", "description": "Full-width service page hero with service name and description.", "tag": "Pitch" },
+      { "name": "Trust Bar", "description": "Certifications and trust claims strip.", "tag": "Trust" },
+      { "name": "Service Benefits", "description": "Checklist grid of what's included in this service.", "tag": "Info" },
+      { "name": "FAQ", "description": "FAQ items relevant to this specific service.", "tag": "AEO" },
+      { "name": "Reviews", "description": "Paginated reviews with this service type.", "tag": "Proof" },
+      { "name": "Contact Form", "description": "Lead capture form pre-labeled for {service_name}.", "tag": "Convert" },
+      { "name": "CTA Band", "description": "Bottom CTA.", "tag": "Convert" }
+    ]
+  },
+  "perAreaPageTemplate": {
+    "sections": [
+      { "name": "Local Hero", "description": "Hero targeting '{service} in {city}' keyword anchor.", "tag": "Local" },
+      { "name": "Trust Bar", "description": "Certifications and trust claims.", "tag": "Trust" },
+      { "name": "Services Grid", "description": "Services available in {city}.", "tag": "Pitch" },
+      { "name": "Local Content", "description": "City-specific copy block mentioning {city} and local context.", "tag": "SEO" },
+      { "name": "Reviews", "description": "Reviews from {city} customers where available.", "tag": "Proof" },
+      { "name": "Contact Form", "description": "Lead capture form.", "tag": "Convert" },
+      { "name": "Service Areas", "description": "Chip grid showing nearby areas served.", "tag": "Local" }
+    ]
+  },
+  "aliasPages": [
+    {
+      "id": "green-pool-recovery",
+      "title": "Green Pool Recovery",
+      "tier": "pillar",
+      "urlFromService": ["green pool", "algae", "green"],
+      "fallbackUrl": "/pool-cleaning",
+      "sections": {
+        "sections": [
+          { "name": "Green Pool Hero", "description": "High-urgency hero targeting 'green pool recovery' keyword.", "tag": "Convert" },
+          { "name": "Before/After Gallery", "description": "Green-to-clean before/after photos. Strongest conversion asset for this page.", "tag": "Proof" },
+          { "name": "Recovery Process", "description": "Step-by-step green pool clearance process.", "tag": "Process" },
+          { "name": "Contact Form", "description": "Urgent-framed lead capture form.", "tag": "Convert" }
+        ]
+      }
+    },
+    {
+      "id": "weekly-pool-service",
+      "title": "Weekly Pool Service",
+      "tier": "pillar",
+      "urlFromService": ["weekly", "recurring", "maintenance"],
+      "fallbackUrl": "/pool-cleaning",
+      "sections": {
+        "sections": [
+          { "name": "Weekly Service Hero", "description": "Hero targeting 'weekly pool service' keyword.", "tag": "Convert" },
+          { "name": "What's Included", "description": "Checklist of every weekly visit deliverable.", "tag": "Info" },
+          { "name": "Pricing", "description": "Weekly service starting price and offer.", "tag": "Convert" },
+          { "name": "Contact Form", "description": "Lead capture form.", "tag": "Convert" }
+        ]
+      }
+    }
+  ]
+}

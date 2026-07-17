@@ -1,0 +1,38 @@
+{
+  "niche": "landscaping",
+  "version": "1.0",
+  "preferred_terms": {
+    "project_noun": "yard",
+    "service_noun": "landscaping",
+    "client_noun": "homeowner",
+    "outcome_verb": "transform",
+    "quality_adjective": "thoughtful",
+    "credential_noun": "licensed and insured"
+  },
+  "voice": {
+    "register": "calm and competent",
+    "perspective": "we",
+    "tone_words": ["direct", "confident", "professional", "local"],
+    "avoid_words": ["leverage", "synergize", "seamless", "game-changer", "cutting-edge", "robust", "stunning", "breathtaking", "luxury"]
+  },
+  "segment_vocabulary": {
+    "residential_design": {
+      "pain": "You have a yard you ignore because it is hard to know where to start.",
+      "desire": "A yard that looks cared for, feels inviting, and adds real value to your home.",
+      "objection": "I don't know if I can afford it or if it will be worth the disruption."
+    },
+    "lawn_maintenance": {
+      "pain": "Keeping up with lawn care takes time you don't have.",
+      "desire": "A consistently green, clean yard without lifting a finger.",
+      "objection": "I've had unreliable services that skip visits or don't show up."
+    },
+    "hardscaping": {
+      "pain": "My outdoor space isn't usable — no patio, no structure.",
+      "desire": "A patio, walkway, or outdoor kitchen that extends my living space.",
+      "objection": "Construction seems expensive and the result might not match the vision."
+    }
+  },
+  "headline_style": "direct benefit, city-specific, no buzzwords",
+  "cta_style": "low-friction: 'Get a Free Estimate' not 'Buy Now'",
+  "faq_tone": "plain answers to real questions about cost, timing, and credentials"
+}

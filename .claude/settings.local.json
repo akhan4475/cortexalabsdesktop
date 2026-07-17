@@ -7,7 +7,16 @@
       "Read(//c/Users/Ayaan/Desktop/cortexalabs-desktop/**)",
       "Bash(npm rebuild *)",
       "Bash(npm install *)",
-      "Bash(cmd //c \"for /f \\\\\"tokens=5\\\\\" %a in \\('netstat -ano ^| findstr :54321'\\) do taskkill /PID %a /F\")"
+      "Bash(cmd //c \"for /f \\\\\"tokens=5\\\\\" %a in \\('netstat -ano ^| findstr :54321'\\) do taskkill /PID %a /F\")",
+      "Bash(ls \"C:\\\\Users\\\\Ayaan\\\\.claude\\\\skills\\\\agrici-seo\\\\scripts\" 2>&1 | head -50)",
+      "Bash(curl -s -o - -w \"\\\\nHTTP_STATUS:%{http_code}\\\\n\" \"https://perth-roofreplacments.vercel.app/robots.txt\")",
+      "Bash(curl -s -o - -w \"\\\\nHTTP_STATUS:%{http_code}\\\\n\" \"https://perth-roofreplacments.vercel.app/sitemap.xml\")",
+      "Read(//c/Users/Ayaan/.claude/skills/agrici-seo/**)",
+      "Bash(py scripts/render_page.py --help)",
+      "Bash(py \"C:\\\\Users\\\\Ayaan\\\\.claude\\\\skills\\\\agrici-seo\\\\scripts\\\\pagespeed_check.py\" https://perth-roofreplacments.vercel.app/ --json)",
+      "Bash(py scripts/backlinks_auth.py --check --json)",
+      "Bash(py -m pip install playwright)",
+      "Bash(py -m playwright install chromium)"
     ]
   }
 }

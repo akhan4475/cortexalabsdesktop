@@ -1,0 +1,28 @@
+{
+  "niche": "landscaping",
+  "version": "1.0",
+  "primary_mood": "aspirational precision",
+  "mood_rationale": "The homeowner buying landscape design is spending $8-15k. They want confidence that the contractor sees their yard as the canvas for a serious project, not a one-day mow. Images should feel like editorial landscape photography — dramatic overhead angles, precise edges, lush plant material.",
+  "hero_composition": {
+    "source": "greenoasis",
+    "layout": "asymmetric-split",
+    "text_weight": "55%",
+    "image_weight": "45%",
+    "overlay": "gradient-left: from-primary/95 via-primary/80 to-primary/40",
+    "image_requirements": [
+      "Completed project — preferably after photo of a design/install",
+      "Overhead drone or wide-angle shot showing full yard scope",
+      "Sharp edges: clean mow lines, defined bed borders, crisp hardscape",
+      "Green plant material against dark mulch or stone — high contrast",
+      "No people in hero unless homeowner is explicitly a lifestyle brand"
+    ],
+    "avoid": [
+      "Single potted plant close-up",
+      "Generic grass field with no structure",
+      "In-progress construction (messy site)",
+      "Stock-photo suburban lawn"
+    ]
+  },
+  "fallback_if_no_project_photo": "Use the Google Business Profile cover photo. If unavailable, use a deep-green gradient placeholder — do not use a stock photo of someone else's yard.",
+  "project_photo_fallback_gradient": "linear-gradient(135deg, #091f14 0%, #1a4d30 100%)"
+}

@@ -1,0 +1,6 @@
+{
+  "$schemaVersion": 1,
+  "default": "light",
+  "toggle": false,
+  "perClientOverride": true
+}

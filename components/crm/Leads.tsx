@@ -71,6 +71,7 @@ interface LeadsProps {
   onAddCampaign: (campaign: Campaign, leads: Lead[]) => void;
   onDeleteCampaign: (id: string) => void;
   onRenameCampaign: (id: string, name: string) => void;
+  onUpdateCampaign: (id: string, data: Partial<Pick<Campaign, 'campaignType' | 'niche'>>) => void;
   onAddLead: (lead: Lead) => void;
   onUpdateLead: (lead: Lead) => void;
   onDeleteLead: (id: string) => void;
@@ -91,9 +92,15 @@ function timeAgo(dateStr: string): string {
 }
 
 // ── Component ──────────────────────────────────────────────────────────────────
+const CHANNEL_TO_TYPE: Record<ChannelId, Campaign['campaignType']> = {
+  'cold-calls':  'calls',
+  'cold-dms':    'dms',
+  'cold-emails': 'emails',
+};
+
 const Leads: React.FC<LeadsProps> = ({
   campaigns, allLeads, onAddCampaign, onDeleteCampaign, onRenameCampaign,
-  onAddLead, onUpdateLead, onDeleteLead, onNavigate, onMoveLeads,
+  onUpdateCampaign, onAddLead, onUpdateLead, onDeleteLead, onNavigate, onMoveLeads,
 }) => {
   // Navigation state
   const [level, setLevel]                       = useState<LeadsLevel>('channels');
@@ -262,7 +269,14 @@ const Leads: React.FC<LeadsProps> = ({
         website: pl.website || '', rating: pl.rating || '4.0', reviews: pl.reviews || '0',
         summary: 'Imported from CSV.', status: 'New Lead',
       }));
-      const campaign: Campaign = { id: campaignId, name: newCampaignName, createdAt: new Date().toISOString().split('T')[0], leadCount: finalLeads.length };
+      const campaign: Campaign = {
+        id: campaignId,
+        name: newCampaignName,
+        createdAt: new Date().toISOString().split('T')[0],
+        leadCount: finalLeads.length,
+        campaignType: activeChannelId ? CHANNEL_TO_TYPE[activeChannelId] : undefined,
+        niche: (activeNicheId ?? undefined) as Campaign['niche'],
+      };
       onAddCampaign(campaign, finalLeads);
       // Assign to current channel + niche
       if (activeChannelId && activeNicheId) {
@@ -305,6 +319,10 @@ const Leads: React.FC<LeadsProps> = ({
   const handleAssignConfirm = () => {
     if (!assignModal || !assignNiche) return;
     updateFolderMap(prev => ({ ...prev, [assignModal.campaignId]: { channelId: assignChannelId, nicheId: assignNiche } }));
+    onUpdateCampaign(assignModal.campaignId, {
+      campaignType: CHANNEL_TO_TYPE[assignChannelId],
+      niche: assignNiche as Campaign['niche'],
+    });
     setAssignModal(null);
   };
 

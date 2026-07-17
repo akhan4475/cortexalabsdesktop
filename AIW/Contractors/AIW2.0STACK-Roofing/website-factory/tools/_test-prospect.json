@@ -1,0 +1,14 @@
+{
+  "niche": "roofing",
+  "business_name": "Peak Roofing",
+  "short_name": "Peak",
+  "phone": "(512) 555-0100",
+  "city": "Austin",
+  "state": "TX",
+  "rating": 4.9,
+  "review_count": 87,
+  "license_number": null,
+  "service_areas": ["Austin", "Round Rock", "Cedar Park"],
+  "service_slugs": [],
+  "owner_name": "Marcus"
+}

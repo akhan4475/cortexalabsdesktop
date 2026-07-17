@@ -1,0 +1,33 @@
+{
+  "niche": "roofing",
+  "steps": [
+    {
+      "n": 1,
+      "title": "Free Inspection",
+      "body": "We assess your roof and give you an honest picture of what it needs. No obligation.",
+      "icon_type": "clock",
+      "stat": null
+    },
+    {
+      "n": 2,
+      "title": "Estimate Review",
+      "body": "We walk you through the written, itemized scope. Every question answered. No pressure.",
+      "icon_type": "document",
+      "stat": "Same-day estimate"
+    },
+    {
+      "n": 3,
+      "title": "Install Day",
+      "body": "Crew arrives on time, completes the full job, and runs a magnetic sweep for nails.",
+      "icon_type": "wrench",
+      "stat": "Most jobs: 1 day"
+    },
+    {
+      "n": 4,
+      "title": "Final Walkthrough",
+      "body": "We inspect the completed roof with you. You sign off, we clean up, and we're done.",
+      "icon_type": "check",
+      "stat": null
+    }
+  ]
+}

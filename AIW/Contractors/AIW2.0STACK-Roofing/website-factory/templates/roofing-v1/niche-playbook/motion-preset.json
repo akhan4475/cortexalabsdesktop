@@ -1,0 +1,23 @@
+{
+  "niche": "roofing",
+  "preset": "restrained",
+  "rationale": "Roofing homeowners are often stressed (storm damage, leaks). Flashy animations read as frivolous. Motion should feel solid and professional.",
+  "rules": {
+    "entrance_animations": "fadeIn only. No slides, bounces, or flips.",
+    "duration_ms": 300,
+    "easing": "ease-out",
+    "stagger_ms": 80,
+    "scroll_trigger": "IntersectionObserver at 0.15 threshold. Single trigger, no repeat.",
+    "hover_transitions": "200ms ease-out on color and border. No transform scale on cards.",
+    "cta_hover": "Background color shift only. No glow, no shadow pulse.",
+    "prefers_reduced_motion": "All animation disabled. Transitions fall back to instant. Use motion-safe: Tailwind variant throughout."
+  },
+  "forbidden": [
+    "parallax scrolling",
+    "auto-play video backgrounds",
+    "infinite scroll carousels",
+    "CSS keyframe bounce or pulse on CTAs",
+    "floating elements",
+    "cursor effects"
+  ]
+}

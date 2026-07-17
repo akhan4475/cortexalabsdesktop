@@ -1,0 +1,932 @@
+[
+  {
+    "family": "swiper-icons",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Poppins",
+    "weight": "100",
+    "style": "italic"
+  },
+  {
+    "family": "Poppins",
+    "weight": "100",
+    "style": "italic"
+  },
+  {
+    "family": "Poppins",
+    "weight": "200",
+    "style": "italic"
+  },
+  {
+    "family": "Poppins",
+    "weight": "200",
+    "style": "italic"
+  },
+  {
+    "family": "Poppins",
+    "weight": "300",
+    "style": "italic"
+  },
+  {
+    "family": "Poppins",
+    "weight": "300",
+    "style": "italic"
+  },
+  {
+    "family": "Poppins",
+    "weight": "400",
+    "style": "italic"
+  },
+  {
+    "family": "Poppins",
+    "weight": "400",
+    "style": "italic"
+  },
+  {
+    "family": "Poppins",
+    "weight": "500",
+    "style": "italic"
+  },
+  {
+    "family": "Poppins",
+    "weight": "500",
+    "style": "italic"
+  },
+  {
+    "family": "Poppins",
+    "weight": "600",
+    "style": "italic"
+  },
+  {
+    "family": "Poppins",
+    "weight": "600",
+    "style": "italic"
+  },
+  {
+    "family": "Poppins",
+    "weight": "700",
+    "style": "italic"
+  },
+  {
+    "family": "Poppins",
+    "weight": "700",
+    "style": "italic"
+  },
+  {
+    "family": "Poppins",
+    "weight": "800",
+    "style": "italic"
+  },
+  {
+    "family": "Poppins",
+    "weight": "800",
+    "style": "italic"
+  },
+  {
+    "family": "Poppins",
+    "weight": "900",
+    "style": "italic"
+  },
+  {
+    "family": "Poppins",
+    "weight": "900",
+    "style": "italic"
+  },
+  {
+    "family": "Poppins",
+    "weight": "100",
+    "style": "normal"
+  },
+  {
+    "family": "Poppins",
+    "weight": "100",
+    "style": "normal"
+  },
+  {
+    "family": "Poppins",
+    "weight": "200",
+    "style": "normal"
+  },
+  {
+    "family": "Poppins",
+    "weight": "200",
+    "style": "normal"
+  },
+  {
+    "family": "Poppins",
+    "weight": "300",
+    "style": "normal"
+  },
+  {
+    "family": "Poppins",
+    "weight": "300",
+    "style": "normal"
+  },
+  {
+    "family": "Poppins",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Poppins",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Poppins",
+    "weight": "500",
+    "style": "normal"
+  },
+  {
+    "family": "Poppins",
+    "weight": "500",
+    "style": "normal"
+  },
+  {
+    "family": "Poppins",
+    "weight": "600",
+    "style": "normal"
+  },
+  {
+    "family": "Poppins",
+    "weight": "600",
+    "style": "normal"
+  },
+  {
+    "family": "Poppins",
+    "weight": "700",
+    "style": "normal"
+  },
+  {
+    "family": "Poppins",
+    "weight": "700",
+    "style": "normal"
+  },
+  {
+    "family": "Poppins",
+    "weight": "800",
+    "style": "normal"
+  },
+  {
+    "family": "Poppins",
+    "weight": "800",
+    "style": "normal"
+  },
+  {
+    "family": "Poppins",
+    "weight": "900",
+    "style": "normal"
+  },
+  {
+    "family": "Poppins",
+    "weight": "900",
+    "style": "normal"
+  },
+  {
+    "family": "Oswald",
+    "weight": "200",
+    "style": "normal"
+  },
+  {
+    "family": "Oswald",
+    "weight": "200",
+    "style": "normal"
+  },
+  {
+    "family": "Oswald",
+    "weight": "200",
+    "style": "normal"
+  },
+  {
+    "family": "Oswald",
+    "weight": "200",
+    "style": "normal"
+  },
+  {
+    "family": "Oswald",
+    "weight": "200",
+    "style": "normal"
+  },
+  {
+    "family": "Oswald",
+    "weight": "300",
+    "style": "normal"
+  },
+  {
+    "family": "Oswald",
+    "weight": "300",
+    "style": "normal"
+  },
+  {
+    "family": "Oswald",
+    "weight": "300",
+    "style": "normal"
+  },
+  {
+    "family": "Oswald",
+    "weight": "300",
+    "style": "normal"
+  },
+  {
+    "family": "Oswald",
+    "weight": "300",
+    "style": "normal"
+  },
+  {
+    "family": "Oswald",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Oswald",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Oswald",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Oswald",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Oswald",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Oswald",
+    "weight": "500",
+    "style": "normal"
+  },
+  {
+    "family": "Oswald",
+    "weight": "500",
+    "style": "normal"
+  },
+  {
+    "family": "Oswald",
+    "weight": "500",
+    "style": "normal"
+  },
+  {
+    "family": "Oswald",
+    "weight": "500",
+    "style": "normal"
+  },
+  {
+    "family": "Oswald",
+    "weight": "500",
+    "style": "normal"
+  },
+  {
+    "family": "Oswald",
+    "weight": "600",
+    "style": "normal"
+  },
+  {
+    "family": "Oswald",
+    "weight": "600",
+    "style": "normal"
+  },
+  {
+    "family": "Oswald",
+    "weight": "600",
+    "style": "normal"
+  },
+  {
+    "family": "Oswald",
+    "weight": "600",
+    "style": "normal"
+  },
+  {
+    "family": "Oswald",
+    "weight": "600",
+    "style": "normal"
+  },
+  {
+    "family": "Oswald",
+    "weight": "700",
+    "style": "normal"
+  },
+  {
+    "family": "Oswald",
+    "weight": "700",
+    "style": "normal"
+  },
+  {
+    "family": "Oswald",
+    "weight": "700",
+    "style": "normal"
+  },
+  {
+    "family": "Oswald",
+    "weight": "700",
+    "style": "normal"
+  },
+  {
+    "family": "Oswald",
+    "weight": "700",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "100",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "100",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "100",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "100",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "100",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "200",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "200",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "200",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "200",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "200",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "300",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "300",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "300",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "300",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "300",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "400",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "400",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "400",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "400",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "400",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "500",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "500",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "500",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "500",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "500",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "600",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "600",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "600",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "600",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "600",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "700",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "700",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "700",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "700",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "700",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "800",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "800",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "800",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "800",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "800",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "900",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "900",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "900",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "900",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "900",
+    "style": "italic"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "100",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "100",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "100",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "100",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "100",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "200",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "200",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "200",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "200",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "200",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "300",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "300",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "300",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "300",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "300",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "500",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "500",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "500",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "500",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "500",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "600",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "600",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "600",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "600",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "600",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "700",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "700",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "700",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "700",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "700",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "800",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "800",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "800",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "800",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "800",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "900",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "900",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "900",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "900",
+    "style": "normal"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "900",
+    "style": "normal"
+  },
+  {
+    "family": "Elusive-Icons",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "iconsax-bold",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "uicons-regular-rounded",
+    "weight": "normal",
+    "style": "normal"
+  },
+  {
+    "family": "eicons",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Feather",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Trustindex Poppins",
+    "weight": "400",
+    "style": "italic"
+  },
+  {
+    "family": "Trustindex Poppins",
+    "weight": "400",
+    "style": "italic"
+  },
+  {
+    "family": "Trustindex Poppins",
+    "weight": "400",
+    "style": "italic"
+  },
+  {
+    "family": "Trustindex Poppins",
+    "weight": "600",
+    "style": "italic"
+  },
+  {
+    "family": "Trustindex Poppins",
+    "weight": "600",
+    "style": "italic"
+  },
+  {
+    "family": "Trustindex Poppins",
+    "weight": "600",
+    "style": "italic"
+  },
+  {
+    "family": "Trustindex Poppins",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Trustindex Poppins",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Trustindex Poppins",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Trustindex Poppins",
+    "weight": "600",
+    "style": "normal"
+  },
+  {
+    "family": "Trustindex Poppins",
+    "weight": "600",
+    "style": "normal"
+  },
+  {
+    "family": "Trustindex Poppins",
+    "weight": "600",
+    "style": "normal"
+  },
+  {
+    "family": "Trustindex Poppins",
+    "weight": "400",
+    "style": "italic"
+  },
+  {
+    "family": "Trustindex Poppins",
+    "weight": "400",
+    "style": "italic"
+  },
+  {
+    "family": "Trustindex Poppins",
+    "weight": "400",
+    "style": "italic"
+  },
+  {
+    "family": "Trustindex Poppins",
+    "weight": "600",
+    "style": "italic"
+  },
+  {
+    "family": "Trustindex Poppins",
+    "weight": "600",
+    "style": "italic"
+  },
+  {
+    "family": "Trustindex Poppins",
+    "weight": "600",
+    "style": "italic"
+  },
+  {
+    "family": "Trustindex Poppins",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Trustindex Poppins",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Trustindex Poppins",
+    "weight": "400",
+    "style": "normal"
+  },
+  {
+    "family": "Trustindex Poppins",
+    "weight": "600",
+    "style": "normal"
+  },
+  {
+    "family": "Trustindex Poppins",
+    "weight": "600",
+    "style": "normal"
+  },
+  {
+    "family": "Trustindex Poppins",
+    "weight": "600",
+    "style": "normal"
+  }
+]

@@ -1,0 +1,25 @@
+{
+  "decision": "mix",
+  "heroFrom": "pool-troopers",
+  "colorSystemFrom": "payan-pools",
+  "typographyFrom": "mix",
+  "trustStackFrom": "payan-pools",
+  "ctaFrom": "patriot-pool-spa",
+  "navigationFrom": "patriot-pool-spa",
+  "sectionOrderFrom": "patriot-pool-spa",
+  "formPatternFrom": "desert-mountain-pool",
+  "mobilePatternFrom": "pool-troopers",
+  "pricingPatternFrom": "pool-troopers",
+  "mix_rationale": {
+    "colorSystem": "Payan's three-tone palette: deep blue (#0D6CB6) primary, light cyan (#2EA3F2) secondary, orange (#F58026) CTA accent. White base (#FFFFFF), near-white tint (#F0F9FF) for section backgrounds, dark navy (#0A1628) for headings and footer.",
+    "typography": "Fjalla One (Pool Troopers) for headings -- bold, confident, legible on mobile. Inter (Payan) for body -- clean, modern, readable at 16px+.",
+    "ctaPattern": "Patriot's Schedule Service repetition: primary CTA button appears in nav, hero, after services section, after reviews, and in final CTA band -- minimum 5 placements. Orange (#F58026) button color stands out against blue/white.",
+    "navigation": "Patriot's structure adapted for solo operator: Services (dropdown: Cleaning, Maintenance, Repair, Opening/Closing), Reviews, About, Service Area, Contact. Phone number top-right, always visible.",
+    "heroPattern": "Pool Troopers' location-aware hero: headline + subline + service area selector OR zip code input + primary CTA. Secondary CTA links to pricing section. No video (too heavy for small operators to source).",
+    "pricingTransparency": "Pool Troopers pricing pattern: pricing band mid-page showing starting prices per service tier (e.g. Weekly Service from $X/mo, Green Pool Recovery from $X). Positions price early, filters unqualified leads, builds trust.",
+    "trustStack": "Payan's certification badge strip: licensed, insured, certified (CPO if applicable), BBB-style badge, years in business. Schema markup (LocalBusiness + AggregateRating) baked into template.",
+    "formPattern": "Contact form on homepage (not redirect): Name, Phone, Zip Code, Service Type dropdown, optional message. 5 fields max. Zip pre-qualifies the lead geographically. Submit = triggers notification to operator."
+  },
+  "winner_screenshots_note": "Screenshots not captured (saveSnapshots KV store returned empty). Scoring based on live WebFetch + DOM analysis. Color and font data from Apify playwright-scraper CSS extraction.",
+  "created": "2026-05-20"
+}

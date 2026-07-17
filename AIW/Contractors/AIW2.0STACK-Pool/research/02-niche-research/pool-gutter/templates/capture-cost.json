@@ -1,0 +1,127 @@
+{
+  "niche_slug": "pool-services",
+  "total_cost_usd": 0.6877,
+  "runs": [
+    {
+      "slug": "payan-pools",
+      "viewport": "desktop",
+      "cost_usd": 0.008104444444444444,
+      "status": "done"
+    },
+    {
+      "slug": "payan-pools",
+      "viewport": "mobile",
+      "cost_usd": 0.0396975,
+      "status": "done"
+    },
+    {
+      "slug": "supreme-pool-service",
+      "viewport": "desktop",
+      "cost_usd": 0.06794638888888889,
+      "status": "done"
+    },
+    {
+      "slug": "supreme-pool-service",
+      "viewport": "mobile",
+      "cost_usd": 0.06804027777777778,
+      "status": "done"
+    },
+    {
+      "slug": "aquatic-pool-spa",
+      "viewport": "desktop",
+      "cost_usd": 0.041529444444444445,
+      "status": "done"
+    },
+    {
+      "slug": "aquatic-pool-spa",
+      "viewport": "mobile",
+      "cost_usd": 0.05615305555555555,
+      "status": "done"
+    },
+    {
+      "slug": "blue-science-pools",
+      "viewport": "desktop",
+      "cost_usd": 0.004414722222222222,
+      "status": "done"
+    },
+    {
+      "slug": "blue-science-pools",
+      "viewport": "mobile",
+      "cost_usd": 0.035922777777777776,
+      "status": "done"
+    },
+    {
+      "slug": "forever-blue-pools",
+      "viewport": "desktop",
+      "cost_usd": 0.0026966666666666667,
+      "status": "done"
+    },
+    {
+      "slug": "forever-blue-pools",
+      "viewport": "mobile",
+      "cost_usd": 0.015263333333333334,
+      "status": "done"
+    },
+    {
+      "slug": "desert-mountain-pool",
+      "viewport": "desktop",
+      "cost_usd": 0.06798222222222222,
+      "status": "done"
+    },
+    {
+      "slug": "desert-mountain-pool",
+      "viewport": "mobile",
+      "cost_usd": 0.0031469444444444444,
+      "status": "done"
+    },
+    {
+      "slug": "tonys-pool-service",
+      "viewport": "desktop",
+      "cost_usd": 0.007199166666666667,
+      "status": "done"
+    },
+    {
+      "slug": "tonys-pool-service",
+      "viewport": "mobile",
+      "cost_usd": 0.06794027777777778,
+      "status": "done"
+    },
+    {
+      "slug": "patriot-pool-spa",
+      "viewport": "desktop",
+      "cost_usd": 0.020841944444444444,
+      "status": "done"
+    },
+    {
+      "slug": "patriot-pool-spa",
+      "viewport": "mobile",
+      "cost_usd": 0.06783611111111111,
+      "status": "done"
+    },
+    {
+      "slug": "pool-troopers",
+      "viewport": "desktop",
+      "cost_usd": 0.018158333333333332,
+      "status": "done"
+    },
+    {
+      "slug": "pool-troopers",
+      "viewport": "mobile",
+      "cost_usd": 0.05583305555555555,
+      "status": "done"
+    },
+    {
+      "slug": "rising-sun-pools",
+      "viewport": "desktop",
+      "cost_usd": 0.01952111111111111,
+      "status": "done"
+    },
+    {
+      "slug": "rising-sun-pools",
+      "viewport": "mobile",
+      "cost_usd": 0.01947222222222222,
+      "status": "done"
+    }
+  ],
+  "ts": 1779334353
+}

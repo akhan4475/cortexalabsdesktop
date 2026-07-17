@@ -1,0 +1,43 @@
+{
+  "researchRound": "v2",
+  "scoredAt": "2026-07-15",
+  "winner": "silver-ridge-roofing",
+  "winnerUrl": "https://silverridgeroofing.com/",
+  "winnerScore": 97,
+  "mix": {
+    "pageStructure": "silver-ridge-roofing",
+    "trustBadgeBar": "silver-ridge-roofing",
+    "heroSubheadline": "silver-ridge-roofing",
+    "ctaPattern": "silver-ridge-roofing",
+    "reviewEmbedding": "silver-ridge-roofing",
+    "climateSpecificCopy": "silver-ridge-roofing",
+    "financingBadge": "silver-ridge-roofing",
+    "emergencyBadge": "silver-ridge-roofing",
+    "namedInspectionProcess": "panther-roof",
+    "transparencyNarrative": "panther-roof",
+    "dualPlatformReviews": "panther-roof",
+    "roofCareClub": "horvath-roofing",
+    "scarcityMicroCopy": "horvath-roofing",
+    "countyLocationHierarchy": "horvath-roofing"
+  },
+  "designRationale": "Silver Ridge supplies the highest-leverage pattern in the set: a persistent 4-badge trust strip (certification + certification + financing + 24/7) above the fold on every service and location page. Combined with the emotional master hook 'We Protect Your Greatest Investment' and a single frictionless CTA, this structure converts organic landings consistently. Panther Roof adds the named inspection concept (reframes first contact as low-commitment) and a dual-platform review display. Horvath adds the Roof Care Club maintenance membership (recurring revenue hook) and scarcity micro-copy. Colorado Preferred was inaccessible.",
+  "templateSlug": "roofing-v2",
+  "colorPalette": {
+    "primary": "#1E3A5F",
+    "accent": "#D97706",
+    "bg": "#FFFFFF",
+    "bgSecondary": "#F8F9FA",
+    "text": "#1F2937",
+    "textMuted": "#6B7280",
+    "trustBar": "#0F2645",
+    "cta": "#D97706",
+    "ctaHover": "#B45309"
+  },
+  "typographyScale": {
+    "heroHeadline": "text-5xl font-black tracking-tight",
+    "sectionHeadline": "text-3xl font-bold",
+    "subheadline": "text-xl font-semibold",
+    "body": "text-base font-normal leading-relaxed",
+    "badge": "text-xs font-bold uppercase tracking-widest"
+  }
+}

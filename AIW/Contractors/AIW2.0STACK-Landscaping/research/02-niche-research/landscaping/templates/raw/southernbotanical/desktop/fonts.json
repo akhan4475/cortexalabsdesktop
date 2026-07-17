@@ -1,0 +1,23 @@
+[
+  {
+    "family": "sans-serif"
+  },
+  {
+    "family": "\"Gotham A\", \"Gotham B\", Gotham-fallback, Arial, Helvetica, sans-serif"
+  },
+  {
+    "family": "\"Gotham A\", \"Gotham B\", Arial, Helvetica, sans-serif"
+  },
+  {
+    "family": "\"Mercury Display A\", \"Mercury Display B\", Georgia, serif"
+  },
+  {
+    "family": "Arial, Helvetica, sans-serif"
+  },
+  {
+    "family": "\"Mercury Display A\", \"Mercury Display B\", Mercury-Display-fallback, Georgia, serif"
+  },
+  {
+    "family": "Mercury-Display-fallback, Georgia, serif"
+  }
+]

@@ -1,0 +1,37 @@
+{
+  "winner": "greenoasis",
+  "strategy": "mix",
+  "studentNotes": "Mix best of each for max SEO and conversion as a lead booking funnel.",
+  "components": {
+    "colorSystemFrom": "greenoasis",
+    "typographyFrom": "greenoasis",
+    "heroFrom": "greenoasis",
+    "sectionOrderFrom": "keanelandscaping",
+    "navigationFrom": "keanelandscaping",
+    "trustBarFrom": "mountainscapers",
+    "ctaFrom": "keanelandscaping",
+    "formPatternFrom": "keanelandscaping",
+    "mobilePatternFrom": "greenoasis",
+    "trustSignalsFrom": "mountainscapers",
+    "shapeMotif": "leaf"
+  },
+  "mixRationale": {
+    "colorSystem": "GreenOasis dark forest green (#0d2612 range) + bright accent green + white. Zero visual noise. Best palette in pool.",
+    "typography": "GreenOasis clean sans-serif pairing. Modern, legible, niche-appropriate.",
+    "trustBar": "Mountainscapers pattern: thin bar ABOVE the nav with license number + phone numbers + BBB badge. Highest-converting trust placement in pool.",
+    "ctaPattern": "Keane dual CTA: primary filled button (Get a Free Quote) + outlined click-to-call button side by side. Converts both form-fillers and phone-preferrers.",
+    "navigation": "Keane residential/commercial split in nav pre-qualifies leads. Portfolio + About + Contact. Clean.",
+    "sectionOrder": "Portfolio/gallery early (position 3-4) because landscaping is a visual purchase. Process steps before form. Reviews before final CTA.",
+    "seoFocus": "Service pages per service slug, location pages per city slug, FAQ section targeting cost queries, blog for seasonal content. All from Keane/Mountainscapers sitemap patterns.",
+    "mobilePattern": "GreenOasis dark background scales cleanly to mobile. Fixed bottom bar with call + quote buttons."
+  },
+  "scoreSummary": {
+    "keanelandscaping": 78,
+    "greenoasis": 76,
+    "mountainscapers": 75,
+    "southernbotanical": 65,
+    "completelandsculpture": 55,
+    "splendidgardens": 46,
+    "divinedesign": 42
+  }
+}

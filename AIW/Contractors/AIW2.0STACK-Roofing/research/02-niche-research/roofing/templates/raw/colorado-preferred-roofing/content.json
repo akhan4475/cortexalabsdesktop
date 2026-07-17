@@ -1,0 +1,64 @@
+{
+  "actor": "website",
+  "actor_id": "apify~website-content-crawler",
+  "input": {
+    "maxCrawlPages": 20,
+    "saveHtml": false,
+    "saveMarkdown": true,
+    "saveScreenshots": false,
+    "removeElementsCssSelector": ".cookie, .cookie-banner, .modal, [role='dialog'], .breadcrumbs",
+    "startUrls": [
+      {
+        "url": "https://coloradopreferredroofing.com/"
+      }
+    ]
+  },
+  "items": [
+    {
+      "url": "https://coloradopreferredroofing.com/",
+      "crawl": {
+        "loadedUrl": "https://coloradopreferredroofing.com/",
+        "loadedTime": "2026-07-15T23:09:40.131Z",
+        "referrerUrl": "https://coloradopreferredroofing.com/",
+        "httpStatusCode": 202,
+        "depth": 0,
+        "contentLengthBytes": 169,
+        "contentType": "text/html"
+      },
+      "metadata": {
+        "canonicalUrl": "https://coloradopreferredroofing.com/",
+        "title": "Loading https://coloradopreferredroofing.com/",
+        "description": null,
+        "author": null,
+        "keywords": null,
+        "languageCode": "en",
+        "jsonLd": null,
+        "headers": {
+          "server": "nginx",
+          "date": "Wed, 15 Jul 2026 23:09:39 GMT",
+          "content-type": "text/html",
+          "content-length": "169",
+          "sg-captcha": "challenge",
+          "x-robots-tag": "noindex",
+          "set-cookie": "nevercache-b39818=Y;Max-Age=-1",
+          "expires": "Thu, 01 Jan 1970 00:00:01 GMT",
+          "cache-control": "no-store, no-cache, max-age=0",
+          "host-header": "8441280b0c35cbc1147f8ba998a563a7",
+          "x-proxy-cache-info": "DT:1",
+          "x-firefox-spdy": "h2"
+        }
+      },
+      "screenshotUrl": null,
+      "text": "Robot Challenge Screen\ncoloradopreferredroofing.com\nChecking the site connection security",
+      "html": null,
+      "htmlUrl": null,
+      "markdown": "# Robot Challenge Screen\n\n## coloradopreferredroofing.com\n\nChecking the site connection security\n\n![CDN icon](https://d1rozh26tys225.cloudfront.net/loader.svg)",
+      "debug": {
+        "requestHandlerMode": "browser"
+      }
+    }
+  ],
+  "run_id": "iyzvQhmfIcclga54E",
+  "cost_usd": 0.011061666666666666,
+  "ts": 1784156990
+}

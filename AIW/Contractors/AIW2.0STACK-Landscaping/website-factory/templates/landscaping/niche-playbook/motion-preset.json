@@ -1,0 +1,39 @@
+{
+  "niche": "landscaping",
+  "version": "1.0",
+  "preset": "restrained",
+  "rationale": "Premium landscaping sites are calm and editorial. Motion should feel like a quality print magazine coming to life — not a SaaS product.",
+  "tokens": {
+    "duration_ms": 400,
+    "stagger_ms": 80,
+    "easing": [0.16, 1, 0.3, 1],
+    "easing_label": "premium-out"
+  },
+  "scroll_reveal": {
+    "pattern": "section-stagger-fade",
+    "initial": { "opacity": 0, "y": 24 },
+    "animate": { "opacity": 1, "y": 0 },
+    "viewport": { "once": true },
+    "stagger": 0.08,
+    "duration": 0.4
+  },
+  "cta_hover": {
+    "scale": 1.02,
+    "duration_ms": 180
+  },
+  "card_hover": {
+    "translateY": -4,
+    "shadow": "card-lg",
+    "duration_ms": 200
+  },
+  "nav_scroll": {
+    "bg_transition_ms": 300
+  },
+  "hero_chips": {
+    "pattern": "fade-in-sequence",
+    "stagger_ms": 80
+  },
+  "enabled_tier2": ["scroll-headline-reveal", "section-stagger-fade"],
+  "honors_reduced_motion": true,
+  "disabled": ["parallax", "page-transition-slide", "confetti", "heavy-scale"]
+}

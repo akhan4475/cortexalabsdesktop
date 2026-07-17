@@ -1,0 +1,43 @@
+{
+  "$schemaVersion": 1,
+  "sectionNames": {
+    "services": "Our Pool Services",
+    "process": "How It Works",
+    "pricing": "Pricing & Offers",
+    "why-choose": "Why Choose Us",
+    "reviews": "Customer Reviews",
+    "gallery": "Our Work",
+    "service-areas": "Areas We Serve",
+    "faq": "Common Questions",
+    "contact": "Get a Free Quote",
+    "founder": "About Our Company",
+    "trust-bar": "Why Homeowners Trust Us"
+  },
+  "navLabels": {
+    "/services": "Services",
+    "/reviews": "Reviews",
+    "/about": "About",
+    "/service-areas": "Service Area",
+    "/contact": "Contact"
+  },
+  "ctaVerbs": [
+    "Get a Free Quote",
+    "Schedule Service",
+    "Book Online",
+    "Call Now",
+    "Request a Quote",
+    "Get Started"
+  ],
+  "audienceNouns": {
+    "endCustomer": "homeowner",
+    "endCustomerPlural": "homeowners",
+    "endCustomerPossessive": "your pool"
+  },
+  "categoryNouns": {
+    "service": "service",
+    "services": "services",
+    "category": "pool service",
+    "provider": "pool technician",
+    "providers": "pool technicians"
+  }
+}

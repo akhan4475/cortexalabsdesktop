@@ -1,0 +1,121 @@
+{
+  "version": 2,
+  "module": "m2c_complete",
+  "niche": "pool-services",
+  "studentName": "Ayaan Khan",
+  "gates": {
+    "setup.complete": false,
+    "agency.brandLocked": true,
+    "m1.profileLocked": true,
+    "m2a.scoresLocked": true,
+    "m2b.researchComplete": true,
+    "m2c.nicheDecided": true,
+    "m2d.templateBuilt": true,
+    "m3.offerLocked": true,
+    "m4.factoryStructureLoaded": true,
+    "m5.factoryBriefLocked": true,
+    "factory.tailored": true,
+    "factory.deployed": true,
+    "m6.engineStructureLoaded": true,
+    "m7.engineBriefLocked": true,
+    "engine.deployed": true,
+    "engine.contextPasted": false,
+    "factory.generated": true
+  },
+  "credentials": {
+    "anthropic": false,
+    "apify": true,
+    "supabase": false,
+    "vercel": false,
+    "assemblyAi": false,
+    "github": false
+  },
+  "deployments": {
+    "factory": null,
+    "engine": "https://content-engine-tau-drab.vercel.app"
+  },
+  "niche": {
+    "slug": "pool-services",
+    "templateVersion": 1
+  },
+  "factoryRuns": [],
+  "history": [
+    {
+      "timestamp": "2026-05-20T00:00:00Z",
+      "command": "/discovery",
+      "outcome": "complete",
+      "note": "m1.profileLocked set to true. 10 raw niche candidates surfaced."
+    },
+    {
+      "timestamp": "2026-05-20T00:00:00Z",
+      "command": "/score-niches",
+      "outcome": "complete",
+      "note": "m2a.scoresLocked set to true. Top 3 finalists: Roofing (26), Landscaping (25), Pool & Gutter (22). Gym/Fitness swapped out by student override -- low ticket filter."
+    },
+    {
+      "timestamp": "2026-05-20T18:45:00Z",
+      "command": "/research",
+      "outcome": "complete",
+      "note": "m2b.researchComplete set to true. 7 sub-task markdowns + synthesis.md written for all 3 niches. Total Apify cost: ~$1.69. Actors used: google-search-scraper, crawler-google-places, reddit-scraper-lite."
+    },
+    {
+      "timestamp": "2026-05-20T19:00:00Z",
+      "command": "/pick-niche",
+      "outcome": "complete",
+      "note": "m2c.nicheDecided set to true. Chosen niche: pool-services (pool cleaning, maintenance, repair, installation -- gutter excluded). Research base: research/02-niche-research/pool-gutter/. Starter template written to 08-starter-template.md."
+    },
+    {
+      "ts": "2026-05-21T03:42:42.117217+00:00",
+      "event": "factory.generated",
+      "niche": "pool-services"
+    },
+    {
+      "timestamp": "2026-05-21T00:00:00Z",
+      "command": "/build-niche-template",
+      "outcome": "complete",
+      "note": "m2d.templateBuilt set to true. pool-services niche template: 14 components, 17 pages (incl. ServiceDetailTemplate), 18-file playbook, 13 SOPs, 3 agents, 2 QA checklists. All 4 hard gates passed (Gates 1/2/3/6). template-routes.json updated. templateVersion=1."
+    },
+    {
+      "timestamp": "2026-05-21T00:00:00Z",
+      "command": "/craft-offer",
+      "outcome": "complete",
+      "note": "m3.offerLocked set to true. Offer pack written to research/03-offer-pack.md. Stage 1 (no pool portfolio). Free upfront design risk reversal. 3-tier pricing $600/$800/$1,100. 5 personalized prospect DMs: Watermark Swimming Pools, Pooltek Services, Splash Pools LLC, BMA Fiberglass Pools, Maryland Pool Services."
+    },
+    {
+      "timestamp": "2026-05-21T00:00:00Z",
+      "command": "/load-factory-structure",
+      "outcome": "complete",
+      "note": "m4.factoryStructureLoaded set to true. Website_Factory_Structure.md written to research/_structure/. 13-stage pipeline, pool-services niche template, brand-dna shape (32+ keys), 11 playbook schemas, 7 contracts, 17 SOPs documented."
+    },
+    {
+      "timestamp": "2026-05-22T00:00:00Z",
+      "command": "/generate-wf-brief",
+      "outcome": "complete",
+      "note": "m5.factoryBriefLocked set to true. Brief written to research/output/website-factory-brief.md. Three client archetypes defined: service-only, install-only, full-service. clientArchetype declared at Stage 1 intake gates which pages are built and which copy register is used."
+    },
+    {
+      "timestamp": "2026-05-22T00:00:00Z",
+      "command": "/tailor-factory",
+      "outcome": "complete",
+      "note": "factory.tailored set to true. 3 badges added to trust-signals.json (google-guaranteed, before-after-documented, satisfaction-guarantee). CLAUDE.md title + top paragraph updated to pool-services orientation + niche-template pointer line added to Architecture section. 05-copy-deck.md seeded with 6 niche voice rule sections (hero H1 pattern, CTA locks, customer phrases, fear FAQs, banned phrases, section order)."
+    },
+    {
+      "timestamp": "2026-05-22T00:00:00Z",
+      "command": "/setup-agency",
+      "outcome": "complete",
+      "note": "agency.brandLocked set to true. agency-brand.json written to website-factory/clients/_agency/. Agency: Cortexa Labs, domain: horizondigitalai.co, YouTube: @CortexaLabs. 5 real reviews (Google + Facebook). 1 client build (Pinto's Painting LLC). Palette: crimson #CD3D35 / deep #A32D26 / accent #E85550. Pricing: $900 setup / $800 OTO / $0 monthly (Stage 1). Value stack total $3,250. Assets pending: founder portrait, review avatars (1-5.webp), client screenshot (1.webp)."
+    },
+    {
+      "timestamp": "2026-05-22T00:00:00Z",
+      "command": "gate-bypass",
+      "outcome": "manual",
+      "note": "factory.deployed set to true manually. Student chose to build content engine before running factory demo build. A.M. Swimming Pools intake is staged at website-factory/clients/A.M. Swimming Pools/ - run /build-all from website-factory/ when ready."
+    },
+    {
+      "timestamp": "2026-05-22T00:00:00Z",
+      "command": "/load-engine-structure",
+      "outcome": "complete",
+      "note": "m6.engineStructureLoaded set to true. Content_Engine_Structure.md written to research/_structure/. 7 buckets documented (note: live slug is 'context' not 'my_business'). Voice signature system, hook formulas, content formats, ingestion pipelines, and env vars documented."
+    }
+  ]
+}

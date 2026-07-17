@@ -1,0 +1,20 @@
+{
+  "$schemaVersion": 1,
+  "preset": "restrained",
+  "tier2Enabled": ["section-stagger-fade", "scroll-headline-reveal"],
+  "easings": {
+    "default": "cubic-bezier(0.16, 1, 0.3, 1)",
+    "ctaEntry": "cubic-bezier(0.16, 1, 0.3, 1)",
+    "ctaExit": "cubic-bezier(0.7, 0, 0.84, 0)",
+    "cardHover": "cubic-bezier(0.16, 1, 0.3, 1)",
+    "scrollReveal": "cubic-bezier(0.16, 1, 0.3, 1)"
+  },
+  "durations": {
+    "hover": "150ms",
+    "hoverOut": "200ms",
+    "reveal": "400ms",
+    "entranceStagger": "70ms",
+    "pageTransition": "300ms"
+  },
+  "honorsReducedMotion": true
+}

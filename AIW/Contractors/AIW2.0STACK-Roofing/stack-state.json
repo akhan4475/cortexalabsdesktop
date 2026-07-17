@@ -1,0 +1,88 @@
+{
+  "version": 2,
+  "module": "m2b_complete",
+  "niche": "roofing-full",
+  "studentName": "Ayaan Khan",
+  "gates": {
+    "setup.complete": false,
+    "agency.brandLocked": true,
+    "m1.profileLocked": true,
+    "m2a.scoresLocked": true,
+    "m2b.researchComplete": true,
+    "m2c.nicheDecided": true,
+    "m2d.templateBuilt": false,
+    "m3.offerLocked": true,
+    "m4.factoryStructureLoaded": true,
+    "m5.factoryBriefLocked": true,
+    "factory.tailored": true,
+    "factory.deployed": false,
+    "m6.engineStructureLoaded": false,
+    "m7.engineBriefLocked": false,
+    "engine.deployed": false,
+    "engine.contextPasted": false,
+    "factory.generated": false
+  },
+  "credentials": {
+    "anthropic": false,
+    "apify": true,
+    "supabase": false,
+    "vercel": false,
+    "assemblyAi": false,
+    "github": false
+  },
+  "deployments": {
+    "factory": null,
+    "engine": null
+  },
+  "factoryRuns": [],
+  "history": [
+    {
+      "timestamp": "2026-05-20T00:00:00Z",
+      "command": "/discovery",
+      "outcome": "complete",
+      "note": "m1.profileLocked set to true. 10 raw niche candidates surfaced."
+    },
+    {
+      "timestamp": "2026-05-20T00:00:00Z",
+      "command": "/score-niches",
+      "outcome": "complete",
+      "note": "m2a.scoresLocked set to true. Top 3 finalists: Roofing (26), Landscaping (25), Pool & Gutter (22). Gym/Fitness swapped out by student override -- low ticket filter."
+    },
+    {
+      "timestamp": "2026-05-20T18:45:00Z",
+      "command": "/research",
+      "outcome": "complete",
+      "note": "m2b.researchComplete set to true. 7 sub-task markdowns + synthesis.md written for all 3 niches. Total Apify cost: ~$1.69. Actors used: google-search-scraper, crawler-google-places, reddit-scraper-lite."
+    },
+    {
+      "timestamp": "2026-06-26T00:00:00Z",
+      "command": "/pick-niche",
+      "outcome": "complete",
+      "note": "m2c.nicheDecided set to true. Chosen niche: roofing. Positioning: low-ticket one-time build ($1,000-2,000) with AI chatbot. Targets smaller roofers who cannot afford Hook Agency/King Contractor retainers."
+    },
+    {
+      "timestamp": "2026-06-26T00:00:00Z",
+      "command": "/build-niche-template",
+      "outcome": "complete",
+      "note": "m2d.templateBuilt and factory.generated set to true. 12 phases complete. Winner: perth-roof-replacements. 17 components, 12 pages, full niche playbook, SOPs, agents, checklists. All 4 hard gates passed (Gates 1-3 + 6). Gates 4+5 warnings only. Registered in website-factory/config/template-routes.json."
+    },
+    {
+      "timestamp": "2026-06-26T00:00:00Z",
+      "command": "/load-factory-structure",
+      "outcome": "complete",
+      "note": "m4.factoryStructureLoaded set to true. Website_Factory_Structure.md written. 13-stage pipeline documented. 1 registered niche template (roofing). 17 universal SOPs mapped. Intake fields identified."
+    },
+    {
+      "timestamp": "2026-06-26T00:00:00Z",
+      "command": "/craft-offer",
+      "outcome": "complete",
+      "note": "m3.offerLocked set to true. Offer pack written to research/03-offer-pack.md. Stage 2 offer shape. Positioning: turn review-checkers into estimate requests. 3 DM versions (short/medium/long). 5 personalized prospect DMs. Pricing: $0 first case study (uncle), $1,000-1,200 clients 2-3, up to $2,000 at clients 7+."
+    },
+    {
+      "timestamp": "2026-07-15T00:00:00Z",
+      "command": "manual",
+      "outcome": "in-progress",
+      "note": "Niche slug changed from roofing to roofing-full. m2d.templateBuilt + factory.generated reset to false. Goal: build a second parallel template at templates/roofing-full/ from higher-ranked 30-40 page sites (40-60/100 SEO score). Existing templates/roofing/ (single-page landing template, winner: perth-roof-replacements) preserved untouched at template-routes.json entry roofing."
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "niche": "landscaping",
+  "version": "1.0",
+  "required_photos": {
+    "hero": {
+      "count": 1,
+      "description": "Wide-angle or overhead completed project. Clean, sharp, green against dark mulch or stone.",
+      "destination": "public/work/",
+      "brand_dna_path": "previous_projects[0].filename"
+    },
+    "portfolio": {
+      "minimum": 6,
+      "ideal": 12,
+      "description": "Before/after pairs or completed project shots. Each labeled with category (landscape-design, hardscaping, irrigation, lawn-care, sod).",
+      "destination": "public/work/",
+      "brand_dna_path": "previous_projects[].filename"
+    },
+    "team": {
+      "count_min": 1,
+      "description": "Owner headshot or team photo. Outdoor preferred. No suit and tie.",
+      "destination": "public/team/",
+      "brand_dna_path": "team_group_photo"
+    }
+  },
+  "optional_photos": {
+    "in_progress": {
+      "description": "Crew working on a project — shows professionalism and scale."
+    },
+    "equipment": {
+      "description": "Branded truck or equipment — reinforces local, established operator."
+    }
+  },
+  "photo_quality_standards": {
+    "minimum_width_px": 1200,
+    "format": "jpg or webp",
+    "no_watermarks": true,
+    "no_stock_photos": true,
+    "prefer_landscape_orientation": true
+  }
+}

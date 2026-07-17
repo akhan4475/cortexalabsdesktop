@@ -1,0 +1,59 @@
+{
+  "niche": "roofing",
+  "business_name": "John E. Zentz & Son Roofing",
+  "short_name": "Zentz & Son",
+  "phone": "(410) 833-1190",
+  "city": "Finksburg",
+  "state": "MD",
+  "rating": 5.0,
+  "review_count": 6,
+  "license_number": "MHIC Licensed",
+  "service_areas": [
+    "Finksburg",
+    "Westminster",
+    "Owings Mills",
+    "Reisterstown",
+    "Eldersburg",
+    "Sykesville"
+  ],
+  "service_slugs": [],
+  "owner_name": "John",
+  "reviews": [
+    {
+      "author": "Dave M.",
+      "rating": 5,
+      "text": "John came out same day, gave us a straight number, and had the whole roof done before dark. No surprises on the bill. Would recommend to anyone in the area.",
+      "source": "Google"
+    },
+    {
+      "author": "Karen T.",
+      "rating": 5,
+      "text": "After the storm last spring we had water coming in. Zentz had it fixed within 48 hours. They were professional, cleaned up everything, and walked us through every step of the insurance claim.",
+      "source": "Google"
+    },
+    {
+      "author": "Mike R.",
+      "rating": 5,
+      "text": "Family business that actually cares about doing the job right. John Jr. personally checked the work at the end of the day. Quality crew, fair price.",
+      "source": "Google"
+    },
+    {
+      "author": "Lisa H.",
+      "rating": 5,
+      "text": "We got three quotes. Zentz was honest about what we needed and did not try to upsell us. Roof looks great and we paid only our deductible.",
+      "source": "Google"
+    },
+    {
+      "author": "Tom B.",
+      "rating": 5,
+      "text": "70 years in business for a reason. These guys know what they are doing. On time, on budget, and the cleanup was spotless.",
+      "source": "Google"
+    },
+    {
+      "author": "Sandra K.",
+      "rating": 5,
+      "text": "Reached out on a Sunday about an active leak. They picked up and were there Monday morning. Cannot ask for more than that.",
+      "source": "Google"
+    }
+  ]
+}

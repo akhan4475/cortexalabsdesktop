@@ -1,0 +1,89 @@
+{
+  "niche": "roofing",
+  "priority_order": [
+    "google_star_count",
+    "license_number_visible",
+    "years_in_business",
+    "gaf_certification",
+    "bbb_accreditation",
+    "insurance_certificate",
+    "before_after_photos",
+    "named_team_members",
+    "response_time_claim",
+    "warranty_specifics"
+  ],
+  "signals": {
+    "google_star_count": {
+      "display": "Show count + star rating in nav/hero. Never just stars without a count.",
+      "minimum_to_show": 10,
+      "format": "{count} Google Reviews"
+    },
+    "license_number_visible": {
+      "display": "Show in TrustBar and Footer. Format: License #{number}",
+      "required": true,
+      "fallback": "Fully Licensed"
+    },
+    "years_in_business": {
+      "display": "Show as '{N} Years Serving {City}'",
+      "minimum_to_show": 2,
+      "format": "{years} Years"
+    },
+    "gaf_certification": {
+      "display": "Badge in TrustBar and Footer. If no badge asset, show text 'GAF Certified Contractor'.",
+      "badge_slot": "trust_badges[type=gaf]",
+      "variants": [
+        { "id": "gaf-master-elite", "name": "GAF Master Elite Contractor", "priority": "high", "logoPath": "niche-playbook/trust-badges/gaf-master-elite.svg" },
+        { "id": "gaf-weather-stopper", "name": "GAF Weather Stopper Roofing Contractor", "priority": "high", "logoPath": "niche-playbook/trust-badges/gaf-weather-stopper.svg" },
+        { "id": "owens-corning-platinum", "name": "Owens Corning Platinum Preferred Contractor", "priority": "high", "logoPath": "niche-playbook/trust-badges/owens-corning-platinum.svg" },
+        { "id": "certainteed-select", "name": "CertainTeed SELECT ShingleMaster", "priority": "medium", "logoPath": "niche-playbook/trust-badges/certainteed-select.svg" }
+      ],
+      "appliesIf": "brandDNA.trust_badges contains entry with type=gaf OR type=owens-corning OR type=certainteed"
+    },
+    "bbb_accreditation": {
+      "display": "Badge in Footer. If no asset, show 'BBB A+ Accredited'.",
+      "badge_slot": "trust_badges[type=bbb]",
+      "variants": [
+        { "id": "bbb-a-plus", "name": "BBB A+ Accredited Business", "priority": "high", "logoPath": "niche-playbook/trust-badges/bbb-a-plus.svg" }
+      ],
+      "appliesIf": "brandDNA.trust_badges contains entry with type=bbb",
+      "link": true,
+      "linkTarget": "brandDNA.trust_badges[type=bbb].url"
+    },
+    "angi_award": {
+      "display": "Footer only. Show 'Angi Super Service Award {year}' if available.",
+      "badge_slot": "trust_badges[type=angi]",
+      "variants": [
+        { "id": "angi-super-service", "name": "Angi Super Service Award", "priority": "medium", "logoPath": "niche-playbook/trust-badges/angi-super-service.svg" }
+      ],
+      "appliesIf": "brandDNA.trust_badges contains entry with type=angi"
+    },
+    "google_guaranteed": {
+      "display": "TrustBar. 'Google Guaranteed' badge links to GBP.",
+      "badge_slot": "trust_badges[type=google-guaranteed]",
+      "variants": [
+        { "id": "google-guaranteed", "name": "Google Guaranteed", "priority": "medium", "logoPath": "niche-playbook/trust-badges/google-guaranteed.svg" }
+      ],
+      "appliesIf": "brandDNA.trust_badges contains entry with type=google-guaranteed"
+    },
+    "insurance_certificate": {
+      "display": "'Available on request' is enough. Do not show the actual certificate.",
+      "copy": "Fully insured. Certificate available on request."
+    },
+    "before_after_photos": {
+      "display": "Real job photos only. No stock images in gallery. Label every photo with service type and city.",
+      "minimum_pairs": 3
+    },
+    "named_team_members": {
+      "display": "First name + last name + role. Photo strongly preferred.",
+      "fallback": "Named founder bio at minimum"
+    },
+    "response_time_claim": {
+      "display": "Only state if you can actually honour it.",
+      "suggested_copy": "We respond to every estimate request the same day."
+    },
+    "warranty_specifics": {
+      "display": "Name the warranty length and what it covers. 'Lifetime warranty on labour and materials' outperforms 'we stand behind our work'.",
+      "copy": "Lifetime warranty on labour and materials."
+    }
+  }
+}
